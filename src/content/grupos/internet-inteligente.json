@@ -1,0 +1,31 @@
+{
+  "sigla": "INTERNET INTELIGENTE",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre internet inteligente",
+      "url": "https://pi.udistrital.edu.co/INTERNET-INTELIGENTE/"
+    }
+  ],
+  "nombre": "INTERNET INTELIGENTE",
+  "logo": "/images/grupos/internet-inteligente.png",
+  "descripcion": [
+    "Ser un grupo reconocido en la máxima categoría de Colciencias, posicionado y posicionando a la Universidad Distrital Francisco José de Caldas por la productividad enfocada hacia la generación de conocimiento y los productos de apropiación social y su impacto en el entorno local regional y nacional. Ser reconocido por el liderazgo en la generación de nuevo conocimiento desde el apoyo a proyectos de investigación desde programas postgraduales como maestrías y doctorados y su implementación en la industria local, regional y nacional propiciando la mejora en la calidad de vida de la sociedad en la que estamos inmersos Objetivo Específico. Desarrollar productos de apropiación social, como cluster empresariales o empresas de spin off que se apoyen en los productos de generación de conocimiento para implementar los nuevos modelos de negocio. Objetivo Específico. Mejorar el nivel de los investigadores Junior a Senior, promover su continuidad ofreciendo alternativas de apoyo económico e Incorporar al menos 5 nuevos Investigadores con Doctorado al grupo de preferencia de Universidades Fuera del País."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000003328",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "osalcedo@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

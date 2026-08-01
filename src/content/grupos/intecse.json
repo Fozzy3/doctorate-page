@@ -1,0 +1,31 @@
+{
+  "sigla": "INTECSE",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre intecse",
+      "url": "https://pi.udistrital.edu.co/INTECSE/"
+    }
+  ],
+  "nombre": "INTEROPERBILIDAD TECNOLOGÍA Y SEMÁNTICA (INTECSE)",
+  "logo": "/images/grupos/intecse.png",
+  "descripcion": [
+    "Proponer modelos semánticos mediante representación ontológica y procesos de negocio, para facilitar las organizaciones el intercambio electrónico de recursos digitales desde arquitecturas y plataformas heterogéneas. Modelar conceptualizaciones consensuadas, mediante representaciones ontológicas que faciliten el intercambio de recursos digitales en entornos distribuidos y plataformas heterogéneos. Definir modelos de procesos de negocio mediante integración de servicios para mejorar la realización de transacciones y el intercambio electrónico de información entre organizaciones. Apoyar el proceso educativo mediante el diseño y desarrollo de objetos digitales de aprendizaje, aplicando especificaciones y normas que faciliten su ubicación y acceso desde protocolos de Internet. Establecer mecanismo que faciliten la integración de funcionalidades entre plataformas de aprendizaje. Establecer y adaptar modelos matemáticos de inferencia ontológica. Analizar y diseño estrategias de Interoperabilidad intra e inter-organizacional."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000006950",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "intecse@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

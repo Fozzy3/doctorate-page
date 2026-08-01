@@ -1,0 +1,26 @@
+{
+  "sigla": "SERVIPUBLICOS",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "conoce más sobre serviPúblico",
+      "url": "https://pi.udistrital.edu.co/SERVIPUBLICOS/"
+    }
+  ],
+  "nombre": "SERVIPÚBLICOS",
+  "logo": "/images/grupos/servipublicos.png",
+  "descripcion": [
+    "El Grupo de Investigación Servipúblicos ya es reconocido por entidades del orden nacional, como el Ministerio de Ambiente, Vivienda y Desarrollo Territorial; la Comisión de Regulación de Agua Potable y Saneamiento Básico -CRA-; la Superintendencia de Servicios Públicos; el Gremio de ANDESCO; el Gremio de ACODAL y otros organismos. Nuestros aportes al sector de agua potable, en temas como los nuevos marcos regulatorios, son de conocimiento público. Los integrantes del Grupo cuentan con prestigio nacional en investigaciones relacionadas con el agua potable y el saneamiento básico."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000009379",
+  "director": {
+    "nombre": "Angarita Manosalva Edinson Director eangaritam@udistrital.edu.co",
+    "correo": "eangaritam@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

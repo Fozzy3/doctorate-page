@@ -45,6 +45,29 @@ const docentes = defineCollection({
   }),
 });
 
+const grupos = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/grupos' }),
+  schema: z.object({
+    sigla: z.string(),
+    nombre: z.string().optional(),
+    enfasis: z.string().optional(),
+    logo: z.string().optional(),
+    descripcion: z.array(z.string()).default([]),
+    clasificacion: z.string().optional(),
+    convocatoria: z.object({ etiqueta: z.string(), url: z.string() }).optional(),
+    gruplac: z.string().optional(),
+    enlaces: z.array(z.object({ etiqueta: z.string(), url: z.string() })).default([]),
+    director: z
+      .object({
+        nombre: z.string(),
+        url: z.string().optional(),
+        correo: z.string().optional(),
+      })
+      .optional(),
+    actualizado: z.string().optional(),
+  }),
+});
+
 const noticias = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/noticias' }),
   schema: z.object({
@@ -56,4 +79,4 @@ const noticias = defineCollection({
   }),
 });
 
-export const collections = { paginas, noticias, docentes };
+export const collections = { paginas, noticias, docentes, grupos };

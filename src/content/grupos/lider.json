@@ -1,0 +1,31 @@
+{
+  "sigla": "LIDER",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/73723767"
+    },
+    {
+      "etiqueta": "conoce más sobre LIder",
+      "url": "https://pi.udistrital.edu.co/LIDER/"
+    }
+  ],
+  "nombre": "LABORATORIO DE INVESTIGACIÓN Y DESARROLLO EN ELECTRÓNICA Y REDES (LIDER)",
+  "logo": "/images/grupos/lider.png",
+  "descripcion": [
+    "Realizar investigación y desarrollo tecnológico avanzado en TIC y creación de tecnología aplicada en el área de Telemática, Telecomunicaciones, Electrónica, software y tecnología aeroespacial. Crear soluciones basadas en tecnología emergente de alta calidad con aplicación en la solución de problemas de Ingeniería de carácter practico a nivel nacional e internacional en los campos relacionados con el conocimiento humano. Formar estudiantes con altos estándares de calidad y conocimiento en los tópicos de interés del Grupo. Realizar patentes y nuevos diseños que puedan ser aplicados a nivel institucional dentro y fuera del país. Crear nuevas aplicaciones en electrónica, redes, informática y software que integren servicios de alta tecnología y contribuyan al desarrollo tecnológico de la Universidad Distrital y su proyección social a nivel local y nacional."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000005315",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "lider@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

@@ -1,0 +1,31 @@
+{
+  "sigla": "ARMOS",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/73720240"
+    },
+    {
+      "etiqueta": "conoce más sobre armos",
+      "url": "https://armos-ud.gitlab.io/armos/"
+    }
+  ],
+  "nombre": "ARQUITECTURA MODERNA PARA SISTEMAS DE ALIMENTACIÓN (ARMOS)",
+  "logo": "/images/grupos/armos-2.png",
+  "descripcion": [
+    "Desarrollar y evaluar arquitecturas para equipos de alimentación de sistemas de potencia. Las características definidas para estas arquitecturas, además de proporcionar la energía bajo las condiciones definidas por la carga, exigen un bajo contenido armónico en las señales de corriente según la norma IEC61000. Dentro de esta evaluación se incluye principalmente: Sistemas de rectificación monofásica para alimentación inferior a los 16 A, sistemas de regulación DC/DC en operación emulador resistivo (corrección activa del factor de potencia), y sistemas de inversión DC/AC monofásica y trifásica para diversas cargas. Se pretende que la alimentación de estos sistema permita alimentación universal (que se puedan utilizar en cualquier lugar del mundo) y, en algunos casos, proporcionen seguridad ante fallos de la red eléctrica. Además, la nueva norma IEC1000/3/2 impone una severa limitación acerca de la corriente que se puede tomar de la red, estos equipos deben estar en capacidad de cumplir esta exigencia. Los diferentes subsistemas de estudio manejarán potencias inferiores a 1 kW. El grupo pretende también incentivar a los alumnos interesados en éstas nuevas tecnologías, y servir como medio de transferencia de los conocimientos logrados por los proyectos hacia los estudiantes y comunidad universitaria."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000001169",
+  "director": {
+    "nombre": "Martínez Sarmiento Fredy Hernán",
+    "url": "/docentes/#DOC_Martinez_F",
+    "correo": "fhmartinezs@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

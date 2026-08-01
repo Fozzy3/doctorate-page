@@ -1,0 +1,25 @@
+{
+  "sigla": "GEIT",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre GEIT",
+      "url": "https://pi.udistrital.edu.co/GEIT/"
+    }
+  ],
+  "nombre": "GRUPO DE GESTIÓN EMPRESARIAL E INNOVACIÓN TECNOLÓGICA (GEIT)",
+  "logo": "/images/grupos/geit.png",
+  "descripcion": [
+    "Generar conocimiento de manera permanente. Generar soluciones integrales que respondan a las necesidades de competitividad, productividad y sostenibilidad de las organizaciones. Promover la capacidad investigadora en la comunidad universitaria. Fomentar la formación integral de los investigadores. Retos: Posicionarnos como un grupo de referencia para la comunidad científica nacional, desarrollando proyecto de alto impacto en el sector productivo, y contribuyendo a la generación de una cultura empresarial colombiana."
+  ],
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000891",
+  "director": {
+    "nombre": "Calderon María Eugenia Director geit@udistrital.edu.co",
+    "correo": "geit@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

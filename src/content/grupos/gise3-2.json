@@ -1,0 +1,31 @@
+{
+  "sigla": "GISE3",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/73643762"
+    },
+    {
+      "etiqueta": "conoce más sobre gise3",
+      "url": "https://pi.udistrital.edu.co/GISE3/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN SISTEMAS ELÉCTRICOS Y EFICIENCIA ENERGÉTICA (GISE3)",
+  "logo": "/images/grupos/gise3-2.png",
+  "descripcion": [
+    "El GISE3 está compuesto por investigadores expertos en diversas áreas relacionadas con ingeniería eléctrica y electrónica, quienes propenden por la formulación y ejecución de proyectos de investigación y la formación de talento humano que generen impactos positivos en la comunidad a nivel ciudad-región-país. Asimismo, a partir de la expansión y creación de nuevas redes de conocimiento y cooperación académica, el GiSE3 trabaja con el propósito de fortalecer el vínculo entre la académica y el sector externo, prestando servicios de consultoría y/o asesoría investigativa a empresas, compañías o instituciones que hacen parte del sector productivo, las cuales emplean la energía eléctrica como insumo de sus procesos y/o activo de sus actividades económicas."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000020462",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "gise3@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

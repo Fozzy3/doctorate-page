@@ -1,0 +1,31 @@
+{
+  "sigla": "GRUPO DE INVESTIGACION EN DISENO DE INGENIERIA (DISING)",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/78429427"
+    },
+    {
+      "etiqueta": "conoce más sobre SISTEMAS MECATRONICOS Y TELECOMUNICACIONES",
+      "url": "https://pi.udistrital.edu.co/DISING/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACION EN DISEÑO DE INGENIERIA (DISING)",
+  "logo": "/images/grupos/sistemas-mecatronicos-y-telecomunicaciones-2.png",
+  "descripcion": [
+    "Diseñar cursos temáticos en Mecánica, Electrónica, Automática y Telecomunicaciones para ofrecer en los programas de ingeniería a nivel de pregrado y posgrado. Realizar conferencias, muestras, etc., para socializar a la comunidad académica los desarrollos en los temas de Mecánica, Automática, Electrónica y Telecomunicaciones. Diseñar e Implementar sistemas de control a instalaciones concebidas para los procesos de producción industrial. Diseñar y aplicar métodos clásicos modernos y avanzados de control a diferentes prototipos, haciendo énfasis en aspectos teóricos de los métodos, en la metodología utilizada y en los aspectos específicos de la implementación. Aplicar a procesos reales (prototipos e industriales, especialmente) métodos clásicos modernos y avanzados de control. Implementar los métodos de control utilizando herramientas de prototipado rápido, como MATLAB y sus respectivos toolboxes. Formular y desarrollar al menos un proyecto de investigación al año. Generar y asesorar proyectos de investigación en pregrado y posgrado, articulados con un proyecto central del grupo. Realizar publicaciones de carácter nacional e internacional. Establecer relaciones con grupos y redes a nivel nacional e internacional. Crear y mantener un seminario permanente de investigación de temas relacionados con el grupo. Generar documentos escritos sobre temas específicos, a partir de los protocolos del seminario de investigación (memorias) y de los informes finales de los diferentes proyectos de investigación."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000004329",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "llhurtadoc@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

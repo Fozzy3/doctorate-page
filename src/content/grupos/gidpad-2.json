@@ -1,0 +1,27 @@
+{
+  "sigla": "GIDPAD",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "conoce más sobre GIDPAD",
+      "url": "https://pi.udistrital.edu.co/GIDPAD/"
+    }
+  ],
+  "nombre": "GIDPAD",
+  "logo": "/images/grupos/gidpad-2.png",
+  "descripcion": [
+    "El grupo de Investigación GIDPAD fue creado en 2021 por profesores vinculados a los programas de Ingeniería Civil y Maestría en Ingeniería Civil de la Facultad Tecnológica de la Universidad. El grupo centra sus líneas de investigación en el estudio de problemáticas asociadas a la amenaza, riesgo, vulnerabilidad y resiliencia de sistemas en Ingeniería Civil y disciplinas anexas desde un enfoque interdisciplinario a partir de la interacción de campos de acción de la profesión como las Estructuras, la Geotecnia, la Ingeniería Hidráulica, la Gestión de Proyectos y la aplicación de herramientas tecnológicas de vanguardia. Dentro de las áreas de interés del grupo de encuentran los riesgos naturales, antrópicos, financieros y la sustentabilidad y resiliencia de proyectos de infraestructura, el comportamiento mecánico de materiales empleados en Ingeniería Civil a partir de la experimentación, el planteamiento de modelos de Simulación numérica, entre otros. El grupo integra estudiantes y docentes de diferentes niveles de formación de los programas de Tecnología en Construcciones Civiles, Ingeniería Civil, Especialización en Gerencia de la Construcción, Especialización en Interventoría y supervisión, y la Maestría en Ingeniería Civil."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000022382",
+  "director": {
+    "nombre": "",
+    "url": "/pineda-jaimes-jorge-arturo/",
+    "correo": "gidpad@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

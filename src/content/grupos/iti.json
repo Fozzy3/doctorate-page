@@ -1,0 +1,31 @@
+{
+  "sigla": "ITI",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/79010877"
+    },
+    {
+      "etiqueta": "conoce más sobre iTI",
+      "url": "http://www.itiud.org/"
+    }
+  ],
+  "nombre": "INNOVACIÓN EN TECNOLOGÍA DE INFORMACIÓN (ITI)",
+  "logo": "/images/grupos/iti.png",
+  "descripcion": [
+    "Desarrollar proyectos de investigación avalados por el centro de investigaciones de la universidad distrital. Ser reconocido y clasificado por Colciencias. Crear alianzas con otros grupos de investigación de la universidad. Llevar a cabo periódicamente actividades de socialización interna denominadas \"Seminario\". Llevar a cabo cursos de corta duración en donde se ofrezcan temas de apropiación tecnológica como: desarrollo de software en diferentes lenguajes, desarrollo de firmware, modelado de software, etc. Socializar los resultados de investigación a nivel institucional por medio de la participación en jornadas académicas"
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000016507",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "haflorezf@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

@@ -1,0 +1,30 @@
+{
+  "sigla": "LAMIC",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/74179891"
+    },
+    {
+      "etiqueta": "conoce más sobre LAMIC",
+      "url": "https://pi.udistrital.edu.co/LAMIC/"
+    }
+  ],
+  "nombre": "LABORATORIO DE AUTOMÁTICA, E INTELIGENCIA COMPUTACIONAL (LAMIC)",
+  "logo": "/images/grupos/lamic.png",
+  "descripcion": [
+    "Adelantar investigación y desarrollo tecnológico mediante un trabajo interdisciplinario en las áreas de automática, microelectrónica e inteligencia computacional, cuyos resultados promuevan el crecimiento y formación de investigadores, así como la generación de un impacto transformador en los contextos científico, industrial y social. Estudiar, promover y desarrollar métodos, algoritmos y procedimientos aplicables a la medición, control y supervisión automática de procesos continuos, de manufactura o híbridos, así como su implementación hardware/software y su optimización o mejoramiento con ayuda de herramientas de inteligencia computacional. Desarrollar nuevas metodologías de diseño y sistemas electrónicos de avanzada para el tratamiento de la información asociada a tareas computacionales complejas. Desarrollar herramientas teóricas y prácticas en el marco de la inteligencia computacional como solución a problemas puntuales en ingeniería"
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000879",
+  "director": {
+    "nombre": "Rojas Galeano Sergio A Director lamic@udistrital.edu.co",
+    "correo": "lamic@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

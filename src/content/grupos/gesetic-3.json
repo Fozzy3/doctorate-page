@@ -1,0 +1,31 @@
+{
+  "sigla": "GESETIC",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/73646923"
+    },
+    {
+      "etiqueta": "conoce más sobre Gesetic",
+      "url": "https://pi.udistrital.edu.co/GESETIC/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN GESTIÓN DE SISTEMAS ENERGÉTICOS CON BASE EN TECNOLOGÍAS DE INFORMACIÓN Y COMUNICACIÓN (GESETIC)",
+  "logo": "/images/grupos/gesetic-3.png",
+  "descripcion": [
+    "El grupo de investigación GESETIC de la Universidad Distrital ¿Francisco José de Caldas¿ se crea con el fin de realizar investigaciones en el campo de la Gestión de Sistemas Energéticos, para lo cual tendrá como base la implementación de las Tecnologías de Información y Comunicación. La Investigación relacionará las tecnologías de la información y de las comunicaciones (TIC) con los diferentes subsectores que conforman un Sistema Eléctrico para optimizar dentro de esquemas de calidad y mejoramiento la operación del mismo. Los aspectos de la investigación tratan los diferentes campos a nivel de Generación, transmisión, distribución, medida, control y automatización de Sistemas Eléctricos. Modelado de Sistemas Eléctricos: Realizar el Diseño y Desarrollo mediante herramientas computacionales de Sistemas Eléctricos, con el fin de realizar simulación. Integración de Modelos con Sistemas Reales: Realizar la integración de Sistemas en software con Sistemas reales con el fin de poder realizar monitoreo, supervisión y control. Automatización de Subestaciones: Desarrollar herramientas de software y soluciones informáticas para nuevas y existentes subestaciones. Instrumentación real basada en PC: Desarrollar soluciones informáticas para la obtención y el procesamiento de señales de medida, con el fin de tomar decisiones. Diseño y desarrollo sistematizado de Mini y Microcentrales hidroeléctricas. Diseño de un sistema computarizado con el cual de una manera fácil se pueda establecer las dimensiones y elementos para obtener de forma expedita y secuencial la prefactibilidad de un proyecto. Esta herramienta esta dirigida a pequeños y medianos municipios, e incluye evaluación económica y financiera del proyecto. Diseño y desarrollo sistematizado de Cogeneración para las PYMES Optimización del recurso energético para impulsar la competitividad de las MIPYMES. Comunicaciones por línea de potencia."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000005998",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "aespinel@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

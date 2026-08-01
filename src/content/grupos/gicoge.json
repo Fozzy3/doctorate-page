@@ -1,0 +1,31 @@
+{
+  "sigla": "GICOGE",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/74880706"
+    },
+    {
+      "etiqueta": "conoce más sobre GIcoge",
+      "url": "https://pi.udistrital.edu.co/GICOGE/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN INTERNACIONAL EN INFORMÁTICA, COMUNICACIÓN Y GESTIÓN DEL CONOCIMIENTO (GICOGE)",
+  "logo": "/images/grupos/gicoge.png",
+  "descripcion": [
+    "Durante los próximos tres años, el grupo se propone adelantar la realización de más de una decena de tesis de maestría, y gracias a la divulgación de sus principales resultados en revistas arbitradas y seminarios internacionales, proporcionar sólidos cimientos que le permitan seguir liderado la creación de un programa de Doctorado en Ingeniería con énfasis en Informática, Ingeniería y Gestión del Conocimiento."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000983",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "gicoge@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

@@ -1,0 +1,31 @@
+{
+  "sigla": "MULTIMEDIA INTERACTIVA Y ANIMACIÓN DIGITAL",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre MULTIMEDIA INTERACTIVA Y ANIMACIÓN DIGITAL",
+      "url": "https://pi.udistrital.edu.co/Multimedia-Interactiva-Animacion-Digital/"
+    }
+  ],
+  "nombre": "MULTIMEDIA INTERACTIVA Y ANIMACIÓN DIGITAL",
+  "logo": "/images/grupos/multimedia-interactiva-y-animacion-digital.png",
+  "descripcion": [
+    "Realizar estudios e investigaciones en multimedia interactiva sobre las áreas de simulación, computación gráfica, interacción humano-computador, educación, entrenamiento, infraestructura, almacenamiento y computación gráfica que conlleven a al desarrollo de formas de interacción entre el humano y el contenido multimedia, para proponer soluciones a problemas a nivel de Colombia y el mundo. Dar apoyo a los estudiantes que desean realizar sus trabajos de grado y tesis en el campo de la multimedia interactiva. Incorporar conocimientos interdisciplinares a las investigaciones realizadas por el grupo. Generar aplicaciones basadas en los conocimientos generados en las líneas de investigación que permitan la solución de problemas a nivel de Colombia y el mundo. Motivar a los estudiantes en el campo de investigación multimedial generando nuevas propuestas a nivel técnico, tecnológico y en el área de estudio. Crear un laboratorio en el que se realicen investigaciones y desarrollos de las líneas de investigación propuestas. Generar relaciones con grupos de trabajo y de investigación que puedan aportar a las investigaciones realizadas. Realizar publicaciones y socializaciones de los resultados de las investigaciones."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000009868",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "pagaonag@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

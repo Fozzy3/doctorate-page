@@ -1,0 +1,30 @@
+{
+  "sigla": "Aquaformat",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre aquaformat",
+      "url": "https://aquaformatud.wixsite.com/aquaformat"
+    }
+  ],
+  "nombre": "AQUAFORMAT",
+  "logo": "/images/grupos/aquaformat.png",
+  "descripcion": [
+    "Desarrollar investigaciones mediante propuesta de nuevos conceptos innovadores en el área de Agua: Planificación y gestión del recurso hídrico; Saneamiento Ambiental. Agua Potable, Residual y Residuos Sólidos; Sustentabilidad en desarrollo humano para el deporte, recreación, actividad física y cultura, con grupos de investigación de universidades del país y del exterior."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940",
+  "director": {
+    "nombre": "Rodríguez Miranda Juan Pablo Director jprodriguezm@udistrital.edu.co",
+    "correo": "jprodriguezm@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

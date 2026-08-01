@@ -1,0 +1,30 @@
+{
+  "sigla": "GITEM++",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/91173337"
+    },
+    {
+      "etiqueta": "conoce más sobre GItem++",
+      "url": "https://pi.udistrital.edu.co/GITEM"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN DE TELEMEDICINA (GITEM++)",
+  "logo": "/images/grupos/gitem.png",
+  "descripcion": [
+    "Formar investigadores en las áreas del grupo. Desarrollar proyectos de I+D+I en las áreas temáticas del grupo vinculados al sector Productivo del País, que den solución a problemas de impacto tecnológico y social. Participar con actor en las propuestas y proyectos de estado para la generación de políticas y estándares en las áreas de desarrollo del grupo. Generar un modelo de formación avanzada para la producción científica y la transferencia de conocimiento y tecnología."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000902",
+  "director": {
+    "nombre": "Aparicio Pico Lilia Edith",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "medicina@udistrital.edu.co"
+  }
+}

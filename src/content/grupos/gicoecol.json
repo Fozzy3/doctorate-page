@@ -1,0 +1,31 @@
+{
+  "sigla": "GICOECOL",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre GICOECOL",
+      "url": "https://pi.udistrital.edu.co/GICOECOL/"
+    }
+  ],
+  "nombre": "COMERCIO ELECTRÓNICO EN COLOMBIA (GICOECOL)",
+  "logo": "/images/grupos/gicoecol.png",
+  "descripcion": [
+    "Desarrollar proyectos de investigación que contribuyan a la búsqueda de soluciones de problemas y necesidades en el ámbito de la relación universidad-empresa-estado con pertinencia nacional e internacional. Promover actividades educativas que fortalezcan sus planes curriculares para incrementar la productividad empresarial en el uso de las tecnologías. Promover actividades educativas que fortalezcan sus planes curriculares para incrementar la productividad empresarial en el uso de las tecnologías. Promover el intercambio de experiencias y la búsqueda de líneas de actuación conjunta con entidades análogas, así como con cualquier otra iniciativa latinoamericana relacionada con la promoción del Comercio Electrónico."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000013887",
+  "director": {
+    "nombre": "Rodríguez Rojas Luz Andrea",
+    "url": "/rodriguez-rojas-luz-andrea/",
+    "correo": "larodriguezr@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

@@ -1,0 +1,31 @@
+{
+  "sigla": "LASER",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre LASER",
+      "url": "https://pi.udistrital.edu.co/LASER/"
+    }
+  ],
+  "nombre": "LABORATORIO DE AUTOMATIZACIÓN, SISTEMAS EMBEBIDOS Y ROBÓTICA (LASER)",
+  "logo": "/images/grupos/laser.png",
+  "descripcion": [
+    "Buscar el desarrollo del conocimiento en Automatización, Sistemas Embebidos y Robótica y plantear soluciones integrales que permitan mejorar los procesos en el sector industrial, y la industrialización de los sectores agrícolas los cuales se encuentran rezagados con respecto a las industria internaciones."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000015041",
+  "director": {
+    "nombre": "Jutinico Alarcón Andres Leonardo",
+    "url": "/jutinico-alarcon-andres-leonardo/",
+    "correo": "aljutinicoa@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

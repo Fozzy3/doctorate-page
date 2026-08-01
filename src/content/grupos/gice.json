@@ -1,0 +1,26 @@
+{
+  "sigla": "GICE",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre GICE",
+      "url": "https://pi.udistrital.edu.co/GICE/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN CONTROL ELECTRÓNICO (GICE)",
+  "logo": "/images/grupos/gice.png",
+  "descripcion": [
+    "Generar proyectos de investigación que acerquen el que hacer del grupo a las necesidades de la industria en Colombia. Generar enlaces con grupos de investigación con áreas de trabajo similares. Mantener el reconocimiento como grupo de investigación ante la Universidad y ante Colciencias. Incorporar, por lo menos, un docente más como investigador. Empezar a formar parte de redes temáticas en control, automatización e instrumentación electrónica. Asistir a eventos de promoción de resultados de investigación, como seminarios, congresos o encuentros. Publicar los resultados parciales y finales de los proyectos de investigación, en revistas catalogadas en publindex, o como libros. Preparar estudiantes de pregrado como auxiliares de investigación, en las temáticas del grupo."
+  ],
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000001716",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "drairan@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

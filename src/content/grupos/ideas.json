@@ -1,0 +1,26 @@
+{
+  "sigla": "IDEAS",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/75563805"
+    },
+    {
+      "etiqueta": "conoce más sobre IDEAS",
+      "url": "https://pi.udistrital.edu.co/IDEAS/"
+    }
+  ],
+  "nombre": "INVESTIGACIÓN, DESARROLLO Y APLICACIONES EN SEÑALES (IDEAS)",
+  "logo": "/images/grupos/ideas.png",
+  "descripcion": [
+    "El grupo de investigación busca la investigación alrededor del procesamiento de señales, en áreas que incluyen el control, las telecomunicaciones, las redes de datos, el tratamiento de voz y el tratamiento de imágenes, entre otras. El grupo de investigación IDEAS será ampliamente reconocido a nivel nacional por la alta calidad de sus resultados de investigación, por la utilidad de sus desarrollos tecnológicos y de ingeniería, por el aporte de sus egresados a la investigación y el desarrollo en áreas claves del Programa Nacional de Ciencia y Tecnología, y por la presencia de sus investigadores en múltiples escenarios académicos nacionales e internacionales."
+  ],
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000011127",
+  "director": {
+    "nombre": "Álzate Monroy Marco Aurelio",
+    "url": "/alzate-monroy-marco-aurelio/",
+    "correo": "grupoideas@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

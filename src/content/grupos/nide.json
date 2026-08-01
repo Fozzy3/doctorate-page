@@ -1,0 +1,31 @@
+{
+  "sigla": "NIDE",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/75195924"
+    },
+    {
+      "etiqueta": "conoce más sobre nide",
+      "url": "https://pi.udistrital.edu.co/NIDE"
+    }
+  ],
+  "nombre": "NÚCLEO DE INVESTIGACIÓN EN DATOS ESPACIALES (NIDE)",
+  "logo": "/images/grupos/nide.png",
+  "descripcion": [
+    "Participar en procesos de enseñanza e investigación, con énfasis en la aplicación de la informática como herramienta para la educación geográfica. Impulsar el desarrollo de proyectos de investigación y procesos de asimilación y adaptación de nuevas tecnologías a las necesidades del país. Fomentar el Intercambio de experiencias y conocimientos entre la universidad, la empresa privada y las instituciones que realizan investigación y desarrollo en disciplinas relacionadas con la información Espacial: Geomática y SIG."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000858",
+  "director": {
+    "nombre": "Ortiz Dávila Álvaro Enrique",
+    "url": "/ortiz-davila-alvaro-enrique-2/",
+    "correo": "nide@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

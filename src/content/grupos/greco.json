@@ -1,0 +1,31 @@
+{
+  "sigla": "GRECO",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre greco",
+      "url": "https://pi.udistrital.edu.co/GRECO/"
+    }
+  ],
+  "nombre": "GRUPO DE RADIACIÓN ELECTROMAGNÉTICA Y COMUNICACIONES ÓPTICAS (GRECO)",
+  "logo": "/images/grupos/greco.png",
+  "descripcion": [
+    "Desarrollar proyectos relacionados con la tecnología aeroespacial, en particular con el diseño de diversos subsistemas que hacen parte de satélites de reducido tamaño tipo CUBESAT. Se pretende liderar la investigación en esta tecnología a nivel Nacional, generando inicialmente conocimiento entorno a este objeto de estudio al interior de la Universidad Distrital, conocimiento que de igual manera debe apoyar la investigación en diversos temas asociados al igual que a la empresa privada nacional. Desarrollar nuevos diseños de antenas en tecnologías como PIFA, parches apilados en tecnología microcinta con doble polarización, monopolos de banda ancha sobre substratos y antenas de banda múltiple. Se espera proponer por lo menos un nuevo desarrollo por tecnología en un período de cinco años, buscando posicionar al grupo y a la Universidad como líder en estos ámbitos, de tal manera que sea punto de referencia a nivel nacional e internacional. Desarrollar nuevos diseños con elementos ópticos para su uso en Telecomunicaciones, tales como redes ópticas, internet óptico, conmutación de paquetes ópticos, IP sobre WDM, desarrollo de dispositivos ópticos, conversión de longitud de onda, intercambio de etiquetas ópticas, GMPLS y radio sobre fibra. Además se pretende que los resultados obtenidos de esta línea de investigación arrojen varias publicaciones en revistas nacionales e internacionales. Desarrollar nuevos diseños de circuitos de microondas pasivos, necesarios para los procesos de excitación de antenas y agrupaciones de antenas, síntesis de diagramas de radiación, redes de selección, generación de haz múltiple, direccionamiento de haz, mejoramiento de ancho de banda, antenas inteligentes. La investigación y desarrollo de estos circuitos debe ir en paralelo con los desarrollos de las antenas puesto que algunas de estas pueden hacer uso de redes pasivas. Generar tradición de investigación en los temas eje del Grupo de Investigación."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000006176",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "limer@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

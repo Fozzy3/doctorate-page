@@ -1,0 +1,31 @@
+{
+  "sigla": "GIIRA",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/74529224"
+    },
+    {
+      "etiqueta": "conoce más sobre GIRA",
+      "url": "https://pi.udistrital.edu.co/GIIRA/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN INTERCONEXIÓN DE REDES ACADÉMICAS (GIIRA)",
+  "logo": "/images/grupos/giira.png",
+  "descripcion": [
+    "Ser un grupo interdisciplinario para la gestión, desarrollo e integración de Herramientas Tecnológicas sobre Redes Académicas y evaluación de contenidos digitales mediante estrategias de modelos ontológicos y agentes inteligentes para la identificación de metodologías de desarrollo y niveles de confianza en plataformas Virtuales de Aprendizaje. – Mantener una línea de producción académica estable en nuestras áreas de investigación – Aplicar a proyectos de investigación de base tecnológica y análisis de datos científicos – Plantear modelos de comunicación para proyectos TICs en Educación sobre institutos académicos – Desarrollar modelos de implementación e integración de servicios adecuados a sector académico y empresarial"
+  ],
+  "clasificacion": "A1",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000001394",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "cemontenegrom@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

@@ -1,0 +1,31 @@
+{
+  "sigla": "DIMSI",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre dimsi",
+      "url": "https://pi.udistrital.edu.co/DIMSI/"
+    }
+  ],
+  "nombre": "DISEÑO, MODELAMIENTO Y SIMULACIÓN (DIMSI)",
+  "logo": "/images/grupos/dimsi.png",
+  "descripcion": [
+    "Desarrollar proyectos de investigación que contribuyan a la búsqueda de soluciones de problemas y necesidades en Incentivar a un grupo selecto de estudiantes de ingeniería industrial en la labor investigativa, generando conocimiento útil para la vida profesional de cada uno de ellos. Gestionar una conciencia estudiantil sobre la importancia y aplicabilidad de los conceptos de diseño, materiales y procesos de manufactura en el desempeño del egresado, abriendo un espectro de oportunidades laborales como empleado o como generador de empleo a futuro. Generar vínculos universidad-empresa en los que ambos participantes logren beneficios en generación de conocimiento y potencializacion de la actividad industrial. Integrar el diseño industrial, generalmente fuerte en características de estética, ergonomía, funcionalidad; con los aspectos ingenieriles del producto como durabilidad y manufacturabilidad, etc. para así lograr características de calidad distintivas. Enriquecer la labor del proceso de diseño con herramientas computacionales de modelamiento 3D (CAD), de simulación de condiciones de trabajo mecánico y térmico (FEA), de sistemas dinámicos (BondGraph), de simulación de movimientos (Dinámica inversa) y de elaboración rápida de prototipos (Rapid Prototyping)."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008915",
+  "director": {
+    "nombre": "Contreras Leonardo Emiro",
+    "url": "/egresados/#EGR_Contreras_L",
+    "correo": "dimsi@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

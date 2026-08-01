@@ -1,0 +1,31 @@
+{
+  "sigla": "GCEM",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/73719778"
+    },
+    {
+      "etiqueta": "conoce más sobre GCEM",
+      "url": "https://pi.udistrital.edu.co/GCEM/"
+    }
+  ],
+  "nombre": "GRUPO DE COMPATIBILIDAD E INTERFERENCIA ELECTROMAGNÉTICA (GCEM)",
+  "logo": "/images/grupos/gcem.png",
+  "descripcion": [
+    "Desarrollar proyectos en diferentes áreas de compatibilidad electromagnética. – Apoyar trabajos de investigación y tesis de grado. – Establecer convenios ínter institucionales y con empresas del sector."
+  ],
+  "clasificacion": "C",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000883",
+  "director": {
+    "nombre": "Rivas Trujillo Edwin",
+    "url": "/docentes/#DOC_Rivas_E",
+    "correo": "erivas@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

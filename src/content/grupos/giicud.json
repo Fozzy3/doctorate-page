@@ -1,0 +1,31 @@
+{
+  "sigla": "GIICUD",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre GIICUD",
+      "url": "https://pi.udistrital.edu.co/GIICUD/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN INGENIERÍA CIVIL UNIVERISDAD DISTRITAL (GIICUD)",
+  "logo": "/images/grupos/giicud.png",
+  "descripcion": [
+    "Realizar estudios e investigación en las áreas del conocimiento de la Ingeniería Civil adscritas a las líneas de investigación del programa, que aporten al conocimiento, a la protección y apoyo de las comunidades más vulnerables. ¿Posicionar el grupo de investigación ante COLCIENCIAS. ¿Mejorar y dotar los Laboratorios de Ingeniería Civil, mediante investigaciones. ¿Representar activamente a la Universidad Distrital en seminarios, congresos y eventos nacionales e internacionales en temas relacionados con la ingeniería civil. ¿Realizar investigaciones en las diferentes áreas del conocimiento de la ingeniería civil que aporten a la labor social."
+  ],
+  "clasificacion": "A1",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000003869",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "eoladinom@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

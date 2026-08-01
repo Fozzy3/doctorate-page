@@ -1,0 +1,31 @@
+{
+  "sigla": "GICALyT",
+  "enfasis": "Ciencias de la Información y Conocimiento",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre GICALYT",
+      "url": "https://pi.udistrital.edu.co/GICALYT"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN EN CADENAS DE ABASTECIMIENTO, LOGÍSTICA Y TRAZABILIDAD (GICALyT)",
+  "logo": "/images/grupos/gicalyt.png",
+  "descripcion": [
+    "Realizar estudios en Cadenas de abastecimiento, logística y Trazabilidad, con utilización de investigación de operaciones y Simulación. Proponer soluciones a la problemática de las cadenas de abastecimiento en Colombia."
+  ],
+  "clasificacion": "B",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000009042",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "gicalyt@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

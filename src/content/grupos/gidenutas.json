@@ -1,0 +1,31 @@
+{
+  "sigla": "GIDENUTAS",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://go.ivoox.com/rf/77120239"
+    },
+    {
+      "etiqueta": "conoce más sobre GIDENUTAS",
+      "url": "https://pi.udistrital.edu.co/GIDENUTAS/"
+    }
+  ],
+  "nombre": "GRUPO DE INVESTIGACIÓN DE NUEVAS TECNOLOGÍAS DE APLICACIÓN SOCIAL (GIDENUTAS)",
+  "logo": "/images/grupos/gidenutas.png",
+  "descripcion": [
+    "Liderar el estudio regional en materia de gestión sectorial en ámbitos como regulación del sector, comparando la regulación por continentes, por países de la región y participando en la evolución local del sector. Formular y liderar proyectos de gestión sectorial de las TIC en especial los relacionados al impacto en zonas deprimidas. Aplicar la tecnología en redes tradicionales e inalámbricas que permitan crear acceso a los servicios a zonas marginales. Crear la interactividad con las diferentes entidades del sector a nivel local, nacional, regional, y mundial como CITEL, UIT, Ministerios, ISO, IEEE, Entes Reguladores entre otros proponer, participar y desarrollar proyectos sectoriales en materia de TICS sociales. Fomentar la investigación, el Desarrollo y la Gestión de proyectos en materia de TICs. Servir de plataforma para el desarrollo de investigación científica en la Universidad Distrital Facultad Tecnológica. Fomentar el desarrollo de trabajos de investigación encaminados a la mejora social a partir del uso de la tecnología."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008838",
+  "director": {
+    "nombre": "Pedraza Martinez Luis Fernando",
+    "url": "/docentes/#DOC_Pedraza_L",
+    "correo": "gidenutas@udistrital.edu.co"
+  },
+  "actualizado": "25/03/2026"
+}

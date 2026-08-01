@@ -6,25 +6,30 @@ import { sectionOf } from '../data/nav';
 export async function getStaticPaths() {
   const paginas = await getCollection('paginas');
   const docentes = await getCollection('docentes');
+  const grupos = await getCollection('grupos');
   return [
     ...paginas.map((p) => ({ params: { slug: p.id }, props: { p } })),
     ...docentes.map((d) => ({ params: { slug: d.id }, props: { d } })),
+    ...grupos.map((g) => ({ params: { slug: g.id }, props: { g } })),
   ];
 }
 
-const { p, d } = Astro.props;
+const { p, d, g } = Astro.props;
 const Content = p ? (await render(p)).Content : null;
 const section = p ? sectionOf(p.data.section) : sectionOf('comunidad');
-const slug = p?.id ?? d?.id ?? '';
+const slug = p?.id ?? d?.id ?? g?.id ?? '';
 
-// Los nombres de estudiantes solo se enlazan si su página existe en el sitio
-const rutasInternas = d
-  ? new Set(
-      [...(await getCollection('paginas')), ...(await getCollection('docentes'))].map(
-        (e) => `/${e.id}/`
+// Los enlaces a personas/grupos solo son internos si la ruta existe en el sitio
+const rutasInternas =
+  d || g
+    ? new Set(
+        [
+          ...(await getCollection('paginas')),
+          ...(await getCollection('docentes')),
+          ...(await getCollection('grupos')),
+        ].map((e) => `/${e.id}/`)
       )
-    )
-  : new Set<string>();
+    : new Set<string>();
 
 // Rutas internas que aún no migran (p. ej. páginas de grupos) siguen en el WP
 const resolverUrl = (url: string) =>
@@ -48,10 +53,12 @@ const gruposEstudiantes = d
     ] as const).filter(([, lista]) => lista.length > 0)
   : [];
 
-const titulo = p ? p.data.title : d!.data.nombre;
+const titulo = p ? p.data.title : d ? d.data.nombre : g!.data.sigla;
 const descripcion = p
   ? p.data.description
-  : `Perfil de ${d!.data.nombre}, docente del Doctorado en Ingeniería de la Universidad Distrital. ${d!.data.enfasis ?? ''}`.trim();
+  : d
+    ? `Perfil de ${d.data.nombre}, docente del Doctorado en Ingeniería de la Universidad Distrital. ${d.data.enfasis ?? ''}`.trim()
+    : `${g!.data.nombre ?? g!.data.sigla}, grupo de investigación adscrito al Doctorado en Ingeniería de la Universidad Distrital.`;
 ---
 
 <Base title={titulo} description={descripcion}>
@@ -60,13 +67,22 @@ const descripcion = p
       <nav class="breadcrumbs" aria-label="Miga de pan">
         <ol>
           <li><a href="/">Inicio</a></li>
-          {d ? <li><a href="/docentes/">Docentes</a></li> : section && <li>{section.label}</li>}
+          {d ? (
+            <li><a href="/docentes/">Docentes</a></li>
+          ) : g ? (
+            <li><a href="/grupos-de-investigacion/">Grupos de investigación</a></li>
+          ) : (
+            section && <li>{section.label}</li>
+          )}
           <li aria-current="page">{titulo}</li>
         </ol>
       </nav>
       <h1 class="display">{titulo}</h1>
       {p?.data.updated && <p class="page-updated">Actualizado: {p.data.updated}</p>}
       {d?.data.enfasis && <p class="page-updated">{d.data.enfasis}</p>}
+      {g?.data.nombre && g.data.nombre.toUpperCase() !== g.data.sigla.toUpperCase() && (
+        <p class="page-updated">{g.data.nombre}</p>
+      )}
     </div>
   </div>
 
@@ -166,6 +182,95 @@ const descripcion = p
                 </div>
               </section>
             )}
+          </div>
+        </div>
+      </div>
+    ) : g ? (
+      <div class="container page">
+        <div class="perfil-grid">
+          <aside class="perfil-media">
+            {g.data.logo && (
+              <img
+                src={g.data.logo}
+                alt={`Logo del grupo ${g.data.sigla}`}
+                width="480"
+                height="480"
+                loading="eager"
+              />
+            )}
+            <dl class="perfil-datos">
+              {g.data.clasificacion && (
+                <div>
+                  <dt>Clasificación MinCiencias</dt>
+                  <dd>{g.data.clasificacion}</dd>
+                </div>
+              )}
+              {g.data.director && (
+                <div>
+                  <dt>Director</dt>
+                  <dd>
+                    {g.data.director.url && rutasInternas.has(g.data.director.url) ? (
+                      <a href={g.data.director.url}>{g.data.director.nombre}</a>
+                    ) : (
+                      g.data.director.nombre
+                    )}
+                  </dd>
+                </div>
+              )}
+              {g.data.director?.correo && (
+                <div>
+                  <dt>Correo</dt>
+                  <dd>
+                    <a href={`mailto:${g.data.director.correo}`}>{g.data.director.correo}</a>
+                  </dd>
+                </div>
+              )}
+              {g.data.actualizado && (
+                <div>
+                  <dt>Actualizado</dt>
+                  <dd>{g.data.actualizado}</dd>
+                </div>
+              )}
+            </dl>
+          </aside>
+
+          <div class="perfil-info">
+            {g.data.descripcion.length > 0 && (
+              <section>
+                <h2>El grupo</h2>
+                <div class="grupo-descripcion">
+                  {g.data.descripcion.map((par) => (
+                    <p>{par}</p>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <section>
+              <h2>Enlaces del grupo</h2>
+              <div class="perfil-redes">
+                {g.data.gruplac && (
+                  <a class="btn btn-primary" href={g.data.gruplac} rel="external noopener" target="_blank">
+                    GrupLAC
+                  </a>
+                )}
+                {g.data.convocatoria && (
+                  <a
+                    class="btn btn-outline-dark"
+                    href={g.data.convocatoria.url}
+                    rel="external noopener"
+                    target="_blank"
+                  >
+                    {g.data.convocatoria.etiqueta}
+                  </a>
+                )}
+                {g.data.enlaces.map((e) => (
+                  <a class="btn btn-outline-dark" href={e.url} rel="external noopener" target="_blank">
+                    {e.etiqueta}
+                  </a>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </div>
@@ -441,6 +546,18 @@ const descripcion = p
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+  }
+
+  .grupo-descripcion p {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 70ch;
+    text-wrap: pretty;
+  }
+
+  .grupo-descripcion p + p {
+    margin-top: 1em;
   }
 
   .perfil-redes .btn {

@@ -1,0 +1,30 @@
+{
+  "sigla": "LIFAE",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "enlaces": [
+    {
+      "etiqueta": "Ingenia ciudad entrevista",
+      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
+    },
+    {
+      "etiqueta": "conoce más sobre LIFAE",
+      "url": "https://pi.udistrital.edu.co/LIFAE/"
+    }
+  ],
+  "nombre": "Laboratorio de Investigación en Fuentes Alternativas de Energía (LIFAE)",
+  "logo": "/images/grupos/lifae.png",
+  "descripcion": [
+    "Desarrollar propuestas que permitan atender las necesidades energéticas de las comunidades aisladas y de la industria. Brindar a la comunidad universitaria un espacio que permita fomentar la investigación y el desarrollo tecnológico en áreas del conocimiento afines con la generación, conversión y transmisión de energía eléctrica. Generar soluciones energéticas bajo estándares internacionales de calidad que permitan el funcionamiento adecuado de equipo eléctrico y electrónico. Desarrollar mecanismos de generación eléctrica a partir de fuentes no convencionales, de manera que se tengan sistemas integrales y confiables de producción y distribución, adaptables a las diferentes circunstancias del país."
+  ],
+  "clasificacion": "A",
+  "convocatoria": {
+    "etiqueta": "Convocatoria 957-2024",
+    "url": "https://doctoradoingenieria.udistrital.edu.co/wp-content/uploads/2026/03/Listado_resultados_finales_957_de_2024.pdf"
+  },
+  "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000871",
+  "director": {
+    "nombre": "",
+    "url": "/docentes/#DOC_Aparicio_L",
+    "correo": "lifae@udistrital.edu.co"
+  }
+}
