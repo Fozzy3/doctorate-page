@@ -1,0 +1,29 @@
+{
+  "nombre": "Guarnizo Marín José Guillermo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000855847",
+    "scholar": "https://scholar.google.com/citations?user=_mObTPkAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-8401-494",
+    "researchgate": "https://www.researchgate.net/profile/Jose-Guarnizo-2"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [
+      {
+        "nombre": "Sánchez Choachí Johan Sebastián",
+        "url": "/sanchez-choachi-johan-sebastian/"
+      }
+    ],
+    "egresados": []
+  },
+  "correo": "jgguarnizom@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/guarnizo-marin-jose-guillermo.png"
+}

@@ -1,0 +1,30 @@
+{
+  "nombre": "Espitia Cuchango Helbert Eduardo",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000763942",
+    "scholar": "https://scholar.google.com/citations?user=Oz2CsiwAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-0742-6069",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37261224200",
+    "researchgate": "https://www.researchgate.net/profile/Helbert-Espitia"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Sánchez Céspedes Juan Manuel",
+        "url": "/sanchez-cespedes-juan-manuel/"
+      }
+    ]
+  },
+  "correo": "heespitiac@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/espitia-cuchango-helbert-eduardo.png"
+}

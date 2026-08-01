@@ -1,0 +1,42 @@
+{
+  "nombre": "Montenegro Marín Carlos Enrique",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000292915",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=ejJHY40AAAAJ",
+    "orcid": "https://orcid.org/0000-0002-5570-5097",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54924464100",
+    "researchgate": "https://www.researchgate.net/profile/Carlos-Marin-18"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Acosta Agudelo Oscar Esneider",
+        "url": "/acosta-agudelo-oscar-esneider/"
+      },
+      {
+        "nombre": "Hernández Barragán Esteban de Jesús",
+        "url": "/hernandez-barragan-esteban-de-jesus-2/"
+      },
+      {
+        "nombre": "Meza Álvarez Joaquín Javier",
+        "url": "/meza-alvarez-joaquin-javier/"
+      },
+      {
+        "nombre": "Gracia Rojas Jeniffer Paola",
+        "url": "/gracia-rojas-jeniffer-paola/"
+      }
+    ]
+  },
+  "correo": "cemontenegrom@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/montenegro-marin-carlos-enrique.png"
+}

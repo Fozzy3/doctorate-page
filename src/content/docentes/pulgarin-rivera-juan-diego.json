@@ -1,0 +1,30 @@
+{
+  "nombre": "Pulgarín Rivera Juan Diego",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001346076",
+    "scholar": "https://scholar.google.es/citations?user=oiOF_2oAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0003-2326-7907",
+    "scopus": "http://www.scopus.com/inward/authorDetails.url?authorID=56072643900&partnerID=MN8TOARS",
+    "researchgate": "https://www.researchgate.net/profile/Juan-Pulgarin-Rivera"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Martínez Montes Cristian José",
+        "url": "/martinez-montes-cristian-jose/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jdpulgarinr@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/pulgarin-rivera-juan-diego.png"
+}

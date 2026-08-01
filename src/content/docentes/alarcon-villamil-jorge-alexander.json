@@ -1,0 +1,28 @@
+{
+  "nombre": "Alarcon Villamil Jorge Alexander",
+  "grupos": [
+    {
+      "nombre": "GISE3",
+      "url": "/gise3-2/"
+    },
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000227510",
+    "orcid": "https://orcid.org/0000-0002-8718-2542",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54790818000",
+    "researchgate": "https://www.researchgate.net/profile/Jorge-Alarcon-Villamil"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jaalarconv@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/alarcon-villamil-jorge-alexander.png"
+}

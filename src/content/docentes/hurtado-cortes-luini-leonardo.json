@@ -1,0 +1,38 @@
+{
+  "nombre": "Hurtado Cortes Luini Leonardo",
+  "grupos": [
+    {
+      "nombre": "DISING",
+      "url": "/sistemas-mecatronicos-y-telecomunicaciones-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000783960",
+    "scholar": "https://scholar.google.es/citations?user=8DSYVrUAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0002-1675-9471",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36806139200",
+    "researchgate": "https://www.researchgate.net/profile/Luini-Hurtado-Cortes"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Villarreal López Edwin",
+        "url": "/villarreal-lopez-edwin/"
+      },
+      {
+        "nombre": "Navarrete López Abel Antonio",
+        "url": "/navarrete-lopez-abel-antonio/"
+      },
+      {
+        "nombre": "Ruíz Rosas Victor Elberto",
+        "url": "/ruiz-rosas-victor-elberto/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "llhurtadoc@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/hurtado-cortes-luini-leonardo.png"
+}

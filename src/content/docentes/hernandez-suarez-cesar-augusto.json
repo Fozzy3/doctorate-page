@@ -1,0 +1,42 @@
+{
+  "nombre": "Hernández Suárez César Augusto",
+  "grupos": [
+    {
+      "nombre": "SIREC",
+      "url": "/sistemas-mecatronicos-y-telecomunicaciones/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000331430",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=SGFibcYAAAAJ&view_op=list_works&sortby=pubdate",
+    "orcid": "https://orcid.org/0000-0001-9409-8341",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=25928463300"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [
+      {
+        "nombre": "Hernández Martínez Henry Alberto",
+        "url": "/hernandez-martinez-henry-alberto/"
+      },
+      {
+        "nombre": "Gómez Gómez Edgar Leonardo",
+        "url": "/gomez-gomez-edgar-leonardo/"
+      },
+      {
+        "nombre": "Sierra Giraldo Ingrid Tatiana",
+        "url": "/sierra-giraldo-ingrid-tatiana/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Giral Ramírez Diego Armando",
+        "url": "/giral-ramirez-diego-armando/"
+      }
+    ]
+  },
+  "correo": "cahernandezs@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/hernandez-suarez-cesar-augusto.png"
+}

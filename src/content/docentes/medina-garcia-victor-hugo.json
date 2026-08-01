@@ -1,0 +1,47 @@
+{
+  "nombre": "Medina García Víctor Hugo",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000243302",
+    "scholar": "https://scholar.google.es/citations?user=uHM2ppMAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-0989-8676",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55363139700"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Ospina Usaquén Miguel Ángel",
+        "url": "/ospina-usaquen-miguel-angel/"
+      },
+      {
+        "nombre": "Sierra Rodríguez Manuel Antonio",
+        "url": "/sierra-rodriguez-manuel-antonio/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Pantoja Rojas Liliana María",
+        "url": "/pantoja-rojas-liliana-maria/"
+      },
+      {
+        "nombre": "Navarrete López Abel Antonio",
+        "url": "/navarrete-lopez-abel-antonio/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Rodríguez Bernal Luis Leonardo",
+        "url": "/rodriguez-bernal-luis-leonardo/"
+      }
+    ]
+  },
+  "correo": "vmedina@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/medina-garcia-victor-hugo.png"
+}

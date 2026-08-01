@@ -1,0 +1,40 @@
+{
+  "nombre": "Vanegas Ayala Sebastian Camilo",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    },
+    {
+      "nombre": "INTECSE",
+      "url": "/intecse/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000155010",
+    "scholar": "https://scholar.google.es/citations?user=owjripQAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-8610-9765",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57427943900&origin=resultslist",
+    "researchgate": "https://www.researchgate.net/profile/Sebastian-Vanegas-6"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [
+      {
+        "nombre": "Leal Lara Daniel David",
+        "url": "/leal-lara-daniel-david/"
+      },
+      {
+        "nombre": "Rojas Amador Sócrates",
+        "url": "/rojas-amador-socrates/"
+      }
+    ],
+    "egresados": []
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de inferencia difusa evolutivo aplicado al pronóstico no estacionario de humedad interna en invernaderos",
+  "director": "Barón Velandia Julio",
+  "correo": "scvanegasa@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "foto": "/images/docentes/vanegas-ayala-sebastian-camilo.png"
+}

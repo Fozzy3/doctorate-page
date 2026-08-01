@@ -1,0 +1,39 @@
+{
+  "nombre": "Montoya Giraldo Oscar Danilo",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001468037",
+    "scholar": "https://scholar.google.com/citations?user=RUTQyO4AAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0001-6051-4925",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56919564100",
+    "researchgate": "https://www.researchgate.net/profile/Oscar-Montoya-Giraldo"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Cortés Caicedo Brandon",
+        "url": "/cortes-caicedo-brandon/"
+      },
+      {
+        "nombre": "Nivia Vargas Angélica Mercedes",
+        "url": "/nivia-vargas-angelica-mercedes/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Martínez Montes Cristian José",
+        "url": "/martinez-montes-cristian-jose/"
+      }
+    ],
+    "egresados": []
+  },
+  "correo": "odmontoyag@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/montoya-giraldo-oscar-danilo.png"
+}

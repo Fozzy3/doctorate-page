@@ -1,0 +1,29 @@
+{
+  "nombre": "Plazas Nossa Leonardo",
+  "grupos": [
+    {
+      "nombre": "GITEM++",
+      "url": "/gitem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000996890",
+    "orcid": "https://orcid.org/0000-0002-2223-9886",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56089860900",
+    "researchgate": "https://www.researchgate.net/profile/Leonardo-Plazas-Nossa"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Parra Plazas Jaime Alberto",
+        "url": "/parra-plazas-jaime-alberto/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "lplazasn@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/plazas-nossa-leonardo.png"
+}

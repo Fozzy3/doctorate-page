@@ -1,0 +1,37 @@
+{
+  "nombre": "Gómez Vargas Ernesto",
+  "grupos": [
+    {
+      "nombre": "LASER",
+      "url": "/laser/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000472069",
+    "orcid": "https://orcid.org/0000-0003-4957-7313",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57197768696"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Ramírez Pérez Natalia Andrea",
+        "url": "/ramirez-perez-natalia-andrea/"
+      },
+      {
+        "nombre": "González Cárdenas Jesús René",
+        "url": "/gonzales-cardenas-jesus-rene/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Perdomo Charry César Andrey",
+        "url": "/perdomo-charry-cesar-andrey/"
+      }
+    ]
+  },
+  "correo": "egomez@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/gomez-vargas-ernesto.png"
+}

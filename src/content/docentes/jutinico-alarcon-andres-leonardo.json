@@ -1,0 +1,30 @@
+{
+  "nombre": "Jutinico Alarcón Andrés Leonardo",
+  "grupos": [
+    {
+      "nombre": "LASER",
+      "url": "/laser/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001059416",
+    "scholar": "https://scholar.google.com/citations?user=L0LKfhcAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0001-9146-9637",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54929830800",
+    "researchgate": "https://www.researchgate.net/profile/Andres-Jutinico"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Sánchez Vega Iván Camilo",
+        "url": "/sanchez-vega-ivan-camilo/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "aljutinicoa@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/jutinico-alarcon-andres-leonardo.png"
+}

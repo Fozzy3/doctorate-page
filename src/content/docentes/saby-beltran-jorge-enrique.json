@@ -1,0 +1,23 @@
+{
+  "nombre": "Saby Beltran Jorge Enrique",
+  "grupos": [],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000075809",
+    "orcid": "https://orcid.org/0000-0002-4493-4783",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189598346"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Ramos Sandoval Olga Lucía",
+        "url": "/ramos-sandoval-olga-lucia/"
+      }
+    ]
+  },
+  "correo": "jesabyb@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/saby-beltran-jorge-enrique.png"
+}

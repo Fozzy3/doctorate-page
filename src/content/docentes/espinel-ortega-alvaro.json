@@ -1,0 +1,30 @@
+{
+  "nombre": "Espinel Ortega Álvaro",
+  "grupos": [
+    {
+      "nombre": "GESETIC",
+      "url": "/gesetic-3/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000226602",
+    "scholar": "https://scholar.google.es/citations?user=KNAm8zcAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-7747-7718",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56358912500",
+    "researchgate": "https://www.researchgate.net/profile/Alvaro-Espinel-2"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Carreño Perez Juan Carlos",
+        "url": "/carreno-perez-juan-carlos/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "aespinel@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/espinel-ortega-alvaro.png"
+}

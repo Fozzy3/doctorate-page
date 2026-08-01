@@ -1,0 +1,33 @@
+{
+  "nombre": "Flórez Fernández Héctor Arturo",
+  "grupos": [
+    {
+      "nombre": "ITI",
+      "url": "/iti/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000649902",
+    "scholar": "https://scholar.google.es/citations?user=yrUa5qgAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-5339-4459",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55747267400"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Hernández Rodríguez Jorge Eduardo",
+        "url": "/hernandez-rodriguez-jorge-eduardo/"
+      },
+      {
+        "nombre": "Méndez Aguirre Óscar Alexander",
+        "url": "/mendez-aguirre-oscar-alexander/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "haflorezf@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/florez-fernandez-hector-arturo.png"
+}

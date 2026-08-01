@@ -1,0 +1,48 @@
+{
+  "nombre": "García Ubaque César Augusto",
+  "grupos": [
+    {
+      "nombre": "GIICUD",
+      "url": "/giicud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000251909",
+    "scholar": "https://scholar.google.es/citations?user=opQGcQcAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-6959-6610",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=16028379000",
+    "researchgate": "https://www.researchgate.net/profile/Cesar-Garcia-Ubaque"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Muñoz Barragán Jorge Enrique",
+        "url": "/munoz-barragan-jorge-enrique-2/"
+      },
+      {
+        "nombre": "Zamudio Huertas Eduardo",
+        "url": "/zamudio-huertas-eduardo/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Romero Pinto Jawy Andrés",
+        "url": "/romero-pinto-jawy-andres/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Ladino Moreno Edgar Orlando",
+        "url": "/ladino-moreno-edgar-orlando/"
+      },
+      {
+        "nombre": "Rodríguez Miranda Juan Pablo",
+        "url": "/rodriguez-miranda-juan-pablo-2/"
+      }
+    ]
+  },
+  "correo": "cagarciau@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/garcia-ubaque-cesar-augusto.png"
+}

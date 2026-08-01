@@ -1,0 +1,38 @@
+{
+  "nombre": "Pedraza Martinez Luis Fernando",
+  "grupos": [
+    {
+      "nombre": "GIDENUTAS",
+      "url": "/gidenutas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000976741",
+    "scholar": "https://scholar.google.com/citations?user=5GkDGFgAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0002-0997-6478",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=23006234300",
+    "researchgate": "https://www.researchgate.net/profile/Luis-Pedraza-3"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Hernández Martínez Henry Alberto",
+        "url": "/hernandez-martinez-henry-alberto/"
+      },
+      {
+        "nombre": "Gómez Gómez Edgar Leonardo",
+        "url": "/gomez-gomez-edgar-leonardo/"
+      },
+      {
+        "nombre": "Sierra Giraldo Ingrid Tatiana",
+        "url": "/sierra-giraldo-ingrid-tatiana/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "fpedrazam@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/pedraza-martinez-luis-fernando.png"
+}

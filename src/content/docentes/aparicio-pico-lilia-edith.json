@@ -1,0 +1,29 @@
+{
+  "nombre": "Aparicio Pico Lilia Edith",
+  "grupos": [
+    {
+      "nombre": "GITEM++",
+      "url": "/gitem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000218405",
+    "scholar": "https://scholar.google.es/citations?user=Gho55T0AAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0003-1841-4423",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=25028303000"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "López Sevillano Alexandra María",
+        "url": "/lopez-sevillano-alexandra-maria/"
+      }
+    ]
+  },
+  "correo": "eaparicio@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/aparicio-pico-lilia-edith.png"
+}

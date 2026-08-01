@@ -1,0 +1,29 @@
+{
+  "nombre": "Rairán Antolines Danilo José",
+  "grupos": [
+    {
+      "nombre": "GICE",
+      "url": "/gice/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000310654",
+    "scholar": "https://scholar.google.com/citations?user=p4jr6hYAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0002-1213-7333",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36806546100"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Guevara Velandia German Antonio",
+        "url": "/guevara-velandia-german-antonio/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "drairan@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/rairan-antolines-danilo-jose.png"
+}

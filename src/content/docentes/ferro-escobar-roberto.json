@@ -1,0 +1,51 @@
+{
+  "nombre": "Ferro Escobar Roberto",
+  "grupos": [
+    {
+      "nombre": "LIDER",
+      "url": "/lider/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000764680",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=cvPT82MAAAAJhttps://scholar.google.com/citations?hl=en&user=cvPT82MAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-8978-538X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=16174917900"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Martínez Alayón Carlos Andrés",
+        "url": "/martinez-alayon-carlos-andres/"
+      },
+      {
+        "nombre": "Silva Rodríguez Gustavo",
+        "url": "/silva-rodriguez-gustavo/"
+      },
+      {
+        "nombre": "Barragán Vargas Diego Alejandro",
+        "url": "/barragan-vargas-diego-alejandro/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Gómez Suárez Ricardo Alfonso",
+        "url": "/gomez-suarez-ricardo-alfonso/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Aguirre Buenaventura Edgar Alirio",
+        "url": "/aguirre-buenaventura-edgar-alirio/"
+      },
+      {
+        "nombre": "González Bustamante Ricardo Alirio",
+        "url": "/gonzalez-bustamante-ricardo-alirio-2/"
+      }
+    ]
+  },
+  "correo": "rferro@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/ferro-escobar-roberto.png"
+}

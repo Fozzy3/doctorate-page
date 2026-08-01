@@ -1,0 +1,24 @@
+{
+  "nombre": "Bohórquez Arévalo Luz Esperanza",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000401498",
+    "scholar": "https://scholar.google.es/citations?hl=es&user=FlBb0HQAAAAJ",
+    "orcid": "https://orcid.org/0000-0001-8401-3471",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56359501900"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "lebohorqueza@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/bohorquez-arevalo-luz-esperanza.png"
+}

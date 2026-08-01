@@ -1,0 +1,29 @@
+{
+  "nombre": "Puerto Leguizamón Gustavo Adolfo",
+  "grupos": [
+    {
+      "nombre": "GRECO",
+      "url": "/greco/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000795429",
+    "scholar": "https://scholar.google.es/citations?user=ON8vT68AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-6420-9693",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=10140608900"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Albarracín Sánchez Luis Felipe",
+        "url": "/albarracin-sanchez-luis-felipe-2/"
+      }
+    ]
+  },
+  "correo": "gapuerto@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/puerto-leguizamon-gustavo-adolfo.png"
+}

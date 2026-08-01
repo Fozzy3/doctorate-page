@@ -1,0 +1,52 @@
+{
+  "nombre": "Díaz Aldana Nelson Leonardo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000908428",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=oPZkEFIAAAAJ",
+    "orcid": "https://orcid.org/0000-0003-0202-0489",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189015924",
+    "researchgate": "https://www.researchgate.net/profile/Nelson-Diaz-5"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Castañeda Arias Nelson Andrés",
+        "url": "/castaneda-arias-nelson-andres/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "López García Andrés Camilo",
+        "url": "/lopez-garcia-andres-camilo/"
+      },
+      {
+        "nombre": "Davila Rojas Miguel Ángel",
+        "url": "/davila-rojas-miguel-angel/"
+      },
+      {
+        "nombre": "Rico Riveros Luis Fernando",
+        "url": "/rico-riveros-luis-fernando/"
+      },
+      {
+        "nombre": "Sánchez Vega Iván Camilo",
+        "url": "/sanchez-vega-ivan-camilo/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Rosero Bernal David Gustavo",
+        "url": "/rosero-bernal-david-gustavo/"
+      }
+    ]
+  },
+  "correo": "nldiaza@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/diaz-aldana-nelson-leonardo.png"
+}

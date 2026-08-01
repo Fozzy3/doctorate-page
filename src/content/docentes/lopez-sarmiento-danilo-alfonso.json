@@ -1,0 +1,35 @@
+{
+  "nombre": "López Sarmiento Danilo Alfonso",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000430129",
+    "orcid": "https://orcid.org/0000-0002-6148-3099",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36015337100"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Corredor Camargo Oscar Fabian",
+        "url": "/corredor-camargo-oscar-fabian/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Pava Díaz Roberto Albeiro",
+        "url": "/pava-diaz-roberto-albeiro/"
+      }
+    ]
+  },
+  "correo": "dalopezs@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "tesis": "Implementación de un modelo predictor y clasificador para la toma de decisiones en redes inalámbricas de radio cognitiva",
+  "director": "Rivas Trujillo Edwin",
+  "foto": "/images/docentes/lopez-sarmiento-danilo-alfonso.png"
+}

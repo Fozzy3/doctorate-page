@@ -1,0 +1,24 @@
+{
+  "nombre": "Guacaneme Moreno Javier Antonio",
+  "grupos": [
+    {
+      "nombre": "GESETIC",
+      "url": "/gesetic-3/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000223301",
+    "scholar": "https://scholar.google.com/citations?user=CrvJaDoAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-5480-8588",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55823519500"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jguacaneme@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/guacaneme-moreno-javier-antonio.png"
+}

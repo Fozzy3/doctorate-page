@@ -1,0 +1,25 @@
+{
+  "nombre": "Tristancho Ortiz Julian Alfonso",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000222992",
+    "scholar": "https://scholar.google.cl/citations?user=dl4jd7kAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0002-1471-1052",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37047926700",
+    "researchgate": "https://www.researchgate.net/profile/Julian-Tristancho"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jatristanchoo@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/tristancho-ortiz-julian-alfonso.png"
+}

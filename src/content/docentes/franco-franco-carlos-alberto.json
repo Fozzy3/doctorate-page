@@ -1,0 +1,26 @@
+{
+  "nombre": "Franco Franco Carlos Alberto",
+  "grupos": [
+    {
+      "nombre": "ARCO SES",
+      "url": "/arcos-ses/"
+    },
+    {
+      "nombre": "LAMIC",
+      "url": "/lamic/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001404605",
+    "orcid": "https://orcid.org/0000-0002-8288-8044"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "cafrancof@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/franco-franco-carlos-alberto.png"
+}

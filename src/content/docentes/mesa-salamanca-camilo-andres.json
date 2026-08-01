@@ -1,0 +1,22 @@
+{
+  "nombre": "Mesa Salamanca Camilo Andrés",
+  "grupos": [
+    {
+      "nombre": "GEIT",
+      "url": "/geit/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000994278",
+    "orcid": "https://orcid.org/0000-0001-7989-3056"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "camesas@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/mesa-salamanca-camilo-andres.png"
+}

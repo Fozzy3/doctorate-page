@@ -1,0 +1,25 @@
+{
+  "nombre": "Rozo Garcia Pablo Emilio",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001415432",
+    "orcid": "https://orcid.org/0000-0002-2587-8130",
+    "researchgate": "https://www.researchgate.net/profile/Pablo-Rozo"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "perozog@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "tesis": "Propuesta para la mitigación del ruido aperiódico de un sistema de comunicaciones por líneas eléctricas PLC de tipo residencial",
+  "director": "Hernández Mora Johann Alexander",
+  "foto": "/images/docentes/rozo-garcia-pablo-emilio-2.png"
+}

@@ -1,0 +1,26 @@
+{
+  "nombre": "Lizcano Caro Jose Andelfo",
+  "grupos": [
+    {
+      "nombre": "NIDE",
+      "url": "/nide/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000594822",
+    "scholar": "https://scholar.google.es/citations?user=b8GsZsEAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-1537-530X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57211555151"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jalizcanoc@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de regulación para agua potable en horizontes de largo plazo",
+  "director": "Medina Daza Ruben Javier",
+  "foto": "/images/docentes/lizcano-jose-andelfo.png"
+}

@@ -1,0 +1,23 @@
+{
+  "nombre": "Bocanegra García José Joaquín",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000425192",
+    "scholar": "https://scholar.google.com/citations?user=ituTAqYAAAAJ&hl=es&oi=sra",
+    "orcid": "https://orcid.org/0000-0002-8342-7346"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "correo": "jjbocanegrag@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "foto": "/images/docentes/bocanegra-garcia-jose-joaquin.png"
+}

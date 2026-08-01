@@ -1,0 +1,32 @@
+{
+  "nombre": "Rincón Rojas Edgar jacinto",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000159310",
+    "orcid": "https://orcid.org/0000-0002-2997-8075",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57215414092"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Romero Villalobos Oswaldo Alberto",
+        "url": "/romero-villalobos-oswaldo-alberto/"
+      },
+      {
+        "nombre": "Lara Silva Marcia Ivonne",
+        "url": "/lara-silva-marcia-ivonne/"
+      }
+    ]
+  },
+  "correo": "erincon@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/rincon-rojas-edgar-jacinto.png"
+}

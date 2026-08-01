@@ -5,32 +5,171 @@ import { sectionOf } from '../data/nav';
 
 export async function getStaticPaths() {
   const paginas = await getCollection('paginas');
-  return paginas.map((p) => ({ params: { slug: p.id }, props: { p } }));
+  const docentes = await getCollection('docentes');
+  return [
+    ...paginas.map((p) => ({ params: { slug: p.id }, props: { p } })),
+    ...docentes.map((d) => ({ params: { slug: d.id }, props: { d } })),
+  ];
 }
 
-const { p } = Astro.props;
-const { Content } = await render(p);
-const section = sectionOf(p.data.section);
-const slug = p.id;
+const { p, d } = Astro.props;
+const Content = p ? (await render(p)).Content : null;
+const section = p ? sectionOf(p.data.section) : sectionOf('comunidad');
+const slug = p?.id ?? d?.id ?? '';
+
+// Los nombres de estudiantes solo se enlazan si su página existe en el sitio
+const rutasInternas = d
+  ? new Set(
+      [...(await getCollection('paginas')), ...(await getCollection('docentes'))].map(
+        (e) => `/${e.id}/`
+      )
+    )
+  : new Set<string>();
+
+// Rutas internas que aún no migran (p. ej. páginas de grupos) siguen en el WP
+const resolverUrl = (url: string) =>
+  url.startsWith('/') && !rutasInternas.has(url)
+    ? `https://doctoradoingenieria.udistrital.edu.co${url}`
+    : url;
+
+const REDES_LABEL: Record<string, string> = {
+  cvlac: 'CvLAC',
+  scholar: 'Google Scholar',
+  orcid: 'ORCID',
+  scopus: 'Scopus',
+  researchgate: 'ResearchGate',
+};
+
+const gruposEstudiantes = d
+  ? ([
+      ['Activos', d.data.estudiantes.activos],
+      ['Codirigidos', d.data.estudiantes.codirigidos],
+      ['Egresados', d.data.estudiantes.egresados],
+    ] as const).filter(([, lista]) => lista.length > 0)
+  : [];
+
+const titulo = p ? p.data.title : d!.data.nombre;
+const descripcion = p
+  ? p.data.description
+  : `Perfil de ${d!.data.nombre}, docente del Doctorado en Ingeniería de la Universidad Distrital. ${d!.data.enfasis ?? ''}`.trim();
 ---
 
-<Base title={p.data.title} description={p.data.description}>
-  <div class:list={['page-hero', { 'hero-centrado': p.data.plantilla === 'panorama' }]}>
+<Base title={titulo} description={descripcion}>
+  <div class:list={['page-hero', { 'hero-centrado': p?.data.plantilla === 'panorama' }]}>
     <div class="container">
       <nav class="breadcrumbs" aria-label="Miga de pan">
         <ol>
           <li><a href="/">Inicio</a></li>
-          {section && <li>{section.label}</li>}
-          <li aria-current="page">{p.data.title}</li>
+          {d ? <li><a href="/docentes/">Docentes</a></li> : section && <li>{section.label}</li>}
+          <li aria-current="page">{titulo}</li>
         </ol>
       </nav>
-      <h1 class="display">{p.data.title}</h1>
-      {p.data.updated && <p class="page-updated">Actualizado: {p.data.updated}</p>}
+      <h1 class="display">{titulo}</h1>
+      {p?.data.updated && <p class="page-updated">Actualizado: {p.data.updated}</p>}
+      {d?.data.enfasis && <p class="page-updated">{d.data.enfasis}</p>}
     </div>
   </div>
 
   {
-    p.data.plantilla === 'panorama' ? (
+    d ? (
+      <div class="container page">
+        <div class="perfil-grid">
+          <aside class="perfil-media">
+            {d.data.foto && (
+              <img
+                src={d.data.foto}
+                alt={`Fotografía de ${d.data.nombre}`}
+                width="480"
+                height="480"
+                loading="eager"
+              />
+            )}
+            <dl class="perfil-datos">
+              {d.data.estado && (
+                <div>
+                  <dt>Estado</dt>
+                  <dd>{d.data.estado}</dd>
+                </div>
+              )}
+              {d.data.correo && (
+                <div>
+                  <dt>Correo</dt>
+                  <dd>
+                    <a href={`mailto:${d.data.correo}`}>{d.data.correo}</a>
+                  </dd>
+                </div>
+              )}
+              {d.data.grupos.length > 0 && (
+                <div>
+                  <dt>{d.data.grupos.length > 1 ? 'Grupos' : 'Grupo'}</dt>
+                  <dd>
+                    {d.data.grupos.map((g, i) => (
+                      <>
+                        {i > 0 && ' · '}
+                        {g.url ? (
+                          <a href={resolverUrl(g.url)} rel="external">
+                            {g.nombre}
+                          </a>
+                        ) : (
+                          g.nombre
+                        )}
+                      </>
+                    ))}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </aside>
+
+          <div class="perfil-info">
+            {Object.keys(d.data.redes).length > 0 && (
+              <section>
+                <h2>Redes académicas</h2>
+                <div class="perfil-redes">
+                  {Object.entries(d.data.redes).map(([red, url]) => (
+                    <a class="btn btn-outline-dark" href={url} rel="external noopener" target="_blank">
+                      {REDES_LABEL[red] ?? red}
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {d.data.tesis && (
+              <section>
+                <h2>Tesis doctoral en el programa</h2>
+                <p class="perfil-tesis">“{d.data.tesis}”</p>
+                {d.data.director && <p class="perfil-director">Director: {d.data.director}</p>}
+              </section>
+            )}
+
+            {gruposEstudiantes.length > 0 && (
+              <section>
+                <h2>Estudiantes dirigidos</h2>
+                <div class="perfil-estudiantes">
+                  {gruposEstudiantes.map(([etiqueta, lista]) => (
+                    <div>
+                      <h3>{etiqueta}</h3>
+                      <ul>
+                        {lista.map((e) => (
+                          <li>
+                            {e.url && rutasInternas.has(e.url) ? (
+                              <a href={e.url}>{e.nombre}</a>
+                            ) : (
+                              e.nombre
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
+    ) : p!.data.plantilla === 'panorama' ? (
       <article class="prose panorama">
         <Content />
       </article>
@@ -235,6 +374,136 @@ const slug = p.id;
     grid-template-columns: 290px minmax(0, 1fr);
     gap: clamp(2.5rem, 5vw, 5rem);
     align-items: start;
+  }
+
+  /* ── Perfil de docente ─────────────────────────────────────────── */
+  .perfil-grid {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .perfil-media {
+    position: sticky;
+    top: 90px;
+  }
+
+  .perfil-media img {
+    width: 100%;
+    border: 1px solid var(--c-line);
+    background: var(--c-surface);
+  }
+
+  .perfil-datos {
+    border-top: 3px solid var(--c-crimson);
+    background: var(--c-surface);
+    padding: 1.1rem 1.35rem;
+    margin-top: 1.25rem;
+  }
+
+  .perfil-datos div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.5rem;
+  }
+
+  .perfil-datos div + div {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .perfil-datos dt {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--c-ink-soft);
+  }
+
+  .perfil-datos dd {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .perfil-info section + section {
+    margin-top: clamp(2.25rem, 4vw, 3.25rem);
+  }
+
+  .perfil-info h2 {
+    font-size: 1.45rem;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid var(--c-line);
+    margin-bottom: 1.1rem;
+  }
+
+  .perfil-redes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .perfil-redes .btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .perfil-tesis {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 58ch;
+  }
+
+  .perfil-director {
+    margin-top: 0.6rem;
+    color: var(--c-ink-soft);
+  }
+
+  .perfil-estudiantes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+
+  .perfil-estudiantes h3 {
+    font-size: 0.9375rem;
+    font-weight: 750;
+    color: var(--c-ink-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  .perfil-estudiantes ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .perfil-estudiantes li {
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--c-line);
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  .perfil-estudiantes a {
+    text-decoration: none;
+    color: var(--c-ink);
+  }
+
+  .perfil-estudiantes a:hover {
+    color: var(--c-crimson);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 860px) {
+    .perfil-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .perfil-media {
+      position: static;
+      max-width: 380px;
+    }
   }
 
   /* Columna lateral única: menú de sección + contacto + trámites */

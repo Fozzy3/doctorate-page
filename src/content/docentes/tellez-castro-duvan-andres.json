@@ -1,0 +1,24 @@
+{
+  "nombre": "Téllez Castro Duván Andrés",
+  "grupos": [
+    {
+      "nombre": "INTECSE",
+      "url": "/intecse/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001530054",
+    "orcid": "https://orcid.org/0000-0002-2190-3458",
+    "scholar": "https://scholar.google.com/citations?user=dnQn-5YAAAAJ&#038;hl=es",
+    "researchgate": "https://www.researchgate.net/profile/Duvan-Tellez"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "Duatellezc@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/tellez-castro-duvan-andres.png"
+}

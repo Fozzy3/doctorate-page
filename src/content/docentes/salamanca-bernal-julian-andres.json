@@ -1,0 +1,33 @@
+{
+  "nombre": "Salamanca Bernal Julián Andres",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000182060",
+    "scholar": "https://scholar.google.com/citations?user=opyOOhoAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0001-8378-4215",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=16064297200"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Cañas Varón David Leonardo",
+        "url": "/canas-varon-david-leonardo/"
+      },
+      {
+        "nombre": "Díaz Gómez Victor Alfonso",
+        "url": "/diaz-gomez-victor-alfonso/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jasalamanca@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/salamanca-bernal-julian-andres.png"
+}

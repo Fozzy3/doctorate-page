@@ -1,0 +1,32 @@
+{
+  "nombre": "Bolaños Castro Sandro Javier",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000193674",
+    "orcid": "https://orcid.org/0000-0002-4525-9855",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56367121400"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Jiménez Álvarez Andrés Camilo",
+        "url": "/jimenez-alavarez-andres-camilo/"
+      },
+      {
+        "nombre": "López Bello César Amilcar",
+        "url": "/lopez-bello-cesar-amilcar-2/"
+      }
+    ]
+  },
+  "correo": "sbolanos@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/bolanos-castro-sandro-javier.png"
+}

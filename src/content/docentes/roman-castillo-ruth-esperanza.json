@@ -1,0 +1,24 @@
+{
+  "nombre": "Roman Castillo Ruth Esperanza",
+  "grupos": [
+    {
+      "nombre": "GEIT",
+      "url": "/geit/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000142328",
+    "orcid": "https://orcid.org/0000-0002-7406-5443",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56883909300",
+    "researchgate": "https://www.researchgate.net/profile/Ruth-Esperanza-Roman"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "rroman@udistrital.edu.co",
+  "estado": "ACTIVA",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/roman-castillo-ruth-esperanza.png"
+}

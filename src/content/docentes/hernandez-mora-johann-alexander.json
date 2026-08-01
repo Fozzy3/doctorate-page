@@ -1,0 +1,27 @@
+{
+  "nombre": "Hernández Mora Johann Alexander",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000331430",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55457487300"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Rozo García Pablo Emilio",
+        "url": "/rozo-garcia-pablo-emilio-2/"
+      }
+    ]
+  },
+  "correo": "jahernandezm@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/hernandez-mora-johann-alexander.png"
+}

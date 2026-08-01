@@ -1,0 +1,25 @@
+{
+  "nombre": "Upegui Cardona Erika Sofía",
+  "grupos": [
+    {
+      "nombre": "GEFEM",
+      "url": "/gefem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001520054",
+    "scholar": "https://scholar.google.es/citations?user=5pbLQ0cAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-0973-7140",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36459015100",
+    "researchgate": "https://www.researchgate.net/profile/Erika-Upegui"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "esupeguic@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/upegui-cardona-erika-sofia.png"
+}

@@ -1,0 +1,33 @@
+{
+  "nombre": "Jaramillo Matta Adolfo Andrés",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000282901",
+    "orcid": "https://orcid.org/0000-0002-9743-5638",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37861504800",
+    "researchgate": "https://www.researchgate.net/profile/Adolfo-Jaramillo-Matta"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Harker Sánchez Orlando",
+        "url": "/harker-sanchez-orlando/"
+      },
+      {
+        "nombre": "Moreno Roa Carmenza",
+        "url": "/moreno-roa-carmenza/"
+      }
+    ]
+  },
+  "correo": "ajaramillom@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/jaramillo-matta-adolfo-andres.png"
+}

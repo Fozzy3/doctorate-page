@@ -1,0 +1,49 @@
+{
+  "nombre": "Trujillo Rodríguez César Leonardo",
+  "grupos": [
+    {
+      "nombre": "GISE3",
+      "url": "/gise3-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000223611",
+    "orcid": "https://orcid.org/0000-0002-0985-1472",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=24470081300"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Chica Leal Alsonso de Jesus",
+        "url": "/chica-leal-alonso-de-jesus/"
+      },
+      {
+        "nombre": "Davila Rojas Miguel Ángel",
+        "url": "/davila-rojas-miguel-angel/"
+      },
+      {
+        "nombre": "Rico Riveros Luis Fernando",
+        "url": "/rico-riveros-luis-fernando/"
+      },
+      {
+        "nombre": "Sánchez Choachí Johan Sebastián",
+        "url": "/sanchez-choachi-johan-sebastian/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Gaona García Elvis Eduardo",
+        "url": "/gaona-garcia-elvis-eduardo/"
+      },
+      {
+        "nombre": "García Miranda Diana Stella",
+        "url": "/garcia-miranda-diana-stella/"
+      }
+    ]
+  },
+  "correo": "cltrujillo@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/trujillo-rodriguez-cesar-leonardo.png"
+}

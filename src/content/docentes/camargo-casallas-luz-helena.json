@@ -1,0 +1,30 @@
+{
+  "nombre": "Camargo Casallas Luz Helena",
+  "grupos": [
+    {
+      "nombre": "INVID",
+      "url": "/invid/"
+    },
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000302430",
+    "orcid": "https://orcid.org/0000-0002-3416-018X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56358998400",
+    "researchgate": "https://www.researchgate.net/profile/Luz-Camargo"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "lhcamargoc@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Estimación de eficiencia de blanco de nanopartículas magnéticas en tratamientos de cáncer con elementos finitos",
+  "director": "Rodríguez Patarroyo Diego Julián",
+  "foto": "/images/docentes/camargo-casallas-luz-helena.png"
+}

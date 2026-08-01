@@ -1,0 +1,34 @@
+{
+  "nombre": "Ovalle Martínez Diana Marcela",
+  "grupos": [
+    {
+      "nombre": "IDEAS",
+      "url": "/ideas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001466796",
+    "orcid": "https://orcid.org/0000-0002-3650-4273",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37061688800",
+    "researchgate": "https://www.researchgate.net/profile/Diana-Ovalle-2"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [
+      {
+        "nombre": "León León José",
+        "url": "/leon-leon-jose/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Jiménez Moreno Robinson",
+        "url": "/jimenez-moreno-robinson-2/"
+      }
+    ]
+  },
+  "correo": "dmovallem@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/ovalle-martinez-diana-marcela.png"
+}

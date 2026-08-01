@@ -1,0 +1,25 @@
+{
+  "nombre": "Orjuela Castro Javier Arturo",
+  "grupos": [
+    {
+      "nombre": "GYCALyT",
+      "url": "/gicalyt/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000006939",
+    "scholar": "https://scholar.google.es/citations?user=MNSqOJYAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0001-7857-5064",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56584549400",
+    "researchgate": "https://www.researchgate.net/profile/Javier-Orjuela-Castro"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jorjuela@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/orjuela-castro-javier-arturo.png"
+}

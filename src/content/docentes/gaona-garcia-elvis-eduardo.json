@@ -1,0 +1,58 @@
+{
+  "nombre": "Gaona García Elvis Eduardo",
+  "grupos": [
+    {
+      "nombre": "GITUD",
+      "url": "/gitud/"
+    },
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    },
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000217344",
+    "scholar": "https://scholar.google.es/citations?user=XApWe5oAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-5431-8776",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56707316100",
+    "researchgate": "https://www.researchgate.net/profile/Elvis-Gaona-Garcia"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "López García Andrés Camilo",
+        "url": "/lopez-garcia-andres-camilo/"
+      },
+      {
+        "nombre": "López Sánchez Wilson Ricardo",
+        "url": "/lopez-sanchez-wilson-ricardo/"
+      },
+      {
+        "nombre": "Romero Pinto Jawy Andrés",
+        "url": "/romero-pinto-jawy-andres/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Rincón Mosquera Nubia",
+        "url": "/rincon-mosquera-nubia/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Parra Peñuela Héctor Guillermo",
+        "url": "/parra-penuela-hector-guillermo/"
+      }
+    ]
+  },
+  "correo": "egaona@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Metodología para la implementación de un sistema de comunicaciones en microrredes eléctricas rurales aisladas en zonas no interconectadas",
+  "director": "Trujillo Rodríguez César Leonardo",
+  "foto": "/images/docentes/gaona-garcia-elvis-eduardo.png"
+}

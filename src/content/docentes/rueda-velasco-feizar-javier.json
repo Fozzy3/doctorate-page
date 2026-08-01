@@ -1,0 +1,25 @@
+{
+  "nombre": "Rueda Velasco Feizar Javier",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000724173",
+    "scholar": "https://scholar.google.es/citations?user=lJ1lZTYAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-0109-9204",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195914426",
+    "researchgate": "https://www.researchgate.net/profile/Feizar-Rueda"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "fjruedav@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/rueda-velasco-feizar-javier.png"
+}

@@ -1,0 +1,34 @@
+{
+  "nombre": "Martínez Sarmiento Fredy Hernán",
+  "grupos": [
+    {
+      "nombre": "ARMOS",
+      "url": "/armos-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000393762",
+    "scholar": "https://scholar.google.es/citations?user=I5-7dxYAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-7258-3909",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36451984500"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Martínez Santa Fernando",
+        "url": "/martinez-santa-fernando/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Acosta Rodríguez Rafael Antonio",
+        "url": "/acosta-rodriguez-rafael-antonio/"
+      }
+    ]
+  },
+  "correo": "fhmartinezs@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/martinez-sarmiento-fredy-hernan.png"
+}

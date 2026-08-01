@@ -1,0 +1,27 @@
+{
+  "nombre": "Ortiz Davila Alvaro Enrique",
+  "grupos": [
+    {
+      "nombre": "NIDE",
+      "url": "/nide/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000811718",
+    "scholar": "https://scholar.google.es/citations?user=yvuEGFIAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-8830-1657",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195318669",
+    "researchgate": "https://www.researchgate.net/profile/Alvaro-Ortiz-Davila"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "aeortizd@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Diseño de un modelo para la representación de la dinámica espacio-temporal de objetos geográficos tipo región medinate trayectorias semánticas en base de datos",
+  "director": "Medina Daza Rubén Javier",
+  "foto": "/images/docentes/ortiz-davila-alvaro-enrique-2.png"
+}

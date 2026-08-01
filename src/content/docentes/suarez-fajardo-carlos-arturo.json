@@ -1,0 +1,33 @@
+{
+  "nombre": "Suárez Fajardo Carlos Arturo",
+  "grupos": [
+    {
+      "nombre": "GRECO",
+      "url": "/greco/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000873438",
+    "orcid": "https://orcid.org/0000-0002-1460-5831",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=13908194600"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Díaz Pardo Iván Eduardo",
+        "url": "/diaz-pardo-ivan-eduardo/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Castellanos García Cesar Alberto",
+        "url": "/castellanos-garcia-cesar-alberto-2/"
+      }
+    ]
+  },
+  "correo": "csuarezf@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/suarez-fajardo-carlos-arturo.png"
+}

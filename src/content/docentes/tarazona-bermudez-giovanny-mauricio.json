@@ -1,0 +1,47 @@
+{
+  "nombre": "Tarazona Bermúdez Giovanny Mauricio",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001120719",
+    "orcid": "https://orcid.org/0000-0001-5012-1466",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55363591700",
+    "researchgate": "https://www.researchgate.net/profile/Giovanny-Tarazona"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Reyes Mozo José Vicente",
+        "url": "/reyes-mozo-jose-vicente/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Montaña Quintero Henry",
+        "url": "/montana-quintero-henry/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Anzola Anzola John Petearson",
+        "url": "/anzola-anzola-john-peterson-2/"
+      },
+      {
+        "nombre": "Contreras Bravo Leonardo Emiro",
+        "url": "/contreras-bravo-leonardo-emiro-2/"
+      },
+      {
+        "nombre": "Morales Valenzuela Olguer Sebastián",
+        "url": "/morales-valenzuela-olguer-sebastian/"
+      }
+    ]
+  },
+  "correo": "gtarazona@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/tarazona-bermudez-giovanny-mauricio.png"
+}

@@ -1,0 +1,43 @@
+{
+  "nombre": "Medina Daza Ruben Javier",
+  "grupos": [
+    {
+      "nombre": "NIDE",
+      "url": "/nide/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000269387",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=8zOeU14AAAAJ",
+    "orcid": "https://orcid.org/0000-0002-9851-9761",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193828334",
+    "researchgate": "https://www.researchgate.net/profile/Ruben-Daza"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Carrillo Duran Iván Darío",
+        "url": "/carrillo-duran-ivan-dario/"
+      },
+      {
+        "nombre": "Castillo Méndez Luis Eduardo",
+        "url": "/castillo-mendez-luis-eduardo/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Lizcano Caro José Andelfo",
+        "url": "/lizcano-jose-andelfo/"
+      },
+      {
+        "nombre": "Ortiz Dávila Álvaro Enrique",
+        "url": "/ortiz-davila-alvaro-enrique-2/"
+      }
+    ]
+  },
+  "correo": "rmedina@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/medina-daza-ruben-javier.png"
+}

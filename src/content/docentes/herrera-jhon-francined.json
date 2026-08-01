@@ -1,0 +1,27 @@
+{
+  "nombre": "Herrera Cubides Jhon Francined",
+  "grupos": [
+    {
+      "nombre": "MULTIMEDIA INTERACTIVA Y ANIMACIÓN DIGITAL",
+      "url": "/multimedia-interactiva-y-animacion-digital/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001164023",
+    "scholar": "https://scholar.google.es/citations?user=fc7F0-8AAAAJ&hl=es&oi=sra",
+    "orcid": "https://orcid.org/0000-0003-1615-4656",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57192575183",
+    "researchgate": "https://www.researchgate.net/profile/Jhon-Herrera-2"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jfherrerac@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de exposición y consumo de recursos educativos abiertos bajo especificaciones linked open data mediante principios de confianza basados en calidad contextual, confiabilidad y accesibilidad de datos",
+  "director": "Gaona García Paulo Alonso",
+  "foto": "/images/docentes/herrera-jhon-francined.png"
+}

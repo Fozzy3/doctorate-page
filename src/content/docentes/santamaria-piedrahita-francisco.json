@@ -1,0 +1,40 @@
+{
+  "nombre": "Santamaría Piedrahita Francisco",
+  "grupos": [
+    {
+      "nombre": "GISE3",
+      "url": "/gise3-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000350044",
+    "scholar": "https://scholar.google.es/citations?user=lzQSLCAAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-0391-4508",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54407409600",
+    "researchgate": "https://www.researchgate.net/profile/Francisco-Santamaria-3"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Camacho Morales Omar Andrés",
+        "url": "/camacho-morales-omar-andres/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Chica Leal Alonso de Jesus",
+        "url": "/chica-leal-alonso-de-jesus/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Vega Escobar Adriana Marcela",
+        "url": "/vega-escobar-adriana-marcela/"
+      }
+    ]
+  },
+  "correo": "fsantamariap@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/santamaria-piedrahita-francisco.png"
+}

@@ -1,0 +1,42 @@
+{
+  "nombre": "Álvarez Pomar Lindsay",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000202355",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=mUCE4CcAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-8818-0901",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56367401000",
+    "researchgate": "https://www.researchgate.net/profile/Lindsay-Alvarez"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Garzón López Martha Milena",
+        "url": "/garzon-lopez-martha-milena/"
+      }
+    ],
+    "codirigidos": [
+      {
+        "nombre": "Ramírez Pérez Natalia Andrea",
+        "url": "/ramirez-perez-natalia-andrea/"
+      }
+    ],
+    "egresados": [
+      {
+        "nombre": "Rozo Álvarez Carlos Yezid",
+        "url": "/rozo-alvarez-carlos-yezid/"
+      }
+    ]
+  },
+  "correo": "lalvarez@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de inteligencia colectiva para sistemas peatonales",
+  "director": "Méndez Giraldo Germán Andrés",
+  "foto": "/images/docentes/alvarez-pomar-lindsay.png"
+}

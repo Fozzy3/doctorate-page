@@ -1,0 +1,25 @@
+{
+  "nombre": "Rojas Cubides Herbert Enrique",
+  "grupos": [
+    {
+      "nombre": "GISE3",
+      "url": "/gise3-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000213420",
+    "scholar": "https://scholar.google.es/citations?user=3WJ4QqoAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-1253-6964",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54912856900",
+    "researchgate": "https://www.researchgate.net/profile/Herbert-Rojas-Cubides"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "herojasc@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/rojas-cubides-herbert-enrique.png"
+}

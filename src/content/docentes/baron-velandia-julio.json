@@ -1,0 +1,41 @@
+{
+  "nombre": "Barón Velandia Julio",
+  "grupos": [
+    {
+      "nombre": "INTECSE",
+      "url": "/intecse/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000292931",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=3Zd4oBMAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-9491-5564"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Leal Lara Daniel David",
+        "url": "/leal-lara-daniel-david/"
+      },
+      {
+        "nombre": "Rojas Amador Sócrates",
+        "url": "/rojas-amador-socrates/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Aguirre Moreno Diego Fernando",
+        "url": "/aguirre-moreno-diego-fernando-2/"
+      },
+      {
+        "nombre": "Vanegas Ayala Sebastián Camilo",
+        "url": "/vanegas-ayala-sebastian-camilo/"
+      }
+    ]
+  },
+  "correo": "jbaron@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/baron-velandia-julio.png"
+}

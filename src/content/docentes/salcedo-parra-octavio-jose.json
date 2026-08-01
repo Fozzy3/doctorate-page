@@ -1,0 +1,46 @@
+{
+  "nombre": "Salcedo Parra Octavio José",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000296902",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=DZDLjCMAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-0767-8522",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=25928629100"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Acosta López Alberto",
+        "url": "/acosta-lopez-alberto/"
+      },
+      {
+        "nombre": "Correa Sánchez Lewys",
+        "url": "/correa-sanchez-lewys/"
+      },
+      {
+        "nombre": "Guevara Riveros Adriana Yolanda",
+        "url": "/guevara-riveros-adriana-yolanda/"
+      },
+      {
+        "nombre": "Herrera Herrera Héctor Manuel",
+        "url": "/herrera-herrera-hector-manuel/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Aguilera Prado Marco Antonio",
+        "url": "/aguilera-prado-marco-antonio/"
+      }
+    ]
+  },
+  "correo": "osalcedo@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/salcedo-parra-octavio-jose.png"
+}

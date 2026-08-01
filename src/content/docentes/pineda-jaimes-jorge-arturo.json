@@ -1,0 +1,30 @@
+{
+  "nombre": "Pineda Jaimes Jorge Arturo",
+  "grupos": [
+    {
+      "nombre": "GIDPAD",
+      "url": "/gidpad-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000418552",
+    "scholar": "https://scholar.google.com/citations?user=0IV33EAAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-0953-9745",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204845128",
+    "researchgate": "https://www.researchgate.net/profile/Jorge-Pineda-6"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Carmona Álvarez July Estefany",
+        "url": "/carmona-alvarez-july-estefany/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "japinedaj@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/pineda-jaimes-jorge-arturo.png"
+}

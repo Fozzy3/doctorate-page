@@ -1,0 +1,31 @@
+{
+  "nombre": "Rodríguez Miranda Juan Pablo",
+  "grupos": [
+    {
+      "nombre": "AQUAFORMAT",
+      "url": "/aquaformat/"
+    },
+    {
+      "nombre": "GIICUD",
+      "url": "/giicud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000431354",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=61YmKD4AAAAJ",
+    "orcid": "https://orcid.org/0000-0002-3761-8221",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193265286",
+    "researchgate": "https://www.researchgate.net/profile/Juan-Rodriguez-Miranda"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "jprodriguezm@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Desarrollo de un modelo de planificación ambiental para la calidad de los recursos hídricos superficiales considerando su variabilidad climática estacional mediante implementación computacional",
+  "director": "García Ubaque César Augusto",
+  "foto": "/images/docentes/rodriguez-miranda-juan-pablo-2.png"
+}

@@ -1,0 +1,43 @@
+{
+  "nombre": "Vera Parra Nelson Enrique",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001174088",
+    "scholar": "https://scholar.google.es/citations?user=ZJJa8gYAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-5159-9207",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56809301400"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Bautista Ojeda Heidy Melisa",
+        "url": "/bautista-ojeda-heidy-melisa/"
+      },
+      {
+        "nombre": "Rincón Mosquera Nubia",
+        "url": "/rincon-mosquera-nubia/"
+      },
+      {
+        "nombre": "Fagua Silva Edwin Orlando",
+        "url": "/fagua-silva-edwin-orlando/"
+      },
+      {
+        "nombre": "Romero Betancur Jesús David",
+        "url": "/romero-betancur-jesus-david/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "neverap@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de procesamiento paralelo en arquitecturas heterogéneas para la construcción de grafos en el ensamblaje de-Novo de Genomas",
+  "director": "Pérez Castillo José Nelson",
+  "foto": "/images/docentes/vera-parra-nelson-enrique.png"
+}

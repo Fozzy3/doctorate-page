@@ -1,0 +1,22 @@
+{
+  "nombre": "Guzmán Cortés Diana Carolina",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "scholar": "https://scholar.google.com/citations?user=tS5ORokAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-8521-0802"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "dcguzmanc@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/guzman-cortes-diana-carolina.png"
+}

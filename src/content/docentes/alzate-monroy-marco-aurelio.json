@@ -1,0 +1,34 @@
+{
+  "nombre": "Alzate Monroy Marco Aurelio",
+  "grupos": [
+    {
+      "nombre": "IDEAS",
+      "url": "/ideas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000301167",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=rzB174AAAAAJ",
+    "orcid": "https://orcid.org/0000-0001-6488-6013",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=23392064000",
+    "researchgate": "https://www.researchgate.net/profile/Marco-Alzate"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Pantoja Rojas Liliana María",
+        "url": "/pantoja-rojas-liliana-maria/"
+      },
+      {
+        "nombre": "León León Jose",
+        "url": "/leon-leon-jose/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "malzate@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/alzate-monroy-marco-aurelio.png"
+}

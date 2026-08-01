@@ -1,0 +1,27 @@
+{
+  "nombre": "López Santana Eduyn Ramiro",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001213490",
+    "scholar": "https://scholar.google.com/citations?user=7EmCODcAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0001-7670-7756",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189442448",
+    "researchgate": "https://www.researchgate.net/profile/Eduyn-Lopez-Santana"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "erlopezs@udistrital.edu.co",
+  "estado": "SABÁTICO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "tesis": "Sistema experto híbrido para la programación de tareas en sistemas de servicios",
+  "director": "Méndez Giraldo Germán Andrés",
+  "foto": "/images/docentes/lopez-santana-eduyn-ramiro-2.png"
+}

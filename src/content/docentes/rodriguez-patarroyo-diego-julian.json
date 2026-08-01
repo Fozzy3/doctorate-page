@@ -1,0 +1,42 @@
+{
+  "nombre": "Rodríguez Patarroyo Diego Julian",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000647322",
+    "orcid": "https://orcid.org/0000-0002-4907-5674",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195914457",
+    "researchgate": "https://www.researchgate.net/profile/Diego-Rodriguez-30"
+  },
+  "estudiantes": {
+    "activos": [
+      {
+        "nombre": "Giraldo Ramos Frank Nixon",
+        "url": "/giraldo_ramos_frank_nixon/"
+      },
+      {
+        "nombre": "Pantoja Benavides Jaime Francisco",
+        "url": "/pantoja-benavides-jaime-francisco/"
+      },
+      {
+        "nombre": "Silva Leal Vladimir",
+        "url": "/silva-leal-vladimir/"
+      }
+    ],
+    "codirigidos": [],
+    "egresados": [
+      {
+        "nombre": "Camargo Casallas Luz Helena",
+        "url": "/camargo-casallas-luz-helena/"
+      }
+    ]
+  },
+  "correo": "djrodriguezp@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/rodriguez-patarroyo-diego-julian.png"
+}
