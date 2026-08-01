@@ -1,0 +1,29 @@
+{
+  "nombre": "López Sánchez Wilson Ricardo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GITUD",
+      "url": "/gitud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001595372",
+    "orcid": "https://orcid.org/0000-0002-1377-0667",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204889538&origin=recordpage",
+    "researchgate": "https://www.researchgate.net/profile/Wilson-Ricardo-Sanchez"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2020",
+  "proyecto": "Modelo para la capturar y procesamiento de imágenes submarinas aplicada al estudio del blanqueamiento de arrecifes de coral",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Gaona García Elvis Eduardo",
+    "url": "/gaona-garcia-elvis-eduardo/"
+  },
+  "codirector": {
+    "nombre": "Figueroa García Juan Carlos",
+    "url": "/figueroa-juan-carlos/"
+  },
+  "foto": "/images/estudiantes/lopez-sanchez-wilson-ricardo.png"
+}

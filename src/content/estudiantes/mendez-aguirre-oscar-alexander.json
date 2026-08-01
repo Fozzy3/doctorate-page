@@ -1,0 +1,22 @@
+{
+  "nombre": "Méndez Aguirre Óscar Alexander",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "ITI",
+      "url": "/iti/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000061444"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2025",
+  "proyecto": "Modelo semántico predictivo del pensamiento espacial proyectivo en población estudiantil de básica primaria, mediante técnicas de Machine Learning",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Florez Fernández Héctor Arturo",
+    "url": "/florez-fernandez-hector-arturo/"
+  },
+  "foto": "/images/estudiantes/mendez-aguirre-oscar-alexander.png"
+}

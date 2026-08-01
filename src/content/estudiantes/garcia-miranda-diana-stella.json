@@ -1,0 +1,22 @@
+{
+  "nombre": "García Miranda Diana Stella",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GISE3",
+      "url": "/gise3-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000037699",
+    "orcid": "https://orcid.org/0000-0003-3850-3423"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2017",
+  "tesis": "Metodología para la toma de decisiones de proyectos de electrificación en zonas rurales aisladas, desde un enfoque sistémico y de desarrollo sostenible",
+  "director": {
+    "nombre": "Santamaría Piedrahita Francisco",
+    "url": "/santamaria-piedrahita-francisco/"
+  },
+  "foto": "/images/estudiantes/garcia-miranda-diana-stella.png"
+}

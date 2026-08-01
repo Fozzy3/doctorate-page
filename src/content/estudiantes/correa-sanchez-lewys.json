@@ -1,0 +1,30 @@
+{
+  "nombre": "Correa Sánchez Lewys",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000006536",
+    "scholar": "https://scholar.google.es/citations?user=vB1wsNUAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0009-0007-4351-8095",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57196485578",
+    "researchgate": "https://www.researchgate.net/profile/Lewys-Correa"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2023",
+  "proyecto": "Modelo de encaminamiento en redes Vanet aplicando aprendizaje automático y redes definidas por software",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/correa-sanchez-lewys.png"
+}

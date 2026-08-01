@@ -1,0 +1,28 @@
+{
+  "nombre": "Davila Rojas Miguel Ángel",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001618921",
+    "orcid": "https://orcid.org/0000-0003-4215-8116",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57205639288"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2023",
+  "proyecto": "Algoritmo para la gestión energética centralizada de una microrred en un escenario de tarificación en tiempo real",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Trujillo Rodríguez Cesar Leonardo",
+    "url": "/trujillo-rodriguez-cesar-leonardo/"
+  },
+  "codirector": {
+    "nombre": "Díaz Aldana Nelson Leonardo",
+    "url": "/diaz-aldana-nelson-leonardo/"
+  },
+  "foto": "/images/estudiantes/davila-rojas-miguel-angel.png"
+}

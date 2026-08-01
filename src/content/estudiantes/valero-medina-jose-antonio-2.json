@@ -1,0 +1,22 @@
+{
+  "nombre": "Valero Medina Jose Antonio",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "NIDE",
+      "url": "/nide/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000145572",
+    "orcid": "https://orcid.org/0000-0003-1228-0241",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57202188214"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Development of an Alternative Method for Multispectral Image Segmentation based on Cartesian Complexes and its associated Oriented Matroids",
+  "director": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/valero-medina-jose-antonio-2.png"
+}

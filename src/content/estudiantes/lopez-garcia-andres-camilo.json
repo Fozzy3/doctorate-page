@@ -1,0 +1,33 @@
+{
+  "nombre": "López García Andrés Camilo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GITUD",
+      "url": "/gitud/"
+    },
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000133175",
+    "scholar": "https://scholar.google.com/citations?user=6O4HeIQAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0002-5488-090X",
+    "researchgate": "https://www.researchgate.net/profile/Camilo-Lopez-27"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2024",
+  "proyecto": "Desarrollo de un modelo de prediccion de potenciales energeticos en comunidades sostenibles a traves de inteligencia artificial para mejorar la planificacion y gestion energetica",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Gaona García Elvis Eduardo",
+    "url": "/gaona-garcia-elvis-eduardo/"
+  },
+  "codirector": {
+    "nombre": "Díaz Aldana Nelson Leonardo",
+    "url": "/diaz-aldana-nelson-leonardo/"
+  },
+  "foto": "/images/estudiantes/lopez-garcia-andres-camilo.png"
+}

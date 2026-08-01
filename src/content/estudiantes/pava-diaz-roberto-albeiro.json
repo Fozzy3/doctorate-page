@@ -1,0 +1,24 @@
+{
+  "nombre": "Pava Díaz Roberto Albeiro",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000840319",
+    "scholar": "https://scholar.google.es/citations?user=QvMFQcYAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-0440-892X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59326301000&origin=recordpage",
+    "researchgate": "https://www.researchgate.net/profile/Roberto-Pava-Diaz"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo para la gestión de una identidad digital descentralizada y autogobernada bajo tecnología de registro distribuido",
+  "director": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/pava-diaz-roberto-albeiro.png"
+}

@@ -1,0 +1,27 @@
+{
+  "nombre": "Silva Rodríguez Gustavo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIDER",
+      "url": "/lider/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001345658",
+    "researchgate": "https://www.researchgate.net/profile/Gustavo-Silva-Rodriguez"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2021",
+  "proyecto": "Modelo de optimización basado en inteligencia artificial aplicable a la asignación de talento humano en salud",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Ferro Escobar Roberto",
+    "url": "/ferro-escobar-roberto/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/silva-rodriguez-gustavo.png"
+}

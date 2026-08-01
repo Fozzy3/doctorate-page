@@ -1,0 +1,28 @@
+{
+  "nombre": "Pantoja Rojas Liliana María",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001368904",
+    "orcid": "https://orcid.org/0009-0004-6267-5852",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57209347674",
+    "researchgate": "https://www.researchgate.net/profile/Liliana-Pantoja-Rojas"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2020",
+  "tesis": "Simulación de agentes cognitivos para análisis de incertidumbre en gestión de proyectos",
+  "director": {
+    "nombre": "Alzate Monrroy Marco Aurelio",
+    "url": "/alzate-monroy-marco-aurelio/"
+  },
+  "codirector": {
+    "nombre": "Medina García Víctor Hugo",
+    "url": "/medina-garcia-victor-hugo/"
+  },
+  "foto": "/images/estudiantes/pantoja-rojas-liliana-maria.png"
+}

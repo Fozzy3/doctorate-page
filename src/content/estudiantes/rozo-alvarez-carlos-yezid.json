@@ -1,0 +1,22 @@
+{
+  "nombre": "Rozo Álvarez Carlos Yezid",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001330195",
+    "orcid": "https://orcid.org/0000-0001-7857-4600"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2018",
+  "tesis": "Modelo de intervención de sectores económicos para mejorar su competitividad – caso: sector del gas licuado del petróleo (GLP)",
+  "director": {
+    "nombre": "Álvarez Pomar Lindsay",
+    "url": "/alvarez-pomar-lindsay/"
+  },
+  "foto": "/images/estudiantes/rozo-alvarez-carlos-yezid.png"
+}

@@ -1,0 +1,23 @@
+{
+  "nombre": "Toledo Bueno Carlos Augusto",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000345121",
+    "orcid": "https://orcid.org/0000-0002-6437-092X"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Propuesta de un metamodelo para la verificación de requisitos documentales para el licenciamiento ambiental con base en la integración de Machine Learning, Blockchain, Smart Contract y Sistemas de Información Geográfica",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Rodríguez Molano José Ignacio",
+    "url": "/rodriguez-molano-jose-ignacio/"
+  },
+  "foto": "/images/estudiantes/toledo-bueno-carlos-augusto.png"
+}

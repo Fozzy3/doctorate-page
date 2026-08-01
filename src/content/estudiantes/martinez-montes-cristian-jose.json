@@ -1,0 +1,24 @@
+{
+  "nombre": "Martínez Montes Cristian José",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000187239"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2026",
+  "director": {
+    "nombre": "Pulgarín Rivera Juan Diego",
+    "url": "/pulgarin-rivera-juan-diego/"
+  },
+  "codirector": {
+    "nombre": "Montoya Giraldo Óscar Danilo",
+    "url": "/montoya-giraldo-oscar-danilo/"
+  },
+  "foto": "/images/estudiantes/martinez-montes-cristian-jose.png"
+}

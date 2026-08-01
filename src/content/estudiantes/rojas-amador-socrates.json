@@ -1,0 +1,26 @@
+{
+  "nombre": "Rojas Amador Sócrates",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "INTECSE",
+      "url": "/intecse/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001375162",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=C5K7f28AAAAJ",
+    "orcid": "https://orcid.org/0009-0002-1702-6605"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2026",
+  "director": {
+    "nombre": "Barón Velandia Julio",
+    "url": "/baron-velandia-julio/"
+  },
+  "codirector": {
+    "nombre": "Vanegas Ayala Sebastián Camilo",
+    "url": "/vanegas-ayala-sebastian-camilo/"
+  },
+  "foto": "/images/estudiantes/rojas-amador-socrates.png"
+}

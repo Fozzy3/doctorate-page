@@ -1,0 +1,24 @@
+{
+  "nombre": "Carrillo Duran Iván Darío",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GEFEM",
+      "url": "/gefem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000082425",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57201589455",
+    "researchgate": "https://www.researchgate.net/profile/Ivan_Carrillo_Duran"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2021",
+  "proyecto": "Impacto de la influencia vial en el avalúo catastral del terreno en predios con vocación agropecuaria de Colombia por medio de un enfoque de aprendizaje profundo",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Medina Daza Rubén Javier",
+    "url": "/medina-daza-ruben-javier/"
+  },
+  "foto": "/images/estudiantes/carrillo-duran-ivan-dario.png"
+}

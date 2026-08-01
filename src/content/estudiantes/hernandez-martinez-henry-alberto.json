@@ -1,0 +1,30 @@
+{
+  "nombre": "Hernández Martínez Henry Alberto",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIDENUTAS",
+      "url": "/gidenutas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000020753",
+    "scholar": "https://scholar.google.es/citations?user=rlb8DUcAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-2323-0242",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204771527",
+    "researchgate": "https://www.researchgate.net/profile/Henry-Hernandez-Martinez"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2022",
+  "proyecto": "Método para coordinar y controlar los movimientos de un robot modular tipo cadena en un entorno no estructurado y dinámico utilizando un algoritmo de aprendizaje computacional y un mecanismo de comunicación bio-inspirado",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Pedraza Martínez Luis Fernando",
+    "url": "/pedraza-martinez-luis-fernando/"
+  },
+  "codirector": {
+    "nombre": "Hernández Suárez César Augusto",
+    "url": "/hernandez-suarez-cesar-augusto/"
+  },
+  "foto": "/images/estudiantes/hernandez-martinez-henry-alberto.png"
+}

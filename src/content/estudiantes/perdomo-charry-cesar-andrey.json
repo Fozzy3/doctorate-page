@@ -1,0 +1,23 @@
+{
+  "nombre": "Perdomo Charry César Andrey",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "LASER",
+      "url": "/laser/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000480762",
+    "orcid": "https://orcid.org/0000-0001-7310-4618",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55858728700"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2017",
+  "tesis": "Estimación cuantitativa de la precipitación a partir de datos del radar meteorológico con variabilidad espacial",
+  "director": {
+    "nombre": "Gómez Vargas Ernesto",
+    "url": "/gomez-vargas-ernesto/"
+  },
+  "foto": "/images/estudiantes/perdomo-charry-cesar-andrey.png"
+}

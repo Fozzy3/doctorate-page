@@ -1,0 +1,28 @@
+{
+  "nombre": "Lara Silva Marcia Ivonne",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001544975",
+    "scholar": "https://scholar.google.es/citations?user=rb58zMoAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-6787-4007",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57218384382"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "tesis": "Propuesta de un modelo de planificación turística apoyado en tecnología para la anticipación de impactos socioculturales en comunidades étnicas",
+  "director": {
+    "nombre": "Rincón Rojas Edgar Jacinto",
+    "url": "/rincon-rojas-edgar-jacinto/"
+  },
+  "codirector": {
+    "nombre": "Rodríguez Rojas Luz Andrea",
+    "url": "/rodriguez-rojas-luz-andrea/"
+  },
+  "foto": "/images/estudiantes/lara-silva-marcia-ivonne.png"
+}

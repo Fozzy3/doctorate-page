@@ -1,0 +1,22 @@
+{
+  "nombre": "Castellanos García Cesar Alberto",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GRECO",
+      "url": "/greco/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001390573",
+    "orcid": "https://orcid.org/0000-0001-5460-609X",
+    "researchgate": "https://www.researchgate.net/profile/Cesar-Castellanos-11"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "An attitude control system for cubesat satellites using an adaptive L1 norm control method",
+  "director": {
+    "nombre": "Suárez Fajardo Carlos Arturo",
+    "url": "/suarez-fajardo-carlos-arturo/"
+  },
+  "foto": "/images/estudiantes/castellanos-garcia-cesar-alberto-2.png"
+}

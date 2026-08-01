@@ -1,0 +1,28 @@
+{
+  "nombre": "Carreño Pérez Juan Carlos",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GESETIC",
+      "url": "/gesetic-3/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001534036",
+    "orcid": "https://orcid.org/0000-0003-2062-2029",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58020550200&origin=recordpage"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2022",
+  "proyecto": "Diagnóstico de Fallas en Líneas de Trasmisión de Energía Eléctrica Empleando Métodos de Inteligencia Artificial",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Espinel Ortega Álvaro",
+    "url": "/espinel-ortega-alvaro/"
+  },
+  "codirector": {
+    "nombre": "Vega Escobar Adriana Marcela",
+    "url": "/vega-escobar-adriana-marcela/"
+  },
+  "foto": "/images/estudiantes/carreno-perez-juan-carlos.png"
+}

@@ -1,0 +1,24 @@
+{
+  "nombre": "Gélvez García Nancy Yaneth",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001353689",
+    "orcid": "https://orcid.org/0000-0003-3334-6959",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56198581800",
+    "researchgate": "https://www.researchgate.net/profile/Nancy-Y-Gelvez-Garcia"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2018",
+  "tesis": "Modelo Computacional Cognitivo para la predicción de preferencias de usuario, basado en análisis de emociones y preclasificación de contenido, orientado a la visualización de datos",
+  "director": {
+    "nombre": "Gaona García Paulo Alonso",
+    "url": "/gaona-garcia-paulo-alonso/"
+  },
+  "foto": "/images/estudiantes/gelvez-garcia-nancy-yaneth.png"
+}

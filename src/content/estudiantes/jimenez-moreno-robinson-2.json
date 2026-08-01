@@ -1,0 +1,24 @@
+{
+  "nombre": "Jimenez Moreno Robinson",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "IDEAS",
+      "url": "/ideas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001344169",
+    "scholar": "https://scholar.google.es/citations?user=PTzeQ6oAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-4812-3734",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57188664966",
+    "researchgate": "https://www.researchgate.net/profile/Robinson-Moreno-2"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Estructuración de un algoritmo basado en deep learning para entrenamiento de robots asistentes en reconocimiento de objetos para plataformas multiherramienta",
+  "director": {
+    "nombre": "Ovalle Martínez Diana Marcela",
+    "url": "/ovalle-martinez-diana-marcela/"
+  },
+  "foto": "/images/estudiantes/jimenez-moreno-robinson-2.png"
+}

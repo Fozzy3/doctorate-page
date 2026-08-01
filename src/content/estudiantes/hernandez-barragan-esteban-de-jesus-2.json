@@ -1,0 +1,21 @@
+{
+  "nombre": "Hernández Barragán Esteban de Jesus",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000903868",
+    "orcid": "https://orcid.org/0000-0002-2586-8901"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Aceleración de la microfísica de lluvia para el modelo avanzado de predicción del estado del tiempo WRF utilizando computación heterogénea paralela",
+  "director": {
+    "nombre": "Montenegro Marín Carlos Enrique",
+    "url": "/montenegro-marin-carlos-enrique/"
+  },
+  "foto": "/images/estudiantes/hernandez-barragan-esteban-de-jesus-2.png"
+}

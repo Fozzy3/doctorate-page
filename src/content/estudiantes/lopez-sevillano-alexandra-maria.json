@@ -1,0 +1,23 @@
+{
+  "nombre": "López Sevillano Alexandra Maria",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GITEM++",
+      "url": "/gitem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000201014",
+    "scholar": "https://scholar.google.es/citations?user=1FUQdScAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-7398-6275",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57205673949"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo de integración de servicios y niveles en salud que permita viabilizar la respuesta efectiva y resolutiva del sistema de salud colombiano",
+  "director": {
+    "nombre": "Aparicio Pico Lilia Edith",
+    "url": "/aparicio-pico-lilia-edith/"
+  },
+  "foto": "/images/estudiantes/lopez-sevillano-alexandra-maria.png"
+}

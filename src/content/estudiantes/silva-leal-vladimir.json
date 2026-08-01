@@ -1,0 +1,30 @@
+{
+  "nombre": "Silva Leal Vladimir",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001461035",
+    "scholar": "https://scholar.google.es/citations?user=jT5vXaYAAAAJ&#038;hl=es&#038;oi=ao",
+    "orcid": "https://orcid.org/0000-0003-4054-4734",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57208609133",
+    "researchgate": "https://www.researchgate.net/profile/Vladimir-Silva-Leal-2"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2022",
+  "proyecto": "Evaluación del desempeño energético y ambiental de biojet como combustible de una microturbina aeronáutica tipo turborreactor mediante un modelo estadístico multivariante.",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Diego Julian Rodríguez Patarroyo",
+    "url": "/rodriguez-patarroyo-diego-julian/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/silva-leal-vladimir.png"
+}

@@ -1,0 +1,29 @@
+{
+  "nombre": "Sierra Giraldo Ingrid Tatiana",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIDENUTAS",
+      "url": "/gidenutas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001396265",
+    "scholar": "https://scholar.google.es/citations?user=r3T5u40AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-6977-6937",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193014268&origin=recordpage"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2023",
+  "proyecto": "Metodología para el pronóstico de lluvia en Colombia, a partir de modelos meteorológicos usando inteligencia artificial",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Pedraza Martínez Luis Fernando",
+    "url": "/pedraza-martinez-luis-fernando/"
+  },
+  "codirector": {
+    "nombre": "Hernández Suárez César Augusto",
+    "url": "/hernandez-suarez-cesar-augusto/"
+  },
+  "foto": "/images/estudiantes/sierra-giraldo-ingrid-tatiana.png"
+}

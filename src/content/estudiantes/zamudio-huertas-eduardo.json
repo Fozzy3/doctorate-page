@@ -1,0 +1,29 @@
+{
+  "nombre": "Zamudio Huertas Eduardo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIICUD",
+      "url": "/giicud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000537560",
+    "orcid": "https://orcid.org/0000-0002-9698-5419",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57224965653",
+    "researchgate": "https://www.researchgate.net/profile/Eduardo-Zamudio"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Estimación de caudales en zonas con información escasa o nula en el territorio colombiano a partir de un modelo que incorpore la incertidumbre y los patrones espaciales y temporales asociados a la geometría hidráulica",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "García Ubaque César Augusto",
+    "url": "/garcia-ubaque-cesar-augusto/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/zamudio-huertas-eduardo.png"
+}

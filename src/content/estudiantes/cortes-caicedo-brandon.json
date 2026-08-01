@@ -1,0 +1,30 @@
+{
+  "nombre": "Cortés Caicedo Brandon",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001770078",
+    "scholar": "https://scholar.google.com/citations?hl=en&#038;user=DCHhXyYAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-0294-975X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57223866590",
+    "researchgate": "https://www.researchgate.net/profile/Brandon-Cortes-Caicedo"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2024",
+  "proyecto": "Desarrollo de una metodología para la planeación y la operación de sistemas distribución desequilibrados",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Montoya Giraldo Oscar Danilo",
+    "url": "/montoya-giraldo-oscar-danilo/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/cortes-caicedo-brandon.png"
+}

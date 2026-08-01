@@ -1,0 +1,24 @@
+{
+  "nombre": "Martínez Alayón Carlos Andrés",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIDER",
+      "url": "/lider/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001366648",
+    "scholar": "https://scholar.google.es/citations?user=RAO180UAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-0818-7095"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Estructuración de un Modelo para el análisis, simulación y aplicación de Tecnologías LPWAN a través de la integración de redes comunitarias e IOT al Agro inteligente en sectores rurales colombianos",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Ferro Escobar Roberto",
+    "url": "/ferro-escobar-roberto/"
+  },
+  "foto": "/images/estudiantes/martinez-alayon-carlos-andres.png"
+}

@@ -1,0 +1,23 @@
+{
+  "nombre": "Aguilera Prado Marco Antonio",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000206601",
+    "scholar": "https://scholar.google.es/citations?user=GlM971cAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-0017-6121",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57207940435"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Modelación para el pronóstico del impacto de la producción científica nacional en ingeniería mediante minería de texto y procesamiento del lenguaje natural",
+  "director": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "foto": "/images/estudiantes/aguilera-prado-marco-antonio.png"
+}

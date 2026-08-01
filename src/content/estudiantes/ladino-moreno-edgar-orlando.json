@@ -1,0 +1,25 @@
+{
+  "nombre": "Ladino Moreno Edgar Orlando",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIICUD",
+      "url": "/giicud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001387518",
+    "scholar": "https://scholar.google.es/citations?user=iMMYI0sAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-7770-452X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57224971995",
+    "researchgate": "https://www.researchgate.net/profile/Edgar-Orlando-Ladino-Moreno"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2018",
+  "tesis": "Estimación y localización de fugas en sistemas de distribución de agua a través de algoritmos de optimización combinatoria",
+  "director": {
+    "nombre": "García Ubaque César Augusto",
+    "url": "/garcia-ubaque-cesar-augusto/"
+  },
+  "foto": "/images/estudiantes/ladino-moreno-edgar-orlando.png"
+}

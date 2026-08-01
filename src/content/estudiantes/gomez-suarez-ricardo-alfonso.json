@@ -1,0 +1,27 @@
+{
+  "nombre": "Gómez Suárez Ricardo Alfonso",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001433219",
+    "scholar": "https://scholar.google.es/citations?user=lL5iexQAAAAJ&#038;hl=es&#038;oi=ao",
+    "orcid": "https://orcid.org/0000-0002-1142-9406"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2018",
+  "tesis": "Propuesta de modelo tridimensional de medición de propagación de SO2 y NOX basado en wsn para smart cities",
+  "director": {
+    "nombre": "Rodríguez Molano José Ignacio",
+    "url": "/rodriguez-molano-jose-ignacio/"
+  },
+  "codirector": {
+    "nombre": "Ferro Escobar Roberto",
+    "url": "/ferro-escobar-roberto/"
+  },
+  "foto": "/images/estudiantes/gomez-suarez-ricardo-alfonso.png"
+}

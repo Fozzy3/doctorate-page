@@ -1,0 +1,25 @@
+{
+  "nombre": "Giral Ramírez Diego Armando",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "ARMOS",
+      "url": "/armos-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001366817",
+    "scholar": "https://scholar.google.es/citations?user=5Ml31VEAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-9983-4555",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36975442100",
+    "researchgate": "https://www.researchgate.net/profile/Diego-Giral-2"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2018",
+  "tesis": "Modelo de decisión espectral colaborativo para mejorar el desempeño de las redes de radio cognitiva distribuidas",
+  "director": {
+    "nombre": "García Ubaque César Augusto",
+    "url": "/garcia-ubaque-cesar-augusto/"
+  },
+  "foto": "/images/estudiantes/giral-ramirez-diego-armando.png"
+}

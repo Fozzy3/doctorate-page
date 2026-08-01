@@ -1,0 +1,28 @@
+{
+  "nombre": "Ortiz Aguilar Jannet",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000779903",
+    "scholar": "https://scholar.google.es/citations?user=EcNd6LAAAAAJ&#038;hl=es&#038;oi=ao",
+    "orcid": "https://orcid.org/0000-0002-7688-2092"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2024",
+  "proyecto": "Efectos de la irradiación con campos electromagnéticos no ionizantes sobre las propiedades funcionales de harinas de Zea mays L. var Porva nixtamalizado obtenidas por extrusión a baja temperatura",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Gaona García Paulo Alonso",
+    "url": "/gaona-garcia-paulo-alonso/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/ortiz-aguilar-jannet.png"
+}

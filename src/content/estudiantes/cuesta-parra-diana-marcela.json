@@ -1,0 +1,26 @@
+{
+  "nombre": "Cuesta Parra Diana Marcela",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "AQUAFORMAT",
+      "url": "/aquaformat/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001408837",
+    "scholar": "https://scholar.google.es/citations?user=90Ok1E0AAAAJ&#038;hl=es&#038;oi=ao",
+    "orcid": "https://orcid.org/0000-0001-9287-2452",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57737283400",
+    "researchgate": "https://www.researchgate.net/profile/Diana-Cuesta-Parra"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2020",
+  "proyecto": "Optimización de biorreactores para el tratamiento de residuos orgánicos con larvas de mosca soldado negro en Bogotá y zonas de bajas temperaturas",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Gaona García Paulo Alonso",
+    "url": "/gaona-garcia-paulo-alonso/"
+  },
+  "foto": "/images/estudiantes/cuesta-parra-diana-marcela.png"
+}

@@ -1,0 +1,29 @@
+{
+  "nombre": "Sánchez Céspedes Juan Manuel",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000342718",
+    "scholar": "https://scholar.google.es/citations?user=_d63-8IAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-9101-2936",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57220819215",
+    "researchgate": "https://www.researchgate.net/profile/Juan-Sanchez-Cespedes"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "tesis": "Modelo para la valoración de la capacidad de adaptación de la vocación agrícola a los cambios sociodemográficos regionales usando inteligencia artificial",
+  "director": {
+    "nombre": "Espitia Cuchango Helbert Eduardo",
+    "url": "/espitia-cuchango-helbert-eduardo/"
+  },
+  "codirector": {
+    "nombre": "Rodríguez Miranda Juan Pablo",
+    "url": "/rodriguez-miranda-juan-pablo-2/"
+  },
+  "foto": "/images/estudiantes/sanchez-cespedes-juan-manuel.png"
+}

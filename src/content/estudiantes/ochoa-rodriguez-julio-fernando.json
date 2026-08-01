@@ -1,0 +1,25 @@
+{
+  "nombre": "Ochoa Rodríguez Julio Fernando",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001108115",
+    "scholar": "https://scholar.google.es/citations?user=RD0aMI8AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-2904-5961",
+    "researchgate": "https://www.researchgate.net/profile/Julio-Rodriguez-17"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2021",
+  "proyecto": "Modelo para evaluación de riesgos emergentes en teletrabajo",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Rodríguez Rojas Luz Andrea",
+    "url": "/rodriguez-rojas-luz-andrea/"
+  },
+  "foto": "/images/estudiantes/ochoa-rodriguez-julio-fernando.png"
+}

@@ -1,0 +1,28 @@
+{
+  "nombre": "León León José",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "IDEAS",
+      "url": "/ideas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000000166",
+    "orcid": "https://orcid.org/0000-0003-0558-1193",
+    "researchgate": "https://www.researchgate.net/profile/Jose-Leon-Leon"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2019",
+  "proyecto": "Diseño e implementación de un algoritmo de SLAM semántico en una plataforma robótica móvil terrestre para entornos interiores",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Ovalle Martínez Diana Marcela",
+    "url": "/ovalle-martinez-diana-marcela/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/leon-leon-jose.png"
+}

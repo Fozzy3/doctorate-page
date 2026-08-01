@@ -1,0 +1,29 @@
+{
+  "nombre": "Navarrete López Abel Antonio",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000376639",
+    "scholar": "https://scholar.google.com/citations?user=JXTtI2YAAAAJ&hl=de",
+    "orcid": "https://orcid.org/0000-0002-4686-5611",
+    "researchgate": "https://www.researchgate.net/profile/Abel-Antonio-Navarrete-Lopez"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Modelo de generación de valor mediante capital intelectual a través del apalancamiento fiduciario",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "",
+    "url": "/montenegro-marin-carlos-enrique/"
+  },
+  "codirector": {
+    "nombre": "Medina García Víctor Hugo",
+    "url": "/medina-garcia-victor-hugo/"
+  },
+  "foto": "/images/estudiantes/navarrete-lopez-abel-antonio.png"
+}

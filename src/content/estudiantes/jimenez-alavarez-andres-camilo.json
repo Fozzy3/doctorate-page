@@ -1,0 +1,23 @@
+{
+  "nombre": "Jimenez Alvarez Andres Camilo",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001429722",
+    "orcid": "https://orcid.org/0000-0002-1995-9540",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57190582570",
+    "researchgate": "https://www.researchgate.net/profile/Andres-Jimenez-26"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Modelo descentralizado de navegación para sistemas robóticos multi-agente cooperativos",
+  "director": {
+    "nombre": "Bolaños Castro Sandro Javier",
+    "url": "/bolanos-castro-sandro-javier/"
+  },
+  "foto": "/images/estudiantes/jimenez-alavarez-andres-camilo.png"
+}

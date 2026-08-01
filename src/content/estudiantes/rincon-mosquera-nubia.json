@@ -1,0 +1,29 @@
+{
+  "nombre": "Rincón Mosquera Nubia",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000787710",
+    "scholar": "https://scholar.google.es/citations?user=hHzZBqMAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-6041-3243",
+    "researchgate": "https://www.researchgate.net/profile/Nubia-Rincon"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Modelo de cuantificación de la relajación a partir del análisis de las señales electroenfalograficas",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Vera Parra Nelson Enrique",
+    "url": "/vera-parra-nelson-enrique/"
+  },
+  "codirector": {
+    "nombre": "Gaona García Elvis Eduardo",
+    "url": "/gaona-garcia-elvis-eduardo/"
+  },
+  "foto": "/images/estudiantes/rincon-mosquera-nubia.png"
+}

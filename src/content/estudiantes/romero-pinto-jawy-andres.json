@@ -1,0 +1,29 @@
+{
+  "nombre": "Romero Pinto Jawy Andrés",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GITUD",
+      "url": "/gitud/"
+    },
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001730692",
+    "orcid": "https://orcid.org/0009-0000-9553-9284"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2026",
+  "director": {
+    "nombre": "Gaona García",
+    "url": "/gaona-garcia-elvis-eduardo/"
+  },
+  "codirector": {
+    "nombre": "Gaona García Paulo Alonso",
+    "url": "/gaona-garcia-paulo-alonso/"
+  },
+  "foto": "/images/estudiantes/romero-pinto-jawy-andres.png"
+}

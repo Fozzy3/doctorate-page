@@ -1,0 +1,27 @@
+{
+  "nombre": "Chica Leal Alonso de Jesus",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000574414",
+    "orcid": "https://orcid.org/0000-0001-8815-129X"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2015",
+  "proyecto": "Modelado y control de inversores en paralelo que operan en microrredes eléctricas bajo el enfoque de sistemas dinámicos híbridos",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Trujillo Rodríguez César Leonardo",
+    "url": "/trujillo-rodriguez-cesar-leonardo/"
+  },
+  "codirector": {
+    "nombre": "Santamaría Piedrahita Francisco",
+    "url": "/santamaria-piedrahita-francisco/"
+  },
+  "foto": "/images/estudiantes/chica-leal-alonso-de-jesus.png"
+}

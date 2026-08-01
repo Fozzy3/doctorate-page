@@ -1,0 +1,24 @@
+{
+  "nombre": "Harker Sánchez Orlando",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000241326",
+    "scholar": "https://scholar.google.es/citations?user=-1RpQT8AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-8168-1519",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59210855200&origin=recordpage",
+    "researchgate": "https://www.researchgate.net/profile/Orlando-Harker"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Modelado y estrategia de control para obtener la máxima producción de energía eléctrica en un sistema de generación a partir de residuos sólidos orgánicos",
+  "director": {
+    "nombre": "Jaramillo Matta Adolfo Andrés",
+    "url": "/jaramillo-matta-adolfo-andres/"
+  },
+  "foto": "/images/estudiantes/harker-sanchez-orlando.png"
+}

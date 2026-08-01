@@ -1,0 +1,24 @@
+{
+  "nombre": "Rico Riveros Luis Fernando",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000006679",
+    "scholar": "https://scholar.google.es/citations?user=okTbt-EAAAAJ&hl=es&oi=ao",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191619036"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2018",
+  "proyecto": "Modelo de gestión para una microrred eléctrica basado en un sistema híbrido solar fotovoltaico – biomasa aplicable a un entorno rural no interconectado",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Díaz Aldana Nelson Leonardo",
+    "url": "/diaz-aldana-nelson-leonardo/"
+  },
+  "foto": "/images/estudiantes/rico-riveros-luis-fernando.png"
+}

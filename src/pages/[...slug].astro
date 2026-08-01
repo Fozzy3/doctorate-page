@@ -7,29 +7,31 @@ export async function getStaticPaths() {
   const paginas = await getCollection('paginas');
   const docentes = await getCollection('docentes');
   const grupos = await getCollection('grupos');
+  const estudiantes = await getCollection('estudiantes');
   return [
     ...paginas.map((p) => ({ params: { slug: p.id }, props: { p } })),
     ...docentes.map((d) => ({ params: { slug: d.id }, props: { d } })),
     ...grupos.map((g) => ({ params: { slug: g.id }, props: { g } })),
+    ...estudiantes.map((e) => ({ params: { slug: e.id }, props: { e } })),
   ];
 }
 
-const { p, d, g } = Astro.props;
+const { p, d, g, e } = Astro.props;
 const Content = p ? (await render(p)).Content : null;
 const section = p ? sectionOf(p.data.section) : sectionOf('comunidad');
-const slug = p?.id ?? d?.id ?? g?.id ?? '';
+const slug = p?.id ?? d?.id ?? g?.id ?? e?.id ?? '';
 
 // Los enlaces a personas/grupos solo son internos si la ruta existe en el sitio
-const rutasInternas =
-  d || g
-    ? new Set(
-        [
-          ...(await getCollection('paginas')),
-          ...(await getCollection('docentes')),
-          ...(await getCollection('grupos')),
-        ].map((e) => `/${e.id}/`)
-      )
-    : new Set<string>();
+const rutasInternas = p
+  ? new Set<string>()
+  : new Set(
+      [
+        ...(await getCollection('paginas')),
+        ...(await getCollection('docentes')),
+        ...(await getCollection('grupos')),
+        ...(await getCollection('estudiantes')),
+      ].map((x) => `/${x.id}/`)
+    );
 
 // Rutas internas que aún no migran (p. ej. páginas de grupos) siguen en el WP
 const resolverUrl = (url: string) =>
@@ -53,12 +55,14 @@ const gruposEstudiantes = d
     ] as const).filter(([, lista]) => lista.length > 0)
   : [];
 
-const titulo = p ? p.data.title : d ? d.data.nombre : g!.data.sigla;
+const titulo = p ? p.data.title : d ? d.data.nombre : g ? g.data.sigla : e!.data.nombre;
 const descripcion = p
   ? p.data.description
   : d
     ? `Perfil de ${d.data.nombre}, docente del Doctorado en Ingeniería de la Universidad Distrital. ${d.data.enfasis ?? ''}`.trim()
-    : `${g!.data.nombre ?? g!.data.sigla}, grupo de investigación adscrito al Doctorado en Ingeniería de la Universidad Distrital.`;
+    : g
+      ? `${g.data.nombre ?? g.data.sigla}, grupo de investigación adscrito al Doctorado en Ingeniería de la Universidad Distrital.`
+      : `Perfil de ${e!.data.nombre}, ${e!.data.tipo === 'egresado' ? 'egresado' : 'estudiante'} del Doctorado en Ingeniería de la Universidad Distrital.`;
 ---
 
 <Base title={titulo} description={descripcion}>
@@ -71,6 +75,12 @@ const descripcion = p
             <li><a href="/docentes/">Docentes</a></li>
           ) : g ? (
             <li><a href="/grupos-de-investigacion/">Grupos de investigación</a></li>
+          ) : e ? (
+            e.data.tipo === 'egresado' ? (
+              <li><a href="/egresados-2/">Egresados</a></li>
+            ) : (
+              <li><a href="/estudiantes/">Estudiantes</a></li>
+            )
           ) : (
             section && <li>{section.label}</li>
           )}
@@ -80,6 +90,7 @@ const descripcion = p
       <h1 class="display">{titulo}</h1>
       {p?.data.updated && <p class="page-updated">Actualizado: {p.data.updated}</p>}
       {d?.data.enfasis && <p class="page-updated">{d.data.enfasis}</p>}
+      {e?.data.enfasis && <p class="page-updated">{e.data.enfasis}</p>}
       {g?.data.nombre && g.data.nombre.toUpperCase() !== g.data.sigla.toUpperCase() && (
         <p class="page-updated">{g.data.nombre}</p>
       )}
@@ -180,6 +191,101 @@ const descripcion = p
                     </div>
                   ))}
                 </div>
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
+    ) : e ? (
+      <div class="container page">
+        <div class="perfil-grid">
+          <aside class="perfil-media">
+            {e.data.foto && (
+              <img
+                src={e.data.foto}
+                alt={`Fotografía de ${e.data.nombre}`}
+                width="480"
+                height="480"
+                loading="eager"
+              />
+            )}
+            <dl class="perfil-datos">
+              <div>
+                <dt>Vinculación</dt>
+                <dd>{e.data.tipo === 'egresado' ? 'Egresado' : 'Estudiante activo'}</dd>
+              </div>
+              {e.data.cohorte && (
+                <div>
+                  <dt>Cohorte</dt>
+                  <dd>{e.data.cohorte}</dd>
+                </div>
+              )}
+              {e.data.grupos.length > 0 && (
+                <div>
+                  <dt>{e.data.grupos.length > 1 ? 'Grupos' : 'Grupo'}</dt>
+                  <dd>
+                    {e.data.grupos.map((gr, i) => (
+                      <>
+                        {i > 0 && ' · '}
+                        {gr.url ? (
+                          <a href={resolverUrl(gr.url)}>{gr.nombre}</a>
+                        ) : (
+                          gr.nombre
+                        )}
+                      </>
+                    ))}
+                  </dd>
+                </div>
+              )}
+              {e.data.director && (
+                <div>
+                  <dt>Director</dt>
+                  <dd>
+                    {e.data.director.url && rutasInternas.has(e.data.director.url) ? (
+                      <a href={e.data.director.url}>{e.data.director.nombre}</a>
+                    ) : (
+                      e.data.director.nombre
+                    )}
+                  </dd>
+                </div>
+              )}
+              {e.data.codirector && (
+                <div>
+                  <dt>Codirector</dt>
+                  <dd>
+                    {e.data.codirector.url && rutasInternas.has(e.data.codirector.url) ? (
+                      <a href={e.data.codirector.url}>{e.data.codirector.nombre}</a>
+                    ) : (
+                      e.data.codirector.nombre
+                    )}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </aside>
+
+          <div class="perfil-info">
+            {Object.keys(e.data.redes).length > 0 && (
+              <section>
+                <h2>Redes académicas</h2>
+                <div class="perfil-redes">
+                  {Object.entries(e.data.redes).map(([red, url]) => (
+                    <a class="btn btn-outline-dark" href={url} rel="external noopener" target="_blank">
+                      {REDES_LABEL[red] ?? red}
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {(e.data.tesis || e.data.proyecto) && (
+              <section>
+                <h2>
+                  {e.data.tesis
+                    ? 'Tesis doctoral'
+                    : e.data.proyectoEtiqueta ?? 'Proyecto de investigación doctoral'}
+                </h2>
+                <p class="perfil-tesis">“{e.data.tesis ?? e.data.proyecto}”</p>
               </section>
             )}
           </div>

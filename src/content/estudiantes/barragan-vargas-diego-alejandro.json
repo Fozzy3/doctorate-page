@@ -1,0 +1,29 @@
+{
+  "nombre": "Barragán Vargas Diego Alejandro",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIDER",
+      "url": "/lider/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001655355",
+    "scholar": "https://scholar.google.com/citations?user=Bp3QMQMAAAAJ&#038;hl=es&#038;oi=sra",
+    "orcid": "https://orcid.org/0000-0003-3069-4712",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57821980900&#038;origin=resultslist"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2025",
+  "proyecto": "Diseño de un robot social para el reconocimiento de patrones con visión computacional orientado al apoyo de estimulación cognitiva en adultos mayores",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Ferro Escobar Roberto",
+    "url": "/ferro-escobar-roberto/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/barragan-vargas-diego-alejandro.png"
+}

@@ -1,0 +1,28 @@
+{
+  "nombre": "Díaz Pardo Iván Eduardo",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GRECO",
+      "url": "/greco/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000688860",
+    "scholar": "https://scholar.google.es/citations?user=s301RbcAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-0347-6157",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56648140100"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2018",
+  "tesis": "Modelado de estructuras FSS mediante resonadores Sublamda para el diseño de filtros y antenas integrados en guías de onda",
+  "director": {
+    "nombre": "Suárez Fajardo Carlos Arturo",
+    "url": "/suarez-fajardo-carlos-arturo/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/diaz-pardo-ivan-eduardo.png"
+}

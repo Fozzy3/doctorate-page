@@ -1,0 +1,27 @@
+{
+  "nombre": "Aguirre Moreno Diego Fernando",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "ARMOS",
+      "url": "/armos-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001645527",
+    "scholar": "https://scholar.google.es/citations?user=AzzZUlAAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-3229-7967",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57759666500&origin=recordpage"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Metamodelo para la integración de lerning analytics, academic analytics, datos abiertos y B-Learning en la educación superior. Caso: Universidad Distrital",
+  "director": {
+    "nombre": "Barón Velandia Julio",
+    "url": "/baron-velandia-julio/"
+  },
+  "codirector": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "foto": "/images/estudiantes/aguirre-moreno-diego-fernando-2.png"
+}

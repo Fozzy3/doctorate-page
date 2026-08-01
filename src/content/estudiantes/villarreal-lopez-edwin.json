@@ -1,0 +1,26 @@
+{
+  "nombre": "Villarreal López Edwin",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIDER",
+      "url": "/lider/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001179306",
+    "scholar": "https://scholar.google.es/citations?user=uM4X1fsAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-1401-955X",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57194559132",
+    "researchgate": "https://www.researchgate.net/profile/Edwin-Villarreal-Lopez"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2019",
+  "proyecto": "Desarrollo de una metodología de control por rechazo activo de perturbaciones autoajustables asistidas en un esquema de detección de fallas",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Hurtado Cortes Luini Leonardo",
+    "url": "/hurtado-cortes-luini-leonardo/"
+  },
+  "foto": "/images/estudiantes/villarreal-lopez-edwin.png"
+}

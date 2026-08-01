@@ -1,0 +1,20 @@
+{
+  "nombre": "Albarracín Sánchez Luis Felipe",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GRECO",
+      "url": "/greco/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001644874"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Modelo de gestión de recursos en redes de acceso radio por medio de un controlador centralizado aplicando sistemas difusos",
+  "director": {
+    "nombre": "Puerto Leguizamón Gustavo Adolfo",
+    "url": "/puerto-leguizamon-gustavo-adolfo/"
+  },
+  "foto": "/images/estudiantes/albarracin-sanchez-luis-felipe-2.png"
+}

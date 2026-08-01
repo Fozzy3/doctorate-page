@@ -1,0 +1,23 @@
+{
+  "nombre": "Ruíz Rosas Victor Elberto",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "DISING",
+      "url": "/sistemas-mecatronicos-y-telecomunicaciones-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000415855",
+    "orcid": "https://orcid.org/0000-0002-6798-2534"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2025",
+  "proyecto": "Modelo de integración colaborativa humano inteligencia artificial en etapas conceptuales del proceso de diseño en ingeniería con enfoque de sostenibilidad y circularidad",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Hurtado Cortés Luini Leonardo",
+    "url": "/hurtado-cortes-luini-leonardo/"
+  },
+  "foto": "/images/estudiantes/ruiz-rosas-victor-elberto.png"
+}

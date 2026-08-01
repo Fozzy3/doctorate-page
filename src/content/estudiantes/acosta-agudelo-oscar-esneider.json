@@ -1,0 +1,27 @@
+{
+  "nombre": "Acosta Agudelo Oscar Esneider",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001440138",
+    "scholar": "https://scholar.google.es/citations?user=_OBPAe8AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-5002-4997"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "tesis": "Propuesta de un modelo para la predicción de ruido por tráfico rodado a partir de aprendizaje automático que ofrezca información potencialmente útil en los procesos de gestión ambiental del ruido en entornos urbanos de Bogotá",
+  "director": {
+    "nombre": "Montenegro Marín Carlos Enrique",
+    "url": "/montenegro-marin-carlos-enrique/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/acosta-agudelo-oscar-esneider.png"
+}

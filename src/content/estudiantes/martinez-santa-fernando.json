@@ -1,0 +1,25 @@
+{
+  "nombre": "Martínez Santa Fernando",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "ARMOS",
+      "url": "/armos-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000425214",
+    "orcid": "https://orcid.org/0000-0003-2895-3084",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57210233544",
+    "researchgate": "https://www.researchgate.net/profile/Fernando-Martinez-Santa"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2021",
+  "proyecto": "Modelo jerárquico de control neuro-inspirado aplicado a vehículos autónomos con recursos limitados para la navegación en ambientes con dinámicas complejas",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Martínez Sarmiento Fredy Hernán",
+    "url": "/martinez-sarmiento-fredy-hernan/"
+  },
+  "foto": "/images/estudiantes/martinez-santa-fernando.png"
+}

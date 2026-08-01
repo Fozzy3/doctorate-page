@@ -1,0 +1,29 @@
+{
+  "nombre": "Parra Peñuela Héctor Guillermo",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GITUD",
+      "url": "/gitud/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001462793",
+    "scholar": "https://scholar.google.es/citations?user=9vu2lfcAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-6184-8000",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57208473683",
+    "researchgate": "https://www.researchgate.net/profile/Hector-Guillermo-Parra-Penuela-2"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2019",
+  "tesis": "Análisis CFD de turbina eólica con generadores de vórtice bio-inspirados y sus efectos en la producción energética y ruido estructural",
+  "director": {
+    "nombre": "Gaona García Elvis Eduardo",
+    "url": "/gaona-garcia-elvis-eduardo/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/parra-penuela-hector-guillermo.png"
+}

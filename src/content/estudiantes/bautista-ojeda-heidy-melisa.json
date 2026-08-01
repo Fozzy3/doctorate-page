@@ -1,0 +1,25 @@
+{
+  "nombre": "Bautista Ojeda Heidy Melisa",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001610600",
+    "scholar": "https://scholar.google.es/citations?user=lO7DDFwAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-7109-2916",
+    "researchgate": "https://www.researchgate.net/profile/Heidy-Bautista-Ojeda"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2020",
+  "proyecto": "Modelo de gestión del recurso hídrico en sistemas agrícolas protegidos, basado en el análisis de datos de cultivos transitorios",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Vera Parra Nelson Enrique",
+    "url": "/vera-parra-nelson-enrique/"
+  },
+  "foto": "/images/estudiantes/bautista-ojeda-heidy-melisa.png"
+}

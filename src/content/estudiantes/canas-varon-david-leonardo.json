@@ -1,0 +1,23 @@
+{
+  "nombre": "Cañas Varón David Leonardo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001352122",
+    "orcid": "https://orcid.org/0000-0001-7795-8071"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2024",
+  "proyecto": "Modelo de una planta de irradiación fitosanitaria para Colombia",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Salamanca Bernal Julián Andres",
+    "url": "/salamanca-bernal-julian-andres/"
+  },
+  "foto": "/images/estudiantes/canas-varon-david-leonardo.png"
+}

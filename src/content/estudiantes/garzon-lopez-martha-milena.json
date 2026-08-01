@@ -1,0 +1,20 @@
+{
+  "nombre": "Garzón Lopez Martha Milena",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "ARCOSES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001364738"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2026",
+  "director": {
+    "nombre": "Alvarez Pomar Lindsay",
+    "url": "/alvarez-pomar-lindsay/"
+  },
+  "foto": "/images/estudiantes/garzon-lopez-martha-milena.png"
+}

@@ -1,0 +1,22 @@
+{
+  "nombre": "Millan Rojas Edwin Eduardo",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000833975",
+    "scholar": "https://scholar.google.es/citations?user=Fqojvw8AAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-4258-4601"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Una aproximación a la gestión ambiental del Piedemonte Amazónico Colombiano (Florencia Caquetá) desde la computación bioinspirada de alto desempeño",
+  "director": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/millan-rojas-edwin-eduardo-2.png"
+}

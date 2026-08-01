@@ -1,0 +1,28 @@
+{
+  "nombre": "Ramírez Pérez Natalia Andrea",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LASER",
+      "url": "/laser/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001700480",
+    "scholar": "https://scholar.google.es/citations?user=euwIgVoAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0009-0001-6773-061X"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2022",
+  "proyecto": "Sistema basado en inteligencia colectiva para la gestión de riesgo de corrupción en el sector de infraestructura",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Gómez Vargas Ernesto",
+    "url": "/gomez-vargas-ernesto/"
+  },
+  "codirector": {
+    "nombre": "Álvarez Pomar Lindsay",
+    "url": "/alvarez-pomar-lindsay/"
+  },
+  "foto": "/images/estudiantes/ramirez-perez-natalia-andrea.png"
+}

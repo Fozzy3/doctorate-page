@@ -1,0 +1,29 @@
+{
+  "nombre": "Gracia Rojas Jeniffer Paola",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001392818",
+    "scholar": "https://scholar.google.es/citations?user=47mPhYgAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-2079-8422",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57202785069",
+    "researchgate": "https://www.researchgate.net/profile/Jeniffer-Gracia-2"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "tesis": "Desarrollo de un proceso para la producción de biopolímeros biodegradables (polihidroxialcanoatos) a través de materias primas renovables utilizando cultivos mixtos y lodos provenientes de plantas de tratamiento de agua residuales",
+  "director": {
+    "nombre": "Montenegro Marín Carlos Enrique",
+    "url": "/montenegro-marin-carlos-enrique/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/gracia-rojas-jeniffer-paola.png"
+}

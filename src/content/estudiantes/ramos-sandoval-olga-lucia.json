@@ -1,0 +1,21 @@
+{
+  "nombre": "Ramos Sandoval Olga Lucia",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001482494",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56735842500"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Arquitectura algorítmica para el reconocimiento de patrones fonéticos del habla subvocal en el español",
+  "director": {
+    "nombre": "Saby Beltrán Jorge Enrique",
+    "url": "/saby-beltran-jorge-enrique/"
+  },
+  "foto": "/images/estudiantes/ramos-sandoval-olga-lucia.png"
+}

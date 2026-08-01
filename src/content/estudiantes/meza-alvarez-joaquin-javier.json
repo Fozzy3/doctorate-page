@@ -1,0 +1,20 @@
+{
+  "nombre": "Meza Alvarez Joaquin Javier",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GIIRA",
+      "url": "/giira/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000224235"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Algoritmo de optimización multiobjetivo basado en comportamientos emergentes de enjambres",
+  "director": {
+    "nombre": "Montenegro Marín Carlos Enrique",
+    "url": "/montenegro-marin-carlos-enrique/"
+  },
+  "foto": "/images/estudiantes/meza-alvarez-joaquin-javier.png"
+}

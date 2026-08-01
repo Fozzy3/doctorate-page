@@ -1,0 +1,20 @@
+{
+  "nombre": "Gonzáles Cárdenas Jesús Rene",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LASER",
+      "url": "/laser/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000091199"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2026",
+  "director": {
+    "nombre": "Gómez Vargas Ernesto",
+    "url": "/gomez-vargas-ernesto/"
+  },
+  "foto": "/images/estudiantes/gonzales-cardenas-jesus-rene.png"
+}

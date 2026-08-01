@@ -1,0 +1,22 @@
+{
+  "nombre": "Herrera Herrera Héctor Manuel",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000045701"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2025",
+  "proyecto": "Modelo de ciberseguridad basado en aprendizaje automático en protocolos IoT sobre redes IEEE 802.11 AH y IEEE 802.15.4",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "foto": "/images/estudiantes/herrera-herrera-hector-manuel.png"
+}

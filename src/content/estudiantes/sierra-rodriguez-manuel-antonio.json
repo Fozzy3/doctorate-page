@@ -1,0 +1,23 @@
+{
+  "nombre": "Sierra Rodríguez Manuel Antonio",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GICOGE",
+      "url": "/gicoge/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001186035",
+    "scholar": "https://scholar.google.com/citations?hl=es&user=bwfJJpQAAAAJ"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2021",
+  "proyecto": "Modelo de turismo científico soportado por la gestión del conocimiento",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Medina García Víctor Hugo",
+    "url": "/medina-garcia-victor-hugo/"
+  },
+  "foto": "/images/estudiantes/sierra-rodriguez-manuel-antonio.png"
+}

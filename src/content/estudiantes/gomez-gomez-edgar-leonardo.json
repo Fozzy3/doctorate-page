@@ -1,0 +1,27 @@
+{
+  "nombre": "Gómez Gómez Edgar Leonardo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIDENUTAS",
+      "url": "/gidenutas/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001458325",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57200890165"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2023",
+  "proyecto": "Metodología para la inspección en vuelo de un sistema de aterrizaje por instrumentos usando un sistema de aeronave no tripulada",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Pedraza Martinez Luis Fernando",
+    "url": "/pedraza-martinez-luis-fernando/"
+  },
+  "codirector": {
+    "nombre": "Hernández Suárez César Augusto",
+    "url": "/hernandez-suarez-cesar-augusto/"
+  },
+  "foto": "/images/estudiantes/gomez-gomez-edgar-leonardo.png"
+}

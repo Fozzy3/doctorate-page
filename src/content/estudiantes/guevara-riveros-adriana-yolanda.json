@@ -1,0 +1,22 @@
+{
+  "nombre": "Guevara Riveros Adriana Yolanda",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "INTERNET INTELIGENTE",
+      "url": "/internet-inteligente/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001705774"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2020",
+  "proyecto": "Modelo de clasificación de imágenes de agricultura inteligente aplicando visión artificial e internet de las cosas",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "foto": "/images/estudiantes/guevara-riveros-adriana-yolanda.png"
+}

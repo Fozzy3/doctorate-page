@@ -1,0 +1,27 @@
+{
+  "nombre": "Corredor Camargo Oscar Fabian",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001195239",
+    "orcid": "https://orcid.org/0000-0001-6606-2122"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2020",
+  "proyecto": "Modelo de asignación de frecuencias radioeléctricas y su aplicación en redes móvildes de quinta generación – 5G utilizando técnicas de espectro compartido Caso Colombia",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "López Sarmiento Danilo Alfonso",
+    "url": "/lopez-sarmiento-danilo-alfonso/"
+  },
+  "codirector": {
+    "nombre": "",
+    "url": "https://bogota.gov.co/"
+  },
+  "foto": "/images/estudiantes/corredor-camargo-oscar-fabian.png"
+}

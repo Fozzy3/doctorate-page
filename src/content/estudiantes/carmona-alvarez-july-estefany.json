@@ -1,0 +1,26 @@
+{
+  "nombre": "Carmona Álvarez July Estefany",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "GIDPAD",
+      "url": "/gidpad-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001650522",
+    "scholar": "https://scholar.google.es/citations?user=r6ByV0oAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0003-2212-3901",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59180636300&origin=recordpage",
+    "researchgate": "https://www.researchgate.net/profile/July-Carmona-3"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2024",
+  "proyecto": "Propuesta metodológica implementando el uso de la inteligencia artificial (IA) para la estimación de la capacidad de resiliencia de sistemas en ingeniería civil ante eventos disruptivos",
+  "proyectoEtiqueta": "Propuesta de investigación doctoral",
+  "director": {
+    "nombre": "Pineda Jaimes Jorge Arturo",
+    "url": "/pineda-jaimes-jorge-arturo/"
+  },
+  "foto": "/images/estudiantes/carmona-alvarez-july-estefany.png"
+}

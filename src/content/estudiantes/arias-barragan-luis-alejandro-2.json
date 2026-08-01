@@ -1,0 +1,22 @@
+{
+  "nombre": "Arias Barragan Luis Alejandro",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000227170",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55491022600",
+    "researchgate": "https://www.researchgate.net/profile/Luis-Arias-29"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "Agente Integrador de recursos energéticos distribuidos en el nivel de distribución del sistema eléctrico Colombiano",
+  "director": {
+    "nombre": "Rivas Trujillo Edwin",
+    "url": "/rivas-trujillo-edwin/"
+  },
+  "foto": "/images/estudiantes/arias-barragan-luis-alejandro-2.png"
+}

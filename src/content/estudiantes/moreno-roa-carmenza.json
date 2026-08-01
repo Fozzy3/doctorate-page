@@ -1,0 +1,22 @@
+{
+  "nombre": "Moreno Roa Carmenza",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000142492",
+    "orcid": "https://orcid.org/0000-0002-6947-8198",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57190837487&origin=recordpage"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "tesis": "Identificación matemática de las características de los huecos de tensión presentes en un motor de inducción partiendo de sus variables mecánicas",
+  "director": {
+    "nombre": "Jaramillo Matta Adolfo Andrés",
+    "url": "/jaramillo-matta-adolfo-andres/"
+  },
+  "foto": "/images/estudiantes/moreno-roa-carmenza.png"
+}

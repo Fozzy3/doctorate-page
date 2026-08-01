@@ -1,0 +1,28 @@
+{
+  "nombre": "Romero Villalobos Oswaldo Alberto",
+  "tipo": "egresado",
+  "grupos": [
+    {
+      "nombre": "GICOECOL",
+      "url": "/gicoecol/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000607428",
+    "scholar": "https://scholar.google.es/citations?user=emurbbAAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0001-8308-3128",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57219313812&origin=recordpage",
+    "researchgate": "https://www.researchgate.net/profile/Oswaldo-Romero-2"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "tesis": "El modelo integra-ciudad: la gestión del tráfico vial apoyado por la gestión del conocimiento",
+  "director": {
+    "nombre": "Rincón Rojas Edgar Jacinto",
+    "url": "/rincon-rojas-edgar-jacinto/"
+  },
+  "codirector": {
+    "nombre": "Salcedo Parra Octavio José",
+    "url": "/salcedo-parra-octavio-jose/"
+  },
+  "foto": "/images/estudiantes/romero-villalobos-oswaldo-alberto.png"
+}
