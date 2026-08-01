@@ -57,20 +57,37 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Habilita Pages en el repo si aún no lo está
+          enablement: true
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
+      # Se construye SIN --base: el sitio usa URLs absolutas de raíz (paridad
+      # con el WordPress). Para el staging bajo subpath, el paso siguiente
+      # reescribe las rutas en el HTML ya generado.
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+            --site "${{ steps.pages.outputs.origin }}"
+        working-directory: ${{ env.BUILD_PATH }}
+      # Staging en fozzy3.github.io/doctorate-page/: prefija todas las rutas
+      # internas con el subpath. Con dominio propio base_path queda vacío y
+      # este paso no hace nada — producción no se toca.
+      - name: Ajustar rutas al subpath de Pages
+        if: ${{ steps.pages.outputs.base_path != '' }}
+        run: |
+          BASE="${{ steps.pages.outputs.base_path }}"
+          find dist -name '*.html' -print0 | xargs -0 sed -i \
+            -e "s|href=\"/|href=\"$BASE/|g" \
+            -e "s|src=\"/|src=\"$BASE/|g" \
+            -e "s|action=\"/|action=\"$BASE/|g"
         working-directory: ${{ env.BUILD_PATH }}
       # El buscador (/buscar/) depende del índice que Pagefind genera sobre dist
       - name: Build search index (Pagefind)
