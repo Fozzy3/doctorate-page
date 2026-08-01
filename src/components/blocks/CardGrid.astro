@@ -1,0 +1,153 @@
+---
+/**
+ * Retícula de tarjetas con fotografía: imagen 16:9, título subrayado al
+ * hover, texto corto. Para páginas índice y destinos de sección.
+ *
+ *   <CardGrid items={[
+ *     { titulo: 'Servicios', imagen: '/images/stock/codigo.jpg',
+ *       texto: '...', href: '/servicios-cecad/' },
+ *   ]} />
+ */
+interface Card {
+  titulo: string;
+  imagen?: string;
+  alt?: string;
+  texto?: string;
+  href?: string;
+}
+
+interface Props {
+  items: Card[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="full card-grid">
+  <div class="cg-inner">
+    {
+      items.map((c) => {
+        const cuerpo = (
+          <>
+            {c.imagen && (
+              <img src={c.imagen} alt={c.alt ?? ''} loading="lazy" width="640" height="360" />
+            )}
+            <span class="cg-body">
+              <span class="cg-titulo">
+                {c.titulo}
+                {c.href && (
+                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                )}
+              </span>
+              {c.texto && <span class="cg-texto">{c.texto}</span>}
+            </span>
+          </>
+        );
+        return c.href ? (
+          <a class="cg-card" href={c.href}>
+            {cuerpo}
+          </a>
+        ) : (
+          <div class="cg-card">{cuerpo}</div>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .card-grid {
+    padding-block: 0.5rem;
+  }
+
+  .cg-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .cg-card {
+    display: block;
+    background: var(--c-bg);
+    border: 1px solid var(--c-line);
+    text-decoration: none;
+    color: var(--c-ink);
+    overflow: hidden;
+    transition: border-color 200ms var(--ease-out-quint), translate 250ms var(--ease-out-quint),
+      box-shadow 250ms var(--ease-out-quint);
+  }
+
+  a.cg-card:hover {
+    border-color: var(--c-crimson);
+    translate: 0 -4px;
+    box-shadow: 0 14px 32px oklch(0.2 0.01 260 / 0.12);
+  }
+
+  .cg-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: scale 450ms var(--ease-out-quint);
+  }
+
+  a.cg-card:hover img {
+    scale: 1.04;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.cg-card:hover {
+      translate: 0 0;
+    }
+
+    a.cg-card:hover img {
+      scale: 1;
+    }
+  }
+
+  .cg-body {
+    display: block;
+    padding: 1.15rem 1.3rem 1.4rem;
+  }
+
+  .cg-titulo {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .cg-titulo svg {
+    flex-shrink: 0;
+    color: var(--c-crimson);
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  a.cg-card:hover .cg-titulo {
+    color: var(--c-crimson);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  a.cg-card:hover .cg-titulo svg {
+    translate: 2px -2px;
+  }
+
+  .cg-texto {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--c-ink-soft);
+    margin-top: 0.5rem;
+  }
+</style>

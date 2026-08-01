@@ -1,0 +1,455 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import NewsSpotlight from '../components/NewsSpotlight.astro';
+
+const noticias = (await getCollection('noticias'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const enfasis = [
+  {
+    href: '/grupos-de-investigacion/',
+    title: 'Ciencia de la información y el conocimiento',
+    text: 'Sistemas inteligentes, ingeniería de software, gestión del conocimiento y tecnologías de la información aplicadas a los problemas del país.',
+    cta: 'Grupos de investigación',
+    image: '/images/investigacion.jpg',
+    imageAlt: 'Edificio de la Universidad Distrital Francisco José de Caldas',
+  },
+  {
+    href: '/laboratorio-de-microrredes/',
+    title: 'Ingeniería eléctrica y electrónica',
+    text: 'Sistemas de energía, microrredes, automatización y procesamiento de señales para los retos energéticos de Colombia.',
+    cta: 'Laboratorio de microrredes',
+    image: '/images/campus-tecnologica.jpg',
+    imageAlt: 'Campus de la Facultad Tecnológica de la Universidad Distrital',
+  },
+];
+
+const tramites = [
+  { href: '/formatos/', label: 'Formatos' },
+  { href: '/solicitudes/', label: 'Solicitudes' },
+  { href: '/calendario-de-actividades-2026/', label: 'Calendario 2026' },
+  { href: '/actas-de-consejo/', label: 'Actas de consejo' },
+  { href: '/normatividad/', label: 'Normatividad' },
+  { href: '/prestamo-de-salas-y-espacios-academicos/', label: 'Préstamo de salas' },
+];
+---
+
+<Base
+  title="Inicio"
+  description="Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas. Formación de investigadores en ciencia, tecnología e innovación en Bogotá, Colombia. SNIES 101686."
+>
+  <Hero
+    title="Doctorado en Ingeniería"
+    lead="Formamos investigadores de alto nivel en el ámbito científico y tecnológico de la ingeniería, con visión global y compromiso con el desarrollo del país."
+    image="/images/hero-ingenieria.jpg"
+    imageAlt="Fachada de la Facultad de Ingeniería de la Universidad Distrital"
+    ctas={[
+      { href: '/admisiones-doctorado/', label: 'Proceso de admisión', primary: true },
+      { href: '/acerca-del-doctorado/', label: 'Conoce el programa' },
+    ]}
+  />
+
+  <section class="intro">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <h2 class="display">Un programa con trayectoria</h2>
+        <p>
+          Creado por el Acuerdo 02 de 2008 del Consejo Superior Universitario y en actividades
+          desde 2012, el Doctorado en Ingeniería es el espacio de formación doctoral de la Facultad
+          de Ingeniería de la Universidad Distrital Francisco José de Caldas. Sus egresados amplían
+          las fronteras del conocimiento en redes nacionales e internacionales de investigación.
+        </p>
+        <a class="btn btn-outline-dark" href="/acerca-del-doctorado/">Acerca del doctorado</a>
+      </div>
+      <dl class="ficha">
+        <div><dt>SNIES</dt><dd>101686</dd></div>
+        <div><dt>Título que otorga</dt><dd>Doctor(a) en Ingeniería</dd></div>
+        <div><dt>Modalidad</dt><dd>Presencial · Bogotá D.C.</dd></div>
+        <div><dt>Duración</dt><dd>3 años · 90 créditos</dd></div>
+        <div><dt>Valor por crédito</dt><dd>0.55 SMLV</dd></div>
+        <div>
+          <dt>Registro calificado</dt>
+          <dd>Resolución No. 5905 del 7 de junio de 2019</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="enfasis">
+    <div class="container">
+      <header class="enfasis-head">
+        <h2 class="display">Énfasis de investigación</h2>
+        <p>
+          Dos líneas doctorales sostenidas por los grupos de investigación de la Facultad de
+          Ingeniería.
+        </p>
+      </header>
+    </div>
+
+    <div class="enfasis-band">
+      <div class="container">
+        {
+          enfasis.map((e, i) => (
+            <div class={`enfasis-row${i % 2 ? ' reverse' : ''}`}>
+              <div class="enfasis-panel">
+                <h3>{e.title}</h3>
+                <p>{e.text}</p>
+                <a class="arrow-link" href={e.href}>
+                  {e.cta}
+                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </a>
+              </div>
+              <img
+                class="enfasis-photo"
+                src={e.image}
+                alt={e.imageAlt}
+                loading="lazy"
+                width="900"
+                height="600"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="noticias-home">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="display">Noticias</h2>
+        <a class="arrow-link" href="/noticias/">
+          Todas las noticias
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </a>
+      </div>
+      <NewsSpotlight
+        items={noticias.map((n) => ({
+          href: `/noticias/${n.id}/`,
+          title: n.data.title,
+          date: n.data.date,
+          description: n.data.description,
+          image: n.data.image,
+          imageAlt: n.data.imageAlt,
+        }))}
+      />
+    </div>
+  </section>
+
+  <section class="accesos">
+    <div class="container">
+      <header class="accesos-head">
+        <h2 class="display">Trámites y documentos</h2>
+        <p>
+          Encuentra el formato, la solicitud o el documento oficial que necesitas para tu proceso
+          académico.
+        </p>
+      </header>
+      <ul class="accesos-list">
+        {
+          tramites.map((t) => (
+            <li>
+              <a href={t.href}>
+                {t.label}
+                <svg width="18" height="18" viewBox="0 0 14 14" aria-hidden="true">
+                  <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>Convocatoria de admisiones</h2>
+      <p>Consulta el proceso, requisitos y fechas para ingresar al Doctorado en Ingeniería.</p>
+      <a class="btn btn-outline-light" href="/admisiones-doctorado/">Ver proceso de admisión</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  section {
+    padding-block: var(--section-gap);
+  }
+
+  section + section {
+    padding-top: 0;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .arrow-link svg {
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .arrow-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .arrow-link:hover svg {
+    translate: 2px -2px;
+  }
+
+  /* Intro + ficha */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .intro-text p {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    margin-bottom: 1.75rem;
+    max-width: 58ch;
+  }
+
+  .ficha {
+    border-top: 3px solid var(--c-crimson);
+    background: var(--c-surface);
+    padding: 1.75rem 2rem;
+  }
+
+  .ficha div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.55rem;
+  }
+
+  .ficha div + div {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .ficha dt {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+  }
+
+  .ficha dd {
+    font-weight: 650;
+    font-size: 0.9375rem;
+    text-align: right;
+  }
+
+  /* Énfasis: banda de tinta con paneles blancos superpuestos */
+  .enfasis {
+    padding-block: 0 var(--section-gap);
+  }
+
+  .enfasis-head p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--c-ink-soft);
+    max-width: 52ch;
+    margin-top: -0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .enfasis-band {
+    position: relative;
+  }
+
+  /* La banda oscura queda retranqueada verticalmente: las fotos la desbordan */
+  .enfasis-band::before {
+    content: '';
+    position: absolute;
+    inset: clamp(3rem, 7vw, 5.5rem) 0;
+    background: var(--c-ink);
+  }
+
+  .enfasis-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+  }
+
+  .enfasis-row + .enfasis-row {
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .enfasis-panel {
+    grid-column: 1 / 6;
+    grid-row: 1;
+    z-index: 1;
+    background: var(--c-bg);
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+  }
+
+  .enfasis-photo {
+    grid-column: 5 / 13;
+    grid-row: 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .enfasis-row.reverse .enfasis-panel {
+    grid-column: 8 / 13;
+  }
+
+  .enfasis-row.reverse .enfasis-photo {
+    grid-column: 1 / 9;
+  }
+
+  .enfasis-panel h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    line-height: 1.2;
+  }
+
+  .enfasis-panel p {
+    margin-block: 0.9rem 1.4rem;
+    color: var(--c-ink-soft);
+    max-width: 44ch;
+  }
+
+  /* Noticias */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-head h2 {
+    margin-bottom: 0;
+  }
+
+  /* Trámites */
+  .accesos-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+
+  .accesos-head h2 {
+    margin-bottom: 0;
+  }
+
+  .accesos-head p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--c-ink-soft);
+    max-width: 48ch;
+  }
+
+  .accesos-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    column-gap: clamp(2.5rem, 6vw, 6rem);
+    row-gap: 0;
+  }
+
+  .accesos-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.35rem 0.25rem;
+    border-bottom: 1px solid var(--c-line);
+    text-decoration: none;
+    color: var(--c-ink);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .accesos-list a:hover {
+    color: var(--c-crimson);
+  }
+
+  .accesos-list svg {
+    color: var(--c-crimson);
+    flex-shrink: 0;
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .accesos-list a:hover svg {
+    translate: 3px -3px;
+  }
+
+  /* CTA */
+  .cta-band {
+    background: var(--c-crimson);
+    color: var(--c-white);
+    padding-block: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+
+  .cta-inner {
+    max-width: 720px;
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-band p {
+    font-size: 1.1rem;
+    margin-bottom: 1.75rem;
+    color: oklch(0.95 0.01 18);
+  }
+
+  @media (max-width: 860px) {
+    .intro-grid,
+    .accesos-head {
+      grid-template-columns: 1fr;
+    }
+
+    .accesos-head {
+      gap: 0.75rem;
+    }
+
+    /* Énfasis en columna: foto arriba, panel debajo sobre la banda */
+    .enfasis-band::before {
+      inset: 4rem 0;
+    }
+
+    /* Columna con la foto primero: el panel monta sobre su propia foto */
+    .enfasis-row,
+    .enfasis-row.reverse {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .enfasis-panel,
+    .enfasis-row.reverse .enfasis-panel {
+      margin-inline: clamp(0.5rem, 3vw, 1.5rem);
+      margin-top: -2.5rem;
+      position: relative;
+    }
+  }
+</style>

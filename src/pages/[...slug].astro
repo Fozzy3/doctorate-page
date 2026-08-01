@@ -1,0 +1,383 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { sectionOf } from '../data/nav';
+
+export async function getStaticPaths() {
+  const paginas = await getCollection('paginas');
+  return paginas.map((p) => ({ params: { slug: p.id }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const { Content } = await render(p);
+const section = sectionOf(p.data.section);
+const slug = p.id;
+---
+
+<Base title={p.data.title} description={p.data.description}>
+  <div class:list={['page-hero', { 'hero-centrado': p.data.plantilla === 'panorama' }]}>
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Miga de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          {section && <li>{section.label}</li>}
+          <li aria-current="page">{p.data.title}</li>
+        </ol>
+      </nav>
+      <h1 class="display">{p.data.title}</h1>
+      {p.data.updated && <p class="page-updated">Actualizado: {p.data.updated}</p>}
+    </div>
+  </div>
+
+  {
+    p.data.plantilla === 'panorama' ? (
+      <article class="prose panorama">
+        <Content />
+      </article>
+    ) : (
+  <div class="container page">
+    <div class="page-grid">
+      <aside class="subnav">
+        {
+          section && (
+            <details class="subnav-details" open>
+              <summary>En esta sección</summary>
+              <nav aria-label={`Páginas de ${section.label}`}>
+                <p class="subnav-title">{section.label}</p>
+                <ul>
+                  {section.items.map((item) => (
+                    <li>
+                      <a
+                        href={`/${item.slug}/`}
+                        aria-current={item.slug === slug ? 'page' : undefined}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </details>
+          )
+        }
+      </aside>
+
+      <article>
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
+
+      <aside class="rail" aria-label="Información de contacto y accesos frecuentes">
+        <div class="rail-card">
+          <p class="rail-title">Contacto del programa</p>
+          <address>
+            Cra. 7 No. 40B-53, Semisótano<br />
+            Edificio Administrativo, Bogotá D.C.<br />
+            (+57) 601 323 9300 ext. 1419<br />
+            <a href="mailto:doctoradoing@udistrital.edu.co">doctoradoing@udistrital.edu.co</a>
+          </address>
+          <a class="btn btn-outline-dark rail-btn" href="/contactenos/">Contáctenos</a>
+        </div>
+        <nav class="rail-links" aria-label="Trámites frecuentes">
+          <p class="rail-title">Trámites frecuentes</p>
+          <ul>
+            <li><a href="/formatos/">Formatos</a></li>
+            <li><a href="/solicitudes/">Solicitudes</a></li>
+            <li><a href="/calendario-de-actividades-2026/">Calendario 2026</a></li>
+            <li><a href="/preguntas-frecuentes-doctorado/">Preguntas frecuentes</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+    )
+  }
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2 class="display">Forma parte del Doctorado en Ingeniería</h2>
+      <p>Conoce el proceso de admisión, los requisitos y las fechas de la convocatoria.</p>
+      <div class="cta-actions">
+        <a class="btn btn-outline-light" href="/admisiones-doctorado/">Proceso de admisión</a>
+        <a class="cta-link" href="/contactenos/">
+          Contáctenos
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Cabecera de página: banda surface de lado a lado */
+  .page-hero {
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-line);
+    padding-block: 1.5rem clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+
+  .breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-bottom: 1.25rem;
+  }
+
+  .breadcrumbs li + li::before {
+    content: '/';
+    margin-right: 0.5rem;
+    color: var(--c-ink-soft);
+  }
+
+  .breadcrumbs a {
+    color: var(--c-ink-soft);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--c-crimson);
+    text-decoration: underline;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    max-width: 28ch;
+  }
+
+  /* Panorama: la cabecera se centra para alinear con el lienzo de bloques */
+  .hero-centrado {
+    text-align: center;
+  }
+
+  .hero-centrado .breadcrumbs ol {
+    justify-content: center;
+  }
+
+  .hero-centrado h1 {
+    margin-inline: auto;
+  }
+
+  .page-updated {
+    margin-top: 0.6rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+  }
+
+  .page {
+    padding-block: clamp(2rem, 4vw, 3.5rem) var(--section-gap);
+  }
+
+  /* Banda de cierre: toda página termina con una invitación clara */
+  .cta-band {
+    background: var(--c-crimson);
+    color: var(--c-white);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .cta-inner {
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-band p {
+    font-size: 1.05rem;
+    margin-bottom: 1.75rem;
+    color: oklch(0.95 0.01 18);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--c-white);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+
+  .cta-link:hover {
+    color: var(--c-white);
+    text-decoration-thickness: 2px;
+  }
+
+  .cta-link svg {
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .cta-link:hover svg {
+    translate: 2px -2px;
+  }
+
+  .page-grid {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 280px;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  /* Página con tabla ancha: el riel cede su espacio — regla en global.css
+     porque Astro no compila :global() dentro de :has() */
+
+  /* Subnav de sección */
+  .subnav-details {
+    border-top: 3px solid var(--c-crimson);
+    background: var(--c-surface);
+    padding: 1.1rem 1.25rem;
+    position: sticky;
+    top: 90px;
+  }
+
+  /* Desktop: sin toggle visible, el details queda abierto de forma permanente */
+  .subnav-details summary {
+    display: none;
+  }
+
+  .subnav-title {
+    font-weight: 750;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .subnav ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .subnav li {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .subnav a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--c-ink-soft);
+  }
+
+  .subnav a:hover {
+    color: var(--c-crimson);
+  }
+
+  .subnav a[aria-current='page'] {
+    color: var(--c-crimson);
+    font-weight: 700;
+  }
+
+  /* Riel derecho */
+  .rail {
+    position: sticky;
+    top: 90px;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .rail-title {
+    font-weight: 750;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .rail-card {
+    border-top: 3px solid var(--c-crimson);
+    background: var(--c-surface);
+    padding: 1.25rem 1.4rem 1.5rem;
+  }
+
+  .rail-card address {
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--c-ink-soft);
+  }
+
+  .rail-card address a {
+    color: var(--c-crimson);
+  }
+
+  .rail-btn {
+    margin-top: 1.1rem;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .rail-links ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .rail-links li {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .rail-links li:first-of-type {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .rail-links a {
+    display: block;
+    padding: 0.65rem 0.1rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--c-ink);
+    text-decoration: none;
+  }
+
+  .rail-links a:hover {
+    color: var(--c-crimson);
+  }
+
+  /* El riel solo existe donde sobra ancho; antes, el contenido manda */
+  @media (max-width: 1280px) {
+    .rail {
+      display: none;
+    }
+
+    .page-grid {
+      grid-template-columns: 250px minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .page-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .subnav-details {
+      position: static;
+    }
+
+    .subnav-details summary {
+      display: block;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .subnav-title {
+      display: none;
+    }
+  }
+</style>

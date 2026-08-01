@@ -1,0 +1,74 @@
+---
+title: '¿Qué es el CECAD?'
+description: 'El CECAD es el Centro de Computación de Alto Desempeño de la Universidad Distrital, laboratorio adscrito al Doctorado en Ingeniería para apoyar la investigación.'
+section: 'cecad'
+updated: '2026-05-06'
+plantilla: 'panorama'
+---
+
+import BandaMedia from '../../components/blocks/BandaMedia.astro';
+import Franja from '../../components/blocks/Franja.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import Destacado from '../../components/blocks/Destacado.astro';
+
+El Centro de Computación de Alto Desempeño de la Universidad Distrital Francisco José de Caldas (CECAD) es un laboratorio adscrito al Doctorado en Ingeniería con el objetivo de fomentar la investigación y la transferencia de conocimiento en las áreas de ingeniería, tecnología, ciencias naturales, ciencias sociales, y en general todas las divisiones de la Universidad involucradas en el desarrollo y fortalecimiento de la comunidad académica institucional y nacional.
+
+<BandaMedia
+  titulo="Alto poder de cómputo al servicio de la ciencia"
+  imagen="/images/stock/servidores.jpg"
+  alt="Racks de servidores de un centro de datos"
+  texto="El CECAD es un centro de computación de alto desempeño (HPC) que impulsa la investigación en todas las áreas de la ciencia y la tecnología que requieran una herramienta con alto poder de cómputo y de almacenamiento de información."
+  href="/servicios-cecad/"
+  cta="Conoce los servicios"
+/>
+
+<Franja tono="surface">
+
+## Objetivos del CECAD
+
+- Proveer poder de cómputo, almacenamiento y servicios relacionados de computación de alto desempeño a los grupos de investigación de la Universidad y universidades afiliadas trabajando en proyectos de gran escala, y en general, proveer soporte a la investigación y el desarrollo científico (I&D).
+- Fomentar la formación de estudiantes e investigadores en áreas de la ciencia y la tecnología relacionadas con computación de alto desempeño, en forma de investigación o proyectos aplicados que requieran un centro de computación de esta naturaleza, o acceso a equipos de cómputo ubicados en otras instituciones vinculadas a redes académicas nacionales o internacionales.
+- Entrenar a los usuarios e investigadores en herramientas, software y plataformas para computación de alto desempeño, de forma que ellos puedan desarrollar exitosamente sus investigaciones y proyectos de experimentación en sus respectivas áreas.
+- Promover el intercambio de experiencias y tecnologías entre centros de computación de alto desempeño a nivel local, regional, nacional e internacional.
+
+</Franja>
+
+## Explora el CECAD
+
+<CardGrid
+  items={[
+    {
+      titulo: 'Servicios',
+      imagen: '/images/stock/codigo.jpg',
+      alt: 'Código fuente en la pantalla de un computador',
+      texto: 'Cómputo de alto desempeño, almacenamiento y plataformas para tus proyectos de investigación.',
+      href: '/servicios-cecad/',
+    },
+    {
+      titulo: 'Solicitudes CECAD',
+      imagen: '/images/stock/reunion.jpg',
+      alt: 'Investigadores trabajando en equipo frente a un portátil',
+      texto: 'Solicita recursos computacionales para tu proyecto o tesis de grado.',
+      href: '/solicitudes-cecad/',
+    },
+    {
+      titulo: 'Préstamo de salas',
+      imagen: '/images/stock/biblioteca.jpg',
+      alt: 'Interior de una biblioteca universitaria',
+      texto: 'Salas y espacios académicos disponibles para docentes y grupos de investigación.',
+      href: '/prestamo-de-salas-y-espacios-academicos/',
+    },
+  ]}
+/>
+
+## Video informativo
+
+- [CECAD – Universidad Distrital Francisco José de Caldas (video en YouTube)](https://www.youtube.com/watch?v=UVcDKNG4nCs)
+
+<Destacado
+  tono="ink"
+  titulo="¿Necesitas recursos computacionales para tu proyecto o tesis?"
+  texto="El CECAD presta sus servicios a estudiantes, docentes y grupos de investigación de la Universidad y de instituciones aliadas."
+  href="/solicitudes-cecad/"
+  cta="Haz tu solicitud"
+/>

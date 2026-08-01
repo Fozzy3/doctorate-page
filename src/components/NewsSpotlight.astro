@@ -1,0 +1,177 @@
+---
+/**
+ * Historia principal grande + riel lateral de titulares (patrón de portada
+ * de noticias de las grandes universidades). Recibe las noticias ya ordenadas.
+ */
+interface Item {
+  href: string;
+  title: string;
+  date: Date;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+const [main, ...rail] = items;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+---
+
+<div class="spotlight">
+  <article class="spot-main">
+    <a href={main.href}>
+      {
+        main.image && (
+          <img src={main.image} alt={main.imageAlt ?? ''} width="1180" height="664" loading="lazy" />
+        )
+      }
+      <div class="spot-main-body">
+        <time datetime={iso(main.date)}>{fmt(main.date)}</time>
+        <h3>{main.title}</h3>
+        {main.description && <p>{main.description}</p>}
+      </div>
+    </a>
+  </article>
+
+  <div class="spot-rail">
+    {
+      rail.map((n) => (
+        <article class="spot-item">
+          <a href={n.href}>
+            {n.image && (
+              <img src={n.image} alt={n.imageAlt ?? ''} width="300" height="200" loading="lazy" />
+            )}
+            <span class="spot-item-body">
+              <time datetime={iso(n.date)}>{fmt(n.date)}</time>
+              <h3>{n.title}</h3>
+            </span>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .spotlight {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  .spotlight a {
+    text-decoration: none;
+    color: var(--c-ink);
+  }
+
+  .spotlight time {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+  }
+
+  /* Los titulares van subrayados por defecto, como enlaces de prensa */
+  .spotlight h3 {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--c-line);
+    transition: text-decoration-color 150ms var(--ease-out-quint), color 150ms var(--ease-out-quint);
+  }
+
+  .spotlight a:hover h3 {
+    color: var(--c-crimson);
+    text-decoration-color: var(--c-crimson);
+    text-decoration-thickness: 2px;
+  }
+
+  .spot-main a,
+  .spot-item a {
+    overflow: hidden;
+  }
+
+  .spot-main img,
+  .spot-item img {
+    transition: scale 450ms var(--ease-out-quint);
+  }
+
+  .spot-main a:hover img,
+  .spot-item a:hover img {
+    scale: 1.04;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spot-main a:hover img,
+    .spot-item a:hover img {
+      scale: 1;
+    }
+  }
+
+  .spot-main img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .spot-main-body {
+    padding-top: 1.25rem;
+  }
+
+  .spot-main h3 {
+    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    line-height: 1.18;
+    margin-top: 0.45rem;
+    max-width: 26ch;
+  }
+
+  .spot-main p {
+    margin-top: 0.8rem;
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--c-ink-soft);
+    max-width: 58ch;
+  }
+
+  .spot-item + .spot-item {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .spot-item a {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    gap: 1.1rem;
+    padding-block: 1.2rem;
+    align-items: start;
+  }
+
+  .spot-item:first-child a {
+    padding-top: 0;
+  }
+
+  .spot-item img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .spot-item h3 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 780px) {
+    .spotlight {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

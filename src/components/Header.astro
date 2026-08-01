@@ -1,0 +1,686 @@
+---
+import { sections } from '../data/nav';
+---
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a href="https://www.udistrital.edu.co/" rel="external">Universidad Distrital Francisco José de Caldas</a>
+    <nav aria-label="Enlaces de utilidad">
+      <a href="/noticias/">Noticias</a>
+      <a href="/contactenos/">Contacto</a>
+      <a href="mailto:doctoradoing@udistrital.edu.co">doctoradoing@udistrital.edu.co</a>
+    </nav>
+    <div class="lang">
+      <label class="visually-hidden" for="lang-select">Idioma de la página</label>
+      <select id="lang-select">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div id="google_translate_element" hidden></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="/">
+      <span class="wordmark-program">Doctorado en Ingeniería</span>
+      <span class="wordmark-university">Universidad Distrital Francisco José de Caldas</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navegación principal">
+      <ul>
+        {
+          sections.map((section) => (
+            <li class="nav-item">
+              <button type="button" aria-expanded="false" aria-controls={`menu-${section.id}`}>
+                {section.label}
+                <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </button>
+              <div class="mega" id={`menu-${section.id}`}>
+                <div class="container mega-inner">
+                  <div class="mega-head">
+                    <p class="mega-title">{section.label}</p>
+                    <p class="mega-blurb">{section.blurb}</p>
+                  </div>
+                  <ul class="mega-links">
+                    {section.items.map((item) => (
+                      <li>
+                        <a href={`/${item.slug}/`}>{item.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                  <a class="mega-feature" href={`/${section.items[0].slug}/`}>
+                    <img
+                      src={section.image}
+                      alt=""
+                      loading="lazy"
+                      width="640"
+                      height="360"
+                    />
+                    <span class="mega-feature-body">
+                      <span class="mega-feature-label">
+                        {section.items[0].label}
+                        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                          <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <form class="search-form" action="/buscar/" role="search">
+        <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true">
+          <circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M12 12l4.5 4.5" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <input
+          type="search"
+          name="q"
+          placeholder="Buscar en el sitio"
+          aria-label="Buscar en el sitio"
+          autocomplete="off"
+        />
+      </form>
+      <a class="search-icon" href="/buscar/" aria-label="Buscar en el sitio">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M12 12l4.5 4.5" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="drawer">
+        <span class="visually-hidden">Abrir menú</span>
+        <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true">
+          <path d="M1 1h20M1 8h20M1 15h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="drawer" id="drawer" aria-label="Navegación principal móvil" hidden>
+    {
+      sections.map((section) => (
+        <details>
+          <summary>{section.label}</summary>
+          <ul>
+            {section.items.map((item) => (
+              <li>
+                <a href={`/${item.slug}/`}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))
+    }
+    <div class="drawer-extra">
+      <a href="/noticias/">Noticias</a>
+      <a href="/contactenos/">Contacto</a>
+      <a href="/buscar/">Buscar</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .topbar {
+    background: var(--c-crimson-dark);
+    font-size: 0.8125rem;
+  }
+
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.45rem;
+  }
+
+  .topbar a {
+    color: oklch(0.93 0.01 18);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .topbar a:hover {
+    color: var(--c-white);
+    text-decoration: underline;
+  }
+
+  .topbar nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .topbar-inner > a {
+    margin-right: auto;
+  }
+
+  .lang select {
+    background: transparent;
+    color: oklch(0.93 0.01 18);
+    border: 1px solid oklch(0.55 0.06 18);
+    font: inherit;
+    font-size: 0.8125rem;
+    padding: 0.15rem 0.4rem;
+    cursor: pointer;
+  }
+
+  .lang select:hover {
+    border-color: oklch(0.8 0.03 18);
+  }
+
+  .lang option {
+    color: var(--c-ink);
+    background: var(--c-bg);
+  }
+
+  @media (max-width: 720px) {
+    .topbar nav a:not(:first-child) {
+      display: none;
+    }
+  }
+
+  .site-header {
+    background: var(--c-bg);
+    border-bottom: 3px solid var(--c-crimson);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    transition: box-shadow 250ms var(--ease-out-quint);
+  }
+
+  /* Al despegarse del tope, el header gana profundidad */
+  .site-header.despegado {
+    box-shadow: 0 10px 30px oklch(0.2 0.01 260 / 0.12);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1rem;
+  }
+
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--c-ink);
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .wordmark-program {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    color: var(--c-crimson);
+    white-space: nowrap;
+  }
+
+  .wordmark-university {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--c-ink-soft);
+    white-space: nowrap;
+  }
+
+  /* --- Nav de escritorio --- */
+  .nav-desktop > ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 0.25rem;
+  }
+
+  /* El mega-menú se posiciona contra .site-header (sticky), no contra el item */
+  .nav-item > button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--c-ink);
+    padding: 0.5rem 0.45rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .nav-item > button:hover {
+    color: var(--c-crimson);
+  }
+
+  /* Subrayado que crece al pasar o abrir el menú */
+  .nav-item > button::after {
+    content: '';
+    position: absolute;
+    left: 0.45rem;
+    right: 0.45rem;
+    bottom: 0;
+    height: 2px;
+    background: var(--c-crimson);
+    scale: 0 1;
+    transform-origin: left center;
+    transition: scale 240ms var(--ease-out-quint);
+  }
+
+  .nav-item:hover > button::after,
+  .nav-item:has(> button[aria-expanded='true']) > button::after {
+    scale: 1 1;
+  }
+
+  /* --- Mega-menú: panel de tinta de ancho completo --- */
+  .mega {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--c-ink);
+    color: oklch(0.93 0.005 260);
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -6px;
+    transition: opacity 180ms var(--ease-out-quint), translate 180ms var(--ease-out-quint),
+      visibility 180ms;
+    z-index: var(--z-dropdown);
+    box-shadow: 0 24px 48px oklch(0.15 0.01 260 / 0.35);
+  }
+
+  .nav-item:hover .mega,
+  .nav-item:has(> button[aria-expanded='true']) .mega {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+  }
+
+  .mega-inner {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr) 320px;
+    gap: clamp(2rem, 4vw, 4rem);
+    padding-block: 2.5rem 2.75rem;
+  }
+
+  .mega-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.7rem;
+    line-height: 1.15;
+    color: var(--c-white);
+    text-wrap: balance;
+  }
+
+  .mega-blurb {
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: oklch(0.78 0.005 260);
+  }
+
+  .mega-links {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 3rem;
+  }
+
+  .mega-links li {
+    break-inside: avoid;
+    border-bottom: 1px solid oklch(0.34 0.01 260);
+  }
+
+  .mega-links a {
+    display: block;
+    padding: 0.65rem 0;
+    color: oklch(0.93 0.005 260);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .mega-links a:hover {
+    color: var(--c-white);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+    text-decoration-color: var(--c-crimson);
+  }
+
+  .mega-feature {
+    display: block;
+    text-decoration: none;
+    background: var(--c-bg);
+    align-self: start;
+  }
+
+  .mega-feature img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .mega-feature-body {
+    display: block;
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
+  .mega-feature-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--c-ink);
+  }
+
+  .mega-feature-label svg {
+    color: var(--c-crimson);
+    flex-shrink: 0;
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .mega-feature:hover .mega-feature-label {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--c-crimson);
+  }
+
+  .mega-feature:hover svg {
+    translate: 2px -2px;
+  }
+
+  /* Secciones con pocas rutas: una sola columna de enlaces */
+  .mega-links:has(li:nth-child(-n + 5):last-child) {
+    columns: 1;
+    max-width: 420px;
+  }
+
+  /* --- Acciones --- */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* Buscador: campo subrayado que se aviva al enfocar */
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--c-line);
+    padding-bottom: 0.3rem;
+    color: var(--c-ink-soft);
+    transition: border-color 220ms var(--ease-out-quint), color 220ms var(--ease-out-quint);
+  }
+
+  .search-form:hover,
+  .search-form:focus-within {
+    border-color: var(--c-crimson);
+    color: var(--c-crimson);
+  }
+
+  .search-form input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.9375rem;
+    color: var(--c-ink);
+    width: 12ch;
+    transition: width 260ms var(--ease-out-quint);
+  }
+
+  .search-form input:focus {
+    width: 18ch;
+  }
+
+  .search-form input::placeholder {
+    color: var(--c-ink-soft);
+    opacity: 1;
+  }
+
+  .search-form input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  /* Móvil: icono simple que lleva a /buscar/ */
+  .search-icon {
+    display: none;
+    color: var(--c-ink);
+    padding: 0.5rem;
+  }
+
+  .search-icon:hover {
+    color: var(--c-crimson);
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--c-ink);
+    padding: 0.4rem;
+    cursor: pointer;
+  }
+
+  /* --- Drawer móvil --- */
+  .drawer {
+    display: none;
+    border-top: 1px solid var(--c-line);
+    background: var(--c-bg);
+    padding: 0.75rem var(--gutter) 1.5rem;
+    max-height: calc(100dvh - 70px);
+    overflow-y: auto;
+  }
+
+  .drawer[data-open] {
+    display: block;
+  }
+
+  .drawer details {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .drawer summary {
+    padding: 0.85rem 0;
+    font-weight: 650;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .drawer summary::after {
+    content: '+';
+    float: right;
+    color: var(--c-crimson);
+    font-weight: 700;
+  }
+
+  .drawer details[open] summary::after {
+    content: '−';
+  }
+
+  .drawer ul {
+    list-style: none;
+    padding: 0 0 0.75rem 0.75rem;
+  }
+
+  .drawer ul a {
+    display: block;
+    padding: 0.4rem 0;
+    text-decoration: none;
+    color: var(--c-ink-soft);
+  }
+
+  .drawer-extra {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .drawer-extra a {
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  /* En pantallas amplias el header respira: contenedor más ancho, más aire
+     entre destinos y tipografía cómoda. Desde 1700px: entre 1440 y 1700 el
+     nav agrandado no cabe y el botón de Admisiones se recorta. */
+  @media (min-width: 1700px) {
+    .topbar-inner,
+    .header-inner {
+      max-width: 1520px;
+    }
+
+    .header-inner {
+      gap: 2.5rem;
+      padding-block: 1.2rem;
+    }
+
+    .wordmark-program {
+      font-size: 1.3rem;
+    }
+
+    .wordmark-university {
+      font-size: 0.78rem;
+    }
+
+    .nav-desktop > ul {
+      gap: 1rem;
+    }
+
+    .nav-item > button {
+      font-size: 0.9375rem;
+      padding: 0.6rem 0.9rem;
+    }
+
+    .search-form input {
+      width: 14ch;
+    }
+
+    .search-form input:focus {
+      width: 22ch;
+    }
+  }
+
+  /* Por debajo de 1320px el nav completo con nowrap no cabe: colapsa a drawer.
+     El buscador queda como icono simple. */
+  @media (max-width: 1320px) {
+    .nav-desktop,
+    .search-form {
+      display: none;
+    }
+
+    .search-icon {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Drawer móvil
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const drawer = document.getElementById('drawer');
+
+  toggle?.addEventListener('click', () => {
+    const open = drawer?.toggleAttribute('data-open');
+    drawer?.toggleAttribute('hidden', !open);
+    toggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+
+  // Dropdowns de escritorio accesibles por teclado/touch: el botón alterna aria-expanded
+  document.querySelectorAll<HTMLButtonElement>('.nav-item > button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      document
+        .querySelectorAll('.nav-item > button')
+        .forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.parentElement?.classList.toggle('open', !expanded);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest('.nav-item')) {
+      document
+        .querySelectorAll('.nav-item > button')
+        .forEach((b) => b.setAttribute('aria-expanded', 'false'));
+    }
+  });
+
+  // Sombra del header al despegarse del tope
+  const header = document.querySelector('.site-header');
+  const sombra = () => header?.classList.toggle('despegado', window.scrollY > 8);
+  document.addEventListener('scroll', sombra, { passive: true });
+  sombra();
+
+  // Escape cierra el mega-menú y devuelve el foco al botón activo
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const item = (document.activeElement as Element | null)?.closest('.nav-item');
+    document
+      .querySelectorAll('.nav-item > button')
+      .forEach((b) => b.setAttribute('aria-expanded', 'false'));
+    item?.querySelector<HTMLButtonElement>('button')?.focus();
+  });
+
+  // Traducción automática (Google Translate, mismo mecanismo que usaba GTranslate
+  // en el sitio anterior). El idioma elegido persiste en la cookie googtrans.
+  const langSelect = document.getElementById('lang-select') as HTMLSelectElement | null;
+
+  const readLang = () =>
+    document.cookie.match(/(?:^|;\s*)googtrans=\/es\/([a-z-]+)/)?.[1] ?? 'es';
+
+  function loadTranslateWidget() {
+    if (document.getElementById('gt-script')) return;
+    (window as any).googleTranslateElementInit = () => {
+      new (window as any).google.translate.TranslateElement(
+        { pageLanguage: 'es', autoDisplay: false },
+        'google_translate_element'
+      );
+    };
+    const s = document.createElement('script');
+    s.id = 'gt-script';
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(s);
+  }
+
+  if (langSelect) {
+    langSelect.value = readLang();
+    if (langSelect.value !== 'es') loadTranslateWidget();
+
+    langSelect.addEventListener('change', () => {
+      const lang = langSelect.value;
+      const clearCookie = (domain?: string) => {
+        document.cookie = `googtrans=;path=/;${domain ? `domain=${domain};` : ''}expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+      };
+      if (lang === 'es') {
+        clearCookie();
+        clearCookie(location.hostname);
+        clearCookie('.' + location.hostname);
+      } else {
+        document.cookie = `googtrans=/es/${lang};path=/`;
+      }
+      location.reload();
+    });
+  }
+</script>

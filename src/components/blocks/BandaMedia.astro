@@ -1,0 +1,150 @@
+---
+/**
+ * Composición de doble fondo: banda de tinta retranqueada, panel blanco y
+ * fotografía superpuestos. El patrón "Interdisciplinary Programs" adaptado.
+ *
+ *   <BandaMedia titulo="..." imagen="/images/stock/servidores.jpg"
+ *     texto="..." href="/servicios-cecad/" cta="Conoce los servicios" invertir />
+ */
+interface Props {
+  titulo: string;
+  imagen: string;
+  alt?: string;
+  texto?: string;
+  href?: string;
+  cta?: string;
+  invertir?: boolean;
+}
+
+const { titulo, imagen, alt = '', texto, href, cta = 'Conocer más', invertir = false } = Astro.props;
+---
+
+<div class:list={['full', 'banda-media', { invertir }]}>
+  <div class="bm-grid">
+    <div class="bm-panel">
+      <h2 class="display">{titulo}</h2>
+      {texto ? <p>{texto}</p> : <slot />}
+      {
+        href && (
+          <a class="bm-link" href={href}>
+            {cta}
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </a>
+        )
+      }
+    </div>
+    <img class="bm-photo" src={imagen} alt={alt} loading="lazy" width="900" height="600" />
+  </div>
+</div>
+
+<style>
+  .banda-media {
+    position: relative;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  /* La banda oscura queda retranqueada: la foto y el panel la desbordan */
+  .banda-media::before {
+    content: '';
+    position: absolute;
+    inset: clamp(4.5rem, 10vw, 8rem) 0;
+    background: var(--c-ink);
+  }
+
+  .bm-grid {
+    position: relative;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+  }
+
+  .bm-panel {
+    grid-column: 1 / 6;
+    grid-row: 1;
+    z-index: 1;
+    background: var(--c-bg);
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+  }
+
+  .bm-photo {
+    grid-column: 5 / 13;
+    grid-row: 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .invertir .bm-panel {
+    grid-column: 8 / 13;
+  }
+
+  .invertir .bm-photo {
+    grid-column: 1 / 9;
+  }
+
+  .bm-panel h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    line-height: 1.2;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .bm-panel p {
+    font-family: var(--font-sans);
+    margin-block: 0.9rem 1.4rem;
+    color: var(--c-ink-soft);
+    max-width: 44ch;
+    font-size: 1rem;
+  }
+
+  .bm-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .bm-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .bm-link svg {
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .bm-link:hover svg {
+    translate: 2px -2px;
+  }
+
+  @media (max-width: 860px) {
+    .banda-media::before {
+      inset: 4rem 0;
+    }
+
+    .bm-grid,
+    .invertir .bm-grid {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .bm-panel,
+    .invertir .bm-panel {
+      margin-inline: clamp(0.5rem, 3vw, 1.5rem);
+      margin-top: -2.5rem;
+      position: relative;
+    }
+  }
+</style>

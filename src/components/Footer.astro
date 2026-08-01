@@ -1,0 +1,210 @@
+---
+import { sections } from '../data/nav';
+
+// Cuatro columnas curadas; el resto de rutas vive en los dropdowns del header
+const columnas = [
+  {
+    label: 'El programa',
+    links: [
+      { href: '/acerca-del-doctorado/', label: 'Acerca del doctorado' },
+      { href: '/plan-general-de-estudios/', label: 'Plan de estudios' },
+      { href: '/normatividad/', label: 'Normatividad' },
+      { href: '/calendario-de-actividades-2026/', label: 'Calendario 2026' },
+      { href: '/preguntas-frecuentes-doctorado/', label: 'Preguntas frecuentes' },
+    ],
+  },
+  {
+    label: 'Admisiones y trámites',
+    links: [
+      { href: '/admisiones-doctorado/', label: 'Proceso de admisión' },
+      { href: '/resultados-admisiones-2026-1/', label: 'Resultados 2026-I' },
+      { href: '/formatos/', label: 'Formatos' },
+      { href: '/solicitudes/', label: 'Solicitudes' },
+    ],
+  },
+  {
+    label: 'Investigación',
+    links: [
+      { href: '/grupos-de-investigacion/', label: 'Grupos de investigación' },
+      { href: '/proyectos-2/', label: 'Proyectos' },
+      { href: '/libros/', label: 'Libros' },
+      { href: '/laboratorio-de-microrredes/', label: 'Laboratorio de microrredes' },
+    ],
+  },
+  {
+    label: 'Comunidad y CECAD',
+    links: [
+      { href: '/docentes/', label: 'Docentes' },
+      { href: '/estudiantes/', label: 'Estudiantes' },
+      { href: '/egresados-2/', label: 'Egresados' },
+      { href: '/que-es-el-cecad/', label: 'CECAD' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-institucional">
+      <img
+        src="/images/escudo-ud.png"
+        alt="Escudo de la Universidad Distrital Francisco José de Caldas, Acreditación Institucional de Alta Calidad"
+        width="298"
+        height="94"
+        loading="lazy"
+      />
+      <address>
+        Cra. 7 No. 40B-53, Semisótano, Edificio Administrativo<br />
+        Bogotá D.C., Colombia<br />
+        (+57) 601 323 9300 ext. 1419<br />
+        <a href="mailto:doctoradoing@udistrital.edu.co">doctoradoing@udistrital.edu.co</a>
+      </address>
+      <p class="footer-snies">
+        SNIES 101686 · Registro calificado: Resolución No. 5905 del 7 de junio de 2019 (7 años)
+      </p>
+      <ul class="footer-social" aria-label="Redes sociales del programa">
+        <li>
+          <a href="https://www.facebook.com/doctoradoingud/" rel="external noopener">Facebook</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/doctoradoingud/" rel="external noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/doctoradoing_ud" rel="external noopener">X (Twitter)</a>
+        </li>
+      </ul>
+    </div>
+
+    {
+      columnas.map((col) => (
+        <nav aria-label={col.label}>
+          <h2>{col.label}</h2>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  <div class="footer-legal">
+    <div class="container footer-legal-inner">
+      <p>
+        © {new Date().getFullYear()} Universidad Distrital Francisco José de Caldas — Doctorado en
+        Ingeniería
+      </p>
+      <nav aria-label="Enlaces institucionales">
+        <a href="https://www.udistrital.edu.co/" rel="external">udistrital.edu.co</a>
+        <a href="/contactenos/">Contáctenos</a>
+        <a href="/noticias/">Noticias</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--c-ink);
+    color: oklch(0.88 0.005 260);
+    margin-top: var(--section-gap);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+    gap: 2.5rem;
+    padding-block: 3.5rem;
+  }
+
+  .footer-institucional img {
+    /* El escudo es tinta oscura sobre transparente: se invierte para fondo oscuro */
+    filter: invert(1) brightness(1.6);
+    width: 240px;
+    height: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  address {
+    font-style: normal;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .footer-snies {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: oklch(0.68 0.005 260);
+  }
+
+  .footer-social {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .footer-social a {
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .site-footer h2 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 0.9rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .site-footer li {
+    margin-bottom: 0.5rem;
+  }
+
+  .site-footer a {
+    color: oklch(0.88 0.005 260);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .site-footer a:hover {
+    color: var(--c-white);
+    text-decoration: underline;
+  }
+
+  .footer-legal {
+    border-top: 1px solid oklch(0.35 0.01 260);
+    padding-block: 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-legal-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-legal nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 960px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-institucional {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

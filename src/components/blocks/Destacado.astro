@@ -1,0 +1,100 @@
+---
+/**
+ * Declaración centrada de gran formato con acción: el patrón
+ * "You've Got This" — un solo mensaje por pantalla.
+ *
+ *   <Destacado titulo="¿Necesitas recursos computacionales?"
+ *     texto="..." href="/solicitudes-cecad/" cta="Haz tu solicitud" tono="ink" />
+ */
+interface Props {
+  titulo: string;
+  texto?: string;
+  href?: string;
+  cta?: string;
+  tono?: 'bg' | 'surface' | 'ink' | 'crimson';
+}
+
+const { titulo, texto, href, cta = 'Conocer más', tono = 'surface' } = Astro.props;
+---
+
+<div class:list={['full', 'destacado', `destacado-${tono}`]}>
+  <div class="d-inner">
+    <h2 class="display">{titulo}</h2>
+    {texto && <p>{texto}</p>}
+    {
+      href && (
+        <a
+          class:list={[
+            'btn',
+            tono === 'ink' || tono === 'crimson' ? 'btn-outline-light' : 'btn-primary',
+          ]}
+          href={href}
+        >
+          {cta}
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .destacado {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  .destacado-surface {
+    background: var(--c-surface);
+  }
+
+  .destacado-ink {
+    background: var(--c-ink);
+    color: var(--c-white);
+  }
+
+  .destacado-crimson {
+    background: var(--c-crimson);
+    color: var(--c-white);
+  }
+
+  .d-inner {
+    max-width: 780px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    text-align: center;
+  }
+
+  .destacado h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    border: 0;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+  }
+
+  .destacado p {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem auto 0;
+    max-width: 54ch;
+  }
+
+  .destacado-ink p {
+    color: oklch(0.85 0.005 260);
+  }
+
+  .destacado-crimson p {
+    color: oklch(0.95 0.01 18);
+  }
+
+  .destacado-bg p,
+  .destacado-surface p {
+    color: var(--c-ink-soft);
+  }
+
+  .destacado .btn {
+    margin-top: 1.75rem;
+  }
+</style>

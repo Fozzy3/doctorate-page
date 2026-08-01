@@ -1,0 +1,615 @@
+/* ==========================================================================
+   Doctorado en Ingeniería — sistema de diseño
+   Paleta: carmesí académico committed sobre blanco. Ver DESIGN.md.
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --c-crimson: oklch(0.44 0.16 18);
+  --c-crimson-dark: oklch(0.34 0.13 18);
+  --c-crimson-soft: oklch(0.96 0.02 18);
+  --c-ink: oklch(0.22 0.015 260);
+  --c-ink-soft: oklch(0.42 0.015 260);
+  --c-bg: oklch(0.995 0 0);
+  --c-surface: oklch(0.965 0.003 260);
+  --c-line: oklch(0.88 0.005 260);
+  --c-white: oklch(1 0 0);
+
+  /* Tipografía */
+  --font-sans: 'Libre Franklin Variable', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4 Variable', Georgia, serif;
+
+  /* Layout */
+  --container: 1320px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section-gap: clamp(4rem, 8vw, 7rem);
+
+  /* Z-scale semántica */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-drawer: 30;
+
+  /* Motion */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reset mínimo */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* Los bloques de lado a lado nunca deben producir scroll horizontal */
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 750;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Titulares de gran formato: la voz serif del programa (secciones de portada,
+   mega-menú, cabeceras editoriales). El resto de headings sigue en Franklin. */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--c-crimson);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--c-crimson-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-crimson);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--c-crimson);
+  color: var(--c-white);
+}
+
+/* Utilidades */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--c-crimson);
+  color: var(--c-white);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Botones institucionales */
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 650;
+  font-size: 1rem;
+  padding: 0.8rem 1.75rem;
+  border: 2px solid transparent;
+  text-decoration: none;
+  transition: background-color 150ms var(--ease-out-quint), color 150ms var(--ease-out-quint),
+    border-color 150ms var(--ease-out-quint), translate 150ms var(--ease-out-quint);
+}
+
+.btn:hover {
+  translate: 0 -2px;
+}
+
+/* Revelado al entrar en pantalla: la clase .reveal la añade el script de
+   Base.astro (nunca el HTML), así que sin JS todo es visible desde el inicio.
+   Con prefers-reduced-motion el script no se activa. */
+.reveal {
+  opacity: 0;
+  translate: 0 18px;
+}
+
+.reveal-in {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 650ms var(--ease-out-quint), translate 650ms var(--ease-out-quint);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.btn-primary {
+  background: var(--c-crimson);
+  color: var(--c-white);
+}
+
+.btn-primary:hover {
+  background: var(--c-crimson-dark);
+  color: var(--c-white);
+}
+
+.btn-outline-light {
+  border-color: var(--c-white);
+  color: var(--c-white);
+}
+
+.btn-outline-light:hover {
+  background: var(--c-white);
+  color: var(--c-ink);
+}
+
+.btn-outline-dark {
+  border-color: var(--c-crimson);
+  color: var(--c-crimson);
+}
+
+.btn-outline-dark:hover {
+  background: var(--c-crimson);
+  color: var(--c-white);
+}
+
+/* Prosa de páginas de contenido (Markdown renderizado) */
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  text-wrap: pretty;
+  /* URLs largas y nombres de archivo no deben desbordar en móvil */
+  overflow-wrap: anywhere;
+}
+
+/* La medida de lectura se aplica por bloque de texto, no al contenedor:
+   así las listas de enlaces y las reglas de los headings ocupan todo el ancho */
+.prose :is(p, ol, ul, blockquote) {
+  max-width: 70ch;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-sans);
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+}
+
+.prose h2 {
+  font-size: 1.6rem;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin-bottom: 1.1em;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}
+
+.prose blockquote {
+  border-top: 3px solid var(--c-crimson);
+  background: var(--c-surface);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5em 0;
+  font-style: italic;
+}
+
+/* Tablas: sin rejilla vertical — reglas horizontales finas y cabecera con
+   regla fuerte, al estilo editorial */
+.prose table {
+  width: 100%;
+  max-width: none;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  margin: 1.5em 0;
+  /* Tablas anchas hacen scroll dentro de sí mismas, nunca desbordan la página */
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--c-ink);
+  border-bottom: 2px solid var(--c-ink);
+}
+
+.prose td {
+  border-bottom: 1px solid var(--c-line);
+}
+
+.prose th,
+.prose td {
+  padding: 0.75rem 1.1rem 0.75rem 0.15rem;
+  vertical-align: top;
+}
+
+/* Tabla ancha (≥3 columnas, marcada en build): zebra sutil, primera columna
+   destacada y anchos mínimos para que el texto nunca quiebre en vertical.
+   En plantilla documento, la página además le cede el espacio del riel. */
+.prose table.table-wide {
+  font-size: 0.9375rem;
+}
+
+.prose .table-wide th {
+  min-width: 11rem;
+  padding-right: 1.5rem;
+}
+
+.prose .table-wide td {
+  min-width: 9rem;
+  padding: 0.9rem 1.5rem 0.9rem 0.15rem;
+  line-height: 1.6;
+}
+
+.prose .table-wide td:first-child {
+  font-weight: 650;
+}
+
+.prose .table-wide tbody tr:nth-child(even) {
+  background: var(--c-surface);
+}
+
+/* Con zebra, las celdas necesitan aire también a la izquierda */
+.prose .table-wide :is(td, th) {
+  padding-left: 0.6rem;
+}
+
+/* Página documento con tabla ancha: el contenido manda y el riel derecho
+   le cede su espacio (la regla vive aquí porque cruza el scope de Astro) */
+@media (min-width: 1281px) {
+  .page-grid:has(table.table-wide) {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+
+  .page-grid:has(table.table-wide) .rail {
+    display: none;
+  }
+}
+
+/* Ficha de definición (tabla 2 columnas marcada en build): filas
+   etiqueta/valor, sin aspecto de hoja de cálculo */
+.prose table.def-table {
+  border-top: 3px solid var(--c-crimson);
+}
+
+.prose .def-table thead {
+  /* La cabecera "Aspecto | Descripción" es ruido en una ficha */
+  display: none;
+}
+
+.prose .def-table,
+.prose .def-table tbody {
+  display: block;
+}
+
+.prose .def-table tr {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 0.35rem 2.5rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.prose .def-table th,
+.prose .def-table td {
+  border: 0;
+  padding: 0;
+}
+
+.prose .def-table td:first-child {
+  font-weight: 650;
+  font-size: 0.9rem;
+  color: var(--c-ink-soft);
+  line-height: 1.5;
+  padding-top: 0.15em;
+}
+
+.prose .def-table td:last-child {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+@media (max-width: 640px) {
+  .prose .def-table tr {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Acordeón de preguntas frecuentes (marcado en build) */
+.prose details.faq {
+  max-width: none;
+  border-top: 1px solid var(--c-line);
+}
+
+.prose details.faq:last-of-type {
+  border-bottom: 1px solid var(--c-line);
+}
+
+.prose .faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.4rem 0.15rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.prose .faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose .faq summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--c-crimson);
+  transition: rotate 200ms var(--ease-out-quint);
+}
+
+.prose .faq[open] summary::after {
+  rotate: 45deg;
+}
+
+.prose .faq summary:hover {
+  color: var(--c-crimson);
+}
+
+.prose .faq .faq-body {
+  padding: 0 0.15rem 1.6rem;
+}
+
+.prose .faq .faq-body > :first-child {
+  margin-top: 0;
+}
+
+/* Párrafo de entrada: cuando la página abre con prosa, la primera línea
+   tiene voz de dek editorial */
+.prose > p:first-child {
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+/* ==========================================================================
+   Plantilla panorama: lienzo completo para páginas MDX compuestas con
+   bloques (Franja, BandaMedia, Cifras, CardGrid, Destacado).
+   La prosa suelta fluye en columna centrada; los bloques .full van
+   de lado a lado. Ver DESIGN.md → Bloques.
+   ========================================================================== */
+.panorama {
+  padding-block: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.panorama > * {
+  max-width: min(820px, calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+
+.panorama > .full {
+  max-width: none;
+  width: 100%;
+  margin-block: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+/* Solo las bandas con fondo propio cierran a ras contra la banda CTA;
+   los bloques blancos (cards) conservan su aire inferior */
+.panorama > :is(.franja, .destacado, .cifras, .banda-media):last-child {
+  margin-bottom: 0;
+}
+
+/* La prosa centrada dentro del panorama conserva su medida de lectura */
+.panorama > :is(p, ul, ol, blockquote) {
+  max-width: min(70ch, calc(100% - 2 * var(--gutter)));
+}
+
+/* Registro escaparate: los títulos de sección van centrados, con la regla
+   bajo el texto; la ficha de definición se queda dentro del lienzo */
+.panorama > :is(h2, h3) {
+  text-align: center;
+  text-wrap: balance;
+}
+
+.panorama > table,
+.panorama > ul.link-list {
+  max-width: min(880px, calc(100% - 2 * var(--gutter)));
+  /* .prose table trae margin-inline 0; aquí debe centrarse en el lienzo */
+  margin-inline: auto;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+/* Listas compuestas solo por enlaces (formatos, grupos, solicitudes…):
+   filas con flecha diagonal en columnas, no viñetas. La clase la añade
+   el plugin rehypeLinkLists de astro.config.mjs en build. */
+.prose ul.link-list {
+  max-width: none;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  row-gap: 0;
+  font-family: var(--font-sans);
+}
+
+.prose ul.link-list li {
+  margin: 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.prose ul.link-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.05rem 0.15rem;
+  text-decoration: none;
+  color: var(--c-ink);
+  font-weight: 650;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.prose ul.link-list a::after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background: var(--c-crimson);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 12L12 2M5 2h7v7' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  transition: translate 150ms var(--ease-out-quint);
+}
+
+.prose ul.link-list a:hover {
+  color: var(--c-crimson);
+}
+
+.prose ul.link-list a:hover::after {
+  translate: 3px -3px;
+}
+
+/* Fila-nota: ítem sin enlace dentro de una lista de enlaces */
+.prose ul.link-list li.link-list-note {
+  padding: 1.05rem 0.15rem;
+  color: var(--c-ink-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Tablas anchas: scroll propio, nunca de la página */
+.prose .table-scroll {
+  overflow-x: auto;
+}
+
+/* Tableros embebidos (Looker Studio): proporción fija y estado de carga
+   visible — Looker tarda varios segundos en pintar y sin esto el recuadro
+   parece roto. El texto queda detrás del iframe. */
+.prose .tablero {
+  position: relative;
+  padding-bottom: 62%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  max-width: none;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+}
+
+.prose .tablero::before {
+  content: 'Cargando tablero interactivo… Si no aparece, usa los enlaces de abajo.';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--c-ink-soft);
+}
+
+.prose .tablero iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Google Translate: sin banner superior, sin tooltips, sin resaltado */
+.skiptranslate iframe,
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+font font {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

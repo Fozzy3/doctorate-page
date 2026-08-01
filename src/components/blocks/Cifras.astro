@@ -1,0 +1,151 @@
+---
+/**
+ * Banda de cifras: números Libre Franklin 800 en crimson separados por
+ * reglas verticales, con conteo animado al entrar en pantalla.
+ * Sin cards, sin iconos — ver DESIGN.md.
+ *
+ *   <Cifras items={[
+ *     { valor: '34', etiqueta: 'Grupos de investigación adscritos' },
+ *     { valor: '90', etiqueta: 'Créditos académicos' },
+ *   ]} />
+ */
+interface Cifra {
+  valor: string;
+  etiqueta: string;
+  detalle?: string;
+}
+
+interface Props {
+  items: Cifra[];
+  tono?: 'surface' | 'ink';
+}
+
+const { items, tono = 'surface' } = Astro.props;
+---
+
+<div class:list={['full', 'cifras', `cifras-${tono}`]}>
+  <div class="cifras-grid">
+    {
+      items.map((c) => (
+        <div class="cifra">
+          <p class="cifra-num" data-valor={c.valor}>
+            {c.valor}
+          </p>
+          <p class="cifra-label">{c.etiqueta}</p>
+          {c.detalle && <p class="cifra-detalle">{c.detalle}</p>}
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .cifras {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .cifras-surface {
+    background: var(--c-surface);
+  }
+
+  .cifras-ink {
+    background: var(--c-ink);
+  }
+
+  .cifras-grid {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .cifra {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--c-line);
+  }
+
+  .cifras-ink .cifra {
+    border-left-color: oklch(0.4 0.01 260);
+  }
+
+  .cifra-num {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--c-crimson);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cifras-ink .cifra-num {
+    color: var(--c-white);
+  }
+
+  .cifra-label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    max-width: 20ch;
+  }
+
+  .cifras-ink .cifra-label {
+    color: oklch(0.93 0.005 260);
+  }
+
+  .cifra-detalle {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--c-ink-soft);
+    margin-top: 0.35rem;
+    max-width: 26ch;
+  }
+
+  .cifras-ink .cifra-detalle {
+    color: oklch(0.72 0.005 260);
+  }
+</style>
+
+<script>
+  // Conteo ascendente al entrar en pantalla. Con reduced-motion la cifra
+  // queda estática (ya está renderizada en el HTML).
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
+
+    const animar = (el: HTMLElement) => {
+      const raw = el.dataset.valor ?? '';
+      const m = raw.match(/^([^\d]*)([\d.,]+)(.*)$/);
+      if (!m) return;
+      const decimales = (m[2].split(/[.,]/)[1] ?? '').length;
+      const objetivo = parseFloat(m[2].replace(',', '.'));
+      const dur = 1100;
+      const t0 = performance.now();
+      const paso = (ahora: number) => {
+        const p = Math.min(1, (ahora - t0) / dur);
+        const n = (objetivo * easeOut(p)).toFixed(decimales).replace('.', ',');
+        el.textContent = m[1] + n + m[3];
+        if (p < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+
+    const io = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) {
+            animar(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll<HTMLElement>('.cifra-num').forEach((el) => io.observe(el));
+  }
+</script>

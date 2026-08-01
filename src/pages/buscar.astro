@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Buscar"
+  description="Busca páginas, trámites y noticias dentro del sitio del Doctorado en Ingeniería de la Universidad Distrital."
+>
+  <div class="container buscar">
+    <header class="page-header">
+      <h1>Buscar en el sitio</h1>
+    </header>
+    <div id="search"></div>
+    <noscript>
+      <p>La búsqueda requiere JavaScript. También puedes navegar por las secciones del menú.</p>
+    </noscript>
+  </div>
+</Base>
+
+<!-- Índice generado por Pagefind en el build (npm run build) -->
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof PagefindUI !== 'undefined') {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        translations: {
+          placeholder: 'Buscar páginas, formatos, noticias…',
+          zero_results: 'Sin resultados para “[SEARCH_TERM]”',
+        },
+      });
+      // El campo del header llega con ?q=…: se dispara la búsqueda de una vez
+      const q = new URLSearchParams(location.search).get('q');
+      const input = document.querySelector('#search input');
+      if (q && input) {
+        input.value = q;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    } else {
+      document.getElementById('search').innerHTML =
+        '<p>El índice de búsqueda se genera con <code>npm run build</code>; no está disponible en modo desarrollo.</p>';
+    }
+  });
+</script>
+
+<style>
+  .buscar {
+    padding-block: 2.5rem var(--section-gap);
+    min-height: 50vh;
+    max-width: 880px;
+  }
+
+  .page-header {
+    border-bottom: 3px solid var(--c-crimson);
+    padding-bottom: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 4vw, 2.7rem);
+  }
+
+  #search {
+    --pagefind-ui-primary: var(--c-crimson);
+    --pagefind-ui-text: var(--c-ink);
+    --pagefind-ui-border: var(--c-line);
+    --pagefind-ui-border-radius: 0;
+    font-family: var(--font-sans);
+  }
+</style>

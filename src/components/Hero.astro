@@ -1,0 +1,123 @@
+---
+interface Props {
+  title: string;
+  lead?: string;
+  image: string;
+  imageAlt: string;
+  /** Ruta a un video mp4/webm opcional; la imagen queda como poster */
+  video?: string;
+  ctas?: { href: string; label: string; primary?: boolean }[];
+}
+
+const { title, lead, image, imageAlt, video, ctas = [] } = Astro.props;
+---
+
+<section class="hero">
+  {
+    video ? (
+      <video autoplay muted loop playsinline poster={image} aria-hidden="true">
+        <source src={video} type="video/mp4" />
+      </video>
+    ) : (
+      <img src={image} alt={imageAlt} loading="eager" fetchpriority="high" />
+    )
+  }
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1>{title}</h1>
+    {lead && <p class="hero-lead">{lead}</p>}
+    {
+      ctas.length > 0 && (
+        <div class="hero-ctas">
+          {ctas.map((cta) => (
+            <a class={`btn ${cta.primary ? 'btn-primary' : 'btn-outline-light'}`} href={cta.href}>
+              {cta.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: clamp(420px, 62vh, 640px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero img,
+  .hero video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* Tinta, no color de marca: la foto respira y el texto contrasta */
+    background: linear-gradient(
+      to top,
+      oklch(0.15 0.01 260 / 0.88) 0%,
+      oklch(0.15 0.01 260 / 0.45) 55%,
+      oklch(0.15 0.01 260 / 0.25) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--c-white);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    animation: hero-in 550ms var(--ease-out-quint) both;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 450;
+    max-width: 52ch;
+    margin-top: 1rem;
+    color: oklch(0.94 0.005 260);
+    animation: hero-in 550ms var(--ease-out-quint) 90ms both;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.75rem;
+    animation: hero-in 550ms var(--ease-out-quint) 180ms both;
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      translate: 0 14px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1,
+    .hero-lead,
+    .hero-ctas {
+      animation: none;
+    }
+  }
+</style>

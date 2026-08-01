@@ -1,0 +1,56 @@
+---
+/**
+ * Franja de lado a lado con fondo propio. Envuelve cualquier contenido MDX.
+ *
+ *   <Franja tono="surface"> ## Título ... </Franja>
+ */
+interface Props {
+  tono?: 'surface' | 'ink' | 'crimson';
+}
+
+const { tono = 'surface' } = Astro.props;
+---
+
+<section class:list={['full', 'franja', `franja-${tono}`]}>
+  <div class="franja-inner">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .franja {
+    padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  }
+
+  .franja-surface {
+    background: var(--c-surface);
+  }
+
+  .franja-ink {
+    background: var(--c-ink);
+    color: oklch(0.93 0.005 260);
+  }
+
+  .franja-crimson {
+    background: var(--c-crimson);
+    color: var(--c-white);
+  }
+
+  /* Columna de lectura centrada dentro de la banda: sin vacíos laterales */
+  .franja-inner {
+    max-width: 880px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .franja-ink :global(:is(h2, h3, h4)),
+  .franja-crimson :global(:is(h2, h3, h4)) {
+    color: var(--c-white);
+    border-color: oklch(1 0 0 / 0.25);
+  }
+
+  .franja-ink :global(a),
+  .franja-crimson :global(a) {
+    color: var(--c-white);
+  }
+</style>

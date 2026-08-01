@@ -1,0 +1,208 @@
+---
+import '@fontsource-variable/libre-franklin';
+import '@fontsource-variable/source-serif-4';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle =
+  title === 'Inicio'
+    ? 'Doctorado en Ingeniería — Universidad Distrital Francisco José de Caldas'
+    : `${title} — Doctorado en Ingeniería UD`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Ir al contenido principal</a>
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="lightbox-cerrar" type="button" aria-label="Cerrar imagen ampliada">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <img alt="" />
+    </dialog>
+
+    <style>
+      /* Ampliación de imágenes de contenido (documentos, infografías) */
+      .lightbox {
+        border: 0;
+        padding: 0;
+        background: transparent;
+        max-width: min(94vw, 1600px);
+        max-height: 92vh;
+        /* El reset global pone margin: 0; el dialog necesita auto para centrarse */
+        position: fixed;
+        inset: 0;
+        margin: auto;
+      }
+
+      .lightbox::backdrop {
+        background: oklch(0.15 0.01 260 / 0.85);
+      }
+
+      .lightbox img {
+        max-width: min(94vw, 1600px);
+        max-height: 92vh;
+        width: auto;
+        height: auto;
+        display: block;
+        cursor: zoom-out;
+        background: var(--c-white);
+      }
+
+      .lightbox-cerrar {
+        position: fixed;
+        top: 0.75rem;
+        right: 0.75rem;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 0;
+        background: oklch(0.15 0.01 260 / 0.6);
+        color: var(--c-white);
+        cursor: pointer;
+      }
+
+      .lightbox-cerrar:hover {
+        background: var(--c-crimson);
+      }
+
+      .lightbox[open] {
+        animation: lightbox-in 180ms var(--ease-out-quint);
+      }
+
+      @keyframes lightbox-in {
+        from {
+          opacity: 0;
+          scale: 0.97;
+        }
+        to {
+          opacity: 1;
+          scale: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .lightbox[open] {
+          animation: none;
+        }
+      }
+
+      /* Las imágenes ampliables lo anuncian con el cursor */
+      :global(.zoomable) {
+        cursor: zoom-in;
+      }
+
+      :global(body:has(.lightbox[open])) {
+        overflow: hidden;
+      }
+    </style>
+
+    <script>
+      // Solo imágenes de contenido: dentro de la prosa Markdown o la imagen
+      // principal de una noticia. Nunca las fotos de diseño (bloques .full,
+      // cards, hero) ni imágenes que ya son un enlace.
+      const dialog = document.getElementById('lightbox') as HTMLDialogElement | null;
+      const grande = dialog?.querySelector('img');
+
+      if (dialog && grande) {
+        const candidatas = [
+          ...document.querySelectorAll<HTMLImageElement>('.prose img, article > img'),
+        ].filter((img) => !img.closest('.full') && !img.closest('a') && !img.closest('.lightbox'));
+
+        const abrir = (img: HTMLImageElement) => {
+          grande.src = img.currentSrc || img.src;
+          grande.alt = img.alt;
+          dialog.showModal();
+        };
+
+        candidatas.forEach((img) => {
+          img.classList.add('zoomable');
+          img.setAttribute('role', 'button');
+          img.setAttribute('tabindex', '0');
+          img.setAttribute('aria-label', `Ampliar imagen: ${img.alt || 'imagen del documento'}`);
+          img.addEventListener('click', () => abrir(img));
+          img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              abrir(img);
+            }
+          });
+        });
+
+        // Cerrar: botón, clic en la imagen o en el fondo (Esc ya es nativo)
+        dialog.addEventListener('click', () => dialog.close());
+      }
+
+      // Revelado suave de bloques y tarjetas al entrar en pantalla,
+      // escalonado entre hermanos. Sin JS o con reduced-motion: todo visible.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const objetivos = document.querySelectorAll<HTMLElement>(
+          [
+            '.cg-card',
+            '.spot-main',
+            '.spot-item',
+            '.news-card',
+            '.cifra',
+            '.bm-panel',
+            '.bm-photo',
+            '.d-inner',
+            '.accesos-list li',
+            '.enfasis-panel',
+            '.enfasis-photo',
+            '.ficha',
+            '.intro-text',
+          ].join(',')
+        );
+
+        const porPadre = new Map<Element | null, number>();
+        objetivos.forEach((el) => {
+          const n = porPadre.get(el.parentElement) ?? 0;
+          porPadre.set(el.parentElement, n + 1);
+          el.style.setProperty('--reveal-delay', `${Math.min(n, 5) * 80}ms`);
+          el.classList.add('reveal');
+        });
+
+        const io = new IntersectionObserver(
+          (entradas) => {
+            entradas.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('reveal-in');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -60px 0px' }
+        );
+
+        objetivos.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
