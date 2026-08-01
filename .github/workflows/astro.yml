@@ -72,6 +72,10 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+      # El buscador (/buscar/) depende del índice que Pagefind genera sobre dist
+      - name: Build search index (Pagefind)
+        run: ${{ steps.detect-package-manager.outputs.runner }} pagefind --site dist
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
