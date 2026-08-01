@@ -33,7 +33,7 @@ Escala modular ~1.25, fluida con clamp(). H1 de página: clamp(2rem, 4vw, 3rem).
 
 - Contenedor: 1320px máx, gutter clamp(1rem, 4vw, 2.5rem).
 - La medida de lectura (70ch) se aplica por bloque (`.prose :is(p, ol, ul, blockquote)`), no al contenedor: listas de enlaces y reglas de headings usan todo el ancho de la columna.
-- Páginas de contenido: banda de cabecera surface de lado a lado (breadcrumbs + H1 display serif + actualizado en serif itálica), luego grid de 3 columnas: subnav 250px + prosa + riel 280px (contacto del programa y trámites frecuentes, sticky). El riel desaparece bajo 1280px; bajo 860px el subnav colapsa a `<details>`.
+- Páginas de contenido: banda de cabecera surface de lado a lado (breadcrumbs + H1 display serif + actualizado en serif itálica), luego grid de 2 columnas: columna lateral única de 290px (menú de sección + contacto del programa + trámites frecuentes, sticky) y el contenido extendido en el resto. Bajo 860px el subnav colapsa a `<details>` y contacto/trámites se ocultan (los cubren el footer y la banda CTA).
 - Detalle de noticia: artículo (máx 820px) + riel "Más noticias" 300px sticky; bajo 1100px el riel pasa debajo del artículo.
 - Home: hero full-bleed con imagen real y overlay de tinta (no gradiente de marca), secciones de ancho completo alternando bg/surface, ritmo de espaciado variable (clamp(4rem, 8vw, 7rem) entre secciones mayores).
 - Páginas de contenido: grid sidebar (260px subnav "En esta sección") + prosa. Breadcrumbs arriba. En móvil el subnav colapsa a `<details>`.

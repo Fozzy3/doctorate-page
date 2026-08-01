@@ -308,17 +308,8 @@ a:hover {
   padding-left: 0.6rem;
 }
 
-/* Página documento con tabla ancha: el contenido manda y el riel derecho
-   le cede su espacio (la regla vive aquí porque cruza el scope de Astro) */
-@media (min-width: 1281px) {
-  .page-grid:has(table.table-wide) {
-    grid-template-columns: 250px minmax(0, 1fr);
-  }
-
-  .page-grid:has(table.table-wide) .rail {
-    display: none;
-  }
-}
+/* (Las tablas anchas ya no necesitan regla de layout: el contenido de las
+   páginas documento ocupa todo el ancho junto a la columna lateral única) */
 
 /* Ficha de definición (tabla 2 columnas marcada en build): filas
    etiqueta/valor, sin aspecto de hoja de cálculo */

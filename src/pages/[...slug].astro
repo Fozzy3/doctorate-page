@@ -37,7 +37,7 @@ const slug = p.id;
     ) : (
   <div class="container page">
     <div class="page-grid">
-      <aside class="subnav">
+      <aside class="lateral">
         {
           section && (
             <details class="subnav-details" open>
@@ -60,15 +60,7 @@ const slug = p.id;
             </details>
           )
         }
-      </aside>
 
-      <article>
-        <div class="prose">
-          <Content />
-        </div>
-      </article>
-
-      <aside class="rail" aria-label="Información de contacto y accesos frecuentes">
         <div class="rail-card">
           <p class="rail-title">Contacto del programa</p>
           <address>
@@ -79,6 +71,7 @@ const slug = p.id;
           </address>
           <a class="btn btn-outline-dark rail-btn" href="/contactenos/">Contáctenos</a>
         </div>
+
         <nav class="rail-links" aria-label="Trámites frecuentes">
           <p class="rail-title">Trámites frecuentes</p>
           <ul>
@@ -89,6 +82,12 @@ const slug = p.id;
           </ul>
         </nav>
       </aside>
+
+      <article>
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
     </div>
   </div>
     )
@@ -233,21 +232,24 @@ const slug = p.id;
 
   .page-grid {
     display: grid;
-    grid-template-columns: 250px minmax(0, 1fr) 280px;
-    gap: clamp(2rem, 4vw, 4rem);
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
     align-items: start;
   }
 
-  /* Página con tabla ancha: el riel cede su espacio — regla en global.css
-     porque Astro no compila :global() dentro de :has() */
+  /* Columna lateral única: menú de sección + contacto + trámites */
+  .lateral {
+    position: sticky;
+    top: 90px;
+    display: grid;
+    gap: 1.75rem;
+  }
 
   /* Subnav de sección */
   .subnav-details {
     border-top: 3px solid var(--c-crimson);
     background: var(--c-surface);
     padding: 1.1rem 1.25rem;
-    position: sticky;
-    top: 90px;
   }
 
   /* Desktop: sin toggle visible, el details queda abierto de forma permanente */
@@ -261,16 +263,16 @@ const slug = p.id;
     margin-bottom: 0.75rem;
   }
 
-  .subnav ul {
+  .subnav-details ul {
     list-style: none;
     padding: 0;
   }
 
-  .subnav li {
+  .subnav-details li {
     border-top: 1px solid var(--c-line);
   }
 
-  .subnav a {
+  .subnav-details a {
     display: block;
     padding: 0.5rem 0;
     font-size: 0.9rem;
@@ -278,21 +280,13 @@ const slug = p.id;
     color: var(--c-ink-soft);
   }
 
-  .subnav a:hover {
+  .subnav-details a:hover {
     color: var(--c-crimson);
   }
 
-  .subnav a[aria-current='page'] {
+  .subnav-details a[aria-current='page'] {
     color: var(--c-crimson);
     font-weight: 700;
-  }
-
-  /* Riel derecho */
-  .rail {
-    position: sticky;
-    top: 90px;
-    display: grid;
-    gap: 2rem;
   }
 
   .rail-title {
@@ -350,24 +344,20 @@ const slug = p.id;
     color: var(--c-crimson);
   }
 
-  /* El riel solo existe donde sobra ancho; antes, el contenido manda */
-  @media (max-width: 1280px) {
-    .rail {
-      display: none;
-    }
-
-    .page-grid {
-      grid-template-columns: 250px minmax(0, 1fr);
-    }
-  }
-
   @media (max-width: 860px) {
     .page-grid {
       grid-template-columns: minmax(0, 1fr);
     }
 
-    .subnav-details {
+    .lateral {
       position: static;
+    }
+
+    /* En móvil el contacto y los trámites no deben empujar el contenido:
+       quedan cubiertos por el footer y la banda CTA */
+    .rail-card,
+    .rail-links {
+      display: none;
     }
 
     .subnav-details summary {
