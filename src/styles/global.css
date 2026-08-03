@@ -208,12 +208,13 @@ a:hover {
   overflow-wrap: anywhere;
 }
 
-/* La medida de lectura se aplica por bloque de texto, no al contenedor: así
-   las reglas de los headings ocupan todo el ancho. El tope es generoso (85ch)
-   para que la prosa se alinee con las listas de enlaces a dos columnas y no
-   quede un borde derecho irregular entre bloques contiguos. */
+/* La medida de lectura la gobierna el ancho de la columna, no un tope en `ch`:
+   así la prosa alinea a la derecha con las reglas de los títulos, las tablas y
+   las listas de enlaces. Un tope en `ch` dejaba los párrafos ~250px más cortos
+   que el resto de los bloques y el borde derecho quedaba irregular.
+   (Las plantillas panorama y noticia sí acotan la columna, más abajo.) */
 .prose :is(p, ol, ul, blockquote) {
-  max-width: 85ch;
+  max-width: none;
 }
 
 .prose h2,
@@ -425,11 +426,11 @@ a:hover {
 }
 
 /* Párrafo de entrada: cuando la página abre con prosa, la primera línea
-   tiene voz de dek editorial */
+   tiene voz de dek editorial. El ancho lo gobierna la columna (ver arriba):
+   un tope propio lo dejaba visiblemente más corto que el resto de la página. */
 .prose > p:first-child {
   font-size: 1.1875rem;
   line-height: 1.65;
-  max-width: 62ch;
 }
 
 /* ==========================================================================
