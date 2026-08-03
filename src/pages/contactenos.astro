@@ -5,6 +5,13 @@ import Base from '../layouts/Base.astro';
 // programa). Mientras sea el marcador, el envío falla de forma controlada y
 // se muestra el correo institucional como alternativa.
 const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
+
+// Cloudflare Turnstile: la defensa real contra bots guiados por IA. Es
+// gratuito y casi siempre invisible para el usuario. Mientras sea el marcador
+// el formulario funciona sin él (con las demás capas), pero queda expuesto a
+// spam automatizado. Ver DESIGN.md → Formulario de contacto.
+const TURNSTILE_KEY = 'PENDIENTE_TURNSTILE_KEY';
+const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
 ---
 
 <Base
@@ -67,7 +74,16 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
           value="Nuevo mensaje desde el sitio del Doctorado en Ingeniería"
         />
         <input type="hidden" name="from_name" value="Sitio del Doctorado en Ingeniería" />
+
+        {/* Trampas para bots. Van fuera del alcance del teclado y de los
+            lectores de pantalla, así que una persona nunca las ve ni las llena;
+            un bot que rellena todo por defecto sí, y ahí se delata.
+            `botcheck` lo valida Web3Forms del lado del servidor. */}
         <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true" />
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="sitio-web">No llenar este campo</label>
+          <input id="sitio-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off" />
+        </div>
 
         <div class="fila">
           <div class="field">
@@ -108,6 +124,12 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
           <textarea id="mensaje" name="message" rows="7" required placeholder="Cuéntanos en detalle"
           ></textarea>
         </div>
+        {turnstileActivo && (
+          <div class="turnstile-caja">
+            <div class="cf-turnstile" data-sitekey={TURNSTILE_KEY} data-language="es"></div>
+          </div>
+        )}
+
         <button class="btn btn-primary" type="submit">
           Enviar mensaje
           <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
@@ -124,6 +146,11 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
           Universidad Distrital Francisco José de Caldas.
         </p>
       </form>
+
+      {turnstileActivo && (
+        <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer
+        ></script>
+      )}
     </div>
   </div>
 </Base>
@@ -301,6 +328,10 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
     }
   }
 
+  .turnstile-caja {
+    margin-bottom: 1.25rem;
+  }
+
   /* Resultado del envío: verde institucional para éxito, carmesí para error */
   .form-estado {
     margin-top: 1.1rem;
@@ -362,10 +393,39 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
       estado.hidden = false;
     };
 
+    // ── Defensa contra bots (capas que no dependen de servicios externos) ──
+    // Ninguna es infalible por sí sola; el filtro fuerte es Turnstile, que se
+    // activa al configurar su clave. Estas capas atrapan al bot automático
+    // común sin poner ninguna fricción a una persona real.
+    const cargadaEn = Date.now();
+    const SEGUNDOS_MINIMOS = 3; // una persona no llena el formulario más rápido
+    const trampa = form.querySelector<HTMLInputElement>('#sitio-web');
+    let ultimoEnvio = 0;
+
     // Envío sin salir de la página: el usuario no termina en una pantalla
     // ajena del proveedor y conserva lo que escribió si algo falla.
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
+
+      // Trampa llena = bot. Se finge éxito para no darle pistas de qué falló.
+      if (trampa?.value) {
+        mostrar('Mensaje enviado. Te responderemos al correo que nos indicaste.', true);
+        form.reset();
+        return;
+      }
+
+      // Llenado instantáneo = automatizado
+      if ((Date.now() - cargadaEn) / 1000 < SEGUNDOS_MINIMOS) {
+        mostrar('Tómate un momento para revisar el mensaje antes de enviarlo.', false);
+        return;
+      }
+
+      // Evita reenvíos en ráfaga (y el doble clic accidental)
+      if (Date.now() - ultimoEnvio < 15000) {
+        mostrar('Ya recibimos tu mensaje. Espera un momento antes de enviar otro.', false);
+        return;
+      }
+
       estado.hidden = true;
       boton.disabled = true;
       // innerHTML, no textContent: el botón lleva el ícono de flecha dentro
@@ -379,6 +439,7 @@ const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
           body: new FormData(form),
         });
         if (!res.ok) throw new Error(String(res.status));
+        ultimoEnvio = Date.now();
         mostrar('Mensaje enviado. Te responderemos al correo que nos indicaste.', true);
         form.reset();
       } catch {

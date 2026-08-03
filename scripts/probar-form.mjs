@@ -46,6 +46,9 @@ await page.type('#nombre', 'Prueba Automatizada');
 await page.type('#correo', 'prueba@ejemplo.com');
 await page.type('#asunto', 'Prueba');
 await page.type('#mensaje', 'Mensaje de prueba.');
+// Una persona tarda más que esto en llenar el formulario; sin la pausa se
+// dispara la trampa de tiempo y no se probaría el envío real.
+await new Promise((r) => setTimeout(r, 3500));
 await page.click('#form-contacto button[type="submit"]');
 // El fallo de red tarda unos segundos en resolverse; margen amplio a propósito
 await new Promise((r) => setTimeout(r, 12000));
@@ -55,5 +58,38 @@ const resultado = await page.evaluate(() => {
   return { visible: !el.hidden, clase: el.className, texto: el.textContent.trim() };
 });
 console.log('Resultado del envío:', JSON.stringify(resultado, null, 1));
+
+// 4. Trampa de tiempo: un envío instantáneo debe rechazarse
+const pagina2 = await browser.newPage();
+await pagina2.goto(url, { waitUntil: 'networkidle0' });
+await pagina2.type('#nombre', 'Bot Veloz');
+await pagina2.type('#correo', 'bot@ejemplo.com');
+await pagina2.type('#asunto', 'Spam');
+await pagina2.type('#mensaje', 'Contenido automatizado.');
+await pagina2.click('#form-contacto button[type="submit"]');
+await new Promise((r) => setTimeout(r, 800));
+console.log(
+  'Trampa de tiempo:',
+  await pagina2.evaluate(() => document.querySelector('.form-estado').textContent.trim())
+);
+
+// 5. Honeypot: si el campo oculto viene lleno, no debe enviarse nada
+const pagina3 = await browser.newPage();
+await pagina3.goto(url, { waitUntil: 'networkidle0' });
+let huboPeticion = false;
+pagina3.on('request', (r) => {
+  if (r.url().includes('web3forms')) huboPeticion = true;
+});
+await pagina3.evaluate(() => {
+  document.querySelector('#sitio-web').value = 'https://spam.example';
+});
+await pagina3.type('#nombre', 'Bot Trampa');
+await pagina3.type('#correo', 'bot2@ejemplo.com');
+await pagina3.type('#asunto', 'Spam');
+await pagina3.type('#mensaje', 'Contenido automatizado.');
+await new Promise((r) => setTimeout(r, 3500)); // supera la trampa de tiempo
+await pagina3.click('#form-contacto button[type="submit"]');
+await new Promise((r) => setTimeout(r, 1500));
+console.log('Honeypot → ¿se envió algo al proveedor?:', huboPeticion ? 'SÍ (falla)' : 'no (correcto)');
 
 await browser.close();
