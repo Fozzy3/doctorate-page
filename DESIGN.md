@@ -32,7 +32,7 @@ Escala modular ~1.25, fluida con clamp(). H1 de página: clamp(2rem, 4vw, 3rem).
 ## Layout
 
 - Contenedor: 1320px máx, gutter clamp(1rem, 4vw, 2.5rem).
-- La medida de lectura (70ch) se aplica por bloque (`.prose :is(p, ol, ul, blockquote)`), no al contenedor: listas de enlaces y reglas de headings usan todo el ancho de la columna.
+- La medida de lectura la gobierna el **ancho de la columna**, no un tope en `ch`: en plantilla documento los párrafos, listas, tablas, reglas de headings y listas de enlaces terminan todos en la misma línea derecha (870px con viewport de 1745px). Las plantillas panorama (70ch centrado) y noticia (columna de 820px) sí acotan su propia columna. Verificable con `node scripts/medir.mjs <url>`.
 - Páginas de contenido: banda de cabecera surface de lado a lado (breadcrumbs + H1 display serif + actualizado en serif itálica), luego grid de 2 columnas: columna lateral única de 290px (menú de sección + contacto del programa + trámites frecuentes, sticky) y el contenido extendido en el resto. Bajo 860px el subnav colapsa a `<details>` y contacto/trámites se ocultan (los cubren el footer y la banda CTA).
 - Detalle de noticia: artículo (máx 820px) + riel "Más noticias" 300px sticky; bajo 1100px el riel pasa debajo del artículo.
 - Home: hero full-bleed con imagen real y overlay de tinta (no gradiente de marca), secciones de ancho completo alternando bg/surface, ritmo de espaciado variable (clamp(4rem, 8vw, 7rem) entre secciones mayores).
