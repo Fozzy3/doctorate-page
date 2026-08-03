@@ -150,7 +150,14 @@ async function migrar(slug) {
 
 // ── main ────────────────────────────────────────────────────────────────
 const md = await readFile('src/content/paginas/docentes.md', 'utf8');
-const slugs = [...new Set([...md.matchAll(/\]\(\/([a-z0-9-]+)\/\)/g)].map((m) => m[1]))];
+// El enlace puede ser absoluto (aún no migrado a interno) o relativo
+const slugs = [
+  ...new Set(
+    [...md.matchAll(/\]\((?:https?:\/\/doctoradoingenieria\.udistrital\.edu\.co)?\/([a-z0-9-]+)\/\)/g)].map(
+      (m) => m[1]
+    )
+  ),
+];
 console.log(`Docentes a migrar: ${slugs.length}`);
 
 await mkdir(OUT_JSON, { recursive: true });

@@ -96,15 +96,18 @@ async function migrar(slug, enfasis) {
     if (g) datos.gruplac = decode(g[1]);
   }
 
-  // Director: párrafo que contiene la palabra Director
+  // Director: párrafo que contiene la palabra Director. El nombre va en la
+  // primera línea (nombre<br>Director<br>correo) — hay que separar por <br>
+  // ANTES de aplanar espacios, o "Director" y el correo quedan pegados al nombre.
   const dirP = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)]
     .map((m) => m[1])
     .find((t) => /Director/i.test(t) && !/CLASIFICACIÓN/i.test(t));
   if (dirP) {
     const a = dirP.match(/<a [^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/);
     const correo = soloTexto(dirP).match(/[\w.+-]+@[\w.-]+\.\w+/)?.[0];
+    const primeraLinea = soloTexto(dirP.split(/<br\s*\/?>/i)[0]);
     datos.director = {
-      nombre: a ? soloTexto(a[2]) : soloTexto(dirP).split('\n')[0].trim(),
+      nombre: a ? soloTexto(a[2]) : primeraLinea,
       ...(a ? { url: relativizar(decode(a[1])) } : {}),
       ...(correo ? { correo } : {}),
     };
@@ -124,7 +127,8 @@ let enfasisActual = '';
 for (const linea of md.split('\n')) {
   const h = linea.match(/^## (.+)/);
   if (h) enfasisActual = h[1].trim();
-  const l = linea.match(/doctoradoingenieria\.udistrital\.edu\.co\/([a-z0-9-]+)\//);
+  // El enlace puede ser absoluto (aún no migrado a interno) o relativo
+  const l = linea.match(/\]\((?:https?:\/\/doctoradoingenieria\.udistrital\.edu\.co)?\/([a-z0-9-]+)\/\)/);
   if (l && enfasisActual) porEnfasis.set(l[1], enfasisActual);
 }
 console.log(`Grupos a migrar: ${porEnfasis.size}`);

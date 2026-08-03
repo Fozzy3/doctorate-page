@@ -16,6 +16,11 @@ export async function getStaticPaths() {
   ];
 }
 
+// Esta ruta sirve cuatro colecciones (páginas, docentes, grupos, estudiantes)
+// porque todas comparten el mismo espacio de URLs plano heredado del WordPress.
+// Los tres perfiles repiten la retícula perfil-grid/perfil-media/perfil-datos;
+// si se agrega un cuarto tipo de perfil, extraer ese patrón a un componente
+// antes de duplicarlo otra vez.
 const { p, d, g, e } = Astro.props;
 const Content = p ? (await render(p)).Content : null;
 const section = p ? sectionOf(p.data.section) : sectionOf('comunidad');
@@ -46,6 +51,13 @@ const REDES_LABEL: Record<string, string> = {
   scopus: 'Scopus',
   researchgate: 'ResearchGate',
 };
+
+// Los enlaces de grupos vienen del WP con mayúscula inconsistente
+// ("conoce más sobre X"); se capitaliza solo al mostrar, sin tocar el dato.
+const capitalizar = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+// A1/A: máxima excelencia (insignia sólida); B: buena (contorno); C: contorno tenue
+const nivelClasificacion = (c: string) => (c.startsWith('A') ? 'alto' : c === 'B' ? 'medio' : 'base');
 
 const gruposEstudiantes = d
   ? ([
@@ -294,7 +306,7 @@ const descripcion = p
     ) : g ? (
       <div class="container page">
         <div class="perfil-grid">
-          <aside class="perfil-media">
+          <aside class="perfil-media es-logo">
             {g.data.logo && (
               <img
                 src={g.data.logo}
@@ -308,7 +320,11 @@ const descripcion = p
               {g.data.clasificacion && (
                 <div>
                   <dt>Clasificación MinCiencias</dt>
-                  <dd>{g.data.clasificacion}</dd>
+                  <dd>
+                    <span class:list={['badge-clasificacion', nivelClasificacion(g.data.clasificacion)]}>
+                      {g.data.clasificacion}
+                    </span>
+                  </dd>
                 </div>
               )}
               {g.data.director && (
@@ -367,12 +383,12 @@ const descripcion = p
                     rel="external noopener"
                     target="_blank"
                   >
-                    {g.data.convocatoria.etiqueta}
+                    {capitalizar(g.data.convocatoria.etiqueta)}
                   </a>
                 )}
                 {g.data.enlaces.map((e) => (
                   <a class="btn btn-outline-dark" href={e.url} rel="external noopener" target="_blank">
-                    {e.etiqueta}
+                    {capitalizar(e.etiqueta)}
                   </a>
                 ))}
               </div>
@@ -602,22 +618,32 @@ const descripcion = p
 
   .perfil-media img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border: 1px solid var(--c-line);
     background: var(--c-surface);
+    box-shadow: 0 18px 40px oklch(0.2 0.01 260 / 0.1);
   }
 
+  /* Logos de marca: nunca se recortan (un wordmark cortado es ilegible).
+     Se muestran completos, centrados, sobre fondo neutro con aire alrededor. */
+  .perfil-media.es-logo img {
+    object-fit: contain;
+    padding: 2rem;
+    box-shadow: none;
+  }
+
+  /* Ficha tipo "spec sheet": etiqueta pequeña arriba, valor grande debajo —
+     evita el ragged-right de una fila comprimida y da autoridad al dato */
   .perfil-datos {
     border-top: 3px solid var(--c-crimson);
     background: var(--c-surface);
-    padding: 1.1rem 1.35rem;
-    margin-top: 1.25rem;
+    padding: 0.25rem 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .perfil-datos div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-block: 0.5rem;
+    padding-block: 1.1rem;
   }
 
   .perfil-datos div + div {
@@ -625,16 +651,52 @@ const descripcion = p
   }
 
   .perfil-datos dt {
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     color: var(--c-ink-soft);
   }
 
   .perfil-datos dd {
-    font-weight: 600;
-    font-size: 0.875rem;
-    text-align: right;
+    margin-top: 0.35rem;
+    font-weight: 650;
+    font-size: 1rem;
+    line-height: 1.4;
     overflow-wrap: anywhere;
+  }
+
+  .perfil-datos dd a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Insignia de clasificación MinCiencias: la excelencia se lee de un vistazo */
+  .badge-clasificacion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    padding: 0.25rem 0.65rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.0625rem;
+    letter-spacing: 0.01em;
+    border: 1.5px solid var(--c-crimson);
+  }
+
+  .badge-clasificacion.alto {
+    background: var(--c-crimson);
+    color: var(--c-white);
+  }
+
+  .badge-clasificacion.medio {
+    color: var(--c-crimson);
+  }
+
+  .badge-clasificacion.base {
+    border-color: var(--c-line);
+    color: var(--c-ink-soft);
   }
 
   .perfil-info section + section {

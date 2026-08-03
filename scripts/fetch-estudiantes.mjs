@@ -135,7 +135,10 @@ async function migrar(slug, tipo) {
 // ── main ────────────────────────────────────────────────────────────────
 const slugsDe = async (archivo) => {
   const md = await readFile(archivo, 'utf8');
-  return [...md.matchAll(/\]\(\/([a-z0-9-]+)\/\)/g)].map((m) => m[1]);
+  // El enlace puede ser absoluto (aún no migrado a interno) o relativo
+  return [
+    ...md.matchAll(/\]\((?:https?:\/\/doctoradoingenieria\.udistrital\.edu\.co)?\/([a-z0-9-]+)\/\)/g),
+  ].map((m) => m[1]);
 };
 
 const activos = await slugsDe('src/content/paginas/estudiantes.md');

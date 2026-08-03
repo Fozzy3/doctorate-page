@@ -51,7 +51,12 @@ body {
   background: var(--c-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  /* Los bloques de lado a lado nunca deben producir scroll horizontal */
+}
+
+/* Los bloques de lado a lado nunca deben producir scroll horizontal.
+   Ojo: cualquier overflow-x en body/html rompe position:sticky en toda la
+   página (header, subnav, riel) — por eso va en <html>, no en <body>. */
+html {
   overflow-x: clip;
 }
 
@@ -203,10 +208,12 @@ a:hover {
   overflow-wrap: anywhere;
 }
 
-/* La medida de lectura se aplica por bloque de texto, no al contenedor:
-   así las listas de enlaces y las reglas de los headings ocupan todo el ancho */
+/* La medida de lectura se aplica por bloque de texto, no al contenedor: así
+   las reglas de los headings ocupan todo el ancho. El tope es generoso (85ch)
+   para que la prosa se alinee con las listas de enlaces a dos columnas y no
+   quede un borde derecho irregular entre bloques contiguos. */
 .prose :is(p, ol, ul, blockquote) {
-  max-width: 70ch;
+  max-width: 85ch;
 }
 
 .prose h2,
