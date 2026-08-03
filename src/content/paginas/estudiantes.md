@@ -7,6 +7,10 @@ updated: '2026-04-24'
 
 El Doctorado en Ingeniería se enorgullece de mostrar los estudiantes activos que se encuentran adscritos al programa.
 
+## Convocatorias
+
+- [Términos de referencia movilidad WEA 2025 (PDF)](/documentos/2025/07/Terminos-de-referencia-movilidad-estudiantes-WEA-2025-DocIng.pdf)
+
 ## Ciencias de la Información y Conocimiento
 
 ### A

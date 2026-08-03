@@ -8,6 +8,7 @@ updated: '2026-06-09'
 A continuación encontrará el documento con la lista de admitidos al primer ciclo de admisiones 2026, cohorte 2027-1.
 
 - [Consultar resultados admisiones 2026-I (PDF)](/documentos/2026/06/DOC-FI-20260560-RESULTADOS-ADMISIONES-2026-I.pdf)
+- [Admitidos cohorte 2027, ciclo 1 de 2026 (PDF)](/documentos/2025/12/DOC-FI-20251187-RESULTADOS-ADMISIONES-2025-III.pdf)
 
 Para dudas o inquietudes, comuníquese al correo [admisiones.doctoradoing@udistrital.edu.co](mailto:admisiones.doctoradoing@udistrital.edu.co).
 

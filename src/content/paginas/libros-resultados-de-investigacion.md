@@ -7,6 +7,8 @@ updated: '2023-10-23'
 
 ## CRONOGRAMA DE **PUBLICACIÓN DE LIBROS RESULTADO DE INVESTIGACIÓN DEL PROGRAMA DE DOCTORADO EN INGENIERÍA**
 
+- [Convocatoria 2025: publicación de libros resultado de investigación (PDF)](/documentos/2025/03/PUBLICACIÓN-DE-LIBROS-RESULTADO-DE-INVESTIGACIÓN-CONVOCATORIA-2025.pdf)
+
 Respondiendo a lo anterior el Doctorado en Ingeniería destina una parte de su rubro de inversión para apoyar la difusión de la producción investigativa que sus Docentes, Estudiantes y Grupos de Investigación adscritos están llevando a cabo. El proceso contempla tres fases, la primera incluye la revisión de requisitos de inscripción, la segunda la evaluación del manuscrito por pares en modalidad doble ciego y la final, avalada por el comité institucional de publicaciones donde se realizará la diagramación, corrección de estilo e impresión según sea el caso. Las dos primeras son de responsabilidad del Doctorado en Ingeniería y la última está acompañada por la sección de Publicaciones de la Universidad Distrital.
 
 - Junio

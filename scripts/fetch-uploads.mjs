@@ -51,7 +51,13 @@ async function bajar(url) {
     return;
   }
   try {
-    const res = await fetch(url, { redirect: 'follow' });
+    let res = await fetch(url, { redirect: 'follow' });
+    // Algunos archivos se subieron desde macOS y quedaron guardados con los
+    // acentos en forma Unicode descompuesta (NFD), mientras el enlace los trae
+    // compuestos (NFC): mismo nombre a la vista, distinto byte a byte.
+    if (!res.ok && url.normalize('NFD') !== url) {
+      res = await fetch(url.normalize('NFD'), { redirect: 'follow' });
+    }
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const buf = Buffer.from(await res.arrayBuffer());
     await mkdir(path.dirname(destino), { recursive: true });

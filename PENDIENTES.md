@@ -35,9 +35,8 @@ Verificar después con `node scripts/probar-form.mjs` — debe decir *"Mensaje e
 - [ ] **Reemplazar las fotos de banco** por fotografía real del programa
       (`public/images/stock/`, 8 archivos). Conservando los nombres, el sitio se
       actualiza solo.
-- [ ] **Tres páginas vacías**, igual que en el sitio original — llenar cuando haya
-      contenido: `calendario-de-actividades-2026`, `docentes-invitados`,
-      `estudiantes-pasantes`.
+- [ ] **Dos páginas vacías**, igual que en el sitio original — llenar cuando haya
+      contenido: `docentes-invitados`, `estudiantes-pasantes`.
 
 ## 4. Seguridad y operación
 
