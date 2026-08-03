@@ -39,4 +39,4 @@ updated: '2026-04-29'
 
 ## Formulario de descarga
 
-Para descargar alguno de estos ejemplares, diligencie el formulario disponible en la [página original de libros](https://doctoradoingenieria.udistrital.edu.co/libros/), indicando nombre completo, correo electrónico, proyecto curricular, máximo nivel académico alcanzado y el libro de interés.
+Para descargar alguno de estos ejemplares, diligencie el formulario disponible en la [página original de libros](/libros/), indicando nombre completo, correo electrónico, proyecto curricular, máximo nivel académico alcanzado y el libro de interés.

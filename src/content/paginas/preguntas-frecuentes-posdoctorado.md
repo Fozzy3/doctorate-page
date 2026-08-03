@@ -11,7 +11,7 @@ La modalidad del programa se encuentra definida como presencial y de tiempo comp
 
 ## ¿Cómo puedo acceder a información relacionada con el plan de estudios, líneas de investigación, grupos de investigación, perfil profesional y docentes?
 
-Toda la información relacionada con aspectos particulares del Doctorado en Ingeniería debe ser consultada por el aspirante en la [página web del Doctorado](https://doctoradoingenieria.udistrital.edu.co/), mediante correo electrónico [doctoradoing@udistrital.edu.co](mailto:doctoradoing@udistrital.edu.co) o en la oficina de la coordinación del programa: Carrera 7 # 40B – 53, piso 9.
+Toda la información relacionada con aspectos particulares del Doctorado en Ingeniería debe ser consultada por el aspirante en la [página web del Doctorado](/), mediante correo electrónico [doctoradoing@udistrital.edu.co](mailto:doctoradoing@udistrital.edu.co) o en la oficina de la coordinación del programa: Carrera 7 # 40B – 53, piso 9.
 
 ## ¿Cuánto cuesta el programa de Posdoctorado en Ingeniería?
 

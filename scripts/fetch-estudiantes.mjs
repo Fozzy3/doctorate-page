@@ -62,6 +62,7 @@ async function migrar(slug, tipo) {
   const zona = html.slice(inicio, fin === -1 ? undefined : fin);
 
   const datos = { nombre, tipo, grupos: [], redes: {} };
+  const tipoAuto = tipo === 'auto';
 
   const trozos = zona.split(/<h[23][^>]*>/).slice(1);
   for (const trozo of trozos) {
@@ -108,6 +109,8 @@ async function migrar(slug, tipo) {
     }
   }
 
+  if (tipoAuto) datos.tipo = datos.tesis ? 'egresado' : 'activo';
+
   if (fotoUrl) {
     const ext = path.extname(new URL(fotoUrl).pathname) || '.jpg';
     const destino = path.join(OUT_FOTOS, `${slug}${ext}`);
@@ -133,10 +136,20 @@ const docentes = new Set(
   (await readdir('src/content/docentes')).map((f) => f.replace(/\.json$/, ''))
 );
 
+// Perfiles con página en el WP pero ausentes de los directorios
+// (giraldo usa guiones bajos en el slug y por eso no lo captura el patrón)
+const EXTRAS = [
+  'giraldo_ramos_frank_nixon',
+  'munoz-barragan-jorge-enrique-2',
+  'pena-suesca-rafael-antonio',
+  'villarreal-lopez-luis',
+];
+
 // tipo: egresado gana si aparece en ambas listas; docentes se omiten
 const plan = new Map();
 for (const s of activos) plan.set(s, 'activo');
 for (const s of egresados) plan.set(s, 'egresado');
+for (const s of EXTRAS) if (!plan.has(s)) plan.set(s, 'auto');
 const omitidos = [...plan.keys()].filter((s) => docentes.has(s));
 omitidos.forEach((s) => plan.delete(s));
 

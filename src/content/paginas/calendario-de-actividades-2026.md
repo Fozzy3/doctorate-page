@@ -5,4 +5,4 @@ section: 'programa'
 updated: '2026-03-24'
 ---
 
-El calendario de actividades 2026 del Doctorado en Ingeniería está disponible en la [página original del programa](https://doctoradoingenieria.udistrital.edu.co/calendario-de-actividades-2026/).
+El calendario de actividades 2026 del Doctorado en Ingeniería está disponible en la [página original del programa](/calendario-de-actividades-2026/).

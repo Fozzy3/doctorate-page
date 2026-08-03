@@ -1,0 +1,25 @@
+{
+  "nombre": "Villarreal López Luis",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "ARCO-SES",
+      "url": "/arcos-ses/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000783862",
+    "scholar": "https://scholar.google.es/citations?user=1WIu9KAAAAAJ&hl=es&oi=ao",
+    "orcid": "https://orcid.org/0000-0002-4629-6690",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57967760100&origin=recordpage"
+  },
+  "enfasis": "Ciencia de la Información y el Conocimiento",
+  "cohorte": "2019",
+  "proyecto": "Mecanismos basados en inteligencia colectiva para el soporte de estructuras logísticas emergentes de atención a desastres",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Álvarez Pomar Lindsay",
+    "url": "/alvarez-pomar-lindsay/"
+  },
+  "foto": "/images/estudiantes/villarreal-lopez-luis.png"
+}

@@ -1,0 +1,22 @@
+{
+  "nombre": "Peña Suesca Rafael Antonio",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "LIFAE",
+      "url": "/lifae/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000227439"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2016",
+  "proyecto": "Concepción de esquemas de coordinación para microrredes eléctricas domiciliarias DC",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Trujillo Rodríguez César Leonardo",
+    "url": "/trujillo-rodriguez-cesar-leonardo/"
+  },
+  "foto": "/images/estudiantes/pena-suesca-rafael-antonio.png"
+}

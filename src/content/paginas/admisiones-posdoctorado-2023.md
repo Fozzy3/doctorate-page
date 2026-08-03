@@ -9,7 +9,7 @@ El Posdoctorado en Ingeniería de la Universidad Distrital Francisco José de Ca
 
 ## ¡Inscripciones permanentes!
 
-A continuación se indican los requisitos de inscripción, según el [Acuerdo No. 003 (26 de noviembre de 2020)](https://web.archive.org/web/20220929012341/https://doctoradoingenieria.udistrital.edu.co/sites/default/files/documentos/reglamentacion/acu_2020-003_Nov_Estancias_Posdoctorales_Doc_Ing.pdf):
+A continuación se indican los requisitos de inscripción, según el [Acuerdo No. 003 (26 de noviembre de 2020)](https://web.archive.org/web/20220929012341//documentos/2023/03/acu_2020-003_Nov_Estancias_Posdoctorales_Doc_Ing.pdf):
 
 - Para iniciar una Estancia Posdoctoral en el Doctorado en Ingeniería, el investigador postulante debe presentar una propuesta de investigación al Consejo Curricular, la cual se debe enmarcar en un proyecto de investigación que se encuentre institucionalizado y activo en la Universidad.
 - El Docente de la Universidad Distrital responsable del Proyecto de Investigación deberá ser un docente vinculado al Doctorado en Ingeniería, que cumpla el «Perfil de los profesores del Programa» dispuesto en el reglamento vigente del Doctorado en Ingeniería.
