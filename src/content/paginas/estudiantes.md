@@ -114,7 +114,7 @@ El Doctorado en Ingeniería se enorgullece de mostrar los estudiantes activos qu
 
 ### G
 
-- [Giraldo Ramos Frank Nixon](/giraldo_ramos_frank_nixon/)
+- [Giraldo Ramos Frank Nixon](/giraldo-ramos-frank-nixon/)
 - [Guevara Velandia Germán Antonio](/guevara-velandia-german-antonio/)
 
 ### H

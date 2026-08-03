@@ -35,7 +35,12 @@ const decode = (s) =>
     .trim();
 
 const soloTexto = (html) => decode(html.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, ' '));
-const relativizar = (url) => url.replace(BASE, '') || '/';
+// Rutas internas normalizadas: siempre guiones (algún slug del WP usa guion
+// bajo); los archivos (con extensión) se dejan intactos
+const relativizar = (url) => {
+  const rel = url.replace(BASE, '') || '/';
+  return /\.\w+$/.test(rel) ? rel : rel.replace(/_/g, '-');
+};
 
 async function migrar(slug, enfasis) {
   const res = await fetch(`${BASE}/wp-json/wp/v2/pages?slug=${slug}&_fields=title,content`);

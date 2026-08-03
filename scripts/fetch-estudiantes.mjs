@@ -36,7 +36,13 @@ const decode = (s) =>
     .trim();
 
 const soloTexto = (html) => decode(html.replace(/<[^>]+>/g, ' '));
-const relativizar = (url) => url.replace(BASE, '') || '/';
+
+// Rutas internas normalizadas: siempre guiones (el WP tiene algún slug con
+// guion bajo); los archivos (con extensión) se dejan intactos
+const relativizar = (url) => {
+  const rel = url.replace(BASE, '') || '/';
+  return /\.\w+$/.test(rel) ? rel : rel.replace(/_/g, '-');
+};
 
 function clasificarRed(href) {
   if (/scienti|cvlac/i.test(href)) return 'cvlac';
@@ -48,6 +54,8 @@ function clasificarRed(href) {
 }
 
 async function migrar(slug, tipo) {
+  // El WP se consulta con su slug original; localmente todo va normalizado
+  const slugLocal = slug.replace(/_/g, '-');
   const res = await fetch(`${BASE}/wp-json/wp/v2/pages?slug=${slug}&_fields=title,content`);
   const [pagina] = await res.json();
   if (!pagina) throw new Error('sin página en el WP');
@@ -113,15 +121,15 @@ async function migrar(slug, tipo) {
 
   if (fotoUrl) {
     const ext = path.extname(new URL(fotoUrl).pathname) || '.jpg';
-    const destino = path.join(OUT_FOTOS, `${slug}${ext}`);
+    const destino = path.join(OUT_FOTOS, `${slugLocal}${ext}`);
     if (!existsSync(destino)) {
       const img = await fetch(fotoUrl);
       if (img.ok) await writeFile(destino, Buffer.from(await img.arrayBuffer()));
     }
-    if (existsSync(destino)) datos.foto = `/images/estudiantes/${slug}${ext}`;
+    if (existsSync(destino)) datos.foto = `/images/estudiantes/${slugLocal}${ext}`;
   }
 
-  await writeFile(path.join(OUT_JSON, `${slug}.json`), JSON.stringify(datos, null, 2));
+  await writeFile(path.join(OUT_JSON, `${slugLocal}.json`), JSON.stringify(datos, null, 2));
 }
 
 // ── main ────────────────────────────────────────────────────────────────

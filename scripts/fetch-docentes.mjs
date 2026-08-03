@@ -38,7 +38,12 @@ const decode = (s) =>
 const soloTexto = (html) => decode(html.replace(/<[^>]+>/g, ' '));
 
 // Enlaces internos del WP → relativos (mantenemos paridad de URLs)
-const relativizar = (url) => url.replace(BASE, '') || '/';
+// Rutas internas normalizadas: siempre guiones (algún slug del WP usa guion
+// bajo); los archivos (con extensión) se dejan intactos
+const relativizar = (url) => {
+  const rel = url.replace(BASE, '') || '/';
+  return /\.\w+$/.test(rel) ? rel : rel.replace(/_/g, '-');
+};
 
 function clasificarRed(href) {
   if (/scienti|cvlac/i.test(href)) return 'cvlac';
