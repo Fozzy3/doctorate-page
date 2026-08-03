@@ -1,5 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// Clave de Web3Forms (servicio que reenvía el formulario al correo del
+// programa). Mientras sea el marcador, el envío falla de forma controlada y
+// se muestra el correo institucional como alternativa.
+const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
 ---
 
 <Base
@@ -46,13 +51,22 @@ import Base from '../layouts/Base.astro';
       </section>
 
       <form
+        id="form-contacto"
         class="form"
         method="POST"
         action="https://api.web3forms.com/submit"
         aria-label="Formulario de contacto"
       >
-        <!-- Reemplazar con la access key real de Web3Forms antes de publicar -->
-        <input type="hidden" name="access_key" value="PENDIENTE_ACCESS_KEY" />
+        {/* Reemplazar con la access key real de Web3Forms antes de publicar.
+            Mientras diga PENDIENTE, el envío falla y se muestra el aviso de
+            respaldo con el correo del programa. */}
+        <input type="hidden" name="access_key" value={ACCESS_KEY} />
+        <input
+          type="hidden"
+          name="subject"
+          value="Nuevo mensaje desde el sitio del Doctorado en Ingeniería"
+        />
+        <input type="hidden" name="from_name" value="Sitio del Doctorado en Ingeniería" />
         <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true" />
 
         <div class="fila">
@@ -100,6 +114,11 @@ import Base from '../layouts/Base.astro';
             <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2"></path>
           </svg>
         </button>
+
+        {/* El resultado del envío se anuncia aquí mismo, sin salir de la página.
+            role=status para que los lectores de pantalla lo lean al aparecer. */}
+        <p class="form-estado" role="status" aria-live="polite" hidden></p>
+
         <p class="form-nota">
           Los datos enviados se tratan según la política de protección de datos personales de la
           Universidad Distrital Francisco José de Caldas.
@@ -281,4 +300,96 @@ import Base from '../layouts/Base.astro';
       position: static;
     }
   }
+
+  /* Resultado del envío: verde institucional para éxito, carmesí para error */
+  .form-estado {
+    margin-top: 1.1rem;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-left: 0;
+  }
+
+  .form-estado.ok {
+    background: oklch(0.95 0.04 150);
+    color: oklch(0.35 0.09 150);
+  }
+
+  .form-estado.error {
+    background: var(--c-crimson-soft);
+    color: var(--c-crimson-dark);
+  }
+
+  .form-estado :global(a) {
+    color: inherit;
+  }
 </style>
+
+<script>
+  const form = document.getElementById('form-contacto') as HTMLFormElement | null;
+  const estado = form?.querySelector<HTMLParagraphElement>('.form-estado');
+  const boton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const CORREO = 'doctoradoing@udistrital.edu.co';
+
+  if (form && estado && boton) {
+    const campos = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+      'input:not([type="hidden"]):not([type="checkbox"]), textarea'
+    );
+
+    // El navegador muestra sus avisos de validación en SU idioma, no en el de
+    // la página: se reemplazan por mensajes propios en español.
+    const mensajeDe = (campo: HTMLInputElement | HTMLTextAreaElement) => {
+      const v = campo.validity;
+      if (v.valueMissing) return 'Completa este campo para continuar.';
+      if (v.typeMismatch && campo.type === 'email')
+        return 'Escribe un correo electrónico válido, por ejemplo nombre@correo.com';
+      return 'Revisa este campo.';
+    };
+
+    campos.forEach((campo) => {
+      campo.addEventListener('invalid', () => campo.setCustomValidity(mensajeDe(campo)));
+      // Sin esto el mensaje se queda pegado aunque el campo ya sea válido.
+      // `change` además cubre el autocompletado del navegador.
+      const limpiar = () => campo.setCustomValidity('');
+      campo.addEventListener('input', limpiar);
+      campo.addEventListener('change', limpiar);
+    });
+
+    const mostrar = (texto: string, ok: boolean) => {
+      estado.innerHTML = texto;
+      estado.classList.toggle('ok', ok);
+      estado.classList.toggle('error', !ok);
+      estado.hidden = false;
+    };
+
+    // Envío sin salir de la página: el usuario no termina en una pantalla
+    // ajena del proveedor y conserva lo que escribió si algo falla.
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      estado.hidden = true;
+      boton.disabled = true;
+      // innerHTML, no textContent: el botón lleva el ícono de flecha dentro
+      const contenidoOriginal = boton.innerHTML;
+      boton.textContent = 'Enviando…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        mostrar('Mensaje enviado. Te responderemos al correo que nos indicaste.', true);
+        form.reset();
+      } catch {
+        mostrar(
+          `No pudimos enviar el mensaje. Escríbenos directamente a <a href="mailto:${CORREO}">${CORREO}</a> o llámanos al (+57) 601 323 9300, extensión 1419.`,
+          false
+        );
+      } finally {
+        boton.disabled = false;
+        boton.innerHTML = contenidoOriginal;
+      }
+    });
+  }
+</script>
