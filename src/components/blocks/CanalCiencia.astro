@@ -1,0 +1,444 @@
+---
+/**
+ * Canal de ciencia con programación 24/7. La parrilla (src/data/programacion.ts)
+ * decide qué se emite según el día y la hora de Bogotá, así que todos los
+ * visitantes ven el mismo programa a la misma hora, como un canal de TV.
+ *
+ *   <CanalCiencia titulo="Canal del doctorado" />
+ *
+ * ponytail: mismo programa, no mismo segundo — cada visitante arranca la
+ * playlist donde el navegador la deje. La sincronía exacta necesitaría un
+ * emisor propio 24/7 en otra máquina.
+ */
+import { PROGRAMACION, PARRILLA, CATALOGO, DIAS, HORAS, peso } from '../../data/programacion';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  /** En la portada: solo el reproductor y qué está al aire, sin la guía completa */
+  compacto?: boolean;
+}
+
+const { titulo, descripcion, compacto = false } = Astro.props;
+
+// La semana se lee de lunes a domingo
+const ORDEN = [1, 2, 3, 4, 5, 6, 0];
+
+const hora12 = (h: number) => {
+  const sufijo = h < 12 ? 'a.m.' : 'p.m.';
+  return `${h % 12 === 0 ? 12 : h % 12}:00 ${sufijo}`;
+};
+
+// Filas = horas, columnas = días: así se lee "qué hay a las 3 de la tarde"
+const filas = HORAS.map((hora, i) => ({
+  hora,
+  celdas: ORDEN.map((dia) => ({
+    dia,
+    programa: CATALOGO[PARRILLA[dia][i]],
+    peso: peso(dia, hora),
+  })),
+}));
+
+const totalProgramas = new Set(PROGRAMACION.map((f) => f.playlist)).size;
+---
+
+<section class:list={['canal', { 'canal-compacto': compacto }]}>
+  <h2 class="display">{titulo}</h2>
+  {descripcion && <p class="canal-intro">{descripcion}</p>}
+
+  <div class="canal-ahora" hidden>
+    <p class="canal-etiqueta">
+      <span class="canal-punto" aria-hidden="true"></span>
+      En emisión
+    </p>
+    <p class="canal-programa">
+      <strong data-ahora-titulo></strong>
+      <span class="canal-fuente" data-ahora-fuente></span>
+    </p>
+    <p class="canal-sinopsis" data-ahora-sinopsis></p>
+  </div>
+
+  <div class="canal-marco">
+    <iframe
+      title={titulo}
+      loading="lazy"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+
+  <p class="canal-luego" hidden>A continuación, <strong data-luego></strong></p>
+
+  <noscript>
+    <p class="canal-nota">
+      La emisión necesita JavaScript para saber qué programa corresponde a esta hora.
+    </p>
+  </noscript>
+
+  {
+    compacto ? (
+      <a class="canal-enlace" href="/canal/">
+        Ver la programación de la semana
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </a>
+    ) : (
+      <>
+        <h3 class="canal-titulo-parrilla">Programación de la semana</h3>
+        <p class="canal-nota">
+          {totalProgramas} programas en rotación, 24 horas al día. Horario de Bogotá
+          (GMT-5); la semana se repite. El programa en curso aparece resaltado.
+        </p>
+
+        <div class="parrilla-scroll">
+          <table class="parrilla">
+            <caption class="visually-hidden">
+              Programación semanal del canal, por hora y día
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Hora</th>
+                {ORDEN.map((dia) => (
+                  <th scope="col" data-dia={dia}>
+                    {DIAS[dia]}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filas.map(({ hora, celdas }) => (
+                <tr>
+                  <th scope="row" class="parrilla-hora">
+                    {hora12(hora)}
+                  </th>
+                  {celdas.map(({ programa, peso: p }) => (
+                    <td
+                      class="franja"
+                      data-peso={p}
+                      data-playlist={programa.playlist}
+                      data-titulo={programa.titulo}
+                      data-fuente={programa.fuente}
+                      data-sinopsis={programa.sinopsis}
+                    >
+                      <span class="franja-titulo">{programa.titulo}</span>
+                      <span class="franja-meta">
+                        {programa.idioma === 'es' ? 'ES' : 'EN'} · {programa.fuente}
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+
+  <p class="canal-credito" hidden={compacto}>
+    Emisión sin ánimo de lucro de material publicado por sus autores en sus canales
+    oficiales de YouTube: <a href="https://ocw.mit.edu/">MIT OpenCourseWare</a>,
+    <a href="https://www.webofstories.com/">Web of Stories</a>,
+    <a href="https://computerhistory.org/">Computer History Museum</a>,
+    <a href="https://www.rigb.org/">The Royal Institution</a>,
+    <a href="https://www.nobelprize.org/">Nobel Prize</a>,
+    <a href="https://www.ift.uam-csic.es/">Instituto de Física Teórica</a>,
+    <a href="https://www.march.es/">Fundación Juan March</a> y otros. Los derechos
+    pertenecen a sus autores.
+  </p>
+</section>
+
+<script>
+  import { franjaVigente, franjaSiguiente, peso } from '../../data/programacion';
+
+  const seccion = document.querySelector<HTMLElement>('.canal');
+  const marco = seccion?.querySelector<HTMLIFrameElement>('.canal-marco iframe');
+  const ahora = seccion?.querySelector<HTMLElement>('.canal-ahora');
+  const luego = seccion?.querySelector<HTMLElement>('.canal-luego');
+  const celdas = [...(seccion?.querySelectorAll<HTMLElement>('.franja') ?? [])];
+
+  /** Día (0-6) y hora (0-23) en Bogotá, sin importar dónde esté el visitante. */
+  function bogota() {
+    const partes = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Bogota',
+      weekday: 'short',
+      hour: '2-digit',
+      hour12: false,
+    }).formatToParts(new Date());
+    const dias: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    const dia = dias[partes.find((p) => p.type === 'weekday')!.value] ?? 0;
+    // Algunos entornos devuelven "24" a medianoche
+    const hora = Number(partes.find((p) => p.type === 'hour')!.value) % 24;
+    return dia * 24 + hora;
+  }
+
+  const hora12 = (h: number) => `${h % 12 === 0 ? 12 : h % 12}:00 ${h < 12 ? 'a.m.' : 'p.m.'}`;
+
+  // Se sigue por peso, no por elemento: en la portada no hay parrilla que marcar
+  let emitiendo: number | null = null;
+
+  function sintonizar() {
+    if (!marco || !ahora || !luego) return;
+
+    const momento = bogota();
+    // Las mismas funciones que cubre scripts/probar-programacion.ts
+    const actual = franjaVigente(momento);
+    const siguiente = franjaSiguiente(momento);
+    const pesoActual = peso(actual.dia, actual.hora);
+    if (pesoActual === emitiendo) return; // no recargar el iframe en cada tic
+    emitiendo = pesoActual;
+
+    // Resaltar la casilla en curso, si esta página muestra la guía completa
+    for (const celda of celdas) {
+      const activa = Number(celda.dataset.peso) === pesoActual;
+      celda.classList.toggle('franja-activa', activa);
+      if (activa) celda.setAttribute('aria-current', 'true');
+      else celda.removeAttribute('aria-current');
+    }
+
+    // youtube-nocookie: sin cookies de seguimiento hasta que el visitante da play
+    marco.src =
+      `https://www.youtube-nocookie.com/embed/videoseries?list=${actual.playlist}` +
+      `&autoplay=1&mute=1&loop=1&rel=0`;
+
+    ahora.querySelector('[data-ahora-titulo]')!.textContent = actual.titulo;
+    ahora.querySelector('[data-ahora-fuente]')!.textContent = `— ${actual.fuente}`;
+    ahora.querySelector('[data-ahora-sinopsis]')!.textContent = actual.sinopsis;
+    ahora.hidden = false;
+
+    luego.querySelector('[data-luego]')!.textContent =
+      `${siguiente.titulo}, a las ${hora12(siguiente.hora)}`;
+    luego.hidden = false;
+  }
+
+  sintonizar();
+  // Un minuto basta: el cambio de franja es cada 3 horas y sintonizar() sale
+  // sin tocar el iframe mientras siga el mismo programa.
+  setInterval(sintonizar, 60_000);
+</script>
+
+<style>
+  .canal {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .canal h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* En la portada el titular debe pesar igual que los de las otras secciones */
+  .canal-compacto {
+    padding-block: var(--section-gap) 0;
+  }
+
+  .canal-compacto h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  }
+
+  .canal-intro {
+    font-family: var(--font-sans);
+    color: var(--c-ink-soft);
+    max-width: 60ch;
+    margin-block: 0.9rem 1.4rem;
+  }
+
+  .canal-compacto .canal-intro {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-block: 0.5rem 2rem;
+  }
+
+  .canal-ahora {
+    font-family: var(--font-sans);
+    margin-block-end: 0.9rem;
+  }
+
+  .canal-etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--c-crimson);
+    margin: 0 0 0.2rem;
+  }
+
+  .canal-punto {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--c-crimson);
+    flex: none;
+  }
+
+  /* Latido del punto "en emisión"; se detiene si el visitante pidió menos motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .canal-punto {
+      animation: latido 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes latido {
+    50% {
+      opacity: 0.25;
+    }
+  }
+
+  .canal-programa {
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .canal-fuente,
+  .canal-sinopsis {
+    color: var(--c-ink-soft);
+  }
+
+  .canal-sinopsis {
+    font-size: 0.88rem;
+    margin: 0.15rem 0 0;
+    max-width: 65ch;
+  }
+
+  .canal-marco {
+    aspect-ratio: 16 / 9;
+    background: var(--c-ink);
+  }
+
+  .canal-marco iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .canal-luego {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-block: 0.6rem 0;
+  }
+
+  .canal-enlace {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-decoration: none;
+    margin-block-start: 1rem;
+  }
+
+  .canal-enlace:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .canal-enlace svg {
+    color: var(--c-crimson);
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .canal-enlace:hover svg {
+    translate: 2px -2px;
+  }
+
+  .canal-titulo-parrilla {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-block: 2.2rem 0.3rem;
+  }
+
+  .canal-nota {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-block: 0 1.2rem;
+    max-width: 70ch;
+  }
+
+  /* La guía es ancha a propósito: en pantallas chicas se desplaza sola,
+     como una guía de TV, en vez de comprimir los títulos hasta romperlos. */
+  .parrilla-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--c-line);
+  }
+
+  .parrilla {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 900px;
+    font-family: var(--font-sans);
+  }
+
+  .parrilla th,
+  .parrilla td {
+    border: 1px solid var(--c-line);
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .parrilla thead th {
+    background: var(--c-ink);
+    color: var(--c-white);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: sticky;
+    top: 0;
+  }
+
+  .parrilla-hora {
+    background: var(--c-surface);
+    font-size: 0.75rem;
+    color: var(--c-ink-soft);
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  .franja {
+    display: table-cell;
+  }
+
+  .franja-titulo {
+    display: block;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+
+  .franja-meta {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--c-ink-soft);
+    margin-block-start: 0.15rem;
+  }
+
+  .franja-activa {
+    background: var(--c-crimson-soft);
+    box-shadow: inset 3px 0 0 var(--c-crimson);
+  }
+
+  .franja-activa .franja-titulo {
+    font-weight: 700;
+  }
+
+  .canal-credito {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-block-start: 1.2rem;
+    max-width: 70ch;
+  }
+</style>

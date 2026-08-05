@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import NewsSpotlight from '../components/NewsSpotlight.astro';
+import CanalCiencia from '../components/blocks/CanalCiencia.astro';
 
 const noticias = (await getCollection('noticias'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -142,6 +143,12 @@ const tramites = [
       />
     </div>
   </section>
+
+  <CanalCiencia
+    titulo="Canal de ciencia"
+    descripcion="Conferencias, entrevistas a grandes figuras de la ciencia y la tecnología, y cursos universitarios completos. Emisión continua, en español e inglés."
+    compacto
+  />
 
   <section class="accesos">
     <div class="container">

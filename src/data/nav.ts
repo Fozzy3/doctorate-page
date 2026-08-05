@@ -96,6 +96,7 @@ export const sections: NavSection[] = [
       { slug: 'libros-resultados-de-investigacion', label: 'Cronograma de libros' },
       { slug: 'memorias', label: 'Memorias' },
       { slug: 'laboratorio-de-microrredes', label: 'Laboratorio de microrredes' },
+      { slug: 'canal', label: 'Canal de ciencia' },
     ],
   },
   {
