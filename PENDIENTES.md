@@ -15,7 +15,21 @@ Ordenado por lo que bloquea la publicación.
       para que los enlaces de correos y buscadores no se rompan. Una línea en nginx
       o un archivo `_redirects` según dónde se despliegue. Ver `DESIGN.md` → Documentos.
 
-## 2. Formulario de contacto (hoy no envía nada)
+## 2. Página de certificados (`/certificados/`)
+
+- [ ] **Crear la variable del repositorio `PUBLIC_CERT_API_URL`** (Settings → Secrets and
+      variables → Actions → *Variables*) con la URL pública de la API, p. ej.
+      `https://…/api/v1`. El workflow ya la pasa al build. Sin ella, la página no llama
+      a nada: muestra el correo y el teléfono del programa y deja el formulario deshabilitado.
+- [ ] **La API de producción debe servirse por HTTPS.** El sitio es HTTPS y el navegador
+      bloquea las llamadas a HTTP (contenido mixto). Además, el dominio del sitio debe estar
+      en `CORS_ORIGINS` de la API.
+- [ ] **Política de tratamiento de datos.** La nota bajo el botón cita la Ley 1581 de 2012
+      como texto; cuando exista una página de política de datos en el sitio, enlazarla ahí.
+- Verificar con `NAVEGADOR=… node scripts/probar-certificados.mjs` (escenarios
+  `completo`, `sin-api` y `ocupado`; ver el encabezado del script).
+
+## 3. Formulario de contacto (hoy no envía nada)
 
 - [ ] **Clave de Web3Forms** → `ACCESS_KEY` en `src/pages/contactenos.astro`.
       Gratis; registrarse con `doctoradoing@udistrital.edu.co` y los mensajes
@@ -28,7 +42,7 @@ Ordenado por lo que bloquea la publicación.
 
 Verificar después con `node scripts/probar-form.mjs` — debe decir *"Mensaje enviado"*.
 
-## 3. Contenido e imágenes
+## 4. Contenido e imágenes
 
 - [ ] **Foto del hero en alta resolución.** La actual (`public/images/hero-facultad.jpg`)
       es de 768 px de ancho y se estira en monitores grandes.
@@ -38,18 +52,21 @@ Verificar después con `node scripts/probar-form.mjs` — debe decir *"Mensaje e
 - [ ] **Dos páginas vacías**, igual que en el sitio original — llenar cuando haya
       contenido: `docentes-invitados`, `estudiantes-pasantes`.
 
-## 4. Seguridad y operación
+## 5. Seguridad y operación
 
 - [ ] **Cabeceras de seguridad** en el servidor (HSTS, X-Content-Type-Options,
       Referrer-Policy, CSP).
 - [ ] **Respaldo de `public/documentos/`** antes de apagar el WordPress: hoy es la
       única copia de los 462 documentos institucionales fuera del WP.
 
-## 5. Deuda técnica (no urgente)
+## 6. Deuda técnica (no urgente)
 
 - [ ] `src/pages/[...slug].astro` va en ~920 líneas y sirve cuatro colecciones; los
       tres perfiles (docente, grupo, estudiante) repiten la misma retícula.
       Extraerla a un componente **antes** de agregar un cuarto tipo de perfil.
+- [ ] Los estilos de formulario (campos, `.fila`, `.form-estado`, tarjeta `.datos`,
+      banda `page-hero`) están duplicados en `contactenos.astro` y `certificados.astro`.
+      Extraerlos a `global.css` cuando llegue un **tercer** formulario.
 
 ---
 
