@@ -398,7 +398,7 @@ const descripcion = p
       </div>
     ) : p!.data.plantilla === 'panorama' ? (
       <article class="prose panorama">
-        <Content />
+        {Content && <Content />}
       </article>
     ) : (
   <div class="container page">
@@ -451,7 +451,7 @@ const descripcion = p
 
       <article>
         <div class="prose">
-          <Content />
+          {Content && <Content />}
         </div>
       </article>
     </div>

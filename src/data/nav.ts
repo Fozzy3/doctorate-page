@@ -51,6 +51,7 @@ export const sections: NavSection[] = [
       { slug: 'resultados-admisiones-2026-1', label: 'Resultados 2026-I' },
       { slug: 'formatos', label: 'Formatos' },
       { slug: 'solicitudes', label: 'Solicitudes' },
+      { slug: 'certificados', label: 'Certificados' },
       { slug: 'solicitudes-consejo-de-carrera', label: 'Solicitudes al Consejo de Carrera' },
     ],
   },

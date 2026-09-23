@@ -1,0 +1,766 @@
+---
+import Base from '../layouts/Base.astro';
+import { sectionOf } from '../data/nav';
+
+const seccion = sectionOf('admisiones');
+
+// URL de la API de certificados. Se incrusta en el build (sitio estático).
+// En desarrollo hay un valor por defecto; en un build de producción sin
+// PUBLIC_CERT_API_URL la página no llama a nada y muestra el aviso de respaldo.
+const API_URL: string =
+  import.meta.env.PUBLIC_CERT_API_URL || (import.meta.env.DEV ? 'http://localhost:8000/api/v1' : '');
+---
+
+<Base
+  title="Certificados"
+  description="Descarga los certificados de tu participación en el Doctorado en Ingeniería de la Universidad Distrital: jurados, direcciones, cursos, conferencias y publicaciones."
+>
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Miga de pan">
+        <ol>
+          <li><a href="/">Inicio</a></li>
+          {seccion && <li>{seccion.label}</li>}
+          <li aria-current="page">Certificados</li>
+        </ol>
+      </nav>
+      <h1 class="display">Certificados</h1>
+      <p class="page-lead">
+        Descarga los certificados de tu participación en el Doctorado en Ingeniería: jurados,
+        direcciones, cursos, conferencias y publicaciones.
+      </p>
+    </div>
+  </div>
+
+  <div class="container certificados">
+    <div class="certificados-grid">
+      <section class="datos" aria-labelledby="como-funciona">
+        <h2 id="como-funciona">Cómo funciona</h2>
+        <dl>
+          <div>
+            <dt>Qué necesitas</dt>
+            <dd>Tu tipo y número de documento de identidad.</dd>
+          </div>
+          <div>
+            <dt>Qué recibes</dt>
+            <dd>Un PDF con consecutivo y código de verificación, listo para descargar.</dd>
+          </div>
+          <div>
+            <dt>¿No aparece tu información?</dt>
+            <dd>
+              Escribe a <a href="mailto:doctoradoing@udistrital.edu.co">doctoradoing@udistrital.edu.co</a>
+              indicando el certificado que necesitas.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <div class="columna-form">
+        <form
+          id="form-certificados"
+          class="form"
+          novalidate
+          aria-label="Solicitud de certificado"
+          data-api={API_URL}
+        >
+          <div class="fila">
+            <div class="field">
+              <label for="tipo-documento">Tipo de documento</label>
+              <select id="tipo-documento" name="tipo_identificacion" required disabled>
+                <option value="">Cargando…</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="numero-documento">Número de documento</label>
+              <input
+                id="numero-documento"
+                name="numero_documento"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                required
+                disabled
+                aria-describedby="numero-error"
+                placeholder="Sin puntos ni espacios"
+              />
+              <p class="campo-error" id="numero-error" hidden></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="certificado">Certificado</label>
+            <select
+              id="certificado"
+              name="certificado"
+              required
+              disabled
+              aria-describedby="certificado-ayuda"
+            >
+              <option value="">Cargando…</option>
+            </select>
+            <p class="form-nota campo-ayuda" id="certificado-ayuda"></p>
+          </div>
+
+          <button class="btn btn-primary" type="submit" disabled>
+            Generar certificado
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+          </button>
+
+          {/* Mensajes del proceso (carga, errores, reintento, éxito), anunciados
+              a los lectores de pantalla sin mover el foco. */}
+          <p class="form-estado" role="status" aria-live="polite" hidden></p>
+
+          <p class="form-nota">
+            Usamos tu número de documento solo para buscar tus certificados. Tratamiento de datos
+            según la Ley 1581 de 2012.
+          </p>
+        </form>
+
+        <section class="resultado" id="resultado" aria-labelledby="resultado-titulo" hidden>
+          <h2 id="resultado-titulo" tabindex="-1">Certificado generado</h2>
+          <dl class="resultado-datos">
+            <div>
+              <dt>Consecutivo</dt>
+              <dd id="resultado-consecutivo"></dd>
+            </div>
+            <div>
+              <dt>Código de verificación</dt>
+              <dd id="resultado-codigo"></dd>
+            </div>
+          </dl>
+          <div class="resultado-acciones">
+            <a class="btn btn-primary" id="resultado-descargar" href="#" download>
+              Descargar PDF
+              <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2"></path>
+              </svg>
+            </a>
+            <a class="btn btn-outline-dark" id="resultado-abrir" href="#" target="_blank" rel="noopener">
+              Abrir en pestaña nueva
+            </a>
+          </div>
+          {/* Oculto bajo 820px: los visores de PDF móviles no funcionan en iframe */}
+          <iframe id="resultado-visor" title="Vista previa del certificado"></iframe>
+        </section>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  /* Misma banda y rejilla que /contactenos/ (ver PENDIENTES.md: extraer los
+     estilos de formulario compartidos a global.css al llegar un tercer formulario). */
+  .page-hero {
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-line);
+    padding-block: 1.5rem clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+
+  .breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--c-ink-soft);
+    margin-bottom: 1.25rem;
+  }
+
+  .breadcrumbs li + li::before {
+    content: '/';
+    margin-right: 0.5rem;
+    color: var(--c-ink-soft);
+  }
+
+  .breadcrumbs a {
+    color: var(--c-ink-soft);
+    text-decoration: none;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+  }
+
+  .page-lead {
+    margin-top: 0.6rem;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--c-ink-soft);
+    max-width: 52ch;
+  }
+
+  .certificados {
+    padding-block: clamp(2.5rem, 5vw, 4rem) var(--section-gap);
+  }
+
+  .certificados-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  /* Tarjeta de datos: misma voz que las fichas del sitio */
+  .datos {
+    background: var(--c-surface);
+    border-top: 3px solid var(--c-crimson);
+    padding: 1.75rem 2rem 2rem;
+    position: sticky;
+    top: 90px;
+  }
+
+  .datos h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .datos dl div {
+    padding-block: 1rem;
+  }
+
+  .datos dl div + div {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .datos dt {
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .datos dd {
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--c-ink-soft);
+  }
+
+  /* Formulario */
+  .fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .field {
+    margin-bottom: 1.4rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 650;
+    font-size: 0.9rem;
+    margin-bottom: 0.45rem;
+  }
+
+  input,
+  select {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--c-line);
+    background: var(--c-bg);
+    color: var(--c-ink);
+    border-radius: 0;
+    transition: border-color 180ms var(--ease-out-quint), box-shadow 180ms var(--ease-out-quint);
+  }
+
+  /* Chevron propio: el nativo cambia según navegador y sistema */
+  select {
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%234b5159' stroke-width='1.6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  input::placeholder {
+    color: var(--c-ink-soft);
+    opacity: 1;
+  }
+
+  input:hover:not(:disabled),
+  select:hover:not(:disabled) {
+    border-color: var(--c-ink-soft);
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--c-crimson);
+    box-shadow: 0 0 0 3px var(--c-crimson-soft);
+  }
+
+  input:disabled,
+  select:disabled {
+    color: var(--c-ink-soft);
+    cursor: not-allowed;
+  }
+
+  input[aria-invalid='true'] {
+    border-color: var(--c-crimson);
+  }
+
+  .campo-error {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--c-crimson-dark);
+  }
+
+  .campo-ayuda {
+    margin-top: 0.5rem;
+  }
+
+  .campo-ayuda:empty {
+    display: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn svg {
+    transition: translate 150ms var(--ease-out-quint);
+  }
+
+  .btn:hover svg {
+    translate: 2px -2px;
+  }
+
+  .btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  .form-nota {
+    margin-top: 1.1rem;
+    font-size: 0.8rem;
+    color: var(--c-ink-soft);
+    max-width: 52ch;
+  }
+
+  /* Resultado: verde institucional para éxito, carmesí para error, surface para avisos */
+  .form-estado {
+    margin-top: 1.1rem;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--c-surface);
+    color: var(--c-ink);
+  }
+
+  .form-estado.ok {
+    background: oklch(0.95 0.04 150);
+    color: oklch(0.35 0.09 150);
+  }
+
+  .form-estado.error {
+    background: var(--c-crimson-soft);
+    color: var(--c-crimson-dark);
+  }
+
+  .form-estado :global(a) {
+    color: inherit;
+  }
+
+  /* Panel del certificado generado */
+  .resultado {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--c-line);
+  }
+
+  .resultado[hidden] {
+    display: none;
+  }
+
+  .resultado.aparece {
+    animation: aparecer 320ms var(--ease-out-quint);
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      translate: 0 8px;
+    }
+  }
+
+  .resultado h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .resultado h2:focus {
+    outline: none;
+  }
+
+  .resultado h2:focus-visible {
+    outline: 2px solid var(--c-crimson);
+    outline-offset: 4px;
+  }
+
+  .resultado-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .resultado-datos dt {
+    font-size: 0.8rem;
+    color: var(--c-ink-soft);
+  }
+
+  .resultado-datos dd {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+
+  .resultado-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resultado iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 8.5 / 11;
+    border: 1px solid var(--c-line);
+    background: var(--c-surface);
+  }
+
+  @media (max-width: 820px) {
+    .certificados-grid,
+    .fila {
+      grid-template-columns: 1fr;
+    }
+
+    .datos {
+      position: static;
+    }
+
+    .resultado iframe {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resultado.aparece {
+      animation: none;
+    }
+
+    .btn svg {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  type TipoIdentificacion = {
+    codigo: string;
+    nombre: string;
+    patron: string;
+    mensaje_patron: string | null;
+  };
+  type TipoCertificado = {
+    text_code: string;
+    dist_name: string;
+    url: string;
+    descripcion: string | null;
+  };
+
+  const CORREO = 'doctoradoing@udistrital.edu.co';
+  const RESPALDO =
+    `No pudimos conectar con el servicio de certificados. Escríbenos a ` +
+    `<a href="mailto:${CORREO}">${CORREO}</a> indicando el certificado que necesitas, ` +
+    `o llámanos al (+57) 601 323 9300, extensión 1419.`;
+  const TIEMPO_CATALOGOS_MS = 10_000;
+  const TIEMPO_GENERAR_MS = 45_000;
+  const ESPERA_POR_DEFECTO_S = 5;
+  const ESPERA_MAXIMA_S = 30;
+
+  const form = document.getElementById('form-certificados') as HTMLFormElement | null;
+  const selTipo = document.getElementById('tipo-documento') as HTMLSelectElement | null;
+  const inNumero = document.getElementById('numero-documento') as HTMLInputElement | null;
+  const errNumero = document.getElementById('numero-error') as HTMLParagraphElement | null;
+  const selCert = document.getElementById('certificado') as HTMLSelectElement | null;
+  const ayudaCert = document.getElementById('certificado-ayuda') as HTMLParagraphElement | null;
+  const estado = form?.querySelector<HTMLParagraphElement>('.form-estado') ?? null;
+  const boton = form?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
+  const panel = document.getElementById('resultado') as HTMLElement | null;
+  const panelTitulo = document.getElementById('resultado-titulo') as HTMLHeadingElement | null;
+  const rConsecutivo = document.getElementById('resultado-consecutivo') as HTMLElement | null;
+  const rCodigo = document.getElementById('resultado-codigo') as HTMLElement | null;
+  const rDescargar = document.getElementById('resultado-descargar') as HTMLAnchorElement | null;
+  const rAbrir = document.getElementById('resultado-abrir') as HTMLAnchorElement | null;
+  const rVisor = document.getElementById('resultado-visor') as HTMLIFrameElement | null;
+
+  if (
+    form && selTipo && inNumero && errNumero && selCert && ayudaCert && estado && boton &&
+    panel && panelTitulo && rConsecutivo && rCodigo && rDescargar && rAbrir && rVisor
+  ) {
+    const api = (form.dataset.api ?? '').replace(/\/+$/, '');
+    const tipos = new Map<string, TipoIdentificacion>();
+    const certificados = new Map<string, TipoCertificado>();
+    const contenidoBoton = boton.innerHTML;
+    let urlPdf: string | null = null;
+    let enviando = false;
+    // Cambia con cada edición del formulario: una respuesta que llega después de
+    // una edición ya no corresponde a lo que dice el formulario y se descarta.
+    let version = 0;
+
+    const mostrar = (html: string, tipo: 'ok' | 'error' | 'aviso') => {
+      estado.innerHTML = html;
+      estado.classList.toggle('ok', tipo === 'ok');
+      estado.classList.toggle('error', tipo === 'error');
+      estado.hidden = false;
+    };
+    const ocultarEstado = () => {
+      estado.hidden = true;
+      estado.textContent = '';
+    };
+
+    const habilitar = (activo: boolean) => {
+      [selTipo, inNumero, selCert, boton].forEach((el) => (el.disabled = !activo));
+    };
+
+    const ocultarResultado = () => {
+      if (urlPdf) URL.revokeObjectURL(urlPdf);
+      urlPdf = null;
+      panel.hidden = true;
+      panel.classList.remove('aparece');
+      rVisor.removeAttribute('src');
+      rDescargar.href = '#';
+      rAbrir.href = '#';
+    };
+
+    const conTiempo = async (url: string, init: RequestInit, ms: number) => {
+      const control = new AbortController();
+      const temporizador = setTimeout(() => control.abort(), ms);
+      try {
+        return await fetch(url, { ...init, signal: control.signal });
+      } finally {
+        clearTimeout(temporizador);
+      }
+    };
+
+    const opcion = (valor: string, texto: string) => {
+      const o = document.createElement('option');
+      o.value = valor;
+      o.textContent = texto;
+      return o;
+    };
+
+    const normalizar = (valor: string) => valor.replace(/[.\s-]/g, '').toUpperCase();
+
+    // El teclado numérico solo tiene sentido si el tipo admite únicamente dígitos
+    const actualizarTeclado = () => {
+      const tipo = tipos.get(selTipo.value);
+      inNumero.inputMode = tipo && tipo.patron.startsWith('^\\d') ? 'numeric' : 'text';
+    };
+
+    const errorDelNumero = (): string | null => {
+      const numero = normalizar(inNumero.value);
+      if (!numero) return 'Completa este campo para continuar.';
+      const tipo = tipos.get(selTipo.value);
+      if (tipo && !new RegExp(tipo.patron).test(numero)) {
+        return tipo.mensaje_patron ?? 'Revisa el número de documento.';
+      }
+      return null;
+    };
+
+    const marcarNumero = (mensaje: string | null) => {
+      inNumero.setAttribute('aria-invalid', mensaje ? 'true' : 'false');
+      errNumero.textContent = mensaje ?? '';
+      errNumero.hidden = !mensaje;
+    };
+
+    const actualizarAyuda = () => {
+      ayudaCert.textContent = certificados.get(selCert.value)?.descripcion ?? '';
+    };
+
+    // ── Carga de catálogos ────────────────────────────────────────────────
+    const sinServicio = () => {
+      selTipo.replaceChildren(opcion('', 'No disponible'));
+      selCert.replaceChildren(opcion('', 'No disponible'));
+      mostrar(RESPALDO, 'error');
+    };
+
+    const cargarCatalogos = async () => {
+      if (!api) {
+        // Build de producción sin PUBLIC_CERT_API_URL: no se llama a nada
+        sinServicio();
+        return;
+      }
+      try {
+        const [rTipos, rCerts] = await Promise.all([
+          conTiempo(`${api}/catalogos/tipos-identificacion`, {}, TIEMPO_CATALOGOS_MS),
+          conTiempo(`${api}/catalogos/certificados`, {}, TIEMPO_CATALOGOS_MS),
+        ]);
+        if (!rTipos.ok || !rCerts.ok) throw new Error('catálogos');
+        const listaTipos = (await rTipos.json()) as TipoIdentificacion[];
+        const listaCerts = (await rCerts.json()) as TipoCertificado[];
+        if (!listaTipos.length || !listaCerts.length) throw new Error('catálogos vacíos');
+
+        selTipo.replaceChildren(...listaTipos.map((t) => opcion(t.codigo, t.nombre)));
+        listaTipos.forEach((t) => tipos.set(t.codigo, t));
+        selCert.replaceChildren(
+          opcion('', 'Selecciona el certificado'),
+          ...listaCerts.map((c) => opcion(c.text_code, c.dist_name))
+        );
+        listaCerts.forEach((c) => certificados.set(c.text_code, c));
+        actualizarTeclado();
+        actualizarAyuda();
+        habilitar(true);
+      } catch {
+        sinServicio();
+      }
+    };
+
+    // ── Validación propia en español ──────────────────────────────────────
+    inNumero.addEventListener('blur', () => {
+      if (inNumero.value) marcarNumero(errorDelNumero());
+    });
+    inNumero.addEventListener('input', () => {
+      if (inNumero.getAttribute('aria-invalid') === 'true') marcarNumero(errorDelNumero());
+    });
+    selTipo.addEventListener('change', () => {
+      actualizarTeclado();
+      if (inNumero.value) marcarNumero(errorDelNumero());
+    });
+    selCert.addEventListener('change', actualizarAyuda);
+
+    // Si cambia cualquier campo, el PDF a la vista deja de corresponder al formulario
+    [selTipo, inNumero, selCert].forEach((campo) => {
+      const invalidar = () => {
+        version++;
+        if (!panel.hidden) {
+          ocultarResultado();
+          ocultarEstado();
+        }
+      };
+      campo.addEventListener('input', invalidar);
+      campo.addEventListener('change', invalidar);
+    });
+
+    // ── Generación ────────────────────────────────────────────────────────
+    const esperar = (s: number) => new Promise((ok) => setTimeout(ok, s * 1000));
+
+    const generar = async (cuerpo: object) => {
+      const pedir = () =>
+        conTiempo(
+          `${api}/certificados/generar`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo) },
+          TIEMPO_GENERAR_MS
+        );
+      const respuesta = await pedir();
+      if (respuesta.status !== 503) return respuesta;
+      // SERVICIO_OCUPADO: un reintento automático tras la espera indicada
+      const cabecera = Number.parseInt(respuesta.headers.get('Retry-After') ?? '', 10);
+      const segundos = Math.min(
+        Number.isFinite(cabecera) && cabecera > 0 ? cabecera : ESPERA_POR_DEFECTO_S,
+        ESPERA_MAXIMA_S
+      );
+      mostrar(`Hay muchas solicitudes en este momento. Reintentaremos en ${segundos} segundos…`, 'aviso');
+      await esperar(segundos);
+      return pedir();
+    };
+
+    const mostrarResultado = (blob: Blob, consecutivo: string, codigo: string) => {
+      urlPdf = URL.createObjectURL(blob);
+      rVisor.src = urlPdf;
+      rDescargar.href = urlPdf;
+      rDescargar.download = `${consecutivo || 'certificado'}.pdf`;
+      rAbrir.href = urlPdf;
+      rConsecutivo.textContent = consecutivo;
+      rCodigo.textContent = codigo;
+      panel.hidden = false;
+      panel.classList.add('aparece');
+      panelTitulo.focus();
+      mostrar('Certificado generado. Puedes descargarlo o abrirlo en una pestaña nueva.', 'ok');
+    };
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (enviando) return; // evita el doble envío
+
+      const error = errorDelNumero();
+      marcarNumero(error);
+      if (error) {
+        inNumero.focus();
+        return;
+      }
+      if (!selCert.value) {
+        mostrar('Selecciona el certificado que necesitas.', 'error');
+        selCert.focus();
+        return;
+      }
+
+      ocultarResultado();
+      ocultarEstado();
+      enviando = true;
+      const miVersion = version;
+      boton.disabled = true;
+      boton.textContent = 'Generando…';
+      form.setAttribute('aria-busy', 'true');
+
+      try {
+        const respuesta = await generar({
+          tipo_identificacion: selTipo.value,
+          numero_documento: normalizar(inNumero.value),
+          certificado: selCert.value,
+        });
+        if (miVersion !== version) {
+          ocultarEstado(); // el formulario cambió mientras se generaba
+          return;
+        }
+        const tipo = respuesta.headers.get('content-type') ?? '';
+        if (respuesta.ok && tipo.startsWith('application/pdf')) {
+          mostrarResultado(
+            await respuesta.blob(),
+            respuesta.headers.get('X-Consecutivo') ?? '',
+            respuesta.headers.get('X-Codigo-Verificacion') ?? ''
+          );
+        } else if (tipo.includes('application/json')) {
+          const cuerpo = (await respuesta.json()) as { mensaje?: string };
+          mostrar(cuerpo.mensaje ? escapar(cuerpo.mensaje) : RESPALDO, 'error');
+        } else {
+          mostrar(RESPALDO, 'error');
+        }
+      } catch {
+        // Red caída, tiempo agotado (AbortController) o un 500 sin CORS
+        mostrar(RESPALDO, 'error');
+      } finally {
+        enviando = false;
+        boton.disabled = false;
+        boton.innerHTML = contenidoBoton;
+        form.removeAttribute('aria-busy');
+      }
+    });
+
+    function escapar(texto: string) {
+      const div = document.createElement('div');
+      div.textContent = texto;
+      return div.innerHTML;
+    }
+
+    window.addEventListener('pagehide', () => {
+      if (urlPdf) URL.revokeObjectURL(urlPdf);
+    });
+
+    cargarCatalogos();
+  }
+</script>

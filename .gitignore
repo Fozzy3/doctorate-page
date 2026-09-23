@@ -2,3 +2,8 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Variables de entorno locales (nunca se suben)
+.env
+.env.*
+!.env.example

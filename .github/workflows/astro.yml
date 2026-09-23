@@ -73,6 +73,9 @@ jobs:
       # con el WordPress). Para el staging bajo subpath, el paso siguiente
       # reescribe las rutas en el HTML ya generado.
       - name: Build with Astro
+        # URL pública de la API de certificados (variable del repositorio, no secreto)
+        env:
+          PUBLIC_CERT_API_URL: ${{ vars.PUBLIC_CERT_API_URL }}
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
             --site "${{ steps.pages.outputs.origin }}"
