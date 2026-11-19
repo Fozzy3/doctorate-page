@@ -1,0 +1,640 @@
+---
+// Asistente del doctorado: botón flotante + panel de chat (RAG en /api/chat).
+// Ver functions/api/chat.ts y DESIGN.md → Chatbot.
+const sugerencias = [
+  '¿Cuáles son los requisitos de admisión?',
+  '¿Qué dice el reglamento sobre la candidatura?',
+  '¿Cómo radico una solicitud al consejo?',
+];
+---
+
+<button class="chat-lanzador" type="button" aria-controls="chat-panel" aria-expanded="false">
+  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6c-.5.4-1.3.1-1.3-.6V16A2.5 2.5 0 0 1 4 13.5z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span>Asistente</span>
+</button>
+
+<section id="chat-panel" class="chat-panel" aria-labelledby="chat-titulo" data-abierto="false" inert>
+  <header class="chat-cabecera">
+    <button type="button" class="chat-icono" data-accion="minimizar" aria-label="Minimizar asistente">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+    <h2 id="chat-titulo">Asistente del Doctorado</h2>
+    <button type="button" class="chat-icono" data-accion="cerrar" aria-label="Cerrar y borrar la conversación">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </header>
+
+  <ol class="chat-mensajes" role="log" aria-live="polite" aria-label="Conversación"></ol>
+
+  <template id="chat-bienvenida">
+    <li class="msg msg-bot">
+      <div class="burbuja">
+        <p>
+          ¡Hola! Soy el asistente del Doctorado en Ingeniería. Respondo con base en los documentos
+          oficiales del programa: admisiones, reglamento, actas, docentes y trámites. ¿En qué te ayudo?
+        </p>
+      </div>
+      <div class="chat-sugerencias">
+        {sugerencias.map((s) => <button type="button">{s}</button>)}
+      </div>
+    </li>
+  </template>
+
+  <footer class="chat-pie">
+    <p class="chat-aviso">Asistente con IA: puede equivocarse. Verifica en los documentos citados.</p>
+    <form class="chat-form">
+      <label class="visually-hidden" for="chat-entrada">Escribe tu pregunta</label>
+      <input
+        id="chat-entrada"
+        name="pregunta"
+        type="text"
+        maxlength="600"
+        autocomplete="off"
+        placeholder="Pregunta sobre el doctorado"
+      />
+      <button type="submit" aria-label="Enviar pregunta" disabled>
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="M8 13V3M3.5 7.5L8 3l4.5 4.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </form>
+  </footer>
+</section>
+
+<style>
+  .chat-lanzador {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: calc(var(--z-drawer) + 10);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    height: 3.25rem;
+    padding: 0 1.3rem 0 1.05rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--c-crimson);
+    color: var(--c-white);
+    font: 600 0.95rem var(--font-sans);
+    cursor: pointer;
+    box-shadow: 0 10px 28px -8px oklch(0.34 0.13 18 / 0.55);
+    transition:
+      background 180ms var(--ease-out-quint),
+      translate 180ms var(--ease-out-quint),
+      scale 220ms var(--ease-out-quint),
+      opacity 220ms var(--ease-out-quint);
+  }
+
+  .chat-lanzador:hover {
+    background: var(--c-crimson-dark);
+    translate: 0 -2px;
+  }
+
+  .chat-lanzador:active {
+    scale: 0.97;
+  }
+
+  .chat-lanzador[aria-expanded='true'] {
+    opacity: 0;
+    scale: 0.6;
+    pointer-events: none;
+  }
+
+  /* Panel: tarjeta flotante que crece desde la esquina del botón */
+  .chat-panel {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: calc(var(--z-drawer) + 10);
+    width: min(400px, calc(100vw - 2rem));
+    height: min(660px, calc(100dvh - 2.5rem));
+    display: flex;
+    flex-direction: column;
+    background: var(--c-bg);
+    border-radius: 20px;
+    box-shadow:
+      0 0 0 1px oklch(0.22 0.015 260 / 0.07),
+      0 28px 64px -16px oklch(0.22 0.015 260 / 0.4);
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition:
+      opacity 220ms var(--ease-out-quint),
+      scale 220ms var(--ease-out-quint),
+      translate 220ms var(--ease-out-quint),
+      visibility 0s linear 220ms;
+  }
+
+  .chat-panel[data-abierto='false'] {
+    opacity: 0;
+    scale: 0.96;
+    translate: 0 12px;
+    visibility: hidden;
+  }
+
+  .chat-panel[data-abierto='true'] {
+    transition-delay: 0s;
+  }
+
+  .chat-cabecera {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 0.85rem 0.85rem 0.6rem;
+  }
+
+  .chat-cabecera h2 {
+    text-align: center;
+    font: 600 1rem var(--font-sans);
+    color: var(--c-ink);
+  }
+
+  .chat-icono {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--c-ink);
+    cursor: pointer;
+    transition: background 150ms var(--ease-out-quint);
+  }
+
+  .chat-icono:hover {
+    background: var(--c-surface);
+  }
+
+  .chat-mensajes {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  .chat-mensajes :global(.msg) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-width: 92%;
+  }
+
+  .chat-mensajes :global(.msg-usuario) {
+    align-self: flex-end;
+    max-width: 82%;
+  }
+
+  .chat-mensajes :global(.burbuja) {
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
+    background: var(--c-surface);
+    color: var(--c-ink);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .chat-mensajes :global(.msg-usuario .burbuja) {
+    padding: 0.65rem 1rem;
+    background: var(--c-crimson);
+    color: var(--c-white);
+  }
+
+  .chat-mensajes :global(.burbuja > * + *) {
+    margin-top: 0.55rem;
+  }
+
+  .chat-mensajes :global(.burbuja ul),
+  .chat-mensajes :global(.burbuja ol) {
+    padding-left: 1.2rem;
+  }
+
+  /* Anidada en el <li> del mensaje, el navegador pondría círculos huecos */
+  .chat-mensajes :global(.burbuja ul) {
+    list-style: disc;
+  }
+
+  .chat-mensajes :global(.burbuja li + li) {
+    margin-top: 0.3rem;
+  }
+
+  .chat-mensajes :global(.burbuja a) {
+    color: var(--c-crimson);
+    font-weight: 600;
+  }
+
+  /* Escribiendo… */
+  .chat-mensajes :global(.puntos) {
+    display: inline-flex;
+    gap: 0.3rem;
+    padding-block: 0.35rem;
+  }
+
+  .chat-mensajes :global(.puntos span) {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--c-ink-soft);
+    animation: chat-punto 1.1s ease-in-out infinite;
+  }
+
+  .chat-mensajes :global(.puntos span:nth-child(2)) {
+    animation-delay: 0.15s;
+  }
+
+  .chat-mensajes :global(.puntos span:nth-child(3)) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes chat-punto {
+    0%,
+    80%,
+    100% {
+      opacity: 0.25;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  .chat-mensajes :global(.chat-acciones button) {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--c-ink-soft);
+    cursor: pointer;
+  }
+
+  .chat-mensajes :global(.chat-acciones button:hover) {
+    background: var(--c-surface);
+    color: var(--c-ink);
+  }
+
+  .chat-mensajes :global(.fuentes) {
+    font-size: 0.8rem;
+    color: var(--c-ink-soft);
+  }
+
+  .chat-mensajes :global(.fuentes ul) {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.25rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .chat-mensajes :global(.fuentes a) {
+    color: var(--c-ink);
+    text-decoration-color: var(--c-line);
+    text-underline-offset: 3px;
+  }
+
+  .chat-mensajes :global(.fuentes a:hover) {
+    color: var(--c-crimson);
+  }
+
+  .chat-mensajes :global(.chat-sugerencias) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .chat-mensajes :global(.chat-sugerencias button) {
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--c-line);
+    border-radius: 999px;
+    background: var(--c-bg);
+    color: var(--c-ink);
+    font: 500 0.85rem var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      border-color 150ms var(--ease-out-quint),
+      color 150ms var(--ease-out-quint);
+  }
+
+  .chat-mensajes :global(.chat-sugerencias button:hover) {
+    border-color: var(--c-crimson);
+    color: var(--c-crimson);
+  }
+
+  .chat-pie {
+    padding: 0.4rem 1rem 1rem;
+  }
+
+  .chat-aviso {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--c-ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .chat-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.4rem 0.35rem 1rem;
+    border: 1px solid var(--c-line);
+    border-radius: 14px;
+    background: var(--c-bg);
+    transition:
+      border-color 180ms var(--ease-out-quint),
+      box-shadow 180ms var(--ease-out-quint);
+  }
+
+  .chat-form:focus-within {
+    border-color: var(--c-crimson);
+    box-shadow: 0 0 0 3px var(--c-crimson-soft);
+  }
+
+  .chat-form input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    padding: 0.55rem 0;
+    background: transparent;
+    color: var(--c-ink);
+    /* 16px evita el zoom automático de iOS al enfocar */
+    font: 1rem var(--font-sans);
+  }
+
+  .chat-form input:focus {
+    outline: none;
+  }
+
+  .chat-form input::placeholder {
+    color: var(--c-ink-soft);
+  }
+
+  .chat-form button {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 50%;
+    background: var(--c-crimson);
+    color: var(--c-white);
+    cursor: pointer;
+    transition:
+      background 150ms var(--ease-out-quint),
+      scale 150ms var(--ease-out-quint);
+  }
+
+  .chat-form button:hover:not(:disabled) {
+    background: var(--c-crimson-dark);
+  }
+
+  .chat-form button:active:not(:disabled) {
+    scale: 0.92;
+  }
+
+  .chat-form button:disabled {
+    background: var(--c-line);
+    cursor: default;
+  }
+
+  /* Móvil: el panel ocupa toda la pantalla y el botón queda solo con ícono */
+  @media (max-width: 560px) {
+    .chat-lanzador {
+      right: 1rem;
+      bottom: 1rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .chat-lanzador span {
+      display: none;
+    }
+
+    .chat-panel {
+      inset: 0;
+      width: 100%;
+      height: 100dvh;
+      border-radius: 0;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chat-lanzador,
+    .chat-panel {
+      transition: none;
+    }
+
+    .chat-mensajes :global(.puntos span) {
+      animation: none;
+      opacity: 0.6;
+    }
+  }
+</style>
+
+<script>
+  import { mdChat } from '../lib/md-chat';
+
+  type Mensaje = { rol: 'user' | 'assistant'; texto: string };
+  type Fuente = { titulo: string; url: string };
+
+  const lanzador = document.querySelector<HTMLButtonElement>('.chat-lanzador')!;
+  const panel = document.getElementById('chat-panel')!;
+  const lista = panel.querySelector<HTMLOListElement>('.chat-mensajes')!;
+  const bienvenida = panel.querySelector<HTMLTemplateElement>('#chat-bienvenida')!;
+  const form = panel.querySelector<HTMLFormElement>('.chat-form')!;
+  const entrada = form.querySelector<HTMLInputElement>('input')!;
+  const enviarBtn = form.querySelector<HTMLButtonElement>('button')!;
+  const CONTACTO =
+    'Escribe a doctoradoing@udistrital.edu.co o llama al (+57) 601 323 9300, extensión 1419.';
+
+  let historial: Mensaje[] = [];
+  let enCurso: AbortController | null = null;
+
+  const icono = (d: string) =>
+    `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const COPIAR = icono('M5.5 5.5V3.5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2M3.5 5.5h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z');
+  const COPIADO = icono('M3 8.5l3.2 3L13 4.5');
+
+  const reiniciar = () => {
+    enCurso?.abort();
+    historial = [];
+    lista.replaceChildren(bienvenida.content.cloneNode(true));
+  };
+
+  const abrir = () => {
+    panel.dataset.abierto = 'true';
+    panel.inert = false;
+    lanzador.setAttribute('aria-expanded', 'true');
+    entrada.focus();
+  };
+
+  const minimizar = () => {
+    panel.dataset.abierto = 'false';
+    panel.inert = true;
+    lanzador.setAttribute('aria-expanded', 'false');
+    lanzador.focus();
+  };
+
+  const alFinal = () => lista.scrollHeight - lista.scrollTop - lista.clientHeight < 80;
+
+  const burbuja = (rol: 'usuario' | 'bot') => {
+    const li = document.createElement('li');
+    li.className = `msg msg-${rol}`;
+    const div = document.createElement('div');
+    div.className = 'burbuja';
+    li.append(div);
+    lista.append(li);
+    lista.scrollTop = lista.scrollHeight;
+    return { li, div };
+  };
+
+  const agregarFuentes = (li: HTMLLIElement, fuentes: Fuente[]) => {
+    const seguras = fuentes.filter((f) => /^\/(?!\/)/.test(f.url));
+    if (!seguras.length) return;
+    const caja = document.createElement('div');
+    caja.className = 'fuentes';
+    caja.append('Fuentes');
+    const ul = document.createElement('ul');
+    for (const f of seguras) {
+      const a = document.createElement('a');
+      a.href = f.url;
+      a.textContent = `${f.titulo} ↗`;
+      const item = document.createElement('li');
+      item.append(a);
+      ul.append(item);
+    }
+    caja.append(ul);
+    li.append(caja);
+  };
+
+  const agregarCopiar = (li: HTMLLIElement, texto: string) => {
+    const acciones = document.createElement('div');
+    acciones.className = 'chat-acciones';
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Copiar respuesta');
+    b.innerHTML = COPIAR;
+    b.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(texto);
+        b.innerHTML = COPIADO;
+        b.setAttribute('aria-label', 'Respuesta copiada');
+        setTimeout(() => {
+          b.innerHTML = COPIAR;
+          b.setAttribute('aria-label', 'Copiar respuesta');
+        }, 1500);
+      } catch {}
+    });
+    acciones.append(b);
+    li.append(acciones);
+  };
+
+  async function preguntar(pregunta: string) {
+    if (enCurso) return;
+    lista.querySelector('.chat-sugerencias')?.remove();
+    burbuja('usuario').div.textContent = pregunta;
+    const { li, div } = burbuja('bot');
+    div.innerHTML = '<span class="puntos" aria-label="Escribiendo"><span></span><span></span><span></span></span>';
+
+    const control = new AbortController();
+    enCurso = control;
+    enviarBtn.disabled = true;
+    let texto = '';
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta, historial }),
+        signal: control.signal,
+      });
+      if (res.status === 429) throw new Error('limite');
+      if (!res.ok || !res.body) throw new Error(String(res.status));
+      let fuentes: Fuente[] = [];
+      try {
+        fuentes = JSON.parse(decodeURIComponent(res.headers.get('X-Fuentes') ?? '[]'));
+      } catch {}
+
+      const lector = res.body.getReader();
+      const decoder = new TextDecoder();
+      for (;;) {
+        const { done, value } = await lector.read();
+        if (done) break;
+        const seguir = alFinal();
+        texto += decoder.decode(value, { stream: true });
+        div.innerHTML = mdChat(texto);
+        if (seguir) lista.scrollTop = lista.scrollHeight;
+      }
+      if (!texto.trim()) throw new Error('vacía');
+      historial = [...historial, { rol: 'user' as const, texto: pregunta }, { rol: 'assistant' as const, texto }].slice(-6);
+      // Medir ANTES de agregar: después el contenido ya creció y nunca "está al final"
+      const seguir = alFinal();
+      agregarFuentes(li, fuentes);
+      agregarCopiar(li, texto);
+      if (seguir) lista.scrollTop = lista.scrollHeight;
+    } catch (e) {
+      if (control.signal.aborted) return;
+      div.textContent =
+        e instanceof Error && e.message === 'limite'
+          ? 'Recibí muchas preguntas seguidas. Espera un minuto e inténtalo de nuevo.'
+          : `No pude responder en este momento. ${CONTACTO}`;
+    } finally {
+      if (enCurso === control) enCurso = null;
+      enviarBtn.disabled = !entrada.value.trim();
+    }
+  }
+
+  reiniciar();
+  lanzador.addEventListener('click', abrir);
+  panel.querySelector('[data-accion="minimizar"]')!.addEventListener('click', minimizar);
+  panel.querySelector('[data-accion="cerrar"]')!.addEventListener('click', () => {
+    reiniciar();
+    minimizar();
+  });
+  panel.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') minimizar();
+  });
+  entrada.addEventListener('input', () => {
+    enviarBtn.disabled = !entrada.value.trim() || !!enCurso;
+  });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pregunta = entrada.value.trim();
+    if (!pregunta) return;
+    entrada.value = '';
+    preguntar(pregunta);
+  });
+  lista.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('.chat-sugerencias button');
+    if (b?.textContent) preguntar(b.textContent.trim());
+  });
+</script>
