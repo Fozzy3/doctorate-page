@@ -591,7 +591,7 @@ const sugerencias = [
         if (done) break;
         const seguir = alFinal();
         texto += decoder.decode(value, { stream: true });
-        div.innerHTML = mdChat(texto);
+        div.innerHTML = mdChat(texto, fuentes.map((f) => f.url));
         if (seguir) lista.scrollTop = lista.scrollHeight;
       }
       if (!texto.trim()) throw new Error('vacía');
@@ -605,7 +605,7 @@ const sugerencias = [
       if (control.signal.aborted) return;
       div.textContent =
         e instanceof Error && e.message === 'limite'
-          ? 'Recibí muchas preguntas seguidas. Espera un minuto e inténtalo de nuevo.'
+          ? 'Recibí muchas preguntas seguidas. Espera unos segundos e inténtalo de nuevo.'
           : `No pude responder en este momento. ${CONTACTO}`;
     } finally {
       if (enCurso === control) enCurso = null;

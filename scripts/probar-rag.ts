@@ -87,14 +87,18 @@ assert.ok(idDe('/documentos/' + 'a'.repeat(500), 9).length <= 64);
 
 // El texto del modelo nunca inyecta HTML
 assert.equal(mdChat('<img src=x onerror=alert(1)>'), '<p>&lt;img src=x onerror=alert(1)&gt;</p>');
-// Solo enlaces a rutas del sitio o https; javascript: queda como texto
+// Solo enlaza URLs de los fragmentos que recibió el modelo (otra página del
+// mismo PDF vale). Lo inventado queda como texto, sin la URL (Llama inventó
+// udistrital.edu.co/doctoiningenieria en la primera prueba real)
+const dadas = ['/documentos/a.pdf#page=5', '/admisiones-doctorado/'];
 assert.equal(
-  mdChat('[Acta](/documentos/a.pdf#page=2) y [web](https://x.co)'),
-  '<p><a href="/documentos/a.pdf#page=2">Acta</a> y <a href="https://x.co" target="_blank" rel="noopener">web</a></p>'
+  mdChat('[Acta](/documentos/a.pdf#page=2), [web](https://www.udistrital.edu.co/doctoiningenieria) y [otro](/documentos/inventado.pdf)', dadas),
+  '<p><a href="/documentos/a.pdf#page=2">Acta</a>, web y otro</p>'
 );
-assert.doesNotMatch(mdChat('[mal](javascript:alert(1))'), /<a /);
-// Comillas en la URL no rompen el atributo
-assert.doesNotMatch(mdChat('[x](/a"onmouseover="b)'), /onmouseover="/);
+assert.equal(mdChat('[Admisiones](/admisiones-doctorado/)', dadas), '<p><a href="/admisiones-doctorado/">Admisiones</a></p>');
+assert.doesNotMatch(mdChat('[mal](javascript:alert(1))', ['javascript:alert(1)']), /<a /);
+// Comillas en la URL no rompen el atributo, aunque la URL venga permitida
+assert.doesNotMatch(mdChat('[x](/a"onmouseover="b)', ['/a"onmouseover="b']), /onmouseover="/);
 assert.equal(mdChat('**Requisito**: título'), '<p><strong>Requisito</strong>: título</p>');
 // Listas con viñeta y numeradas; párrafos separados por línea en blanco
 assert.equal(mdChat('Pasos:\n- uno\n- dos\n\nFin'), '<p>Pasos:</p><ul><li>uno</li><li>dos</li></ul><p>Fin</p>');
