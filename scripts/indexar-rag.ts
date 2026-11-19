@@ -108,6 +108,22 @@ export function aplanar(obj: Record<string, unknown>): string {
   return lineas.join('\n');
 }
 
+/** Markdown → grupos de secciones (## …) enteras de hasta `max` caracteres. Así
+ *  una lista no queda partida entre dos trozos. Agrupar las chicas mantiene el
+ *  número de trozos (y el tope gratis de Vectorize) igual que antes. */
+export function porSecciones(texto: string, max = MAX): string[] {
+  const grupos: string[] = [];
+  let actual = '';
+  for (const seccion of texto.split(/\n(?=#{1,4} )/)) {
+    if (actual && actual.length + 1 + seccion.length > max) {
+      grupos.push(actual);
+      actual = seccion;
+    } else actual = actual ? `${actual}\n${seccion}` : seccion;
+  }
+  if (actual.trim()) grupos.push(actual);
+  return grupos;
+}
+
 /** Id = huella del contenido: si el trozo cambia, cambia el id. Así el índice
  *  mismo dice qué falta, sin archivo de estado. sha1 hex = 40 bytes < 64. */
 export function idDe(t: { url: string; titulo: string; texto: string }): string {
@@ -157,14 +173,14 @@ function recolectar(): { fuentes: Fuente[]; escaneados: string[] } {
     const crudo = readFileSync(f, 'utf8');
     for (const [r, t] of titulosDeDocumentos(crudo)) titulos.set(r, t);
     const { titulo, cuerpo } = textoDeMarkdown(crudo);
-    fuentes.push({ url: `/${path.parse(f).name}/`, titulo, texto: `${titulo}\n${cuerpo}` });
+    for (const s of porSecciones(cuerpo.trim())) fuentes.push({ url: `/${path.parse(f).name}/`, titulo, texto: `${titulo}\n${s}` });
   }
 
   for (const f of archivos(`${CONTENIDO}/noticias`, /\.md$/)) {
     const crudo = readFileSync(f, 'utf8');
     for (const [r, t] of titulosDeDocumentos(crudo)) titulos.set(r, t);
     const { titulo, cuerpo } = textoDeMarkdown(crudo);
-    fuentes.push({ url: `/noticias/${path.parse(f).name}/`, titulo, texto: `${titulo}\n${cuerpo}` });
+    for (const s of porSecciones(cuerpo.trim())) fuentes.push({ url: `/noticias/${path.parse(f).name}/`, titulo, texto: `${titulo}\n${s}` });
   }
 
   const perfiles = { docentes: 'Docente', grupos: 'Grupo de investigación', estudiantes: 'Estudiante' };

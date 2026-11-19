@@ -7,7 +7,7 @@
  * su página y que los documentos lleven el título humano del enlace.
  */
 import assert from 'node:assert/strict';
-import { trocear, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir } from './indexar-rag.ts';
+import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir } from './indexar-rag.ts';
 import { mdChat } from '../src/lib/md-chat.ts';
 import { deltasSSE, validarCuerpo, priorizar } from '../functions/api/chat.ts';
 
@@ -76,6 +76,19 @@ assert.match(plano, /grupos: GEFEM/);
 assert.match(plano, /egresados: Luis/);
 assert.doesNotMatch(plano, /\.jpg|https?:/, 'sin rutas de fotos ni URLs: no aportan al texto');
 assert.doesNotMatch(plano, /activos:/, 'sin claves vacías');
+
+// ── porSecciones: una sección (p. ej. la lista de requisitos) no se parte ──
+// Caso real: "¿qué documentos necesito?" omitía los 3 primeros de 8 porque la
+// lista quedaba partida entre dos trozos y solo llegaba la segunda mitad
+
+const sec = (h: string, n: number) => `## ${h}\n${h.toLowerCase().repeat(n)}`;
+const conSecciones = ['Intro', sec('A', 1000), sec('B', 1000), sec('C', 1000)].join('\n');
+const grupos = porSecciones(conSecciones, 2400);
+assert.equal(grupos.length, 2, 'agrupa secciones chicas hasta el tope');
+assert.match(grupos[0], /^Intro\n## A\n/);
+assert.match(grupos[1], /^## C\n/, 'la sección que no cabe empieza grupo nuevo, entera');
+assert.ok(grupos.every((g) => g.length <= 2400));
+assert.equal(porSecciones(sec('Larga', 5000), 2400).length, 1, 'una sección más larga que el tope va sola (la parte trocear)');
 
 // ── idDe: cambia con el contenido, así el índice mismo es el estado ────────
 

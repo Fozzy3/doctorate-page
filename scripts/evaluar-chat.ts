@@ -68,7 +68,8 @@ for (const caso of CASOS) {
   const total = Date.now() - t0;
   const fuentes: { url: string }[] = JSON.parse(decodeURIComponent(res.headers.get('X-Fuentes') ?? '[]'));
   const dadas = new Set(fuentes.map((f) => f.url.split('#')[0]));
-  const enlaces = [...texto.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1].split('#')[0]);
+  // mailto: no cuenta (el panel lo deja como texto y el correo sí está en las fuentes)
+  const enlaces = [...texto.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1].split('#')[0]).filter((u) => !u.startsWith('mailto:'));
   const malos = enlaces.filter((u) => !dadas.has(u));
   inventados += malos.length;
 
