@@ -1,0 +1,46 @@
+# Reindexa el asistente (Cloudflare Vectorize) cuando cambian páginas, perfiles
+# o documentos. Incremental: solo embebe lo nuevo o cambiado y borra lo
+# eliminado (ver scripts/indexar-rag.ts). También se corre a mano: Actions →
+# Reindexar asistente → Run workflow.
+# Secretos (Settings → Secrets and variables → Actions):
+#   DEEPINFRA_API_KEY · CF_API_TOKEN (Vectorize: Edit) · CF_ACCOUNT_ID
+name: Reindexar asistente
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/**'
+      - 'public/documentos/**'
+      - 'scripts/indexar-rag.ts'
+  workflow_dispatch:
+
+# Dos corridas a la vez subirían lo mismo dos veces: la segunda espera
+concurrency:
+  group: indexar-rag
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  indexar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # Solo lo que lee el indexador (el repo completo pesa ~1 GB)
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src/content
+            public/documentos
+            scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
+      - run: node --experimental-strip-types scripts/indexar-rag.ts
+        env:
+          DEEPINFRA_API_KEY: ${{ secrets.DEEPINFRA_API_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

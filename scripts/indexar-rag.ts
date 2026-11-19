@@ -8,11 +8,10 @@
  *   node --experimental-strip-types scripts/indexar-rag.ts
  *     → embeddings en DeepInfra (bge-m3) + upsert en Cloudflare Vectorize
  *
- * Correr después de agregar documentos o páginas. Los ids son estables, así
- * que volver a correrlo sobrescribe en lugar de duplicar.
- * ponytail: los trozos de documentos BORRADOS quedan en el índice. Si se
- * eliminan documentos, borrar el índice en el dashboard y volver a correr
- * (~3 min, ~$0,03).
+ * Incremental: cada id es la huella de su trozo, así que solo embebe lo nuevo
+ * o cambiado y borra lo que ya no existe (documentos borrados o editados).
+ * Lo corre el pipeline en cada push a main que toque contenido o documentos
+ * (.github/workflows/indexar-rag.yml); a mano solo hace falta para probar.
  *
  * Requiere `pdftotext` (poppler-utils). PDFs escaneados sin texto se saltan.
  * Check: node --experimental-strip-types scripts/probar-rag.ts
@@ -109,9 +108,17 @@ export function aplanar(obj: Record<string, unknown>): string {
   return lineas.join('\n');
 }
 
-/** Id estable por (url, n.º de trozo); sha1 hex = 40 bytes < 64 de Vectorize. */
-export function idDe(url: string, n: number): string {
-  return createHash('sha1').update(`${url}#${n}`).digest('hex');
+/** Id = huella del contenido: si el trozo cambia, cambia el id. Así el índice
+ *  mismo dice qué falta, sin archivo de estado. sha1 hex = 40 bytes < 64. */
+export function idDe(t: { url: string; titulo: string; texto: string }): string {
+  return createHash('sha1').update(`${t.url}\n${t.titulo}\n${t.texto}`).digest('hex');
+}
+
+/** Qué embeber (lo que el índice no tiene) y qué borrar (lo que ya no existe). */
+export function diferencia<T extends { id: string }>(actuales: T[], enIndice: string[]) {
+  const ya = new Set(enIndice);
+  const vigentes = new Set(actuales.map((t) => t.id));
+  return { subir: actuales.filter((t) => !ya.has(t.id)), borrar: enIndice.filter((id) => !vigentes.has(id)) };
 }
 
 // ── Recolección ─────────────────────────────────────────────────────────────
@@ -121,10 +128,13 @@ type Fuente = { url: string; titulo: string; texto: string; pdf?: boolean };
 const CONTENIDO = 'src/content';
 const DOCUMENTOS = 'public/documentos';
 
+// Ordenados: readdirSync no garantiza orden y de él dependen los títulos y qué
+// copia de un PDF repetido se queda. Sin orden, cada máquina daría otros ids.
 const archivos = (dir: string, re: RegExp): string[] =>
   readdirSync(dir, { recursive: true, withFileTypes: true })
     .filter((e) => e.isFile() && re.test(e.name))
-    .map((e) => path.join(e.parentPath, e.name));
+    .map((e) => path.join(e.parentPath, e.name))
+    .sort();
 
 /** Markdown/MDX → texto: sin frontmatter, imports, etiquetas ni URLs de enlaces. */
 function textoDeMarkdown(crudo: string): { titulo: string; cuerpo: string } {
@@ -169,7 +179,7 @@ function recolectar(): { fuentes: Fuente[]; escaneados: string[] } {
   // ponytail: solo PDF; .docx/.xlsx (formatos para llenar) no se indexan
   const escaneados: string[] = [];
   const vistos = new Set<string>();
-  for (const f of archivos(DOCUMENTOS, /\.pdf$/i).sort()) {
+  for (const f of archivos(DOCUMENTOS, /\.pdf$/i)) {
     const ruta = '/' + path.relative('public', f).split(path.sep).join('/');
     let texto = '';
     try {
@@ -224,12 +234,10 @@ async function main() {
   const { fuentes, escaneados } = recolectar();
 
   const trozos = fuentes.flatMap((f) =>
-    trocear(f.texto).map((t, n) => ({
-      id: idDe(f.url, n),
-      url: f.pdf ? `${f.url}#page=${paginaDe(f.texto, t.inicio)}` : f.url,
-      titulo: f.titulo,
-      texto: t.texto,
-    }))
+    trocear(f.texto).map((t) => {
+      const trozo = { url: f.pdf ? `${f.url}#page=${paginaDe(f.texto, t.inicio)}` : f.url, titulo: f.titulo, texto: t.texto };
+      return { id: idDe(trozo), ...trozo };
+    })
   );
 
   const pdfs = fuentes.filter((f) => f.pdf).length;
@@ -254,6 +262,33 @@ async function main() {
     console.log(`Índice ${INDICE} creado`);
   }
 
+  // Ids que ya tiene el índice (páginas de hasta 1000)
+  const enIndice: string[] = [];
+  for (let cursor = ''; ; ) {
+    const { result } = await pedir(`${cf}/${INDICE}/list?count=1000${cursor && `&cursor=${encodeURIComponent(cursor)}`}`, { headers: auth });
+    enIndice.push(...result.vectors.map((v: { id: string }) => v.id));
+    if (!result.isTruncated) break;
+    cursor = result.nextCursor;
+  }
+  const { subir: nuevos, borrar } = diferencia(trozos, enIndice);
+  console.log(`En el índice: ${enIndice.length} · nuevos o cambiados: ${nuevos.length} · a borrar: ${borrar.length}`);
+
+  // Borrar primero: viejos + nuevos juntos pueden pasar el tope gratis de 5 M
+  for (let i = 0; i < borrar.length; i += 1000) {
+    await pedir(`${cf}/${INDICE}/delete_by_ids`, {
+      method: 'POST',
+      headers: { ...auth, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids: borrar.slice(i, i + 1000) }),
+    });
+  }
+  // Vectorize aplica los borrados en segundo plano: esperar a que cuenten
+  const meta = enIndice.length - borrar.length;
+  for (let s = 0; borrar.length && s < 300; s += 5) {
+    const { result } = await pedir(`${cf}/${INDICE}/info`, { headers: auth });
+    if (result.vectorCount <= meta) break;
+    await new Promise((listo) => setTimeout(listo, 5000));
+  }
+
   // Embeddings en lotes de 64, upsert en lotes de 1000 (tope HTTP: 5000)
   let pendientes: Vector[] = [];
   const subir = async () => {
@@ -266,18 +301,19 @@ async function main() {
     pendientes = [];
   };
 
-  for (let i = 0; i < trozos.length; i += 64) {
-    const lote = trozos.slice(i, i + 64);
+  for (let i = 0; i < nuevos.length; i += 64) {
+    const lote = nuevos.slice(i, i + 64);
     // El título va dentro del texto embebido: da contexto a trozos sueltos
-    const vectores = await embeddings(lote.map((t) => `${t.titulo}\n${t.texto}`), di);
+    const vectores = await embeddings(lote.map((t) => `${t.titulo}\n${t.texto}`), di!);
     lote.forEach((t, j) =>
       pendientes.push({ id: t.id, values: vectores[j], metadata: { url: t.url, titulo: t.titulo, texto: t.texto } })
     );
     if (pendientes.length >= 1000) await subir();
-    process.stdout.write(`\r${Math.min(i + 64, trozos.length)}/${trozos.length}`);
+    // Sin \r: en el log del pipeline cada avance queda en su línea
+    if (pendientes.length === 0 || i + 64 >= nuevos.length) console.log(`${Math.min(i + 64, nuevos.length)}/${nuevos.length}`);
   }
   if (pendientes.length) await subir();
-  console.log('\nListo.');
+  console.log('Listo.');
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await main();
