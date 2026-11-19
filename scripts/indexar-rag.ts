@@ -290,13 +290,15 @@ async function main() {
   console.log(`En el índice: ${enIndice.length} · nuevos o cambiados: ${nuevos.length} · a borrar: ${borrar.length}`);
 
   // Borrar primero: viejos + nuevos juntos pueden pasar el tope gratis de 5 M
-  for (let i = 0; i < borrar.length; i += 1000) {
+  // Tope de la API: 100 ids por petición (error 40007 con más)
+  for (let i = 0; i < borrar.length; i += 100) {
     await pedir(`${cf}/${INDICE}/delete_by_ids`, {
       method: 'POST',
       headers: { ...auth, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids: borrar.slice(i, i + 1000) }),
+      body: JSON.stringify({ ids: borrar.slice(i, i + 100) }),
     });
   }
+  if (borrar.length) console.log(`Borrados ${borrar.length}; esperando a que Vectorize los aplique…`);
   // Vectorize aplica los borrados en segundo plano: esperar a que cuenten
   const meta = enIndice.length - borrar.length;
   for (let s = 0; borrar.length && s < 300; s += 5) {
