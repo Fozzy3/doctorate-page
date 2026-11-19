@@ -33,7 +33,7 @@ interface Env {
 const MODELO = 'mistralai/Mistral-Small-24B-Instruct-2501';
 const EMBEDDINGS = 'BAAI/bge-m3'; // el mismo de scripts/indexar-rag.ts
 const API = 'https://api.deepinfra.com/v1/openai';
-const TOP_K = 10;
+const TOP_K = 8;
 // Las páginas del sitio están al día y resumidas; los PDFs (actas, reglamentos
 // viejos) son 9 de cada 10 trozos y ganaban por cantidad aunque estuvieran
 // desactualizados. ponytail: bono fijo, calibrado con scripts/evaluar-chat.ts
@@ -43,7 +43,8 @@ const BONO_PAGINA = 0.05;
 // una búsqueda aparte y las mejores tienen cupo fijo. Medido con X-Candidatos.
 const RESERVA_PAGINAS = 2;
 // Lo que el embedding no ve (fechas, nombres, números) lo halla la búsqueda
-// por palabras (FTS5 en D1): sus 2 mejores entran si no estaban.
+// por palabras (FTS5 en D1): sus 2 mejores entran si no estaban, SUMADOS a
+// los 8 (con 10 de Vectorize entraban datos viejos: el coordinador de marzo).
 const RESERVA_PALABRAS = 2;
 
 type Trozo = { url: string; titulo: string; texto: string };
@@ -199,7 +200,7 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
     matches = [...general, ...paginas];
     palabras = fts;
   }
-  const trozos = sumarPalabras(priorizar(matches, TOP_K), palabras, TOP_K);
+  const trozos = sumarPalabras(priorizar(matches, TOP_K), palabras, TOP_K + RESERVA_PALABRAS);
   const t2 = Date.now();
 
   const contexto = armarContexto(trozos);
