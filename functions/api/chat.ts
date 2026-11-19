@@ -146,7 +146,17 @@ const json = (estado: number, error: string) =>
     headers: { 'Content-Type': 'application/json' },
   });
 
-export const onRequestPost = async ({ request, env }: { request: Request; env: Env }) => {
+// Un fetch que se corta (DeepInfra, Vectorize) lanza excepción: sin esto
+// Cloudflare responde su página "502 Bad gateway" y no se sabe qué falló.
+export const onRequestPost = async (contexto: { request: Request; env: Env }) => {
+  try {
+    return await responder(contexto);
+  } catch (e) {
+    return json(502, `excepción: ${e instanceof Error ? e.message : String(e)}`.slice(0, 300));
+  }
+};
+
+const responder = async ({ request, env }: { request: Request; env: Env }) => {
   // Solo desde el propio sitio: el endpoint no es un LLM gratis para terceros.
   // ponytail: un script puede falsear Origin; el freno real es la regla de
   // rate limiting de Cloudflare sobre /api/chat (ver DESIGN.md → Chatbot).
