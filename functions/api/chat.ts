@@ -1,7 +1,7 @@
 /**
  * POST /api/chat — RAG del chatbot (Cloudflare Pages Function).
  *
- * pregunta → embedding (DeepInfra bge-m3) → Vectorize topK → Llama con los
+ * pregunta → embedding (DeepInfra bge-m3) → Vectorize topK → el LLM con los
  * fragmentos → texto en stream. Las fuentes van en la cabecera X-Fuentes.
  *
  * Configuración en Cloudflare (Pages → Settings):
@@ -21,13 +21,12 @@ interface Env {
   };
 }
 
-// Comparado el 2026-11-19 con 154 respuestas (mismo prompt y fragmentos): Llama
-// 3.3 70B tardaba 6,4-7 s de mediana y hasta 17 s; Scout en tier priority,
-// 1,5-1,6 s y < 3 s el p90, con la misma exactitud. priority = +50 % de precio
-// (USD 0,61 por 1.000 preguntas) a cambio de no hacer fila cuando DeepInfra se
-// satura. Alternativa: google/gemma-4-26B-A4B-it con reasoning_effort 'none'
-// (más barata, nunca inventó enlaces, pero p90 de 6-9 s).
-const MODELO = 'meta-llama/Llama-4-Scout-17B-16E-Instruct';
+// Comparado el 2026-11-19 (mismo prompt y fragmentos, 33 respuestas por modelo).
+// Mistral Small 24B: 30/33 como Scout, 0 enlaces inventados, 1,5 s de mediana y
+// 2,5 s el p90, USD 0,23 por 1.000 preguntas (Scout: 0,41; con priority, 0,61).
+// Descartados: gpt-oss-120b (12 s de mediana por el razonamiento) y gemma-3-27b
+// (p90 de 35 s, inventa enlaces). Sin service_tier priority: cuesta +50 %.
+const MODELO = 'mistralai/Mistral-Small-24B-Instruct-2501';
 const EMBEDDINGS = 'BAAI/bge-m3'; // el mismo de scripts/indexar-rag.ts
 const API = 'https://api.deepinfra.com/v1/openai';
 const TOP_K = 6;
@@ -141,7 +140,6 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
     headers: auth,
     body: JSON.stringify({
       model: MODELO,
-      service_tier: 'priority',
       stream: true,
       temperature: 0.2,
       max_tokens: 700,
