@@ -119,6 +119,13 @@ assert.equal(
 );
 assert.equal(mdChat('[Admisiones](/admisiones-doctorado/)', dadas), '<p><a href="/admisiones-doctorado/">Admisiones</a></p>');
 assert.doesNotMatch(mdChat('[mal](javascript:alert(1))', ['javascript:alert(1)']), /<a /);
+// Llama 4 Scout acierta el nombre pero estropea la dirección: se repara si el
+// último tramo coincide con una fuente consultada (casos reales en producción)
+const reparadas = ['/equipo-de-trabajo/', '/admisiones-doctorado/', '/documentos/2023/07/Acta.pdf#page=4'];
+assert.equal(mdChat('[Equipo](equipo-de-trabajo/)', reparadas), '<p><a href="/equipo-de-trabajo/">Equipo</a></p>');
+assert.equal(mdChat('[Adm](https://www.udistrital.edu.co/admisiones-doctorado/)', reparadas), '<p><a href="/admisiones-doctorado/">Adm</a></p>');
+assert.equal(mdChat('[Acta](https://.../Acta.pdf)', reparadas), '<p><a href="/documentos/2023/07/Acta.pdf#page=4">Acta</a></p>');
+assert.equal(mdChat('[Inicio](/)', reparadas), '<p>Inicio</p>', 'sin tramo que comparar: texto');
 // Comillas en la URL no rompen el atributo, aunque la URL venga permitida
 assert.doesNotMatch(mdChat('[x](/a"onmouseover="b)', ['/a"onmouseover="b']), /onmouseover="/);
 assert.equal(mdChat('**Requisito**: título'), '<p><strong>Requisito</strong>: título</p>');

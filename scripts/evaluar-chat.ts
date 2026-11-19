@@ -12,6 +12,7 @@
  * si cambian allá, actualizarlas aquí.
  */
 import { writeFileSync } from 'node:fs';
+import { mdChat } from '../src/lib/md-chat.ts';
 
 type Mensaje = { rol: 'user' | 'assistant'; texto: string };
 type Caso = { pregunta: string; debe: RegExp; noDebe?: RegExp; historial?: Mensaje[] };
@@ -67,10 +68,10 @@ for (const caso of CASOS) {
   }
   const total = Date.now() - t0;
   const fuentes: { url: string }[] = JSON.parse(decodeURIComponent(res.headers.get('X-Fuentes') ?? '[]'));
-  const dadas = new Set(fuentes.map((f) => f.url.split('#')[0]));
-  // mailto: no cuenta (el panel lo deja como texto y el correo sí está en las fuentes)
-  const enlaces = [...texto.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1].split('#')[0]).filter((u) => !u.startsWith('mailto:'));
-  const malos = enlaces.filter((u) => !dadas.has(u));
+  // Enlaces que el panel no logra enlazar ni reparar (con el mismo md-chat.ts).
+  // mailto: no cuenta: queda como texto y el correo sí está en las fuentes
+  const enlaces = [...texto.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]).filter((u) => !u.startsWith('mailto:'));
+  const malos = enlaces.filter((u) => !mdChat(`[x](${u})`, fuentes.map((f) => f.url)).includes('<a '));
   inventados += malos.length;
 
   const ok = res.ok && caso.debe.test(texto) && !caso.noDebe?.test(texto);
@@ -81,7 +82,7 @@ for (const caso of CASOS) {
   registro.push({ ...caso, debe: String(caso.debe), noDebe: caso.noDebe && String(caso.noDebe), ok, primero, total, tiempos, texto, fuentes });
   console.log(`${ok ? '✓' : '✗'} ${ms(primero || total)} / ${ms(total)}  ${caso.pregunta}${tiempos && `  [${tiempos}]`}`);
   if (!ok) console.log(`    ${res.status}: ${texto.replace(/\s+/g, ' ').slice(0, 300)}`);
-  if (malos.length) console.log(`    enlaces inventados: ${malos.join(', ')}`);
+  if (malos.length) console.log(`    enlaces sin reparar: ${malos.join(', ')}`);
 
   // Pausa para no tocar el rate limiting (3 cada 10 s)
   await new Promise((listo) => setTimeout(listo, Math.max(0, 4000 - total)));
@@ -89,7 +90,7 @@ for (const caso of CASOS) {
 
 console.log(
   `\n${CASOS.length - fallas}/${CASOS.length} correctas · primera palabra: mediana ${ms(mediana(primeros))} · ` +
-    `respuesta completa: mediana ${ms(mediana(totales))}, máx ${ms(Math.max(...totales))} · enlaces inventados: ${inventados}`
+    `respuesta completa: mediana ${ms(mediana(totales))}, máx ${ms(Math.max(...totales))} · enlaces sin reparar: ${inventados}`
 );
 if (salida) writeFileSync(salida, JSON.stringify(registro, null, 2));
 process.exitCode = fallas ? 1 : 0;
