@@ -21,7 +21,13 @@ interface Env {
   };
 }
 
-const MODELO = 'meta-llama/Llama-3.3-70B-Instruct-Turbo';
+// Comparado el 2026-11-19 con 154 respuestas (mismo prompt y fragmentos): Llama
+// 3.3 70B tardaba 6,4-7 s de mediana y hasta 17 s; Scout en tier priority,
+// 1,5-1,6 s y < 3 s el p90, con la misma exactitud. priority = +50 % de precio
+// (USD 0,61 por 1.000 preguntas) a cambio de no hacer fila cuando DeepInfra se
+// satura. Alternativa: google/gemma-4-26B-A4B-it con reasoning_effort 'none'
+// (más barata, nunca inventó enlaces, pero p90 de 6-9 s).
+const MODELO = 'meta-llama/Llama-4-Scout-17B-16E-Instruct';
 const EMBEDDINGS = 'BAAI/bge-m3'; // el mismo de scripts/indexar-rag.ts
 const API = 'https://api.deepinfra.com/v1/openai';
 const TOP_K = 6;
@@ -33,6 +39,10 @@ const BONO_PAGINA = 0.05;
 
 type Trozo = { url: string; titulo: string; texto: string };
 
+/** Fragmentos para el prompt. Sin numerarlos: con "[1]" los modelos citan el
+ *  número en vez del enlace, y al usuario ese número no le dice nada. */
+export const armarContexto = (trozos: Trozo[]) => trozos.map((t) => `### ${t.titulo} — ${t.url}\n${t.texto}`).join('\n\n');
+
 /** Los `n` mejores trozos, con bono para las páginas del sitio. */
 export function priorizar(matches: { score: number; metadata?: Trozo }[], n: number) {
   return matches
@@ -41,10 +51,10 @@ export function priorizar(matches: { score: number; metadata?: Trozo }[], n: num
     .slice(0, n);
 }
 
-const SISTEMA = `Eres el asistente virtual del Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas (Bogotá, Colombia).
+export const SISTEMA = `Eres el asistente virtual del Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas (Bogotá, Colombia).
 Reglas:
 - Responde en español, claro y breve, SOLO con la información de los fragmentos de documentos oficiales que recibes en cada pregunta.
-- Si la respuesta no está en los fragmentos, dilo con franqueza ("No tengo esa información") y sugiere escribir a doctoradoing@udistrital.edu.co o llamar al (+57) 601 323 9300, extensión 1419.
+- Si la respuesta no está en los fragmentos, responde: "No tengo esa información. Puedes escribir a doctoradoing@udistrital.edu.co o llamar al (+57) 601 323 9300, extensión 1419."
 - Nunca inventes fechas, valores, nombres, requisitos ni números de acuerdo o acta.
 - Cuando te apoyes en un fragmento, enlázalo en Markdown copiando tal cual la URL que lo acompaña, por ejemplo [Acta 015 de 2026](/documentos/2026/08/acta.pdf#page=2). Nunca escribas otras URL, tampoco de udistrital.edu.co.
 - Si los fragmentos se contradicen, prefiere las páginas del sitio (URL sin /documentos/) y los documentos más recientes (el año va en la URL).
@@ -124,15 +134,14 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   const trozos = priorizar(matches, TOP_K);
   const t2 = Date.now();
 
-  const contexto = trozos
-    .map((t, i) => `[${i + 1}] ${t.titulo} — ${t.url}\n${t.texto}`)
-    .join('\n\n');
+  const contexto = armarContexto(trozos);
 
   const llm = await fetch(`${API}/chat/completions`, {
     method: 'POST',
     headers: auth,
     body: JSON.stringify({
       model: MODELO,
+      service_tier: 'priority',
       stream: true,
       temperature: 0.2,
       max_tokens: 700,

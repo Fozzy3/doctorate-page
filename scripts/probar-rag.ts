@@ -9,7 +9,7 @@
 import assert from 'node:assert/strict';
 import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir } from './indexar-rag.ts';
 import { mdChat } from '../src/lib/md-chat.ts';
-import { deltasSSE, validarCuerpo, priorizar } from '../functions/api/chat.ts';
+import { deltasSSE, validarCuerpo, priorizar, armarContexto } from '../functions/api/chat.ts';
 
 // ── trocear ─────────────────────────────────────────────────────────────────
 
@@ -156,6 +156,14 @@ const urls = (xs: { url: string }[]) => xs.map((x) => x.url);
 assert.deepEqual(urls(priorizar([m(0.7, '/documentos/r.pdf#page=13'), m(0.67, '/preguntas/')], 6)), ['/preguntas/', '/documentos/r.pdf#page=13']);
 assert.deepEqual(urls(priorizar([m(0.8, '/documentos/r.pdf'), m(0.7, '/preguntas/')], 6)), ['/documentos/r.pdf', '/preguntas/'], 'un PDF mucho mejor sigue primero');
 assert.equal(priorizar([m(0.5, '/a/'), m(0.4, '/b/'), { score: 0.9 }], 1).length, 1, 'recorta y salta lo que no trae metadata');
+
+// ── armarContexto: sin numeración, para que el modelo cite con el enlace ───
+// Caso real: Llama 4 Scout citaba "[1]" "[3]", que al usuario no le dicen nada
+
+const ctx = armarContexto([{ url: '/a/', titulo: 'Página A', texto: 'hola' }, { url: '/b.pdf#page=2', titulo: 'Acta B', texto: 'chao' }]);
+assert.doesNotMatch(ctx, /\[\d+\]/);
+assert.match(ctx, /Página A — \/a\/\nhola/);
+assert.match(ctx, /Acta B — \/b\.pdf#page=2\nchao/);
 
 // ── pedir: reintenta cortes de red (el ECONNRESET que tumbó la indexación) ──
 
