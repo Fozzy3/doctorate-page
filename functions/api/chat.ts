@@ -150,7 +150,8 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
       model: MODELO,
       stream: true,
       temperature: 0.2,
-      max_tokens: 700,
+      // 700 cortaba a media frase el resumen de una acta completa
+      max_tokens: 1200,
       messages: [
         { role: 'system', content: SISTEMA },
         ...historial.map((m) => ({ role: m.rol, content: m.texto })),
@@ -190,6 +191,8 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'no-store',
       'X-Fuentes': encodeURIComponent(JSON.stringify(fuentes)),
+      // Los candidatos crudos (sin bono): para calibrar priorizar() con datos reales
+      'X-Candidatos': encodeURIComponent(JSON.stringify(matches.map((m) => [m.metadata?.url, Math.round(m.score * 1000) / 1000]))),
       'Server-Timing': tiempos,
     },
   });
