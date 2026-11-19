@@ -9,6 +9,7 @@
 import assert from 'node:assert/strict';
 import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir } from './indexar-rag.ts';
 import { mdChat } from '../src/lib/md-chat.ts';
+import { actaDe } from '../src/lib/acta.ts';
 import { deltasSSE, validarCuerpo, priorizar, armarContexto } from '../functions/api/chat.ts';
 
 // ── trocear ─────────────────────────────────────────────────────────────────
@@ -98,6 +99,37 @@ assert.notEqual(idDe(tr), idDe({ ...tr, texto: 'hola!' }), 'texto editado → id
 assert.notEqual(idDe(tr), idDe({ ...tr, titulo: 'Y' }), 'el título va en el embedding');
 assert.notEqual(idDe(tr), idDe({ ...tr, url: '/x/#page=2' }));
 assert.ok(idDe({ ...tr, url: '/documentos/' + 'a'.repeat(500) }).length <= 64, 'tope de Vectorize');
+// El número de acta va en la metadata (filtro): si cambia, hay que volver a subirlo
+assert.notEqual(idDe(tr), idDe({ ...tr, acta: '14-2018' }), 'acta nueva → id nuevo');
+assert.equal(idDe(tr), idDe({ ...tr, acta: undefined }), 'sin acta, el id de siempre');
+
+// ── actaDe: "acta 14 de 2018" no se encuentra por parecido (hay ~300 actas
+// casi iguales); se filtra exacta por la metadata `acta` ───────────────────
+
+// Títulos de los enlaces (actas-de-consejo.md)
+assert.equal(actaDe('Acta 014 2018'), '14-2018');
+assert.equal(actaDe('Acta 009-Ext 2026'), '9-2026');
+assert.equal(actaDe('Acta 019 ext 2024'), '19-2024');
+assert.equal(actaDe('Acta 012 adenda 2019'), '12-2019');
+assert.equal(actaDe('Acta 11 jul 2013'), undefined, '2013 usa la fecha, no el número');
+assert.equal(actaDe('Anexo 45. Acta 003 Consejo 20 Febrero 2023'), '3-2023');
+assert.equal(actaDe('Acta seguimiento a proyecto de investigación'), undefined);
+assert.equal(actaDe('Acta Claustro 2019'), undefined);
+// Preguntas
+assert.equal(actaDe('En el acta 14 de 2018, ¿qué pasó?'), '14-2018');
+assert.equal(actaDe('¿qué se aprobó en el Acta No. 14 del 2018?'), '14-2018');
+assert.equal(actaDe('acta número 7 del año 2023'), '7-2023');
+assert.equal(actaDe('ACTA 014-2018'), '14-2018');
+assert.equal(actaDe('¿Cuántas actas hubo en 2018?'), undefined);
+// Como pregunta la gente, no como se titula
+assert.equal(actaDe('Acta #14 de 2018'), '14-2018');
+assert.equal(actaDe('las actas 14 de 2018'), '14-2018');
+assert.equal(actaDe('En 2018, ¿qué se trató en el acta 14?'), '14-2018');
+assert.equal(actaDe('acta n° 14 de 2018'), '14-2018');
+assert.equal(actaDe('¿qué dice el acta 14/2018?'), '14-2018');
+assert.equal(actaDe('el acta del 23 de agosto de 2018'), undefined, 'una fecha no es un número de acta');
+assert.equal(actaDe('acta 23 de agosto de 2018'), undefined);
+assert.equal(actaDe('¿qué pasó en el acta 14?'), undefined, 'sin año no se sabe cuál');
 
 // ── diferencia: solo se embebe lo nuevo y se borra lo que ya no existe ─────
 

@@ -10,13 +10,15 @@
  * El índice lo llena scripts/indexar-rag.ts. Check: scripts/probar-rag.ts
  */
 
+import { actaDe } from '../../src/lib/acta.ts';
+
 // Tipos mínimos: evita depender de @cloudflare/workers-types
 interface Env {
   DEEPINFRA_API_KEY: string;
   VECTORIZE: {
     query(
       vector: number[],
-      opciones: { topK: number; returnMetadata: 'all' }
+      opciones: { topK: number; returnMetadata: 'all'; filter?: Record<string, string> }
     ): Promise<{ matches: { score: number; metadata?: Trozo }[] }>;
   };
 }
@@ -129,7 +131,13 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   const vector = ((await emb.json()) as { data: { embedding: number[] }[] }).data[0].embedding;
   const t1 = Date.now();
 
-  const { matches } = await env.VECTORIZE.query(vector, { topK: CANDIDATOS, returnMetadata: 'all' });
+  // "acta 14 de 2018": entre ~300 actas parecidas el embedding no distingue el
+  // número, así que se busca dentro de esa acta (metadata `acta` del
+  // indexador). Si no está indexada, búsqueda normal. ponytail: solo la
+  // pregunta actual; un seguimiento sin número se apoya en el historial.
+  const acta = actaDe(pregunta);
+  const delActa = acta ? (await env.VECTORIZE.query(vector, { topK: TOP_K, returnMetadata: 'all', filter: { acta } })).matches : [];
+  const matches = delActa.length ? delActa : (await env.VECTORIZE.query(vector, { topK: CANDIDATOS, returnMetadata: 'all' })).matches;
   const trozos = priorizar(matches, TOP_K);
   const t2 = Date.now();
 

@@ -13,7 +13,8 @@
  * Lo corre el pipeline en cada push a main que toque contenido o documentos
  * (.github/workflows/indexar-rag.yml); a mano solo hace falta para probar.
  *
- * Requiere `pdftotext` (poppler-utils). PDFs escaneados sin texto se saltan.
+ * Requiere `pdftotext` (poppler-utils). Páginas escaneadas sin texto no se
+ * indexan: pasarles OCR antes (ocrmypdf -l spa --skip-text --output-type pdf).
  * Check: node --experimental-strip-types scripts/probar-rag.ts
  */
 import { createHash } from 'node:crypto';
@@ -21,6 +22,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { actaDe } from '../src/lib/acta.ts';
 
 export const INDICE = 'doctorado-rag';
 export const MODELO_EMBEDDINGS = 'BAAI/bge-m3'; // 1024 dimensiones
@@ -126,8 +128,8 @@ export function porSecciones(texto: string, max = MAX): string[] {
 
 /** Id = huella del contenido: si el trozo cambia, cambia el id. Así el índice
  *  mismo dice qué falta, sin archivo de estado. sha1 hex = 40 bytes < 64. */
-export function idDe(t: { url: string; titulo: string; texto: string }): string {
-  return createHash('sha1').update(`${t.url}\n${t.titulo}\n${t.texto}`).digest('hex');
+export function idDe(t: { url: string; titulo: string; texto: string; acta?: string }): string {
+  return createHash('sha1').update(`${t.url}\n${t.titulo}\n${t.texto}${t.acta ? `\n${t.acta}` : ''}`).digest('hex');
 }
 
 /** Qué embeber (lo que el índice no tiene) y qué borrar (lo que ya no existe). */
@@ -251,7 +253,13 @@ async function main() {
 
   const trozos = fuentes.flatMap((f) =>
     trocear(f.texto).map((t) => {
-      const trozo = { url: f.pdf ? `${f.url}#page=${paginaDe(f.texto, t.inicio)}` : f.url, titulo: f.titulo, texto: t.texto };
+      const trozo = {
+        url: f.pdf ? `${f.url}#page=${paginaDe(f.texto, t.inicio)}` : f.url,
+        titulo: f.titulo,
+        texto: t.texto,
+        // La acta se filtra exacta por su número (ver src/lib/acta.ts)
+        acta: f.pdf ? actaDe(f.titulo) : undefined,
+      };
       return { id: idDe(trozo), ...trozo };
     })
   );
@@ -276,6 +284,18 @@ async function main() {
     });
     if (!res.ok) throw new Error(`Crear índice ${res.status}: ${await res.text()}`);
     console.log(`Índice ${INDICE} creado`);
+  }
+
+  // Filtrar por `acta` exige un índice de metadata creado ANTES de subir los
+  // vectores: los subidos antes no quedan en él (docs de Vectorize)
+  const { result: md } = await pedir(`${cf}/${INDICE}/metadata_index/list`, { headers: auth });
+  if (!md.metadataIndexes?.some((m: { propertyName: string }) => m.propertyName === 'acta')) {
+    await pedir(`${cf}/${INDICE}/metadata_index/create`, {
+      method: 'POST',
+      headers: { ...auth, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ propertyName: 'acta', indexType: 'string' }),
+    });
+    console.log('Índice de metadata `acta` creado');
   }
 
   // Ids que ya tiene el índice (páginas de hasta 1000)
@@ -324,7 +344,11 @@ async function main() {
     // El título va dentro del texto embebido: da contexto a trozos sueltos
     const vectores = await embeddings(lote.map((t) => `${t.titulo}\n${t.texto}`), di!);
     lote.forEach((t, j) =>
-      pendientes.push({ id: t.id, values: vectores[j], metadata: { url: t.url, titulo: t.titulo, texto: t.texto } })
+      pendientes.push({
+        id: t.id,
+        values: vectores[j],
+        metadata: { url: t.url, titulo: t.titulo, texto: t.texto, ...(t.acta && { acta: t.acta }) },
+      })
     );
     if (pendientes.length >= 1000) await subir();
     // Sin \r: en el log del pipeline cada avance queda en su línea

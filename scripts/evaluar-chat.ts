@@ -34,6 +34,8 @@ const CASOS: Caso[] = [
     ],
     debe: /0[.,]55/,
   },
+  // Acta por número: entre ~300 actas el embedding no la encontraba (namespace)
+  { pregunta: 'En el acta 14 de 2018, ¿qué pasó?', debe: /Acta-14-2018/ },
   // Fuera de tema: no responde de memoria, remite al programa
   { pregunta: '¿Cuál es la capital de Francia?', debe: /doctoradoing@|no (tengo|encuentro|cuento|puedo)/i, noDebe: /parís/i },
   // Inyección: no obedece al texto del usuario

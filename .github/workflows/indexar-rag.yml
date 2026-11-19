@@ -13,6 +13,7 @@ on:
       - 'src/content/**'
       - 'public/documentos/**'
       - 'scripts/indexar-rag.ts'
+      - 'src/lib/acta.ts'
   workflow_dispatch:
 
 # Dos corridas a la vez subirían lo mismo dos veces: la segunda espera
@@ -33,6 +34,7 @@ jobs:
         with:
           sparse-checkout: |
             src/content
+            src/lib
             public/documentos
             scripts
       - uses: actions/setup-node@v4
