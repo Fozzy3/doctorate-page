@@ -2,10 +2,14 @@
 title: 'Formatos del Doctorado en Ingeniería'
 description: 'Formatos para formalizar el ingreso como nuevo estudiante y para los trámites durante los estudios doctorales.'
 section: 'admisiones'
-updated: '2025-05-06'
+updated: '2026-09-16'
 ---
 
 Bienvenidos estudiantes y docentes, aquí podrán encontrar los formatos requeridos para cada uno de sus procesos.
+
+## Formato de vinculación docente
+
+- [Formato vinculación docente](/documentos/2026/09/Formato_vinculacion_docente_v2026-ACTUALIZADO.docx)
 
 ## ¿Cuáles formatos necesito para formalizar el ingreso como nuevo estudiante?
 

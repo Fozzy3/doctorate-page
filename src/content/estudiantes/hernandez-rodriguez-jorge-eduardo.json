@@ -9,7 +9,7 @@
   ],
   "redes": {
     "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001709017",
-    "scholar": "https://scholar.google.com/citations?user=p2mf3PIAAAAJ&#038;hl=es",
+    "scholar": "https://scholar.google.com/citations?user=p2mf3PIAAAAJ&hl=es",
     "orcid": "https://orcid.org/0000-0002-7129-7919"
   },
   "enfasis": "Ciencia de la Información y el Conocimiento",
@@ -19,10 +19,6 @@
   "director": {
     "nombre": "Flórez Fernández Héctor Arturo",
     "url": "/florez-fernandez-hector-arturo/"
-  },
-  "codirector": {
-    "nombre": "",
-    "url": "https://bogota.gov.co/"
   },
   "foto": "/images/estudiantes/hernandez-rodriguez-jorge-eduardo.png"
 }

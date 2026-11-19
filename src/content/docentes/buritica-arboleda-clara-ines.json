@@ -13,7 +13,12 @@
     "researchgate": "https://www.researchgate.net/profile/Clara-Buritica-Arboleda"
   },
   "estudiantes": {
-    "activos": [],
+    "activos": [
+      {
+        "nombre": "López Martínez Germán Arturo",
+        "url": "/lopez-martinez-german-arturo/"
+      }
+    ],
     "codirigidos": [],
     "egresados": []
   },

@@ -1,0 +1,24 @@
+{
+  "nombre": "Mago Ramos María Gabriela",
+  "grupos": [
+    {
+      "nombre": "GCEM",
+      "url": "/gcem/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001612124",
+    "scholar": "https://scholar.google.com/citations?user=XpgDYeYAAAAJ&hl=es",
+    "orcid": "https://orcid.org/0000-0001-7250-111X",
+    "researchgate": "https://www.researchgate.net/profile/Maria-Mago?ev=hdr_xpr"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "mgmagor@udistrital.edu.co",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ingeniería Eléctrica y Electrónica",
+  "foto": "/images/docentes/mago-ramos-maria-gabriela.png"
+}

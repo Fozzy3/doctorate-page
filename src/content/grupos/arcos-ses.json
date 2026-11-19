@@ -1,5 +1,5 @@
 {
-  "sigla": "ARCO SES",
+  "sigla": "SES",
   "enfasis": "Ciencias de la Información y Conocimiento",
   "enlaces": [
     {
@@ -11,10 +11,10 @@
       "url": "https://pi.udistrital.edu.co/ARCO-SES/"
     }
   ],
-  "nombre": "GRUPO ADQUISICIÓN Y REPRESENTACIÓN DEL CONOCIMIENTO – SISTEMAS EXPERTOS Y SIMULACIÓN (ARCOS SES)",
+  "nombre": "GRUPO DE SISTEMAS EMPRESARIALES Y SOCIALES (SES)",
   "logo": "/images/grupos/arcos-ses.png",
   "descripcion": [
-    "Adquirir el conocimiento que permita diseñar y modelar los sistemas de los ambientes económicos y sociales y que mediante los sistemas expertos, la simulación del sistema y otras técnicas derivadas, permita: identificar, definir y analizar el conocimiento necesario de los factores determinantes en las organizaciones en procura de generar las ventajas competitivas en la industria colombiana, y la sociedad en general con el fin de establecer acciones que apoyen y los desarrollen armónicamente. Estudiar los factores de las relaciones causales por tipo de flujo industrial evaluando su aporte al mejoramiento de las empresas y en general de las industrias. Elaborar modelos dinámicos que mediante la simulación permitan comprender las relaciones causales y que coadyuven a satisfacer los estándares de productividad y calidad de los negocios. Generalizar los modelos desarrollados en los distintos flujos de la organización en megamodelos que permitan analizar las relaciones inter-flujos que mejoren simultáneamente diferentes aspectos de las organizaciones industriales. Generalizar los diferentes modelos a distintos tipos de industrias en la medida en que las particularidades de estas lo permitan. Proponer acciones en el campo de la innovación tecnológica y gestión empresarial, para cada uno de los tipos de industria, subsector y sector económico conducentes a mejorar los niveles de competitividad de la industria colombiana."
+    "El grupo Sistemas Empresariales y Sociales (SES) tiene como propósito generar conocimiento aplicado que permita comprender, modelar y transformar sistemas organizacionales y sociales complejos, contribuyendo a la toma de decisiones estratégicas, la sostenibilidad y el bienestar colectivo en contextos empresariales, públicos y sociales."
   ],
   "clasificacion": "B",
   "convocatoria": {
@@ -23,8 +23,8 @@
   },
   "gruplac": "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000888",
   "director": {
-    "nombre": "Álvarez Pomar Lindsay",
-    "url": "/alvarez-pomar-lindsay/",
+    "nombre": "Guzmán Cortés Diana Carolina",
+    "url": "/guzman-cortes-diana-carolina/",
     "correo": "arcoses@udistrital.edu.co"
   },
   "actualizado": "25/03/2026"

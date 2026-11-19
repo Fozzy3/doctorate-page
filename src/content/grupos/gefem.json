@@ -3,10 +3,6 @@
   "enfasis": "Ciencias de la Información y Conocimiento",
   "enlaces": [
     {
-      "etiqueta": "Ingenia ciudad entrevista",
-      "url": "https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000000940"
-    },
-    {
       "etiqueta": "conoce más sobre GEFEM",
       "url": "https://pi.udistrital.edu.co/GEFEM"
     }
@@ -14,7 +10,7 @@
   "nombre": "GRUPO DE ESTUDIO EN TEMAS DE LA FÍSICA, ESTADÍSTICA Y MATEMATICA (GEFEM)",
   "logo": "/images/grupos/gefem.jpg",
   "descripcion": [
-    "Indagar en los conceptos de la Física, la Matemática y la Estadística como conocimientos de apoyo a las temáticas y al quehacer académico de la Ingeniería Catastral y Geodesia. También es importante, al interior del grupo, indagar en estos conocimientos para encontrar alternativas en educación y en la didáctica, así como en la aplicación y propuestas metodológicas para la ingeniería, e indagar en el conocimiento como tal de la Física, la Estadística y la Matemática."
+    "En GEFEM se trabajan varias líneas de investigación que han surgido de las habilidades e intereses de sus integrantes. Estas abarcan temas relacionados con la geomática y el estudio del territorio, como la fotogrametría, las geotecnologías y el uso de inteligencia artificial para el análisis de imágenes, pero también áreas matemáticas y computacionales como la analítica de datos y la modelación de sistemas físicos y biológicos, junto con distintas ramas de la física teórica, del estado sólido y de la física cuántica. Estas líneas se relacionan con la Ingeniería Catastral y Geodesia y la Física, y permiten abordar diferentes problemas desde perspectivas teóricas, computacionales y aplicadas, muchas veces a partir de discusiones y situaciones que surgen en el ámbito académico."
   ],
   "clasificacion": "C",
   "convocatoria": {
@@ -26,5 +22,5 @@
     "nombre": "Castillo Mendez Luis Eduardo",
     "correo": "gefem@udistrital.edu.co"
   },
-  "actualizado": "25/03/2026"
+  "actualizado": "15/10/2026"
 }

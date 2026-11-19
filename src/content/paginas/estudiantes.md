@@ -129,6 +129,7 @@ El Doctorado en Ingeniería se enorgullece de mostrar los estudiantes activos qu
 ### L
 
 - [León León José](/leon-leon-jose/)
+- [López Martínez Germán Arturo](/lopez-martinez-german-arturo/)
 - [López Sánchez Wilson Ricardo](/lopez-sanchez-wilson-ricardo/)
 
 ### M

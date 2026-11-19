@@ -2,7 +2,7 @@
 title: 'Equipo de trabajo'
 description: 'Equipo administrativo y de apoyo del Doctorado en Ingeniería: coordinación, admisiones, presupuesto, acreditación, comunicaciones y soporte tecnológico.'
 section: 'comunidad'
-updated: '2026-04-23'
+updated: '2026-11-10'
 ---
 
 ## Octavio José Salcedo Parra
@@ -26,12 +26,11 @@ updated: '2026-04-23'
 - Correo: [secdoctoradoing@udistrital.edu.co](mailto:secdoctoradoing@udistrital.edu.co)
 - Teléfono: (601)-3239300 ext 1419
 
-## Manuel Romero Peña
+## Carlos Stiven Mora Hoyos
 
-**Profesional Networking del Doctorado**
+**Profesional Desarrollo de Agentes de Inteligencia Artificial**
 
 - Correo: [tecnologia.doctoradoing@udistrital.edu.co](mailto:tecnologia.doctoradoing@udistrital.edu.co)
-- Correo: [salas.doctoradoing@udistrital.edu.co](mailto:salas.doctoradoing@udistrital.edu.co)
 - Teléfono: (601)-3239300 ext 1340
 
 ## Alejandra María Palacio de Moya
@@ -69,16 +68,9 @@ updated: '2026-04-23'
 - Correo: [cecad@udistrital.edu.co](mailto:cecad@udistrital.edu.co)
 - Teléfono: (601)-3239300 ext 1348
 
-## Cristian Camilo Castro Castellanos
+## Jean Patrick Corchuelo Cardenas
 
 **Profesional en Desarrollo y Administración de plataformas web del Doctorado**
 
 - Correo: [webmaster.doctoradoing@udistrital.edu.co](mailto:webmaster.doctoradoing@udistrital.edu.co)
-- Teléfono: (601)-3239300 ext 1348
-
-## Jean Patrick Corchuelo Cardenas
-
-**Profesional en salas de informática del Doctorado**
-
-- Correo: [laboratorio.doctoradoing@udistrital.edu.co](mailto:laboratorio.doctoradoing@udistrital.edu.co)
 - Teléfono: (601)-3239300 ext 1348

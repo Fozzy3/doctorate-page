@@ -85,6 +85,7 @@ El Doctorado en Ingeniería se complace en compartir con la comunidad académica
 ### S
 
 - [Saby Beltran Jorge Enrique](/saby-beltran-jorge-enrique/)
+- [Sarmiento González Carolina](/sarmiento-gonzalez-carolina/)
 
 ### T
 
@@ -146,6 +147,7 @@ El Doctorado en Ingeniería se complace en compartir con la comunidad académica
 
 ### M
 
+- [Mago Ramos María Gabriela](/mago-ramos-maria-gabriela/)
 - [Martínez Sarmiento Fredy Hernán](/martinez-sarmiento-fredy-hernan/)
 - [Melgarejo Rey Miguel Alberto](/melgarejo-rey-miguel-alberto/)
 - [Montoya Giraldo Oscar Danilo](/montoya-giraldo-oscar-danilo/)
@@ -163,6 +165,7 @@ El Doctorado en Ingeniería se complace en compartir con la comunidad académica
 
 ### R
 
+- [Ramírez Murillo Harrynson](/ramirez-murillo-harrynson/)
 - [Rivas Trujillo Edwin](/rivas-trujillo-edwin/)
 - [Rodríguez Patarroyo Diego Julian](/rodriguez-patarroyo-diego-julian/)
 - [Rojas Cubides Herbert Enrique](/rojas-cubides-herbert-enrique/)

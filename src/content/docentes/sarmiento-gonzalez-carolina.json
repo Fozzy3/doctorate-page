@@ -1,0 +1,25 @@
+{
+  "nombre": "Sarmiento González Carolina",
+  "grupos": [
+    {
+      "nombre": "INTECSE",
+      "url": "/intecse/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000202355",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=mUCE4CcAAAAJ",
+    "orcid": "https://orcid.org/0000-0002-8818-0901",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56300787200",
+    "researchgate": "https://www.researchgate.net/profile/Carolina-Sarmiento"
+  },
+  "estudiantes": {
+    "activos": [],
+    "codirigidos": [],
+    "egresados": []
+  },
+  "correo": "csarmientog@udistrital.edu.c",
+  "estado": "ACTIVO",
+  "enfasis": "Énfasis en Ciencia de la Información y el Conocimiento",
+  "foto": "/images/docentes/sarmiento-gonzalez-carolina.png"
+}

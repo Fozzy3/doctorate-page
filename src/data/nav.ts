@@ -48,10 +48,15 @@ export const sections: NavSection[] = [
     imageAlt: 'Campus de la Facultad Tecnológica de la Universidad Distrital',
     items: [
       { slug: 'admisiones-doctorado', label: 'Proceso de admisión' },
+      { slug: 'admisiones-doctorado-2026-ciclo-iv', label: 'Admisiones 2026 ciclo IV' },
+      { slug: 'convocatoria-35-becas-roberto-zarama-atenea', label: 'Becas Roberto Zarama (ATENEA)' },
+      { slug: 'resultados-admisiones-2026-3', label: 'Resultados 2026-III' },
+      { slug: 'resultados-admisiones-2026-2', label: 'Resultados 2026-II' },
       { slug: 'resultados-admisiones-2026-1', label: 'Resultados 2026-I' },
       { slug: 'formatos', label: 'Formatos' },
       { slug: 'solicitudes', label: 'Solicitudes' },
       { slug: 'solicitudes-consejo-de-carrera', label: 'Solicitudes al Consejo de Carrera' },
+      { slug: 'pqrs', label: 'PQRS' },
     ],
   },
   {
@@ -96,6 +101,7 @@ export const sections: NavSection[] = [
       { slug: 'libros-resultados-de-investigacion', label: 'Cronograma de libros' },
       { slug: 'memorias', label: 'Memorias' },
       { slug: 'laboratorio-de-microrredes', label: 'Laboratorio de microrredes' },
+      { slug: 'wea-2026', label: 'WEA 2026' },
       { slug: 'canal', label: 'Canal de ciencia' },
     ],
   },

@@ -2,7 +2,7 @@
 title: 'Plan general de estudios'
 description: 'Plan general de estudios del Doctorado en Ingeniería: descripción, trayectoria del estudiante, formación básica, contexto y desarrollo de la investigación.'
 section: 'programa'
-updated: '2026-03-20'
+updated: '2026-10-28'
 ---
 
 El plan general de estudios del Doctorado en Ingeniería se organiza en los siguientes componentes:
@@ -19,7 +19,7 @@ Estas áreas de contexto de investigación han dado lugar a la definición y ado
 
 ## Trayectoria del estudiante
 
-![Trayectoria del estudiante del Doctorado en Ingeniería](/documentos/2025/11/TRAYECTORIA-ESTUDIANTES.png)
+![Trayectoria del estudiante del Doctorado en Ingeniería](/documentos/2026/10/2026-DI-Trayectoria-Estudiantes-90-cred.png)
 
 ## Formación Básica
 

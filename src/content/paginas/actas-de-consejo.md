@@ -2,7 +2,7 @@
 title: 'Actas de Consejo'
 description: 'Archivo de actas del Consejo Curricular del Doctorado en Ingeniería, organizadas por año desde 2012 hasta 2026, con enlace de descarga en PDF.'
 section: 'acreditacion'
-updated: '2026-06-10'
+updated: '2026-10-30'
 ---
 
 Archivo de actas del Consejo Curricular del Doctorado en Ingeniería, organizadas por año.
@@ -20,6 +20,16 @@ Archivo de actas del Consejo Curricular del Doctorado en Ingeniería, organizada
 - [Acta 009-Ext 2026](/documentos/2026/06/Acta_009_CONSEJOCURRICULAR_EXTRAORDINARIO_13mayo2026-f.pdf)
 - [Acta 010 2026](/documentos/2026/06/Acta010_CONSEJOCURRICULAR_19mayo2026_f.pdf)
 - [Acta 011 2026](/documentos/2026/06/Acta011_CONSEJOCURRICULAR_03junio2026_vf.pdf)
+- [Acta 012 2026](/documentos/2026/09/Acta012_CONSEJOCURRICULAR_17junio2026-1.pdf)
+- [Acta 013 2026](/documentos/2026/09/Acta013_CONSEJOCURRICULAR_16julio2026.pdf)
+- [Acta 014 2026](/documentos/2026/09/Acta014_CONSEJOCURRICULAR_29julio2026.pdf)
+- [Acta 015 2026](/documentos/2026/09/Acta015_CONSEJOCURRICULAR_12Agosto2026.pdf)
+- [Acta 016 2026](/documentos/2026/09/Acta016_CONSEJOEXTRACURRICULAR_13agosto2026.pdf)
+- [Acta 017 2026](/documentos/2026/09/Acta017_CONSEJOCURRICULAR_26agosto2006_f.pdf)
+- [Acta 018 2026](/documentos/2026/09/Acta018_CONSEJOCURRICULAR_09septiembre_2026.pdf)
+- [Acta 019 2026](/documentos/2026/10/Acta019_CONSEJOCURRICULAR_23sEPT2026_vf_signed-1.pdf)
+- [Acta 020 2026](/documentos/2026/10/Acta020_CONSEJOCURRICULAR_07octubre2026_v2-1.pdf)
+- [Acta 021 2026](/documentos/2026/10/Acta021_CONSEJOCURRICULAR_21octubre2026_v2.pdf)
 
 ## Actas 2025
 

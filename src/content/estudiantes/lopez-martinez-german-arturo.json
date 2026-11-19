@@ -1,0 +1,23 @@
+{
+  "nombre": "López Martínez Germán Arturo",
+  "tipo": "activo",
+  "grupos": [
+    {
+      "nombre": "ARMOS",
+      "url": "/armos-2/"
+    }
+  ],
+  "redes": {
+    "cvlac": "https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000463736",
+    "orcid": "https://orcid.org/0000-0003-3280-9026"
+  },
+  "enfasis": "Ingeniería Eléctrica y Electrónica",
+  "cohorte": "2015",
+  "proyecto": "Metodología de planificación energética multiobjetivo a partir de biomasa residual (BR) para zonas no interconectadas (ZNI) de Colombia y Brasil",
+  "proyectoEtiqueta": "Proyecto de investigación doctoral",
+  "director": {
+    "nombre": "Buriticá Arboleda Clara Inés",
+    "url": "/buritica-arboleda-clara-ines/"
+  },
+  "foto": "/images/estudiantes/lopez-martinez-german-arturo.png"
+}

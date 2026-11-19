@@ -1,17 +1,17 @@
 ---
 title: 'Solicitudes al Consejo de Carrera'
-description: 'Trámites académicos ante el Consejo de Carrera del Doctorado en Ingeniería: cronograma de sesiones 2026-1, requisitos de cada tipo de solicitud y formulario.'
+description: 'Trámites académicos ante el Consejo de Carrera del Doctorado en Ingeniería: cronograma de sesiones 2026-2, requisitos de cada tipo de solicitud y formulario.'
 section: 'admisiones'
-updated: '2026-07-22'
+updated: '2026-09-16'
 ---
 
 **Estimados estudiantes, tutores y directores, docentes del Doctorado en Ingeniería.**
 
 Les informamos que ahora pueden realizar las solicitudes al Consejo de Carrera para diversos trámites académicos. A continuación, les detallamos las opciones disponibles, las cuales pueden ser solicitadas tanto por los estudiantes como por sus tutores | directores. Para este año se tienen las sesiones que se muestran en el cronograma:
 
-![Cronograma de Consejos 2026](/documentos/2026/07/CONSEJOS-2026-2-1024x642.png)
+![Cronograma de Consejos 2026](/documentos/2026/08/2026-PAG-WEB-2024-2025-2026-1024x642-1.png)
 
-## Cronograma – Sesiones Ordinarias de Consejo Curricular 2026-1
+## Cronograma – Sesiones Ordinarias de Consejo Curricular 2026-2
 
 | Mes | Sesión | Fecha |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ Les informamos que ahora pueden realizar las solicitudes al Consejo de Carrera p
 | Noviembre | Sesión 22 | 18 de noviembre |
 | Diciembre | Sesión 22 | 02 de diciembre |
 
-**Importante:** las solicitudes deben radicarse el jueves anterior a la fecha del Consejo, antes de las 12:00 m.
+**Importante:** las solicitudes deben radicarse el lunes anterior a la fecha del Consejo, antes de las 12:00 m.
 
 ## Solicitudes al Consejo
 
