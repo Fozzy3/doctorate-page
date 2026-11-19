@@ -55,14 +55,14 @@ const sugerencias = [
     <p class="chat-aviso">Asistente con IA: puede equivocarse. Verifica en los documentos citados.</p>
     <form class="chat-form">
       <label class="visually-hidden" for="chat-entrada">Escribe tu pregunta</label>
-      <input
+      <textarea
         id="chat-entrada"
         name="pregunta"
-        type="text"
+        rows="1"
         maxlength="600"
         autocomplete="off"
-        placeholder="Pregunta sobre el doctorado"
-      />
+        enterkeyhint="send"
+        placeholder="Pregunta sobre el doctorado"></textarea>
       <button type="submit" aria-label="Enviar pregunta" disabled>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
           <path
@@ -360,7 +360,8 @@ const sugerencias = [
 
   .chat-form {
     display: flex;
-    align-items: center;
+    /* Al crecer el texto, el botón queda abajo, junto a la última línea */
+    align-items: flex-end;
     gap: 0.5rem;
     padding: 0.35rem 0.4rem 0.35rem 1rem;
     border: 1px solid var(--c-line);
@@ -376,22 +377,26 @@ const sugerencias = [
     box-shadow: 0 0 0 3px var(--c-crimson-soft);
   }
 
-  .chat-form input {
+  .chat-form textarea {
     flex: 1;
     min-width: 0;
+    box-sizing: border-box;
+    /* Crece con el texto (alto fijado en JS) hasta ~8 líneas; luego scroll */
+    max-height: 12rem;
+    resize: none;
     border: 0;
     padding: 0.55rem 0;
     background: transparent;
     color: var(--c-ink);
     /* 16px evita el zoom automático de iOS al enfocar */
-    font: 1rem var(--font-sans);
+    font: 1rem/1.4 var(--font-sans);
   }
 
-  .chat-form input:focus {
+  .chat-form textarea:focus {
     outline: none;
   }
 
-  .chat-form input::placeholder {
+  .chat-form textarea::placeholder {
     color: var(--c-ink-soft);
   }
 
@@ -472,7 +477,12 @@ const sugerencias = [
   const lista = panel.querySelector<HTMLOListElement>('.chat-mensajes')!;
   const bienvenida = panel.querySelector<HTMLTemplateElement>('#chat-bienvenida')!;
   const form = panel.querySelector<HTMLFormElement>('.chat-form')!;
-  const entrada = form.querySelector<HTMLInputElement>('input')!;
+  const entrada = form.querySelector<HTMLTextAreaElement>('textarea')!;
+  // Alto = contenido: se ve todo lo escrito (el CSS pone el tope)
+  const ajustarAlto = () => {
+    entrada.style.height = 'auto';
+    entrada.style.height = `${entrada.scrollHeight}px`;
+  };
   const enviarBtn = form.querySelector<HTMLButtonElement>('button')!;
   const CONTACTO =
     'Escribe a doctoradoing@udistrital.edu.co o llama al (+57) 601 323 9300, extensión 1419.';
@@ -624,13 +634,21 @@ const sugerencias = [
     if (e.key === 'Escape') minimizar();
   });
   entrada.addEventListener('input', () => {
+    ajustarAlto();
     enviarBtn.disabled = !entrada.value.trim() || !!enCurso;
+  });
+  // Enter envía (como el input de antes); Shift+Enter, salto de línea
+  entrada.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' || e.shiftKey || e.isComposing) return;
+    e.preventDefault();
+    if (!enviarBtn.disabled) form.requestSubmit();
   });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const pregunta = entrada.value.trim();
     if (!pregunta) return;
     entrada.value = '';
+    ajustarAlto();
     preguntar(pregunta);
   });
   lista.addEventListener('click', (e) => {
