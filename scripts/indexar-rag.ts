@@ -128,8 +128,9 @@ export function porSecciones(texto: string, max = MAX): string[] {
 
 /** Id = huella del contenido: si el trozo cambia, cambia el id. Así el índice
  *  mismo dice qué falta, sin archivo de estado. sha1 hex = 40 bytes < 64. */
-export function idDe(t: { url: string; titulo: string; texto: string; acta?: string }): string {
-  return createHash('sha1').update(`${t.url}\n${t.titulo}\n${t.texto}${t.acta ? `\n${t.acta}` : ''}`).digest('hex');
+export function idDe(t: { url: string; titulo: string; texto: string; acta?: string; tipo?: string }): string {
+  const extra = `${t.acta ? `\n${t.acta}` : ''}${t.tipo ? `\ntipo=${t.tipo}` : ''}`;
+  return createHash('sha1').update(`${t.url}\n${t.titulo}\n${t.texto}${extra}`).digest('hex');
 }
 
 /** Qué embeber (lo que el índice no tiene) y qué borrar (lo que ya no existe). */
@@ -259,6 +260,8 @@ async function main() {
         texto: t.texto,
         // La acta se filtra exacta por su número (ver src/lib/acta.ts)
         acta: f.pdf ? actaDe(f.titulo) : undefined,
+        // /api/chat busca aparte en las páginas del sitio (1 de cada 10 trozos)
+        tipo: f.pdf ? undefined : 'pagina',
       };
       return { id: idDe(trozo), ...trozo };
     })
@@ -286,16 +289,17 @@ async function main() {
     console.log(`Índice ${INDICE} creado`);
   }
 
-  // Filtrar por `acta` exige un índice de metadata creado ANTES de subir los
-  // vectores: los subidos antes no quedan en él (docs de Vectorize)
+  // Filtrar por metadata exige su índice creado ANTES de subir los vectores:
+  // los subidos antes no quedan en él (docs de Vectorize)
   const { result: md } = await pedir(`${cf}/${INDICE}/metadata_index/list`, { headers: auth });
-  if (!md.metadataIndexes?.some((m: { propertyName: string }) => m.propertyName === 'acta')) {
+  for (const propiedad of ['acta', 'tipo']) {
+    if (md.metadataIndexes?.some((m: { propertyName: string }) => m.propertyName === propiedad)) continue;
     await pedir(`${cf}/${INDICE}/metadata_index/create`, {
       method: 'POST',
       headers: { ...auth, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ propertyName: 'acta', indexType: 'string' }),
+      body: JSON.stringify({ propertyName: propiedad, indexType: 'string' }),
     });
-    console.log('Índice de metadata `acta` creado');
+    console.log(`Índice de metadata \`${propiedad}\` creado`);
   }
 
   // Ids que ya tiene el índice (páginas de hasta 1000)
@@ -347,7 +351,7 @@ async function main() {
       pendientes.push({
         id: t.id,
         values: vectores[j],
-        metadata: { url: t.url, titulo: t.titulo, texto: t.texto, ...(t.acta && { acta: t.acta }) },
+        metadata: { url: t.url, titulo: t.titulo, texto: t.texto, ...(t.acta && { acta: t.acta }), ...(t.tipo && { tipo: t.tipo }) },
       })
     );
     if (pendientes.length >= 1000) await subir();

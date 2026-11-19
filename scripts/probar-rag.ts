@@ -102,6 +102,7 @@ assert.ok(idDe({ ...tr, url: '/documentos/' + 'a'.repeat(500) }).length <= 64, '
 // El número de acta va en la metadata (filtro): si cambia, hay que volver a subirlo
 assert.notEqual(idDe(tr), idDe({ ...tr, acta: '14-2018' }), 'acta nueva → id nuevo');
 assert.equal(idDe(tr), idDe({ ...tr, acta: undefined }), 'sin acta, el id de siempre');
+assert.notEqual(idDe(tr), idDe({ ...tr, tipo: 'pagina' }), 'tipo nuevo → id nuevo');
 
 // ── actaDe: "acta 14 de 2018" no se encuentra por parecido (hay ~300 actas
 // casi iguales); se filtra exacta por la metadata `acta` ───────────────────
@@ -197,6 +198,13 @@ const urls = (xs: { url: string }[]) => xs.map((x) => x.url);
 assert.deepEqual(urls(priorizar([m(0.7, '/documentos/r.pdf#page=13'), m(0.67, '/preguntas/')], 6)), ['/preguntas/', '/documentos/r.pdf#page=13']);
 assert.deepEqual(urls(priorizar([m(0.8, '/documentos/r.pdf'), m(0.7, '/preguntas/')], 6)), ['/documentos/r.pdf', '/preguntas/'], 'un PDF mucho mejor sigue primero');
 assert.equal(priorizar([m(0.5, '/a/'), m(0.4, '/b/'), { score: 0.9 }], 1).length, 1, 'recorta y salta lo que no trae metadata');
+// Cupo para páginas: caso real, "¿cuántos créditos tiene el programa?" respondía
+// 80 (Acuerdo de 1993): con el OCR la página buena ni entraba a los 20 candidatos
+const pdfs = [m(0.9, '/documentos/a.pdf'), m(0.85, '/documentos/b.pdf'), m(0.8, '/documentos/c.pdf')];
+assert.deepEqual(urls(priorizar([...pdfs, m(0.4, '/preguntas/')], 3, 1)), ['/documentos/a.pdf', '/documentos/b.pdf', '/preguntas/'], 'la mejor página entra aunque puntúe menos');
+assert.deepEqual(urls(priorizar(pdfs, 3, 2)), ['/documentos/a.pdf', '/documentos/b.pdf', '/documentos/c.pdf'], 'sin páginas, el cupo se llena con PDFs');
+// La misma página llega por las dos búsquedas (general y solo páginas): una vez
+assert.deepEqual(urls(priorizar([m(0.6, '/preguntas/'), m(0.6, '/preguntas/'), ...pdfs], 6, 2)), ['/documentos/a.pdf', '/documentos/b.pdf', '/documentos/c.pdf', '/preguntas/']);
 
 // ── armarContexto: sin numeración, para que el modelo cite con el enlace ───
 // Caso real: Llama 4 Scout citaba "[1]" "[3]", que al usuario no le dicen nada

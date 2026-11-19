@@ -19,7 +19,7 @@ interface Env {
     query(
       vector: number[],
       opciones: { topK: number; returnMetadata: 'all'; filter?: Record<string, string> }
-    ): Promise<{ matches: { score: number; metadata?: Trozo }[] }>;
+    ): Promise<{ matches: { id: string; score: number; metadata?: Trozo }[] }>;
   };
 }
 
@@ -31,12 +31,15 @@ interface Env {
 const MODELO = 'mistralai/Mistral-Small-24B-Instruct-2501';
 const EMBEDDINGS = 'BAAI/bge-m3'; // el mismo de scripts/indexar-rag.ts
 const API = 'https://api.deepinfra.com/v1/openai';
-const TOP_K = 6;
+const TOP_K = 8;
 // Las páginas del sitio están al día y resumidas; los PDFs (actas, reglamentos
 // viejos) son 9 de cada 10 trozos y ganaban por cantidad aunque estuvieran
 // desactualizados. ponytail: bono fijo, calibrado con scripts/evaluar-chat.ts
 const CANDIDATOS = 20;
 const BONO_PAGINA = 0.05;
+// Con el OCR (2026-11-19) las páginas ni entraban a los 20 candidatos: van en
+// una búsqueda aparte y las mejores tienen cupo fijo. Medido con X-Candidatos.
+const RESERVA_PAGINAS = 2;
 
 type Trozo = { url: string; titulo: string; texto: string };
 
@@ -44,12 +47,19 @@ type Trozo = { url: string; titulo: string; texto: string };
  *  número en vez del enlace, y al usuario ese número no le dice nada. */
 export const armarContexto = (trozos: Trozo[]) => trozos.map((t) => `### ${t.titulo} — ${t.url}\n${t.texto}`).join('\n\n');
 
-/** Los `n` mejores trozos, con bono para las páginas del sitio. */
-export function priorizar(matches: { score: number; metadata?: Trozo }[], n: number) {
-  return matches
-    .flatMap((m) => (m.metadata ? [{ ...m.metadata, puntaje: m.score + (m.metadata.url.startsWith('/documentos/') ? 0 : BONO_PAGINA) }] : []))
-    .sort((a, b) => b.puntaje - a.puntaje)
-    .slice(0, n);
+const esPagina = (t: Trozo) => !t.url.startsWith('/documentos/');
+
+/** Los `n` mejores trozos, con bono para las páginas del sitio y `reserva`
+ *  cupos para las mejores de ellas. Sin repetidos, en orden de puntaje. */
+export function priorizar(matches: { score: number; metadata?: Trozo }[], n: number, reserva = RESERVA_PAGINAS) {
+  const vistos = new Set<string>();
+  const orden = matches
+    .flatMap((m) => (m.metadata ? [{ ...m.metadata, puntaje: m.score + (esPagina(m.metadata) ? BONO_PAGINA : 0) }] : []))
+    .filter((t) => !vistos.has(`${t.url}\n${t.texto}`) && vistos.add(`${t.url}\n${t.texto}`))
+    .sort((a, b) => b.puntaje - a.puntaje);
+  const fijas = orden.filter(esPagina).slice(0, Math.min(reserva, n));
+  const resto = orden.filter((t) => !fijas.includes(t)).slice(0, n - fijas.length);
+  return [...fijas, ...resto].sort((a, b) => b.puntaje - a.puntaje);
 }
 
 export const SISTEMA = `Eres el asistente virtual del Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas (Bogotá, Colombia).
@@ -135,9 +145,13 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   // número, así que se busca dentro de esa acta (metadata `acta` del
   // indexador). Si no está indexada, búsqueda normal. ponytail: solo la
   // pregunta actual; un seguimiento sin número se apoya en el historial.
+  const consulta = async (topK: number, filter?: Record<string, string>) =>
+    (await env.VECTORIZE.query(vector, { topK, returnMetadata: 'all', ...(filter && { filter }) })).matches;
   const acta = actaDe(pregunta);
-  const delActa = acta ? (await env.VECTORIZE.query(vector, { topK: TOP_K, returnMetadata: 'all', filter: { acta } })).matches : [];
-  const matches = delActa.length ? delActa : (await env.VECTORIZE.query(vector, { topK: CANDIDATOS, returnMetadata: 'all' })).matches;
+  const delActa = acta ? await consulta(TOP_K, { acta }) : [];
+  const matches = delActa.length
+    ? delActa
+    : (await Promise.all([consulta(CANDIDATOS), consulta(RESERVA_PAGINAS, { tipo: 'pagina' })])).flat();
   const trozos = priorizar(matches, TOP_K);
   const t2 = Date.now();
 
