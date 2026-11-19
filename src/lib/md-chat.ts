@@ -16,7 +16,9 @@ const delSitio = (url: string) => /^\/(?!\/)/.test(url);
 const enLinea = (s: string, permitidas: Set<string>, porTramo: Map<string, string>) =>
   esc(s)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, texto: string, url: string) => {
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, etiqueta: string, url: string) => {
+      // El modelo a veces copia el encabezado del fragmento: "Título — /ruta/"
+      const texto = etiqueta.replace(/\s+—\s+\/\S*$/, '');
       if (delSitio(url) && permitidas.has(sinPagina(url))) return `<a href="${url}">${texto}</a>`;
       // El modelo acierta el nombre y estropea la dirección: se enlaza la fuente real
       const real = porTramo.get(tramo(url));

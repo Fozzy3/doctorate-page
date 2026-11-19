@@ -126,6 +126,8 @@ assert.equal(mdChat('[Equipo](equipo-de-trabajo/)', reparadas), '<p><a href="/eq
 assert.equal(mdChat('[Adm](https://www.udistrital.edu.co/admisiones-doctorado/)', reparadas), '<p><a href="/admisiones-doctorado/">Adm</a></p>');
 assert.equal(mdChat('[Acta](https://.../Acta.pdf)', reparadas), '<p><a href="/documentos/2023/07/Acta.pdf#page=4">Acta</a></p>');
 assert.equal(mdChat('[Inicio](/)', reparadas), '<p>Inicio</p>', 'sin tramo que comparar: texto');
+// 1 de cada 5 etiquetas copiaba el encabezado del fragmento ("Título — /ruta/")
+assert.equal(mdChat('[Equipo de trabajo — /equipo-de-trabajo/](/equipo-de-trabajo/)', reparadas), '<p><a href="/equipo-de-trabajo/">Equipo de trabajo</a></p>');
 // Comillas en la URL no rompen el atributo, aunque la URL venga permitida
 assert.doesNotMatch(mdChat('[x](/a"onmouseover="b)', ['/a"onmouseover="b']), /onmouseover="/);
 assert.equal(mdChat('**Requisito**: título'), '<p><strong>Requisito</strong>: título</p>');
