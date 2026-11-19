@@ -140,6 +140,30 @@ export function diferencia<T extends { id: string }>(actuales: T[], enIndice: st
   return { subir: actuales.filter((t) => !ya.has(t.id)), borrar: enIndice.filter((id) => !vigentes.has(id)) };
 }
 
+/** Búsqueda por palabras en D1 (SQLite): tabla + índice FTS5 que la sigue
+ *  con triggers. Sentencias sueltas: el endpoint de D1 parte por ";". */
+export const ESQUEMA_D1 = [
+  'CREATE TABLE IF NOT EXISTS trozos (id TEXT PRIMARY KEY, url TEXT NOT NULL, titulo TEXT NOT NULL, texto TEXT NOT NULL)',
+  "CREATE VIRTUAL TABLE IF NOT EXISTS trozos_fts USING fts5(titulo, texto, content='trozos', content_rowid='rowid', tokenize='unicode61 remove_diacritics 2')",
+  'CREATE TRIGGER IF NOT EXISTS trozos_alta AFTER INSERT ON trozos BEGIN INSERT INTO trozos_fts(rowid, titulo, texto) VALUES (new.rowid, new.titulo, new.texto); END',
+  "CREATE TRIGGER IF NOT EXISTS trozos_baja AFTER DELETE ON trozos BEGIN INSERT INTO trozos_fts(trozos_fts, rowid, titulo, texto) VALUES ('delete', old.rowid, old.titulo, old.texto); END",
+];
+
+type Fila = { id: string; url: string; titulo: string; texto: string };
+
+/** INSERTs de a 25 filas: 100 parámetros, el tope de D1 por consulta. */
+export function insercionesD1(filas: Fila[]): { sql: string; params: string[] }[] {
+  const sentencias = [];
+  for (let i = 0; i < filas.length; i += 25) {
+    const lote = filas.slice(i, i + 25);
+    sentencias.push({
+      sql: `INSERT OR IGNORE INTO trozos (id, url, titulo, texto) VALUES ${lote.map(() => '(?, ?, ?, ?)').join(', ')}`,
+      params: lote.flatMap((f) => [f.id, f.url, f.titulo, f.texto]),
+    });
+  }
+  return sentencias;
+}
+
 // ── Recolección ─────────────────────────────────────────────────────────────
 
 type Fuente = { url: string; titulo: string; texto: string; pdf?: boolean };
@@ -359,6 +383,29 @@ async function main() {
     if (pendientes.length === 0 || i + 64 >= nuevos.length) console.log(`${Math.min(i + 64, nuevos.length)}/${nuevos.length}`);
   }
   if (pendientes.length) await subir();
+
+  // Búsqueda por palabras: misma diferencia por id, contra la tabla de D1
+  const d1 = process.env.CF_D1_ID;
+  if (!d1) console.log('Sin CF_D1_ID: no se sincroniza la búsqueda por palabras (D1)');
+  else {
+    const sql = (cuerpo: object) =>
+      pedir(`https://api.cloudflare.com/client/v4/accounts/${cuenta}/d1/database/${d1}/query`, {
+        method: 'POST',
+        headers: { ...auth, 'Content-Type': 'application/json' },
+        body: JSON.stringify(cuerpo),
+      });
+    await sql({ batch: ESQUEMA_D1.map((s) => ({ sql: s })) });
+    const { result } = await sql({ sql: 'SELECT id FROM trozos' });
+    const enD1: string[] = result[0].results.map((r: { id: string }) => r.id);
+    const d = diferencia(trozos, enD1);
+    for (let i = 0; i < d.borrar.length; i += 100) {
+      const ids = d.borrar.slice(i, i + 100);
+      await sql({ sql: `DELETE FROM trozos WHERE id IN (${ids.map(() => '?').join(', ')})`, params: ids });
+    }
+    const inserciones = insercionesD1(d.subir);
+    for (let i = 0; i < inserciones.length; i += 8) await sql({ batch: inserciones.slice(i, i + 8) });
+    console.log(`D1: tenía ${enD1.length} · nuevas ${d.subir.length} · borradas ${d.borrar.length}`);
+  }
   console.log('Listo.');
 }
 

@@ -21,6 +21,8 @@ interface Env {
       opciones: { topK: number; returnMetadata: 'all'; filter?: Record<string, string> }
     ): Promise<{ matches: { id: string; score: number; metadata?: Trozo }[] }>;
   };
+  // D1 con la búsqueda por palabras (lo llena scripts/indexar-rag.ts). Opcional
+  RAG_TEXTO?: { prepare(sql: string): { bind(...v: string[]): { all(): Promise<{ results: Trozo[] }> } } };
 }
 
 // Comparado el 2026-11-19 (mismo prompt y fragmentos, 33 respuestas por modelo).
@@ -31,7 +33,7 @@ interface Env {
 const MODELO = 'mistralai/Mistral-Small-24B-Instruct-2501';
 const EMBEDDINGS = 'BAAI/bge-m3'; // el mismo de scripts/indexar-rag.ts
 const API = 'https://api.deepinfra.com/v1/openai';
-const TOP_K = 8;
+const TOP_K = 10;
 // Las páginas del sitio están al día y resumidas; los PDFs (actas, reglamentos
 // viejos) son 9 de cada 10 trozos y ganaban por cantidad aunque estuvieran
 // desactualizados. ponytail: bono fijo, calibrado con scripts/evaluar-chat.ts
@@ -40,6 +42,9 @@ const BONO_PAGINA = 0.05;
 // Con el OCR (2026-11-19) las páginas ni entraban a los 20 candidatos: van en
 // una búsqueda aparte y las mejores tienen cupo fijo. Medido con X-Candidatos.
 const RESERVA_PAGINAS = 2;
+// Lo que el embedding no ve (fechas, nombres, números) lo halla la búsqueda
+// por palabras (FTS5 en D1): sus 2 mejores entran si no estaban.
+const RESERVA_PALABRAS = 2;
 
 type Trozo = { url: string; titulo: string; texto: string };
 
@@ -61,6 +66,35 @@ export function priorizar(matches: { score: number; metadata?: Trozo }[], n: num
   const resto = orden.filter((t) => !fijas.includes(t)).slice(0, n - fijas.length);
   return [...fijas, ...resto].sort((a, b) => b.puntaje - a.puntaje);
 }
+
+/** Agrega hasta `reserva` trozos de la búsqueda por palabras que no estén ya,
+ *  cediendo los últimos de `base` para no pasar de `n`. */
+export function sumarPalabras<T extends Trozo & { puntaje: number }>(base: T[], palabras: Trozo[], n: number, reserva = RESERVA_PALABRAS) {
+  const ya = new Set(base.map((t) => `${t.url}\n${t.texto}`));
+  const extra = palabras.filter((t) => !ya.has(`${t.url}\n${t.texto}`)).slice(0, reserva).map((t) => ({ ...t, puntaje: 0 }));
+  return [...base.slice(0, n - extra.length), ...extra];
+}
+
+// Palabras de toda pregunta o de todas las actas: no distinguen nada
+const VACIAS = new Set(
+  ('a al ante con contra de del desde donde durante el en entre es esa ese eso esta este esto fue ha han hay la las le les lo los mas me mi no nos o para pero por que quien quienes se ser si sin sobre son su sus te tiene tienen tu un una uno unos unas y ya cual cuales cuando como cuanto cuantos cuanta cuantas paso dice hizo hace puedo necesito ' +
+    'acta actas consejo curricular doctorado programa universidad ingenieria').split(' ')
+);
+
+/** Pregunta → MATCH de FTS5: palabras con contenido, sin tildes; las largas
+ *  con prefijo (honorificas → honorific*), unidas con OR para que bm25 premie
+ *  las raras. Solo [a-z0-9] entre comillas o con *: no inyecta sintaxis. */
+export function consultaFts(pregunta: string): string {
+  const palabras = pregunta.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().match(/[a-z0-9]+/g) ?? [];
+  return [...new Set(palabras)]
+    .filter((w) => (w.length >= 3 || /^\d+$/.test(w)) && !VACIAS.has(w))
+    .slice(0, 10)
+    .map((w) => (w.length >= 6 && !/^\d+$/.test(w) ? `${w.slice(0, -2)}*` : `"${w}"`))
+    .join(' OR ');
+}
+
+export const BUSCAR_SQL =
+  'SELECT t.url, t.titulo, t.texto FROM trozos_fts JOIN trozos t ON t.rowid = trozos_fts.rowid WHERE trozos_fts MATCH ? ORDER BY bm25(trozos_fts) LIMIT 10';
 
 export const SISTEMA = `Eres el asistente virtual del Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas (Bogotá, Colombia).
 Reglas:
@@ -147,12 +181,25 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   // pregunta actual; un seguimiento sin número se apoya en el historial.
   const consulta = async (topK: number, filter?: Record<string, string>) =>
     (await env.VECTORIZE.query(vector, { topK, returnMetadata: 'all', ...(filter && { filter }) })).matches;
+  // ponytail: sin D1 o fuera de su cupo diario, sigue solo con Vectorize
+  const porPalabras = async (): Promise<Trozo[]> => {
+    const q = consultaFts(pregunta);
+    if (!q || !env.RAG_TEXTO) return [];
+    try {
+      return (await env.RAG_TEXTO.prepare(BUSCAR_SQL).bind(q).all()).results;
+    } catch {
+      return [];
+    }
+  };
   const acta = actaDe(pregunta);
-  const delActa = acta ? await consulta(TOP_K, { acta }) : [];
-  const matches = delActa.length
-    ? delActa
-    : (await Promise.all([consulta(CANDIDATOS), consulta(RESERVA_PAGINAS, { tipo: 'pagina' })])).flat();
-  const trozos = priorizar(matches, TOP_K);
+  let matches = acta ? await consulta(TOP_K, { acta }) : [];
+  let palabras: Trozo[] = [];
+  if (!matches.length) {
+    const [general, paginas, fts] = await Promise.all([consulta(CANDIDATOS), consulta(RESERVA_PAGINAS, { tipo: 'pagina' }), porPalabras()]);
+    matches = [...general, ...paginas];
+    palabras = fts;
+  }
+  const trozos = sumarPalabras(priorizar(matches, TOP_K), palabras, TOP_K);
   const t2 = Date.now();
 
   const contexto = armarContexto(trozos);
@@ -206,7 +253,10 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
       'Cache-Control': 'no-store',
       'X-Fuentes': encodeURIComponent(JSON.stringify(fuentes)),
       // Los candidatos crudos (sin bono): para calibrar priorizar() con datos reales
-      'X-Candidatos': encodeURIComponent(JSON.stringify(matches.map((m) => [m.metadata?.url, Math.round(m.score * 1000) / 1000]))),
+      // (los de palabras van con puntaje null)
+      'X-Candidatos': encodeURIComponent(
+        JSON.stringify([...matches.map((m) => [m.metadata?.url, Math.round(m.score * 1000) / 1000]), ...palabras.map((p) => [p.url, null])])
+      ),
       'Server-Timing': tiempos,
     },
   });

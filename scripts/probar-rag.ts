@@ -7,10 +7,11 @@
  * su página y que los documentos lleven el título humano del enlace.
  */
 import assert from 'node:assert/strict';
-import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir } from './indexar-rag.ts';
+import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir, ESQUEMA_D1, insercionesD1 } from './indexar-rag.ts';
+import { DatabaseSync } from 'node:sqlite';
 import { mdChat } from '../src/lib/md-chat.ts';
 import { actaDe } from '../src/lib/acta.ts';
-import { deltasSSE, validarCuerpo, priorizar, armarContexto } from '../functions/api/chat.ts';
+import { deltasSSE, validarCuerpo, priorizar, armarContexto, consultaFts, sumarPalabras, BUSCAR_SQL } from '../functions/api/chat.ts';
 
 // ── trocear ─────────────────────────────────────────────────────────────────
 
@@ -240,5 +241,45 @@ assert.deepEqual(await conFetch([cuerpoCortado, ok]), { valor: { data: [1] }, ll
 const malo = await conFetch([() => new Response('sin permiso', { status: 403 })]);
 assert.equal(malo.llamadas, 1);
 assert.match(malo.error!.message, /403: sin permiso/);
+
+// ── consultaFts: pregunta → MATCH de FTS5 (búsqueda por palabras en D1) ────
+// Caso real: "la reunión del 23 de agosto de 2018" no la hallaba el embedding
+
+const fecha = consultaFts('¿Qué pasó en la reunión del consejo curricular del 23 de agosto de 2018?');
+assert.match(fecha, /"23"/);
+assert.match(fecha, /"2018"/);
+assert.match(fecha, /agos\*/, 'prefijo: agosto, Agosto');
+assert.doesNotMatch(fecha, /"que"|consejo|"del"/, 'sin palabras vacías ni las de todas las actas');
+assert.match(consultaFts('¿Qué pasó con Luis Felipe Albarracín?'), /albarrac\*/, 'sin tildes (el índice tampoco las tiene)');
+assert.equal(consultaFts('¿Qué es?'), '', 'sin palabras útiles no se busca');
+// Frontera: la pregunta no inyecta sintaxis de FTS5
+assert.match(consultaFts('NEAR(") OR * hola"mundo'), /^[a-z0-9*" ]+(OR [a-z0-9*" ]+)*$/i);
+
+// ── sumarPalabras: los 2 mejores por palabras entran si no estaban ─────────
+
+const tz = (url: string) => ({ url, titulo: url, texto: url, puntaje: 0.5 });
+const base = [tz('/a/'), tz('/b/'), tz('/c/')];
+assert.deepEqual(urls(sumarPalabras(base, [tz('/b/'), tz('/x/'), tz('/y/'), tz('/z/')], 4)), ['/a/', '/b/', '/x/', '/y/'], 'repetidos no; el tope se respeta');
+assert.deepEqual(urls(sumarPalabras(base, [tz('/x/'), tz('/y/'), tz('/z/')], 3)), ['/a/', '/x/', '/y/'], 'a lo sumo 2, cediendo los últimos');
+assert.deepEqual(urls(sumarPalabras(base, [], 10)), ['/a/', '/b/', '/c/']);
+
+// ── SQL de D1 sobre SQLite real (D1 es SQLite): esquema, alta, búsqueda, baja ─
+
+const db = new DatabaseSync(':memory:');
+// Sentencias sueltas: el endpoint de D1 parte por ";" y los triggers llevan ";" adentro
+for (let i = 0; i < 2; i++) for (const sentencia of ESQUEMA_D1) db.exec(sentencia); // 2 veces: idempotente
+const filas = [
+  { id: 'a1', url: '/documentos/acta-14-2018.pdf#page=1', titulo: 'Acta 014 2018', texto: 'ACTA No. 14-2018 Sala de Access Grid, 23 de Agosto de 2018. Participantes: Tarazona' },
+  { id: 'a2', url: '/documentos/acta-15-2018.pdf#page=1', titulo: 'Acta 015 2018', texto: 'ACTA No. 15-2018, 6 de septiembre de 2018' },
+];
+for (const { sql, params } of insercionesD1(filas)) {
+  assert.ok(params.length <= 100, 'tope de D1: 100 parámetros por consulta');
+  db.prepare(sql).run(...params);
+}
+const buscar = (q: string) => (db.prepare(BUSCAR_SQL).all(q) as { url: string }[]).map((r) => r.url);
+assert.equal(buscar(consultaFts('¿qué pasó el 23 de agosto de 2018?'))[0], filas[0].url, 'la fecha encuentra su acta primero');
+db.prepare('DELETE FROM trozos WHERE id IN (?)').run('a1');
+assert.ok(!buscar(consultaFts('Tarazona')).length, 'borrar la fila la saca del índice de texto');
+assert.equal(insercionesD1(Array.from({ length: 60 }, (_, i) => ({ ...filas[0], id: `x${i}` }))).length, 3, '25 filas (100 parámetros) por sentencia');
 
 console.log('probar-rag: OK');
