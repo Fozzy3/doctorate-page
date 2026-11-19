@@ -17,7 +17,7 @@ const columnas = [
     label: 'Admisiones y trámites',
     links: [
       { href: '/admisiones-doctorado/', label: 'Proceso de admisión' },
-      { href: '/resultados-admisiones-2026-1/', label: 'Resultados 2026-I' },
+      { href: '/resultados-admisiones-2026-3/', label: 'Resultados 2026-III' },
       { href: '/formatos/', label: 'Formatos' },
       { href: '/solicitudes/', label: 'Solicitudes' },
     ],
@@ -41,9 +41,36 @@ const columnas = [
     ],
   },
 ];
+
+// Franja de entidades del Estado (la misma del sitio anterior, en su orden)
+const logos = [
+  { href: 'https://bogota.gov.co/', src: 'alcaldia-bogota.png', w: 401, alt: 'Alcaldía Mayor de Bogotá' },
+  { href: 'https://www.mineducacion.gov.co/portal/', src: 'mineducacion.png', w: 573, alt: 'Ministerio de Educación Nacional' },
+  { href: 'https://www.colombiacompra.gov.co/', src: 'colombia-compra-eficiente.jpg', w: 264, alt: 'Colombia Compra Eficiente' },
+  { href: 'https://www.veeduriadistrital.gov.co/', src: 'veeduria-distrital.png', w: 293, alt: 'Veeduría Distrital' },
+  { href: 'https://www.mintic.gov.co/portal/inicio/', src: 'mintic.png', w: 439, alt: 'Ministerio de Tecnologías de la Información y las Comunicaciones' },
+  { href: 'https://gobiernodigital.mintic.gov.co/portal/', src: 'gobierno-digital.png', w: 247, alt: 'Gobierno Digital' },
+  { href: 'https://www.sdmujer.gov.co/', src: 'secretaria-mujer.jpg', w: 449, alt: 'Secretaría Distrital de la Mujer' },
+  { href: 'https://bogota.gov.co/sdqs/', src: 'bogota-te-escucha.png', w: 244, h: 92, alt: 'Bogotá te escucha' },
+  { href: 'https://horalegal.inm.gov.co/', src: 'inm-hora-legal.png', w: 168, alt: 'Instituto Nacional de Metrología: hora legal de Colombia' },
+];
 ---
 
 <footer class="site-footer">
+  <div class="footer-logos">
+    <ul class="container logos" aria-label="Entidades del Estado">
+      {
+        logos.map((l) => (
+          <li>
+            <a href={l.href} rel="external noopener" target="_blank">
+              <img src={`/images/logos/${l.src}`} alt={l.alt} width={l.w} height={l.h ?? 112} loading="lazy" decoding="async" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
   <div class="container footer-grid">
     <div class="footer-institucional">
       <img
@@ -100,6 +127,7 @@ const columnas = [
       <nav aria-label="Enlaces institucionales">
         <a href="https://www.udistrital.edu.co/" rel="external">udistrital.edu.co</a>
         <a href="/contactenos/">Contáctenos</a>
+        <a href="/pqrs/">PQRS</a>
         <a href="/noticias/">Noticias</a>
       </nav>
     </div>
@@ -111,6 +139,56 @@ const columnas = [
     background: var(--c-ink);
     color: oklch(0.88 0.005 260);
     margin-top: var(--section-gap);
+  }
+
+  /* .site-footer delante: las reglas genéricas .site-footer ul/li van
+     después en este archivo y ganarían a igual especificidad */
+  .site-footer .footer-logos {
+    background: var(--c-crimson);
+    padding-block: 1.75rem;
+  }
+
+  .site-footer .logos {
+    padding-inline: var(--gutter); /* el de .container, que .site-footer ul anula */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem 1.75rem;
+  }
+
+  .site-footer .logos li {
+    margin: 0;
+  }
+
+  .site-footer .logos a {
+    display: block;
+    transition:
+      opacity 180ms var(--ease-out-quint),
+      translate 180ms var(--ease-out-quint);
+  }
+
+  .site-footer .logos a:hover {
+    opacity: 0.85;
+    translate: 0 -2px;
+  }
+
+  .site-footer .logos img {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+  }
+
+  @media (max-width: 560px) {
+    .site-footer .logos img {
+      height: 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer .logos a {
+      transition: none;
+    }
   }
 
   .footer-grid {
@@ -182,7 +260,8 @@ const columnas = [
 
   .footer-legal {
     border-top: 1px solid oklch(0.35 0.01 260);
-    padding-block: 1.25rem;
+    /* Abajo deja libre el botón flotante del asistente (ChatBot.astro) */
+    padding-block: 1.25rem 5.5rem;
     font-size: 0.85rem;
   }
 

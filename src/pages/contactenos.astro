@@ -1,17 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-
-// Clave de Web3Forms (servicio que reenvía el formulario al correo del
-// programa). Mientras sea el marcador, el envío falla de forma controlada y
-// se muestra el correo institucional como alternativa.
-const ACCESS_KEY = 'PENDIENTE_ACCESS_KEY';
-
-// Cloudflare Turnstile: la defensa real contra bots guiados por IA. Es
-// gratuito y casi siempre invisible para el usuario. Mientras sea el marcador
-// el formulario funciona sin él (con las demás capas), pero queda expuesto a
-// spam automatizado. Ver DESIGN.md → Formulario de contacto.
-const TURNSTILE_KEY = 'PENDIENTE_TURNSTILE_KEY';
-const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
+import FormularioWeb3 from '../components/FormularioWeb3.astro';
 ---
 
 <Base
@@ -54,37 +43,19 @@ const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
             <dt>Correo electrónico</dt>
             <dd><a href="mailto:doctoradoing@udistrital.edu.co">doctoradoing@udistrital.edu.co</a></dd>
           </div>
+          <div>
+            <dt>Peticiones, quejas, reclamos y sugerencias</dt>
+            <dd><a href="/pqrs/">Radica tu PQRS</a></dd>
+          </div>
         </dl>
       </section>
 
-      <form
-        id="form-contacto"
-        class="form"
-        method="POST"
-        action="https://api.web3forms.com/submit"
-        aria-label="Formulario de contacto"
+      <FormularioWeb3
+        etiqueta="Formulario de contacto"
+        asunto="Nuevo mensaje desde el sitio del Doctorado en Ingeniería"
+        boton="Enviar mensaje"
+        exito="Mensaje enviado. Te responderemos al correo que nos indicaste."
       >
-        {/* Reemplazar con la access key real de Web3Forms antes de publicar.
-            Mientras diga PENDIENTE, el envío falla y se muestra el aviso de
-            respaldo con el correo del programa. */}
-        <input type="hidden" name="access_key" value={ACCESS_KEY} />
-        <input
-          type="hidden"
-          name="subject"
-          value="Nuevo mensaje desde el sitio del Doctorado en Ingeniería"
-        />
-        <input type="hidden" name="from_name" value="Sitio del Doctorado en Ingeniería" />
-
-        {/* Trampas para bots. Van fuera del alcance del teclado y de los
-            lectores de pantalla, así que una persona nunca las ve ni las llena;
-            un bot que rellena todo por defecto sí, y ahí se delata.
-            `botcheck` lo valida Web3Forms del lado del servidor. */}
-        <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true" />
-        <div class="visually-hidden" aria-hidden="true">
-          <label for="sitio-web">No llenar este campo</label>
-          <input id="sitio-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off" />
-        </div>
-
         <div class="fila">
           <div class="field">
             <label for="nombre">Nombre completo</label>
@@ -124,33 +95,7 @@ const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
           <textarea id="mensaje" name="message" rows="7" required placeholder="Cuéntanos en detalle"
           ></textarea>
         </div>
-        {turnstileActivo && (
-          <div class="turnstile-caja">
-            <div class="cf-turnstile" data-sitekey={TURNSTILE_KEY} data-language="es"></div>
-          </div>
-        )}
-
-        <button class="btn btn-primary" type="submit">
-          Enviar mensaje
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
-            <path d="M2 12L12 2M5 2h7v7" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-        </button>
-
-        {/* El resultado del envío se anuncia aquí mismo, sin salir de la página.
-            role=status para que los lectores de pantalla lo lean al aparecer. */}
-        <p class="form-estado" role="status" aria-live="polite" hidden></p>
-
-        <p class="form-nota">
-          Los datos enviados se tratan según la política de protección de datos personales de la
-          Universidad Distrital Francisco José de Caldas.
-        </p>
-      </form>
-
-      {turnstileActivo && (
-        <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer
-        ></script>
-      )}
+      </FormularioWeb3>
     </div>
   </div>
 </Base>
@@ -243,83 +188,8 @@ const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
     color: var(--c-ink-soft);
   }
 
-  /* Formulario */
-  .fila {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .field {
-    margin-bottom: 1.4rem;
-  }
-
-  label {
-    display: block;
-    font-weight: 650;
-    font-size: 0.9rem;
-    margin-bottom: 0.45rem;
-  }
-
-  input:not([type='hidden']):not([type='checkbox']),
-  textarea {
-    width: 100%;
-    font: inherit;
-    font-size: 1rem;
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--c-line);
-    background: var(--c-bg);
-    color: var(--c-ink);
-    transition: border-color 180ms var(--ease-out-quint), box-shadow 180ms var(--ease-out-quint);
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 9rem;
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--c-ink-soft);
-    opacity: 1;
-  }
-
-  input:hover,
-  textarea:hover {
-    border-color: var(--c-ink-soft);
-  }
-
-  input:focus,
-  textarea:focus {
-    outline: none;
-    border-color: var(--c-crimson);
-    box-shadow: 0 0 0 3px var(--c-crimson-soft);
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .btn svg {
-    transition: translate 150ms var(--ease-out-quint);
-  }
-
-  .btn:hover svg {
-    translate: 2px -2px;
-  }
-
-  .form-nota {
-    margin-top: 1.1rem;
-    font-size: 0.8rem;
-    color: var(--c-ink-soft);
-    max-width: 52ch;
-  }
-
   @media (max-width: 820px) {
-    .contacto-grid,
-    .fila {
+    .contacto-grid {
       grid-template-columns: 1fr;
     }
 
@@ -327,130 +197,4 @@ const turnstileActivo = !TURNSTILE_KEY.startsWith('PENDIENTE');
       position: static;
     }
   }
-
-  .turnstile-caja {
-    margin-bottom: 1.25rem;
-  }
-
-  /* Resultado del envío: verde institucional para éxito, carmesí para error */
-  .form-estado {
-    margin-top: 1.1rem;
-    padding: 0.9rem 1.1rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-left: 0;
-  }
-
-  .form-estado.ok {
-    background: oklch(0.95 0.04 150);
-    color: oklch(0.35 0.09 150);
-  }
-
-  .form-estado.error {
-    background: var(--c-crimson-soft);
-    color: var(--c-crimson-dark);
-  }
-
-  .form-estado :global(a) {
-    color: inherit;
-  }
 </style>
-
-<script>
-  const form = document.getElementById('form-contacto') as HTMLFormElement | null;
-  const estado = form?.querySelector<HTMLParagraphElement>('.form-estado');
-  const boton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
-  const CORREO = 'doctoradoing@udistrital.edu.co';
-
-  if (form && estado && boton) {
-    const campos = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
-      'input:not([type="hidden"]):not([type="checkbox"]), textarea'
-    );
-
-    // El navegador muestra sus avisos de validación en SU idioma, no en el de
-    // la página: se reemplazan por mensajes propios en español.
-    const mensajeDe = (campo: HTMLInputElement | HTMLTextAreaElement) => {
-      const v = campo.validity;
-      if (v.valueMissing) return 'Completa este campo para continuar.';
-      if (v.typeMismatch && campo.type === 'email')
-        return 'Escribe un correo electrónico válido, por ejemplo nombre@correo.com';
-      return 'Revisa este campo.';
-    };
-
-    campos.forEach((campo) => {
-      campo.addEventListener('invalid', () => campo.setCustomValidity(mensajeDe(campo)));
-      // Sin esto el mensaje se queda pegado aunque el campo ya sea válido.
-      // `change` además cubre el autocompletado del navegador.
-      const limpiar = () => campo.setCustomValidity('');
-      campo.addEventListener('input', limpiar);
-      campo.addEventListener('change', limpiar);
-    });
-
-    const mostrar = (texto: string, ok: boolean) => {
-      estado.innerHTML = texto;
-      estado.classList.toggle('ok', ok);
-      estado.classList.toggle('error', !ok);
-      estado.hidden = false;
-    };
-
-    // ── Defensa contra bots (capas que no dependen de servicios externos) ──
-    // Ninguna es infalible por sí sola; el filtro fuerte es Turnstile, que se
-    // activa al configurar su clave. Estas capas atrapan al bot automático
-    // común sin poner ninguna fricción a una persona real.
-    const cargadaEn = Date.now();
-    const SEGUNDOS_MINIMOS = 3; // una persona no llena el formulario más rápido
-    const trampa = form.querySelector<HTMLInputElement>('#sitio-web');
-    let ultimoEnvio = 0;
-
-    // Envío sin salir de la página: el usuario no termina en una pantalla
-    // ajena del proveedor y conserva lo que escribió si algo falla.
-    form.addEventListener('submit', async (ev) => {
-      ev.preventDefault();
-
-      // Trampa llena = bot. Se finge éxito para no darle pistas de qué falló.
-      if (trampa?.value) {
-        mostrar('Mensaje enviado. Te responderemos al correo que nos indicaste.', true);
-        form.reset();
-        return;
-      }
-
-      // Llenado instantáneo = automatizado
-      if ((Date.now() - cargadaEn) / 1000 < SEGUNDOS_MINIMOS) {
-        mostrar('Tómate un momento para revisar el mensaje antes de enviarlo.', false);
-        return;
-      }
-
-      // Evita reenvíos en ráfaga (y el doble clic accidental)
-      if (Date.now() - ultimoEnvio < 15000) {
-        mostrar('Ya recibimos tu mensaje. Espera un momento antes de enviar otro.', false);
-        return;
-      }
-
-      estado.hidden = true;
-      boton.disabled = true;
-      // innerHTML, no textContent: el botón lleva el ícono de flecha dentro
-      const contenidoOriginal = boton.innerHTML;
-      boton.textContent = 'Enviando…';
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form),
-        });
-        if (!res.ok) throw new Error(String(res.status));
-        ultimoEnvio = Date.now();
-        mostrar('Mensaje enviado. Te responderemos al correo que nos indicaste.', true);
-        form.reset();
-      } catch {
-        mostrar(
-          `No pudimos enviar el mensaje. Escríbenos directamente a <a href="mailto:${CORREO}">${CORREO}</a> o llámanos al (+57) 601 323 9300, extensión 1419.`,
-          false
-        );
-      } finally {
-        boton.disabled = false;
-        boton.innerHTML = contenidoOriginal;
-      }
-    });
-  }
-</script>

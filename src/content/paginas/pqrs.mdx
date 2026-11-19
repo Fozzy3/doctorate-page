@@ -1,0 +1,88 @@
+---
+title: 'PQRS'
+description: 'Presenta peticiones, quejas, reclamos y sugerencias al Doctorado en Ingeniería de la Universidad Distrital, y conoce el canal oficial con radicado y los plazos de respuesta.'
+section: 'admisiones'
+updated: '2026-11-18'
+---
+
+import FormularioWeb3 from '../../components/FormularioWeb3.astro';
+
+Escríbenos tus peticiones, quejas, reclamos y sugerencias sobre el Doctorado en Ingeniería. La coordinación del programa las recibe y te responde al correo que indiques.
+
+## Qué puedes presentar
+
+| Tipo | Cuándo usarlo |
+| --- | --- |
+| Petición | Solicitas información, un documento o una actuación del programa. |
+| Queja | Manifiestas inconformidad con la atención o la conducta de una persona. |
+| Reclamo | Manifiestas inconformidad con un servicio, un trámite o una decisión. |
+| Sugerencia | Propones una mejora para el programa. |
+
+## Plazos de respuesta
+
+Según el artículo 14 de la Ley 1755 de 2015:
+
+| Solicitud | Plazo |
+| --- | --- |
+| Peticiones en general | 15 días hábiles |
+| Documentos o información | 10 días hábiles |
+| Consultas | 30 días hábiles |
+
+## Canal oficial con radicado
+
+Este formulario llega directamente a la coordinación del Doctorado. Si necesitas un **número de radicado** para hacer seguimiento oficial, registra tu solicitud también en [Bogotá te escucha](https://bogota.gov.co/sdqs/), el sistema distrital que usa la Universidad, o escribe a la Unidad de Quejas, Reclamos y Atención al Ciudadano: [reclamos@udistrital.edu.co](mailto:reclamos@udistrital.edu.co).
+
+## Formulario
+
+<FormularioWeb3
+  etiqueta="Formulario de PQRS"
+  asunto="Nueva PQRS desde el sitio del Doctorado en Ingeniería"
+  boton="Enviar PQRS"
+  exito="Recibimos tu PQRS. Te responderemos al correo que indicaste dentro de los plazos de ley."
+>
+  <div class="fila">
+    <div class="field">
+      <label for="tipo">Tipo de solicitud</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">Elige una opción</option>
+        <option>Petición</option>
+        <option>Queja</option>
+        <option>Reclamo</option>
+        <option>Sugerencia</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="relacion">Tu relación con el programa</label>
+      <select id="relacion" name="relacion">
+        <option value="">Prefiero no decirlo</option>
+        <option>Aspirante</option>
+        <option>Estudiante</option>
+        <option>Egresado</option>
+        <option>Docente</option>
+        <option>Otra</option>
+      </select>
+    </div>
+  </div>
+  <div class="fila">
+    <div class="field">
+      <label for="nombre">Nombre completo</label>
+      <input id="nombre" name="name" type="text" required autocomplete="name" placeholder="Tu nombre y apellidos" />
+    </div>
+    <div class="field">
+      <label for="correo">Correo electrónico</label>
+      <input id="correo" name="email" type="email" required autocomplete="email" placeholder="nombre@correo.com" />
+    </div>
+  </div>
+  <div class="field">
+    <label for="asunto">Asunto</label>
+    <input id="asunto" name="asunto" type="text" required placeholder="Resume tu solicitud en una línea" />
+  </div>
+  <div class="field">
+    <label for="mensaje">Descripción</label>
+    <textarea id="mensaje" name="message" rows="7" required placeholder="Cuéntanos los hechos, fechas y lo que solicitas"></textarea>
+  </div>
+  <label class="casilla">
+    <input id="autorizo" name="autoriza_datos" type="checkbox" value="Sí" required />
+    <span>Autorizo a la Universidad Distrital el tratamiento de mis datos personales para gestionar esta solicitud, conforme a la Ley 1581 de 2012.</span>
+  </label>
+</FormularioWeb3>
