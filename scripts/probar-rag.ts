@@ -9,7 +9,7 @@
 import assert from 'node:assert/strict';
 import { trocear, porSecciones, paginaDe, titulosDeDocumentos, aplanar, idDe, diferencia, pedir, ESQUEMA_D1, insercionesD1 } from './indexar-rag.ts';
 import { DatabaseSync } from 'node:sqlite';
-import { mdChat } from '../src/lib/md-chat.ts';
+import { mdChat, fuentesCitadas } from '../src/lib/md-chat.ts';
 import { actaDe } from '../src/lib/acta.ts';
 import { deltasSSE, validarCuerpo, priorizar, armarContexto, consultaFts, sumarPalabras, BUSCAR_SQL } from '../functions/api/chat.ts';
 
@@ -170,6 +170,16 @@ assert.equal(mdChat('Pasos:\n- uno\n- dos\n\nFin'), '<p>Pasos:</p><ul><li>uno</l
 assert.equal(mdChat('1. a\n2. b'), '<ol><li>a</li><li>b</li></ol>');
 // Mientras llega el stream, un ** sin cerrar no se come el texto
 assert.equal(mdChat('**inco'), '<p>**inco</p>');
+
+// ── fuentesCitadas: la lista "Fuentes" muestra lo que la respuesta usó ──────
+const vistas = [{ url: '/reglamento/' }, { url: '/documentos/2023/07/Acta-012-2012.pdf#page=2' }, { url: '/posdoctorado/' }];
+assert.deepEqual(fuentesCitadas('No tengo esa información. Puedes escribir…', vistas), [], 'sin respuesta, sin fuentes');
+assert.deepEqual(
+  fuentesCitadas('B2 [Reglamento](/reglamento/) y B1 en [Acta 012](/documentos/2023/07/Acta-012-2012.pdf#page=3)', vistas).map((f) => f.url),
+  ['/reglamento/', '/documentos/2023/07/Acta-012-2012.pdf#page=2'],
+  'solo las enlazadas, aunque cambie la página'
+);
+assert.equal(fuentesCitadas('El reglamento pide B2.', vistas).length, 3, 'sin enlaces: todas (mejor que ninguna)');
 
 // ── deltasSSE: stream OpenAI (DeepInfra) → texto, aunque llegue partido ────
 

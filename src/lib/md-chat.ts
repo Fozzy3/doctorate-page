@@ -25,6 +25,14 @@ const enLinea = (s: string, permitidas: Set<string>, porTramo: Map<string, strin
       return real ? `<a href="${real}">${texto}</a>` : texto;
     });
 
+/** Las fuentes que la respuesta enlaza (por tramo: el modelo cambia el #page).
+ *  Si remite al contacto, ninguna; si no enlaza ninguna, todas las que vio. */
+export function fuentesCitadas<T extends { url: string }>(texto: string, fuentes: T[]): T[] {
+  if (texto.trimStart().startsWith('No tengo esa información')) return [];
+  const citadas = fuentes.filter((f) => texto.includes(`/${tramo(f.url)}`));
+  return citadas.length ? citadas : fuentes;
+}
+
 export function mdChat(texto: string, urls: string[] = []): string {
   // Escapadas, porque se comparan contra el texto ya escapado. Solo rutas del
   // sitio: el href reparado sale de aquí, nunca del texto del modelo

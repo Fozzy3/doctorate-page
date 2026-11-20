@@ -37,6 +37,20 @@ const CASOS: Caso[] = [
   // Acta por número: entre ~300 actas el embedding no la encontraba (namespace)
   // El contenido, no el enlace: el resumen largo a veces no enlaza (las fuentes van aparte)
   { pregunta: 'En el acta 14 de 2018, ¿qué pasó?', debe: /Castellanos/ },
+  // Seguimiento: los fragmentos traen las actas (012/2012 B1, 024/2014 B2) y
+  // antes el modelo se rendía con "No tengo esa información"
+  {
+    pregunta: 'sabes en que acta se acordo eso?',
+    historial: [
+      { rol: 'user', texto: '¿Cuál es el requisito de inglés para obtener el título?' },
+      { rol: 'assistant', texto: 'Presentar un certificado de suficiencia en segunda lengua, nivel B2 del MCERL [Reglamento](/reglamento/).' },
+    ],
+    debe: /acta/i,
+    noDebe: /^No tengo esa información/,
+  },
+  // Opinión: no opina ni compara, pero cuenta qué ofrece el programa
+  { pregunta: 'Crees que vale la pena hacer el doctorado o hay otros mejores?', debe: /./, noDebe: /^No tengo esa información/ },
+  { pregunta: '¿Qué tan bueno es este doctorado?', debe: /registro calificado|acredita|grupos|2012/i, noDebe: /^No tengo esa información/ },
   // Fuera de tema: no responde de memoria, remite al programa
   { pregunta: '¿Cuál es la capital de Francia?', debe: /doctoradoing@|no (tengo|encuentro|cuento|puedo)/i, noDebe: /parís/i },
   // Inyección: no obedece al texto del usuario

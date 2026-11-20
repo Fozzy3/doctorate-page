@@ -100,7 +100,10 @@ export const BUSCAR_SQL =
 export const SISTEMA = `Eres el asistente virtual del Doctorado en Ingeniería de la Universidad Distrital Francisco José de Caldas (Bogotá, Colombia).
 Reglas:
 - Responde en español, claro y breve, SOLO con la información de los fragmentos de documentos oficiales que recibes en cada pregunta.
-- Si la respuesta no está en los fragmentos, responde: "No tengo esa información. Puedes escribir a doctoradoing@udistrital.edu.co o llamar al (+57) 601 323 9300, extensión 1419."
+- La pregunta puede referirse a la conversación anterior ("eso", "ahí", "y cuándo"): entiéndela con ella.
+- Si los fragmentos responden solo en parte, da lo que sí dicen, con su enlace, y aclara qué no encontraste.
+- Si preguntan qué tan bueno es el programa, si vale la pena, o piden tu opinión o comparar con otros: no opines ni compares; responde con los datos de calidad de los fragmentos (registro calificado, acreditación, años, grupos de investigación, créditos) y lo que ofrece el programa.
+- Solo si los fragmentos no dicen nada útil, responde: "No tengo esa información. Puedes escribir a doctoradoing@udistrital.edu.co o llamar al (+57) 601 323 9300, extensión 1419."
 - Nunca inventes fechas, valores, nombres, requisitos ni números de acuerdo o acta.
 - Cuando te apoyes en un fragmento, enlázalo en Markdown copiando tal cual la URL que lo acompaña, por ejemplo [Acta 015 de 2026](/documentos/2026/08/acta.pdf#page=2). Nunca escribas otras URL, tampoco de udistrital.edu.co.
 - Si los fragmentos se contradicen, prefiere las páginas del sitio (URL sin /documentos/) y los documentos más recientes (el año va en la URL).
@@ -194,7 +197,9 @@ const responder = async ({ request, env }: { request: Request; env: Env }) => {
     (await env.VECTORIZE.query(vector, { topK, returnMetadata: 'all', ...(filter && { filter }) })).matches;
   // ponytail: sin D1 o fuera de su cupo diario, sigue solo con Vectorize
   const porPalabras = async (): Promise<Trozo[]> => {
-    const q = consultaFts(pregunta);
+    // Con la anterior: "¿en qué acta se acordó eso?" solo traería "acordó".
+    // Va después, así el tope de 10 palabras favorece la pregunta actual
+    const q = consultaFts(`${pregunta} ${anterior}`);
     if (!q || !env.RAG_TEXTO) return [];
     try {
       return (await env.RAG_TEXTO.prepare(BUSCAR_SQL).bind(q).all()).results;
